@@ -47,7 +47,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		stored_fLC: view.output.fLC,
 		store_timeOn: view.output.timeOn,
 		storeRU_On_Output: view.output.RU_On_Output,
-		storeRU_CompiledLabelPlotAll: view.output.RU_CompiledLabelPlotAll,
 		store_tableData: view.table.data
 
 	};
@@ -183,7 +182,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.fLC = view.cookiesData.stored_fLC;
 		view.output.timeOn = view.cookiesData.store_timeOn;
 		view.output.RU_On_Output = view.cookiesData.storeRU_On_Output;
-		view.output.RU_CompiledLabelPlotAll = view.cookiesData.storeRU_CompiledLabelPlotAll;
 		view.table.data = view.cookiesData.store_tableData;
 		view.storedDataPrompt = true;
 	}
