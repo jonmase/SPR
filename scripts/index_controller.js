@@ -174,6 +174,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.mwR = view.cookiesData.stored_mwR;
 		view.system.find_mwLR(view.system.mwL, view.system.mwR);
 		view.system.find_RU_Max(view.system.tRC, view.system.mwR, view.vol, view.RPUM, view.system.mwL, view.system.mwLR);
+		view.system.uniqueID(view.system.Kd, view.system.kOff, view.system.kOn);
 			// set experiment status to as stored
 		view.experiment.steps = view.cookiesData.storedSteps;
 		view.experiment.timeOfDay = view.cookiesData.storedTimeOfDay;

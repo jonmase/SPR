@@ -53,8 +53,8 @@ function systemMethod() { // creating master function object that encapsulate al
 	};
 
 /* d) find kOn: derived from kOff/Kd; constant */
-	system.find_kOn = function(Kd, kOff) {
-		system.kOn = kOff/Kd;
+	system.find_kOn = function(sys_Kd, sys_kOff) {
+		system.kOn = sys_kOff/sys_Kd;
 	};
 
 /* e) set mwL: random assignment out of possibility in array; constant */
@@ -91,8 +91,8 @@ function systemMethod() { // creating master function object that encapsulate al
 	};
 
 /* g) find mwP: derived from mwR + mwL; constant */
-	system.find_mwLR = function(mwL, mwR) {
-		system.mwLR = system.mwL + system.mwR;
+	system.find_mwLR = function(sys_mwL, sys_mwR) {
+		system.mwLR = sys_mwL + sys_mwR;
 	};
 
 /* h) find the RU increase when R is totally saturated by L; constant */
@@ -102,7 +102,15 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.RU_MaxLR = sys_tRC*sys_mwLR*con_vol*con_RPUM;
 	};
 
-/* i) load new set of receptor-ligand pair */
+/* i) generating ligand-receptor pair unique ID for demonstrator to check answer on */
+	system.createID = function(sys_Kd, sys_kOff, sys_kOn) {
+		system.Kd_code = parseInt(sys_Kd*10000000);
+		system.kOff_code = parseInt(sys_kOff*100);
+		system.kOn_code = parseInt(sys_kOn/10000);
+		system.uniqueID = 'D'+system.Kd_code.toString()+'F'+system.kOff_code.toString()+'N'+system.kOn_code.toString();
+	};
+
+/* j) load new set of receptor-ligand pair */
 	system.loadNewPair = function(con_vol, con_RPUM) {
 		system.set_tRC();
 		system.set_Kd();
@@ -112,5 +120,6 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.set_mwR();
 		system.find_mwLR(system.mwL, system.mwR);
 		system.find_RU_Max(system.tRC, system.mwR, con_vol, con_RPUM, system.mwL, system.mwLR);
+		system.createID(system.Kd, system.kOff, system.kOn);
 	};
 }
