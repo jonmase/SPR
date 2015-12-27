@@ -63,22 +63,52 @@
 	text-decoration: none;
 }
 
-a.navbar-link:link{
+a.navbar-link:link {
 	color: #ffffff;
 	text-decoration: none;
 }
 
-a.navbar-link:visited{
+a.navbar-link:visited {
 	color: #ffffff;
 	text-decoration: none;
 }
 
-a.navbar-link:hover{
+a.navbar-link:hover {
 	color: #51A7F9;
 	text-decoration: none;
 }
 
-a.navbar-link:active{
+a.navbar-link:active {
 	color: #51A7F9;
 	text-decoration: none;
+}
+
+/* Global styling of the controller box */
+#controller-box {
+	padding-top: 5%;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.panel-heading {
+	background-color: #DCDEE0;
+}
+
+.panel-body {
+	border: 1px solid #DCDEE0;
+}
+
+#guide-mastery-box {
+
+}
+
+#output-box {
+
+}
+
+#status-system-box {
+
 }
