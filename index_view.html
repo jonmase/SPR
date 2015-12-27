@@ -66,6 +66,7 @@
 
 			<!-- Distinguishing content for large device size media query --> 
 		<div class="largeDevice">	
+				<!-- 1. Navigation Bar  -->
 			<nav class="navbar navbar-fixed-top navbar-custom">
 				<div class="navbar-menu">
 					<a href="http://www.yahoo.com" class="navbar-text navbar-link">HOME</a>
@@ -79,22 +80,60 @@
 				</div>
 			</nav>
 
+				<!-- 2. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
-					<div class="panel-heading"></div>
+						<!-- i. Button: guide vs mastery mode selector -->
+					<div class="mode-selection">
+						<button class="btn btn-default">Guide</button>
+						<button class="btn btn-default">Master</button><br><br>
+					</div>
+
+						<!-- ii. Panel: best score display (mastery mode only) -->
+					<div class="panel-heading">Beat The Best Score</div>
+					<div class="panel-body"></div><br>
+						<!-- iii. Panel: guiding objectives (guide mode only) -->
+					<div class="panel-heading">Guiding Objectives</div>
 					<div class="panel-body"></div>
 				</div>
 
 				<div id="output-box" class="container-fluid col-md-6">
-					<div class="panel-heading"></div>
-					<div class="panel-body"></div>
+						<!-- iv. Panel: sensorgram output graph (angular flot chart) -->
+					<div class="panel-heading">Sensorgram</div>
+					<div id="sensorgram" class="panel-body">
+						<flot id="flot" dataset="view.chart.dataset" options="view.chart.options"></flot>
+					</div><br>
+
+						<!-- v. Console -->
+
+
+						<!-- vi. Panel: results table (ui-grid) -->
+					<div class="panel-heading">Results Table</div>
+					<div id="result-table" class="panel-body">
+						<div ui-grid="view.table.options" ui-grid-selection ui-grid-exporter></div>
+					</div>
+
+						<!-- vii. Panel: check your answer -->
+
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
-					<div class="panel-heading"></div>
+						<!-- viii. Panel: experiment status-->
+					<div class="panel-heading">Experiment Status</div>
+					<div class="panel-body"></div><br>
+
+						<!-- ix. Panel: controls -->
+					<div class="panel-heading">Controls</div>
+					<div class="panel-body"></div><br>
+
+						<!-- x. Panel: generated system info -->
+					<div class="panel-heading">About Your System</div>
 					<div class="panel-body"></div>
 				</div>
 			</div>
+
+			<!-- 3. Credit Box -->
+			
 		</div>   
 	</body>
 

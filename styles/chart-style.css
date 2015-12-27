@@ -1,21 +1,13 @@
 #chart {
-	border: 3px solid #7F51FF !important;
+	border: 1px solid #DCDEE0 !important;
 	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-#graph-label {
-	text-align: center;
-}
-
 #flot {
-	border: 3px solid #7F51FF !important;
-	margin-left: auto;
-	margin-right: auto;
 	display: flex;
-	height: 300px;
-	width: 90%;
+	height: 231px;
 }
 
 #legend {

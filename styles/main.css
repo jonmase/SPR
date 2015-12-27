@@ -85,7 +85,7 @@ a.navbar-link:active {
 
 /* Global styling of the controller box */
 #controller-box {
-	padding-top: 5%;
+	padding-top: 50px;
 	padding-left: 0px;
 	padding-right: 0px;
 	width: 1024px;
@@ -95,20 +95,32 @@ a.navbar-link:active {
 
 .panel-heading {
 	background-color: #DCDEE0;
+	text-align: center;
+	padding-top: 7px;
+	padding-bottom: 3px;
+	font-size: 0.9em;
 }
 
 .panel-body {
 	border: 1px solid #DCDEE0;
 }
 
-#guide-mastery-box {
-
+.btn {
+	height: 32px;
 }
 
-#output-box {
-
+/* button: guide vs mastery */
+.mode-selection {
+	text-align: center;
 }
 
-#status-system-box {
+/* panel: sensorgram */
+#sensorgram {
+	padding: 0px;
+}
 
+/* panel: result table */
+#result-table {
+	padding: 0px;
+	font-size: 0.9em;
 }
