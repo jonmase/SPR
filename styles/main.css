@@ -1,84 +1,19 @@
 /* Support for older version view */
 
-* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
-
-/* Chart style */
-
-/* Debugging Border */
-
-.control-interface {
-	border: 3px solid black !important;
-	width: 950px;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
+* { 
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; 
+	font-family: 'PT Sans', sans-serif;
 }
 
-.system { 
-	border: 2px solid red !important; 
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
+.navbar-custom {
+    background-color: #002048;
 }
 
-.interface { 
-	border: 2px solid blue !important;
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
+.navbar-menu {
+	width: 800px;
+	margin: 0 auto;
 }
 
-.experiment { 
-	border: 2px solid green !important; 
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
+.navbar-text {
+	color: #ffffff;
 }
-
-.form {
-	border: 2px solid black !important; 
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;	
-}
-
-#restartPrompt {
-	border: 2px solid black !important;
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
-/* Media Query
-
-@media (min-width: 1200px) {
-	h1 {
-		background-color: blue
-	}
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-	h1 {
-		background-color: green
-	}
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-	h1 {
-		background-color: yellow
-	}
-}
-
-@media (max-width: 767px) {
-	h1 {
-		background-color: red
-	}
-}
-
-@media (max-width: 480px) {
-
-}
-
-*/
-

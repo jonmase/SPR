@@ -20,6 +20,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.cookies = $cookies;
 	view.vol = vol;
 	view.RPUM = RPUM;
+	view.restartCounter = 0;
 		// default function of various buttons
 	view.backgroundSet = 0;
 	view.isDisabled_background = false;
@@ -28,11 +29,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		// stored cookies data
 	view.storedDataPrompt = false;
 	view.cookiesData = {
-			// stored controller state
-		stored_backgroundSet: view.backgroundSet,
-		stored_isDisabled_background: view.isDisabled_background,
-		stored_isDisabled_run: view.isDisabled_run,
-		stored_isDisabled_wash: view.isDisabled_wash,
 			// stored system
 		stored_tRC: view.system.tRC,
 		storedKd: view.system.Kd,
@@ -149,6 +145,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.table.data.length = 0;
+		view.restartCounter++;
 	};
 
 /* n) initialise application to generate unique values for the new system, else load previous experiment state from cookies */
@@ -159,11 +156,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.cookies.putObject("storedData", view.cookiesData);
 	} else { // load stored data
 		view.cookies.getObject("storedData");
-			// set controller state to as stored
-		view.backgroundSet = view.cookiesData.stored_backgroundSet;
-		view.isDisabled_background = view.cookiesData.stored_isDisabled_background;
-		view.isDisabled_run = view.cookiesData.stored_isDisabled_run;
-		view.isDisabled_wash = view.cookiesData.stored_isDisabled_wash;
 			// set system to as stored
 		view.system.tRC = view.cookiesData.stored_tRC;
 		view.system.Kd = view.cookiesData.storedKd;
