@@ -5,7 +5,11 @@
 	font-family: 'PT Sans', sans-serif;
 }
 
+/* Top navigation bar */
+
 .navbar-custom {
+    min-height: 0px; /* override the min-height of bootstrap */
+    height: 5%;
     background-color: #002048;
 }
 
@@ -15,5 +19,31 @@
 }
 
 .navbar-text {
+	margin-top: 1%;
+	margin-bottom: 0px;
+}
+
+.navbar-clicked {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.navbar-link:link{
 	color: #ffffff;
+	text-decoration: none;
+}
+
+a.navbar-link:visited{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a.navbar-link:hover{
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.navbar-link:active{
+	color: #51A7F9;
+	text-decoration: none;
 }
