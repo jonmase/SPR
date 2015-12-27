@@ -5,6 +5,41 @@
 	font-family: 'PT Sans', sans-serif;
 }
 
+/* Media query: device size below 1024 width cannot use the simulation */
+
+@media (max-width: 1023px) {
+	body {
+		background-color: #F5D400;
+	}
+
+	.largeDevice {
+		display: none;
+	}
+
+	.smallDevice {
+		text-align: center;
+		padding-left: 5%;
+		padding-right: 5%;
+		padding-top: 15%;
+		padding-bottom: 20%;
+	}
+
+	.smallDevice-heading {
+		font-size: 5em;
+	}
+
+	.smallDevice-message {
+		font-size: 1.4em;
+		padding-bottom: 10px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.smallDevice {
+		display: none;
+	}
+}
+
 /* Top navigation bar */
 
 .navbar-custom {

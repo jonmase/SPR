@@ -55,19 +55,29 @@
 	</head>
 
 	<body ng-controller="viewCtrl as view">
-
-		<nav class="navbar navbar-fixed-top navbar-custom">
-			<div class="navbar-menu">
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">HOME</a>
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">OBJECTIVES</a>
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">SPR</a>
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">EXPERIMENT DESIGN</a>
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">CRITIQUE</a>
-				<div class="navbar-text navbar-clicked">SIMULATION</div>
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">SUMMARY</a>
-				<a href="http://www.yahoo.com" class="navbar-text navbar-link">CONTACT</a>
-			</div>
-		</nav>
+			<!-- Distinguishing content for small device size media query -->
+		<div class="smallDevice">
+			<h1 class="smallDevice-heading">Oh Snap!</h1><br>
+			<h4 class="smallDevice-message">We know you are excited to play with the simulation</h4>
+			<h4 class="smallDevice-message">However, for the best playing experience</h4>
+			<h4 class="smallDevice-message">we would suggest switching to a device with larger screen size <br>(at least an iPad)</h4>
+			<h4 class="smallDevice-message">See you there! :)</h4>
+		</div>
+			<!-- Distinguishing content for large device size media query --> 
+		<div class="largeDevice">
+			<nav class="navbar navbar-fixed-top navbar-custom">
+				<div class="navbar-menu">
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">HOME</a>
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">OBJECTIVES</a>
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">SPR</a>
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">EXPERIMENT DESIGN</a>
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">CRITIQUE</a>
+					<div class="navbar-text navbar-clicked">SIMULATION</div>
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">SUMMARY</a>
+					<a href="http://www.yahoo.com" class="navbar-text navbar-link">CONTACT</a>
+				</div>
+			</nav>
+		</div>
 	    
 	</body>
 
