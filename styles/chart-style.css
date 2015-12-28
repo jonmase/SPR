@@ -8,6 +8,7 @@
 #flot {
 	display: flex;
 	height: 231px;
+	width: 100%;
 }
 
 #legend {

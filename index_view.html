@@ -36,7 +36,6 @@
 	    <script type="text/javascript" src="libraries/ui-grid/exporter.js"></script>
 	    <script type="text/javascript" src="libraries/ui-grid/selection.js"></script>
 		<script type="text/javascript" src="scripts/services/table-config.js"></script>
-		<link rel="stylesheet" href="styles/table-style.css">
 
 			<!-- PT Sans Google Fonts navbar-fixed-top navbar-inverse-->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:700'>
@@ -91,10 +90,35 @@
 
 						<!-- ii. Panel: best score display (mastery mode only) -->
 					<div class="panel-heading">Beat The Best Score</div>
-					<div class="panel-body"></div><br>
+					<div class="panel-body">
+							<!-- a. Best Number of Steps Taken -->
+						<div class="box-left">Steps Taken</div>
+						<div class="box-right">18</div>
+							<!-- b. Best Total Experimentation Time -->
+						<div class="box-left">Total Association Time/s</div>
+						<div class="box-right">400</div>
+					</div><br>
 						<!-- iii. Panel: guiding objectives (guide mode only) -->
 					<div class="panel-heading">Guiding Objectives</div>
-					<div class="panel-body"></div>
+							<!-- a. 1st Objective -->
+					<div class="panel-body">
+						<div class="box-left-guide">1. Find the ligand concentration that max RU reached starts to plateau</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
+							<!-- b. 2nd Objective -->
+
+							<!-- c. 3rd Objective -->
+
+							<!-- d. 4th Objective -->
+
+							<!-- e. 5th Objective -->
+
+							<!-- f. 6th Objective -->
+
+							<!-- g. 7th Objective -->
+
+					</div>
 				</div>
 
 				<div id="output-box" class="container-fluid col-md-6">
@@ -119,21 +143,83 @@
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
 						<!-- viii. Panel: experiment status-->
-					<div class="panel-heading">Experiment Status</div>
-					<div class="panel-body"></div><br>
+					<div class="panel-heading">Your Experiment Status</div>
+					<div class="panel-body">
+							<!-- a. Your Days Left -->
+						<div class="box-left">Days Left</div>
+						<div class="box-right">{{view.experiment.daysLeft}}</div>
+							<!-- b. Your Time of Day -->
+						<div class="box-left">Time of Day</div>
+						<div class="box-right">{{view.experiment.timeOfDay | timeFilter}}</div>
+							<!-- c. Your Steps Taken -->
+						<div class="box-left">Steps Taken</div>
+						<div class="box-right">{{view.experiment.steps}}</div>
+							<!-- d. Your Total Association Time -->
+						<div class="box-left">Total Association Time/s</div>
+						<div class="box-right">placeholder value</div>
+					</div><br>
 
 						<!-- ix. Panel: controls -->
 					<div class="panel-heading">Controls</div>
-					<div class="panel-body"></div><br>
+					<div class="panel-body">
+								<!-- a) "Run experiment" button -->
+						<div class="box-left-btn">
+							<button ng-click="view.runExperiment(input_fLC, input_timeOn, input_timeOff)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
+						</div>
+							<!-- b) "Washing up" button -->
+						<div class="box-right-btn">
+							<button ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
+						</div>
+							<!-- c) "Clear background value" button -->
+						<div class="box-left-btn">
+							<button ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.isDisabled_background == true || view.output.RU_On_Output.length == 0 || view.output.fLC[view.output.fLC.length-1] !== 0">clear background</button>
+						</div>
+							<!-- d) "Go home" button -->
+						<div class="box-right-btn">
+							<button ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">home</button>
+						</div>
+							<!-- e) "Clear chart" button -->
+						<div class="box-left-btn">
+							<button ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
+						</div>
+							<!-- f) "Restart" button -->
+						<div class="box-right-btn">
+							<button ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
+						</div>
+							<!-- g. Free Ligand Concentration Input -->
+						<div class="box-left">Free Ligand Concentration</div>
+						<div class="box-right">
+							<form novalidate name="fLC_Form">
+								<input name="fLC" type="number" min="1" ng-model="input_fLC" required>
+							</form>
+						</div>
+							<!-- h. Association Time Input -->
+						<div class="box-left">Association Time/s</div>
+						<div class="box-right">
+							<form novalidate name="timeOn_Form">
+								<input name="timeOn" type="number" min="0.5" ng-model="input_timeOn" required>
+							</form>
+						</div>					
+					</div><br>
 
 						<!-- x. Panel: generated system info -->
-					<div class="panel-heading">About Your System</div>
-					<div class="panel-body"></div>
+					<div class="panel-heading">About Current System</div>
+					<div class="panel-body">
+							<!-- a. System ID -->
+						<div class="box-left">System ID</div>
+						<div class="box-right">{{view.system.uniqueID}}</div>
+							<!-- b. Ligand Molecular Weight -->
+						<div class="box-left">Ligand Mol Weight/gmol<sup>-1</sup></div>
+						<div class="box-right">{{view.system.mwL | mwFilter}}</div>
+							<!-- c. Receptor Molecular Weight -->
+						<div class="box-left">Receptor Mol Weight/gmol<sup>-1</sup></div>
+						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
+					</div>
 				</div>
 			</div>
 
 			<!-- 3. Credit Box -->
-			
+
 		</div>   
 	</body>
 

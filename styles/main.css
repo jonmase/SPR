@@ -93,6 +93,10 @@ a.navbar-link:active {
 	margin-right: auto;
 }
 
+.btn {
+	height: 32px;
+}
+
 .panel-heading {
 	background-color: #DCDEE0;
 	text-align: center;
@@ -103,15 +107,40 @@ a.navbar-link:active {
 
 .panel-body {
 	border: 1px solid #DCDEE0;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.8em;
 }
 
-.btn {
-	height: 32px;
+.box-left {
+	text-align: left;
+	border: 1px solid red;
+	width: 50%;
+}
+
+.box-right {
+	text-align: right;
+	border: 1px solid blue;
+	width: 50%;
 }
 
 /* button: guide vs mastery */
 .mode-selection {
 	text-align: center;
+	font-size: 0.9em;
+}
+
+/* panel: guiding objectives */
+.box-left-guide {
+	text-align: left;
+	border: 1px solid black;
+	width: 90%;
+}
+
+.box-right-guide {
+	text-align: right;
+	border: 1px solid black;
+	width: 10%;
 }
 
 /* panel: sensorgram */
@@ -122,5 +151,17 @@ a.navbar-link:active {
 /* panel: result table */
 #result-table {
 	padding: 0px;
-	font-size: 0.9em;
+}
+
+/* panel: controls */
+.box-left-btn {
+	text-align: right;
+	border: 1px solid green;
+	width: 50%;
+}
+
+.box-right-btn {
+	text-align: left;
+	border: 1px solid yellow;
+	width: 50%;
 }
