@@ -183,6 +183,7 @@ a.navbar-link:active {
 
 .grid {
 	height: 187px;
+	border: 0px;
 }
 
 .ui-grid-menu-button {

@@ -13,15 +13,16 @@ function chartCreate(outputModel) {
 	
 	chart.options = {
 		grid: {
-		    backgroundColor: { colors: [ "#fff", "#eee" ] }
+		    backgroundColor: { colors: [ "#fff", "#eee" ] },
+		    borderWidth: 0
 		},
 		xaxis: {
 			axisLabelUseCanvas: true,
 			axisLabel: "time/s",
 			position: "bottom",
 			axisLabelcolor: "red",
-			axisLabelFontFamily: "Verdana",
-			axisLabelFontSizePixels: 12,
+			axisLabelFontFamily: "PT Sans",
+			axisLabelFontSizePixels: 10.5,
 			axisLabelPadding: 5
 		},
 		yaxis: {
@@ -29,8 +30,8 @@ function chartCreate(outputModel) {
 			axisLabel: "resonance/RU",
 			position: "left",
 			axisLabelcolor: "red",
-			axisLabelFontFamily: "Verdana",
-			axisLabelFontSizePixels: 12,
+			axisLabelFontFamily: "PT Sans",
+			axisLabelFontSizePixels: 10.5,
 			axisLabelPadding: 5
 		}
 	};
