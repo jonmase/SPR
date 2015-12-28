@@ -102,22 +102,40 @@
 					<div class="panel-heading">Guiding Objectives</div>
 							<!-- a. 1st Objective -->
 					<div class="panel-body">
-						<div class="box-left-guide">1. Find the ligand concentration that max RU reached starts to plateau</div>
+						<div class="box-left-guide">1. Find the <em>free ligand concentration</em> that <em>max RU</em> reached starts to plateau</div>
 						<div class="box-right-guide">
 							<input type="checkbox">
 						</div>
 							<!-- b. 2nd Objective -->
-
+						<div class="box-left-guide">2. Generate max RU reached value at  low free ligand concentration</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
 							<!-- c. 3rd Objective -->
-
+						<div class="box-left-guide">3. For a single data set, repeat 6 times  to allow calculation of standard  deviation</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
 							<!-- d. 4th Objective -->
-
+						<div class="box-left-guide">4. Produce a Langmuir plot of max RU  reached against free ligand  concentration</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
 							<!-- e. 5th Objective -->
-
+						<div class="box-left-guide">5. Derive Kd from Langmuir plot as the  free ligand concentration at half  maximum max RU</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
 							<!-- f. 6th Objective -->
-
+						<div class="box-left-guide">6. From the sensorgram, calculate kOff using the first order disassociation rate equation</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
 							<!-- g. 7th Objective -->
-
+						<div class="box-left-guide">7. Using Kd and kOff calculated, derive  kOn</div>
+						<div class="box-right-guide">
+							<input type="checkbox">
+						</div>
 					</div>
 				</div>
 
@@ -162,6 +180,14 @@
 						<!-- ix. Panel: controls -->
 					<div class="panel-heading">Controls</div>
 					<div class="panel-body">
+								<!-- Debug Button: Setup -->
+						<div class="box-left-btn">
+							<button ng-click="view.setup()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfDay || (view.experiment.daysLeft == 0 && view.experiment.timeOfDay !== 9)">setup</button>
+						</div>
+							<!-- Debug Button: Eat -->
+						<div class="box-right-btn">
+							<button ng-click="view.eat()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfLunch && view.experiment.timeOfDay !== view.experiment.startOfDinner && view.experiment.timeOfDay !== view.experiment.startOfNight">eat</button>
+						</div>
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
 							<button ng-click="view.runExperiment(input_fLC, input_timeOn, input_timeOff)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
@@ -186,14 +212,20 @@
 						<div class="box-right-btn">
 							<button ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
 						</div>
-							<!-- g. Free Ligand Concentration Input -->
+							<!-- g. Radio: Selecting for free ligand concentration units -->
+						<form class="conc-radio" action="">
+							<input type="radio">mM
+							<input type="radio">uM
+							<input type="radio">nM
+						</form>						
+							<!-- h. Free Ligand Concentration Input -->
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
 								<input name="fLC" type="number" min="1" ng-model="input_fLC" required>
 							</form>
 						</div>
-							<!-- h. Association Time Input -->
+							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">

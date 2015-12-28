@@ -85,7 +85,7 @@ a.navbar-link:active {
 
 /* Global styling of the controller box */
 #controller-box {
-	padding-top: 50px;
+	padding-top: 55px;
 	padding-left: 0px;
 	padding-right: 0px;
 	width: 1024px;
@@ -164,4 +164,9 @@ a.navbar-link:active {
 	text-align: left;
 	border: 1px solid yellow;
 	width: 50%;
+}
+
+.conc-radio {
+	width: 100%;
+	text-align: center;
 }
