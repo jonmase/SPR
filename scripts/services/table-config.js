@@ -1,7 +1,7 @@
 	/* Creating table using ui-grid API */
 
 /* 1. registering modules, services and constants */
-angular.module('table_config', ['output_model', 'experiment_status', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter'])
+angular.module('table_config', ['output_model', 'experiment_status', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.autoResize'])
 	.service('tableConfig', ['outputModel', 'experimentStatus', tableCreate]);
 
 /* 2. creating sub-methods as part of the function object that can be called */

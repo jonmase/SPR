@@ -28,7 +28,6 @@
 		<script type="text/javascript" src="libraries/flot/angular-flot.js"></script>			
 		<script type="text/javascript" src="libraries/flot/jquery.flot.axislabels.js"></script>
 		<script type="text/javascript" src="scripts/services/chart-config.js"></script>
-		<link rel="stylesheet" href="styles/chart-style.css">
 
 	    	<!-- Ui-grid Libraries -->
 	    <link rel="stylesheet" href="libraries/ui-grid/ui-grid.min.css">
@@ -84,12 +83,12 @@
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
 						<!-- i. Button: guide vs mastery mode selector -->
 					<div class="mode-selection">
-						<button class="btn btn-default">Guide</button>
-						<button class="btn btn-default">Master</button><br><br>
+						<button>Guide</button>
+						<button>Master</button><br><br>
 					</div>
 
-						<!-- ii. Panel: best score display (mastery mode only) -->
-					<div class="panel-heading">Beat The Best Score</div>
+						<!-- ii. Panel: high score display (mastery mode only) -->
+					<div class="panel-heading">Beat The High Score!</div>
 					<div class="panel-body">
 							<!-- a. Best Number of Steps Taken -->
 						<div class="box-left">Steps Taken</div>
@@ -153,11 +152,39 @@
 						<!-- vi. Panel: results table (ui-grid) -->
 					<div class="panel-heading">Results Table</div>
 					<div id="result-table" class="panel-body">
-						<div ui-grid="view.table.options" ui-grid-selection ui-grid-exporter></div>
-					</div>
+						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter ui-grid-auto-resize></div>
+					</div><br>
 
 						<!-- vii. Panel: check your answer -->
+					<div id="check-answer" class="panel-heading">Check Answer</div>
+					<div id="check-answer" class="panel-body">
+							<!-- a. Form: check Kd -->
+						<div class="box-left">Kd</div>
+						<div class="box-right">
+							<form >
+								<input>
+							</form>
+						</div>
+							<!-- b. Form: check kOn -->
+						<div class="box-left">k<sub>on</sub></div>
+						<div class="box-right">
+							<form>
+								<input>
+							</form>
+						</div>
+							<!-- c. Form: check kOff -->
+						<div class="box-left">k<sub>off</sub></div>
+						<div class="box-right">
+							<form>
+								<input>
+							</form>
+						</div><br>
+							<!-- d. Button: submit -->
+						<button>Check</button>
+					</div><br><br>
 
+						<!-- viii. Button: finish -->
+					<button>Finish</button>
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">

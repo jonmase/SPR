@@ -150,13 +150,19 @@ a.navbar-link:active {
 }
 
 /* panel: sensorgram */
+#flot {
+	display: flex;
+	height: 195px;
+	width: 100%;
+}
+
 #sensorgram {
 	padding: 0px;
 }
 
 /* panel: console */
 #console {
-	height: 71px;
+	height: 56px;
 	background-color: #232323;
 	color: #DCDEE0;
 	display: table-cell;
@@ -171,10 +177,19 @@ a.navbar-link:active {
 	display: block;
 }
 
+.grid {
+	height: 187px;
+}
+
 .ui-grid-menu-button {
 	height: 25px;
 	width: 25px;
 	text-align: center;
+}
+
+/* panel: check answer */
+.check-answer {
+
 }
 
 /* panel: controls */
