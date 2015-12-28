@@ -83,6 +83,7 @@
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
 						<!-- i. Button: guide vs mastery mode selector -->
 					<div class="mode-selection">
+						Mode:<br>
 						<button>Guide</button>
 						<button>Master</button><br><br>
 					</div>
@@ -94,7 +95,7 @@
 						<div class="box-left">Steps Taken</div>
 						<div class="box-right">18</div>
 							<!-- b. Best Total Experimentation Time -->
-						<div class="box-left">Total Association Time/s</div>
+						<div class="box-left">Total Association Time / s</div>
 						<div class="box-right">400</div>
 					</div><br>
 						<!-- iii. Panel: guiding objectives (guide mode only) -->
@@ -156,35 +157,39 @@
 					</div><br>
 
 						<!-- vii. Panel: check your answer -->
-					<div id="check-answer" class="panel-heading">Check Answer</div>
-					<div id="check-answer" class="panel-body">
-							<!-- a. Form: check Kd -->
-						<div class="box-left">Kd</div>
-						<div class="box-right">
-							<form >
-								<input>
-							</form>
-						</div>
-							<!-- b. Form: check kOn -->
-						<div class="box-left">k<sub>on</sub></div>
-						<div class="box-right">
-							<form>
-								<input>
-							</form>
-						</div>
-							<!-- c. Form: check kOff -->
-						<div class="box-left">k<sub>off</sub></div>
-						<div class="box-right">
-							<form>
-								<input>
-							</form>
-						</div><br>
+					<div id="check-answer">
+						<div class="panel-heading col-md-6 check">Check Answer</div>
+						<div class="panel-body col-md-6 check">
+								<!-- a. Form: check Kd -->
+							<div class="box-left">Kd / uM</div>
+							<div class="box-right">
+								<form >
+									<input class="input-form">
+								</form>
+							</div>
+								<!-- b. Form: check kOn -->
+							<div class="box-left">k<sub>on</sub> / s<sup>-1</sup></div>
+							<div class="box-right">
+								<form>
+									<input class="input-form">
+								</form>
+							</div>
+								<!-- c. Form: check kOff -->
+							<div class="box-left">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+							<div class="box-right">
+								<form>
+									<input class="input-form">
+								</form>
+							</div><br>
 							<!-- d. Button: submit -->
-						<button>Check</button>
-					</div><br><br>
+							<button class="check">Check</button>
+						</div><br>
+					</div>
 
 						<!-- viii. Button: finish -->
-					<button>Finish</button>
+					<div class="finish-btn">
+						<button>Finish</button>
+					</div>
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
@@ -201,7 +206,7 @@
 						<div class="box-left">Steps Taken</div>
 						<div class="box-right">{{view.experiment.steps}}</div>
 							<!-- d. Your Total Association Time -->
-						<div class="box-left">Total Association Time/s</div>
+						<div class="box-left">Total Association Time / s</div>
 						<div class="box-right">time</div>
 					</div><br>
 
@@ -242,22 +247,22 @@
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" action="">
-							<input type="radio">mM
-							<input type="radio">uM
-							<input type="radio">nM
+							<input type="radio">&nbsp; mM &nbsp;&nbsp;&nbsp;
+							<input type="radio">&nbsp; uM &nbsp;&nbsp;&nbsp;
+							<input type="radio">&nbsp; nM
 						</form><br><br>		
 							<!-- h. Free Ligand Concentration Input -->
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
-								<input name="fLC" type="number" min="1" ng-model="input_fLC" required>
+								<input class="input-form" name="fLC" type="number" min="1" max="999" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">
-								<input name="timeOn" type="number" min="0.5" ng-model="input_timeOn" required>
+								<input class="input-form" name="timeOn" type="number" min="0.5" ng-model="input_timeOn" required>
 							</form>
 						</div>					
 					</div><br>
@@ -269,10 +274,10 @@
 						<div class="box-left">System ID</div>
 						<div class="box-right">{{view.system.uniqueID}}</div>
 							<!-- b. Ligand Molecular Weight -->
-						<div class="box-left">Ligand Mol Weight/gmol<sup>-1</sup></div>
+						<div class="box-left">Ligand Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right">{{view.system.mwL | mwFilter}}</div>
 							<!-- c. Receptor Molecular Weight -->
-						<div class="box-left">Receptor Mol Weight/gmol<sup>-1</sup></div>
+						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
 					</div>
 				</div>

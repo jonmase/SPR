@@ -55,17 +55,7 @@
 	</head>
 
 	<body ng-controller="viewCtrl as view">
-
-<!-- Bootstrap column position: far left / far right -->
-			
-			<!-- 0. Debugging Box -->
-				<!-- 0.1. data output -->
-					<div id="chart">
-						<h1 id="graph-label">SPR graph of resonance(RU) against time(s)</h1>
-							<!-- Chart -->
-						<flot id="flot" dataset="view.chart.dataset" options="view.chart.options"></flot>
-						<div id="grid-table" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter></div><br/>
-					</div>
+		
 				<!-- warning for using previous data from stored cookies -->
 					<div id="restartPrompt" class="alert alert-waning fade in" ng-show="view.storedDataPrompt == true">
 						<p><strong>Hi Win!</strong> You are working with the previous experiment that was auto-saved before you closed the window. <br/><br/> 

@@ -125,10 +125,14 @@ a.navbar-link:active {
 	padding-bottom: 5px;
 }
 
+.input-form {
+	width: 45px
+}
+
 /* button: guide vs mastery */
 .mode-selection {
 	text-align: center;
-	font-size: 0.9em;
+	font-size: 0.75em;
 }
 
 /* panel: guiding objectives */
@@ -188,8 +192,19 @@ a.navbar-link:active {
 }
 
 /* panel: check answer */
-.check-answer {
+#check-answer {
+	display: flex;
+	flex-direction: column;
+}
 
+.check {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.finish-btn {
+	text-align: center;
+	font-size: 0.75em;
 }
 
 /* panel: controls */
@@ -206,8 +221,4 @@ a.navbar-link:active {
 .conc-radio {
 	width: 100%;
 	text-align: center;
-}
-
-.button {
-
 }
