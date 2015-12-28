@@ -110,18 +110,19 @@ a.navbar-link:active {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.8em;
+	padding: 12px;
 }
 
 .box-left {
 	text-align: left;
-	border: 1px solid red;
-	width: 50%;
+	width: 73%;
+	padding-bottom: 5px;
 }
 
 .box-right {
 	text-align: right;
-	border: 1px solid blue;
-	width: 50%;
+	width: 27%;
+	padding-bottom: 5px;
 }
 
 /* button: guide vs mastery */
@@ -131,16 +132,21 @@ a.navbar-link:active {
 }
 
 /* panel: guiding objectives */
+
 .box-left-guide {
 	text-align: left;
-	border: 1px solid black;
 	width: 90%;
+	padding-bottom: 8px;
 }
 
 .box-right-guide {
 	text-align: right;
-	border: 1px solid black;
 	width: 10%;
+	padding-bottom: 8px;
+}
+
+#guide-bottom {
+	padding-bottom: 0px;
 }
 
 /* panel: sensorgram */
