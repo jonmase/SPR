@@ -34,14 +34,13 @@
 	    <link rel="stylesheet" href="libraries/ui-grid/ui-grid.min.css">
 	    <script type="text/javascript" src="libraries/ui-grid/ui-grid.min.js"></script>
 	    <script type="text/javascript" src="libraries/ui-grid/exporter.js"></script>
-	    <script type="text/javascript" src="libraries/ui-grid/selection.js"></script>
+	    <script type="text/javascript" src="libraries/ui-grid/selection.js"></script>    
 		<script type="text/javascript" src="scripts/services/table-config.js"></script>
 
 			<!-- PT Sans Google Fonts navbar-fixed-top navbar-inverse-->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:700'>
 
 	    	<!-- Personal libraries, load last since these files will be referencing to those previous libraries too -->
-		<link rel="stylesheet" href="styles/main.css">
 		<script type="text/javascript" src="scripts/index_model.js"></script>
 		<script type="text/javascript" src="scripts/services/system_model.js"></script>
 		<script type="text/javascript" src="scripts/services/experiment_status.js"></script>
@@ -50,6 +49,7 @@
 		<script type="text/javascript" src="scripts/filters/mw_filter.js"></script>
 		<script type="text/javascript" src="scripts/filters/uM_filter.js"></script>
 		<script type="text/javascript" src="scripts/index_controller.js"></script>
+		<link rel="stylesheet" href="styles/main.css">
 
 	</head>
 
@@ -147,7 +147,8 @@
 					</div><br>
 
 						<!-- v. Console -->
-
+					<div id="console" class="panel-body"><font color="#70BF41">> console:</font> &nbsp; hover over a any button for explanation
+					</div><br>
 
 						<!-- vi. Panel: results table (ui-grid) -->
 					<div class="panel-heading">Results Table</div>
@@ -182,42 +183,42 @@
 					<div class="panel-body">
 								<!-- Debug Button: Setup -->
 						<div class="box-left-btn">
-							<button ng-click="view.setup()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfDay || (view.experiment.daysLeft == 0 && view.experiment.timeOfDay !== 9)">setup</button>
+							<button class="button" ng-click="view.setup()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfDay || (view.experiment.daysLeft == 0 && view.experiment.timeOfDay !== 9)">setup</button>
 						</div>
 							<!-- Debug Button: Eat -->
 						<div class="box-right-btn">
-							<button ng-click="view.eat()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfLunch && view.experiment.timeOfDay !== view.experiment.startOfDinner && view.experiment.timeOfDay !== view.experiment.startOfNight">eat</button>
+							<button class="button" ng-click="view.eat()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfLunch && view.experiment.timeOfDay !== view.experiment.startOfDinner && view.experiment.timeOfDay !== view.experiment.startOfNight">eat</button>
 						</div>
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button ng-click="view.runExperiment(input_fLC, input_timeOn, input_timeOff)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
+							<button class="button" ng-click="view.runExperiment(input_fLC, input_timeOn, input_timeOff)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
+							<button class="button" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
 						</div>
 							<!-- c) "Clear background value" button -->
 						<div class="box-left-btn">
-							<button ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.isDisabled_background == true || view.output.RU_On_Output.length == 0 || view.output.fLC[view.output.fLC.length-1] !== 0">clear background</button>
+							<button class="button" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.isDisabled_background == true || view.output.RU_On_Output.length == 0 || view.output.fLC[view.output.fLC.length-1] !== 0">clear background</button>
 						</div>
 							<!-- d) "Go home" button -->
 						<div class="box-right-btn">
-							<button ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">home</button>
+							<button class="button" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">home</button>
 						</div>
 							<!-- e) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
+							<button class="button" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
-							<button ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
-						</div>
+							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
+						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" action="">
 							<input type="radio">mM
 							<input type="radio">uM
 							<input type="radio">nM
-						</form>						
+						</form><br><br>		
 							<!-- h. Free Ligand Concentration Input -->
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">

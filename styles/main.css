@@ -44,7 +44,7 @@
 
 .navbar-custom {
     min-height: 0px; /* override the min-height of bootstrap */
-    height: 5%;
+    height: 35px;
     background-color: #002048;
 }
 
@@ -102,14 +102,14 @@ a.navbar-link:active {
 	text-align: center;
 	padding-top: 7px;
 	padding-bottom: 3px;
-	font-size: 0.9em;
+	font-size: 0.85em;
 }
 
 .panel-body {
 	border: 1px solid #DCDEE0;
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 0.8em;
+	font-size: 0.75em;
 	padding: 12px;
 }
 
@@ -154,25 +154,45 @@ a.navbar-link:active {
 	padding: 0px;
 }
 
+/* panel: console */
+#console {
+	height: 71px;
+	background-color: #232323;
+	color: #DCDEE0;
+	display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    min-width: 482px;
+}
+
 /* panel: result table */
 #result-table {
 	padding: 0px;
+	display: block;
+}
+
+.ui-grid-menu-button {
+	height: 25px;
+	width: 25px;
+	text-align: center;
 }
 
 /* panel: controls */
 .box-left-btn {
-	text-align: right;
-	border: 1px solid green;
+	text-align: left;
 	width: 50%;
 }
 
 .box-right-btn {
 	text-align: left;
-	border: 1px solid yellow;
 	width: 50%;
 }
 
 .conc-radio {
 	width: 100%;
 	text-align: center;
+}
+
+.button {
+
 }
