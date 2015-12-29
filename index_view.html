@@ -89,14 +89,11 @@
 					</div>
 
 						<!-- ii. Panel: high score display (mastery mode only) -->
-					<div class="panel-heading">Beat The High Score!</div>
+					<div class="panel-heading">Beat The Best Score!</div>
 					<div class="panel-body">
-							<!-- a. Best Number of Steps Taken -->
+							<!-- a. Lowest Number of Steps Taken -->
 						<div class="box-left">Steps Taken</div>
 						<div class="box-right">18</div>
-							<!-- b. Best Total Experimentation Time -->
-						<div class="box-left">Total Association Time / s</div>
-						<div class="box-right">400</div>
 					</div><br>
 						<!-- iii. Panel: guiding objectives (guide mode only) -->
 					<div class="panel-heading">Guiding Objectives</div>
@@ -205,9 +202,6 @@
 							<!-- c. Your Steps Taken -->
 						<div class="box-left">Steps Taken</div>
 						<div class="box-right">{{view.experiment.steps}}</div>
-							<!-- d. Your Total Association Time -->
-						<div class="box-left">Total Association Time / s</div>
-						<div class="box-right">time</div>
 					</div><br>
 
 						<!-- ix. Panel: controls -->
@@ -223,7 +217,7 @@
 						</div>
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.runExperiment(input_fLC, input_timeOn, input_timeOff)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
+							<button class="button" ng-click="view.runExperiment(input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">

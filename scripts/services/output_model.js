@@ -12,8 +12,8 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 	var output = this; // create a specific selector for outputMethod specific module required in plotCoordinates but used with 'all or nothing' principle
 	var experiment = experimentStatus;
 		// data input value
-	output.fLC_tableDisplay = []; // input fLC value specify by the user, display on table and charts so user can track progress
-	output.fLC = []; // actual fLC value use in plotting as adjusted by standard error
+	output.fLC_tableDisplay = []; // units = M but no error adjusted; input fLC value specify by the user, display on table and charts so user can track progress
+	output.fLC = []; // units = M but error adjusted; actual fLC value use in plotting as adjusted by standard error
 	output.timeOn = []; // timeOn must be > 0
 	output.timeOffDefault = 20; // set timeOff to 20 seconds for default
 		// chart coordinates calculation
@@ -33,8 +33,8 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
-		output.fLC_tableDisplay.push(new_fLC/output.magnitudeAdjust);
-		output.fLC.push(experiment.measurementError(new_fLC/output.magnitudeAdjust)); // divided by magnitudeAdjust to convert input of various units (mM, uM, nM) into the uniform units of M for later processing
+		output.fLC_tableDisplay.push(new_fLC/output.magnitudeAdjust); // divided by magnitudeAdjust to convert input of various units (mM, uM, nM) into the uniform units of M for later processing
+		output.fLC.push(experiment.measurementError(new_fLC/output.magnitudeAdjust)); 
 	};
 
 /* c) set timeOn: user input via form; variable */

@@ -20,7 +20,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.cookies = $cookies;
 	view.vol = vol;
 	view.RPUM = RPUM;
+		// metrics tracked in database
 	view.restartCounter = 0;
+	// time taken to finish
 		// default function of various buttons
 	view.backgroundSet = 0;
 	view.isDisabled_background = false;
