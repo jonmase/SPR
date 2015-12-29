@@ -145,21 +145,72 @@
 
 						<!-- v. Console -->
 					<div id="console" class="panel-body">
-							<!-- a. Prompt: initial -->
+							<!-- a. Prompt: initialisation -->
 						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Welcome to the simulation challenge!]</font><br>
 							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
 							Please note that you can check your results once you have obtained suitabl values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
 						</div>
-							<!-- b. Prompt: start of day auto-setup -->
+							<!-- b. Prompt: after having lunch -->
+						<div ng-show="view.experiment.timeOfDay == 13.5">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Auto-logging: Break for lunch]</font><br>
+							12.00-13.00: Had lunch at Biochemistry Cafe with friends<br>
+							13.00-13.30: Began new experiment after the lunch<br>
+						</div>
+							<!-- c. Prompt: before having dinner -->
+						<div ng-show="view.experiment.timeOfDay == 17.0">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[End of official working hour]</font><br>
+							You are getting tired and the Biochemistry Department is closing.<br>
+							It is best that you <u>go home</u> and continue your experiment tomorrow<br>
+							<font color="red">*note: any experiment performed after this time onwards will have a higher chance of getting poor standard deviation</font>
+						</div>
+							<!-- d. Prompt: after having dinner -->
+						<div ng-show="view.experiment.timeOfDay == 18.5">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Auto-logging: Break for dinner]</font><br>
+							17.00-18.00: Had dinner at The Eagle & Child with friends<br>
+							18.00-18.30: Began new experiment after the dinner<br>
+						</div>
+							<!-- e. Prompt: before having supper -->
+						<div ng-show="view.experiment.timeOfDay == 21.0">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Risk notice]</font><br>
+							You are beginning to feel sleepy and lose concentration.<br>
+							It is best that you <u>go home</u> and continue your experiment tomorrow<br>
+							<font color="red">*note: any experiment performed after this time onwards will have a higher chance of getting unacceptable standard deviation</font>
+						</div>
+							<!-- f. Prompt: after having supper -->
+						<div ng-show="view.experiment.timeOfDay == 22.5">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Auto-logging: Break for supper]</font><br>
+							21.00-22.00: Had mars bars alone in the lab. . . poor you.<br>
+							22.00-22.30: Began new experiment after the supper<br>
+						</div>
+							<!-- g. Prompt: end of day -->
+						<div ng-show="view.experiment.timeOfDay == 24.0">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Security guard warning]</font><br>
+							The security guard is closing the Biochemistry building now.<br>
+							I highly commend you for your endeavor today but unfortunately you will have to head home.<br>
+						</div>
+							<!-- h. Prompt: return home -->
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[End of a day @ {{view.experiment.endOfExperimentTime | timeFilter}}]</font><br>
+							Initialising automatic lab clean-up. . . Clean-up completed.<br>
+							See you tomorrow!<br>
+						</div>
+							<!-- i. Prompt: start of day auto-setup -->
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[Start of a new day @ 9.00am]</font><br>
-							Experiment automatically set-up. . . Set-up completed @ 9.30am.<br>
+							<font color="#F5D400">[Start of a new day @ 9.00]</font><br>
+							Experiment automatically set-up. . . Set-up completed @ 9.30.<br>
 							Ready to start, input value into the <u>Control</u> to begin.<br>
 						</div>
-							<!-- c. Prompt: clear background -->
+							<!-- j. Prompt: clear background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[First tip: clear background prior to performing an experiment]</font><br>
@@ -168,25 +219,25 @@
 							(2) then <u>clear background</u><br>
 							<font color="red">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
 						</div>
-							<!-- d. Prompt: clear background -->
+							<!-- k. Prompt: clear background -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Success: clear background]</font><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.
 						</div>
-							<!-- e. Prompt: invalid free ligand conc. -->
+							<!-- l. Prompt: invalid free ligand conc. -->
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Invalid free ligand conc. input]</font><br>
 							I'm sorry but <u>free ligand conc.</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}.<br>
 						</div>
-							<!-- f. Prompt: invalid time on -->
+							<!-- m. Prompt: invalid time on -->
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Invalid association time input]</font><br>
 							I'm sorry but <u>association time</u> input can only intake an integral number between 1 and 900.<br>
 						</div>
-							<!-- g. Prompt: session over -->
+							<!-- n. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Experiment Ended]</font><br>
@@ -256,7 +307,7 @@
 					<div class="panel-body">
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button btn" ng-click="view.runExperiment(input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true">run experiment</button>
+							<button class="button btn" ng-click="view.runExperiment(input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay">run experiment</button>
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
@@ -268,7 +319,7 @@
 						</div>
 							<!-- d) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button btn" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">home</button>
+							<button class="button btn" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">go home</button>
 						</div>
 							<!-- e) "Clear chart" button -->
 						<div class="box-left-btn">

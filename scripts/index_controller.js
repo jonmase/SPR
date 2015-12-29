@@ -79,11 +79,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.unitAdjust = "nM";
 	};
 
-/* f) creating function for "setup" button */
-	view.setup = function () {
-		view.experiment.timeOfDayCounter();
-	};
-
 /* g) creating function for set "zero" button */
 	view.set_background = function() {
 		view.backgroundSet = angular.copy(view.output.RU_On_Output[view.output.RU_On_Output.length-1]);
@@ -119,6 +114,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* k) creating function for "home" button */
 	view.goHome = function () {
+		view.experiment.endOfExperimentTime = angular.copy(view.experiment.timeOfDay);
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		view.experiment.dayOfExperimentCounter();
 	};
