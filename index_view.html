@@ -93,7 +93,7 @@
 					<div class="panel-body">
 							<!-- a. Lowest Number of Steps Taken -->
 						<div class="box-left">Steps Taken</div>
-						<div class="box-right">18</div>
+						<div class="box-right">{{view.output.RU_On_Max[view.output.RU_On_Max.length-1]}}</div>
 					</div><br>
 						<!-- iii. Panel: guiding objectives (guide mode only) -->
 					<div class="panel-heading">Guiding Objectives</div>
@@ -226,7 +226,7 @@
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- k. Prompt: RU not plateau yet -->
-						<div ng-show="view.output.fLC.length !== 0">
+						<div ng-show="view.output.fLC.length !== 0 && view.output.RU_On_Output[view.output.RU_On_Output.length-1] !== view.output.RU_On_Max[view.output.RU_On_Max.length-1]">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Tip: resulting max RU value is invalid]</font><br>
 							The peak resonance value for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet. Try increasing the input <u>association time</u> duration until you observe that the graph achieve a plateau.<br>
