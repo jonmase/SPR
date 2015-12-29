@@ -307,7 +307,7 @@
 					<div class="panel-body">
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button btn" ng-click="view.runExperiment(input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay">run experiment</button>
+							<button class="button btn" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay">run experiment</button>
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
@@ -330,11 +330,13 @@
 							<button class="button btn" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
-						<form class="conc-radio" action="">
-							<input type="radio">&nbsp; mM &nbsp;&nbsp;&nbsp;
-							<input type="radio">&nbsp; uM &nbsp;&nbsp;&nbsp;
-							<input type="radio">&nbsp; nM
-						</form><br><br>		
+						<form class="conc-radio" ng-init="magnitudeSelected=2">
+							<input type="radio" ng-model="magnitudeSelected" ng-value="0" ng-disabled="view.output.magnitudeAdjust == 1000">&nbsp; mM &nbsp;&nbsp;&nbsp;
+							<input type="radio" ng-model="magnitudeSelected" ng-value="1" ng-disabled="view.output.magnitudeAdjust == 1000000">&nbsp; uM &nbsp;&nbsp;&nbsp;
+							<input type="radio" ng-model="magnitudeSelected" ng-value="2" ng-disabled="view.output.magnitudeAdjust == 1000000000">&nbsp; nM
+						</form><br><br>
+
+
 							<!-- h. Free Ligand Concentration Input -->
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">

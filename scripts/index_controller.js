@@ -61,24 +61,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.storedDataPrompt = false;
 	};
 
-/* c) creating function for switching fLC input to mM magnitude */
-	view.magnitude_mM = function() {
-		view.output.magnitudeAdjust = 1000;
-		view.output.unitAdjust = "mM";
-	};
-
-/* d) creating function for switching fLC input to uM magnitude */
-	view.magnitude_uM = function() {
-		view.output.magnitudeAdjust = 1000000;
-		view.output.unitAdjust = "uM";
-	};
-
-/* e) creating function for switching fLC input to nM magnitude */
-	view.magnitude_nM = function() {
-		view.output.magnitudeAdjust = 1000000000;
-		view.output.unitAdjust = "nM";
-	};
-
 /* g) creating function for set "zero" button */
 	view.set_background = function() {
 		view.backgroundSet = angular.copy(view.output.RU_On_Output[view.output.RU_On_Output.length-1]);
@@ -89,7 +71,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 /* h) creating function for "run experiment" button  */
-	view.runExperiment = function (new_fLC, new_timeOn) {
+	view.runExperiment = function (new_magnitudeSelected, new_fLC, new_timeOn) {
+		view.output.magnitudeAdjust = view.output.magnitudePool[new_magnitudeSelected];
+		view.output.unitAdjust = view.output.unitPool[new_magnitudeSelected];
 		view.output.add_fLC(new_fLC);
 		view.output.add_timeOn(new_timeOn);
 		view.output.calc_RU_OnMax(view.system.RU_MaxL, view.output.fLC[view.experiment.steps], view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);

@@ -29,8 +29,10 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 	output.colorPool = ["rgb(179, 106, 226)", "rgb(236, 93, 87)", "rgb(243, 144, 25)", "rgb(245, 211, 10)", "rgb(112, 195, 65)", "rgb(81, 167, 249)", "rgb(83, 88, 95)", "rgb(218, 209, 155)", "rgb(211, 182, 176)", "rgb(204, 204, 204)"];
 	output.colorCounter = 0; // to customise color and also make on and off line having the same color
 		// units conversion
-	output.magnitudeAdjust = 1000000000; // default input unit at mM magnitude, adjustable by clicking
-	output.unitAdjust = "nM";
+	output.magnitudePool = [1000, 1000000, 1000000000]; 
+	output.unitPool = ["mM", "uM", "nM"];
+	output.magnitudeAdjust = null; // default input unit of magnitude and unit adjust can be altered at the radio button ng-init
+	output.unitAdjust = null;
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
