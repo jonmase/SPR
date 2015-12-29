@@ -81,16 +81,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 /* f) creating function for "setup" button */
 	view.setup = function () {
 		view.experiment.timeOfDayCounter();
-		view.experiment.dayOfExperimentCounter();
 	};
 
 /* g) creating function for set "zero" button */
 	view.set_background = function() {
 		view.backgroundSet = view.output.RU_On_Output[view.output.RU_On_Output.length-1];
 		view.isDisabled_background = true;
-		for (var i = 0; i < view.output.RU_On_Output.length; i++) {
-			view.output.RU_On_Output[i] -= view.backgroundSet;
-		}
+		view.output.RU_CompiledLabelPlotAll.length = 0;
 	};
 
 /* h) creating function for "run experiment" button  */
@@ -117,14 +114,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.cookies.putObject("storedData", view.cookiesData);
 	}; 
 
-/* j) creating function for "eat" button */
-	view.eat = function () {
-		view.experiment.timeOfDayCounter();
-	};
-
 /* k) creating function for "home" button */
 	view.goHome = function () {
 		view.experiment.timeOfDay = view.experiment.startOfDay;
+		view.experiment.dayOfExperimentCounter();
 	};
 
 /* l) creating function for "clear graph" button */

@@ -147,29 +147,41 @@
 					<div id="console" class="panel-body">
 							<!-- a. Prompt: initial -->
 						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
-							<font color="#70BF41">> Win:</font>&nbsp;
-							Welcome to OxSPR! I will be your AI guide companion throughout this session :)<br><br>
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Welcome to the simulation challenge!]</font><br>
+							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
 						</div>
-							<!-- b. Prompt: invalid free ligand conc. -->
-						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
-							<font color="#70BF41">> Win:</font>&nbsp;
-							I'm sorry but <u>free ligand conc.</u> input can only intake a number above 0.<br>
+							<!-- b. Prompt: start of day auto-setup -->
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Start of New Day @ 9.00am]</font><br>
+							Experiment automatically set-up. . . Set-up completed @ 9.30am.<br>
+							Ready to start, input value into the control to begin.<br>
 						</div>
-							<!-- c. Prompt: invalid time on -->
-						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
-							<font color="#70BF41">> Win:</font>&nbsp;
-							I'm sorry but <u>association time</u> input can only intake a number between 0.5 and 900.<br>
-						</div>
-							<!-- d. Prompt: clear background -->
+							<!-- c. Prompt: clear background -->
 						<div ng-show="view.isDisabled_background == false">
-							<font color="#70BF41">> Win:</font>&nbsp;
-							First helpful tip! Begin by seting the value of background reading before trying any other free ligand concentration. You can do this by:<br><br>
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[First helpful tip: Clear Background]</font><br>
+							You should begin the experiment by seting the value of background reading before trying any other free ligand concentration. You can do this by:<br>
 							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
 							(2) then <u>clear background</u><br>
 						</div>
-							<!-- e. Prompt: session over -->
+							<!-- d. Prompt: invalid free ligand conc. -->
+						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[invalid free ligand conc. input]</font><br>
+							I'm sorry but <u>free ligand conc.</u> input can only intake a number above 0.<br>
+						</div>
+							<!-- e. Prompt: invalid time on -->
+						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[invalid association time input]</font><br>
+							I'm sorry but <u>association time</u> input can only intake a number between 0.5 and 900.<br>
+						</div>
+							<!-- f. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
-							<font color="#70BF41">> Win:</font>&nbsp;
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Experiment Ended]</font><br>
 							Boooo! You ran out of time to finish experiment. Click <u>restart</u> to try again without changing the system.<br>
 						</div>
 					</div><br>
@@ -234,37 +246,29 @@
 						<!-- ix. Panel: controls -->
 					<div class="panel-heading">Controls</div>
 					<div class="panel-body">
-								<!-- Debug Button: Setup -->
-						<div class="box-left-btn">
-							<button class="button" ng-click="view.setup()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfDay || (view.experiment.daysLeft == 0 && view.experiment.timeOfDay !== 9)">setup</button>
-						</div>
-							<!-- Debug Button: Eat -->
-						<div class="box-right-btn">
-							<button class="button" ng-click="view.eat()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfLunch && view.experiment.timeOfDay !== view.experiment.startOfDinner && view.experiment.timeOfDay !== view.experiment.startOfNight">eat</button>
-						</div>
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.runExperiment(input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay || view.isDisabled_run == true">run experiment</button>
+							<button class="button btn" ng-click="view.runExperiment(input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true">run experiment</button>
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
+							<button class="button btn" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
 						</div>
 							<!-- c) "Clear background value" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.isDisabled_background == true || view.output.RU_On_Output.length == 0 || view.output.fLC[view.output.fLC.length-1] !== 0">clear background</button>
+							<button class="button btn" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0">clear background</button>
 						</div>
 							<!-- d) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">home</button>
+							<button class="button btn" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">home</button>
 						</div>
 							<!-- e) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
+							<button class="button btn" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
+							<button class="button btn" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" action="">

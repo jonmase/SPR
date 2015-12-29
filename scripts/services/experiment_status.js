@@ -8,7 +8,7 @@ function experimentTrack() {
 	var experiment = this;
 /* creating concept for time of day to alter output standard deviation */
 	experiment.timePerRun = 0.5;
-	experiment.startOfDay = 9.0; // 5 runs available
+	experiment.startOfDay = 9.5; // 5 runs available
 	experiment.startOfLunch = 12.0; // 9 runs available
 		// total runs with good SD per day = 14
 	experiment.startOfDinner = 17.0; // 7 runs available
@@ -19,8 +19,8 @@ function experimentTrack() {
 /* creating tracked variables */
 	experiment.steps = 0;
 	experiment.timeOfDay = experiment.startOfDay;
-	experiment.daysAllowed = 2; 
-	experiment.daysLeft = 2;
+	experiment.daysAllowed = 1; 
+	experiment.daysLeft = 1;
 		// total runs with good SD per simulation = 28
 		// total runs per simulation = 52
 	experiment.stdErr_Default = 0.000000001; // Need to figure out the right level of variation for concentration; currently default at nM level (otherwise result could become negative)
