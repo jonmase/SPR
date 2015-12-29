@@ -16,6 +16,7 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 	output.fLC = []; // units = M but error adjusted; actual fLC value use in plotting as adjusted by standard error
 	output.timeOn = []; // timeOn must be > 0
 	output.timeOffDefault = 20; // set timeOff to 20 seconds for default
+	output.minimum_fLC_input = 0;
 		// chart coordinates calculation
 	output.RU_On_Output = []; // store max value of RU On
 	output.RU_On_Coordinate = []; // store RU vs timeOn data into [x,y] coordinates before pushing into Line

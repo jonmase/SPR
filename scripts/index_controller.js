@@ -24,6 +24,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.restartCounter = 0;
 		// default function of various buttons
 	view.backgroundSet = 0;
+	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
 	view.isDisabled_run = false;
 	view.isDisabled_wash = true;
@@ -85,9 +86,11 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* g) creating function for set "zero" button */
 	view.set_background = function() {
-		view.backgroundSet = view.output.RU_On_Output[view.output.RU_On_Output.length-1];
+		view.backgroundSet = angular.copy(view.output.RU_On_Output[view.output.RU_On_Output.length-1]);
+		view.backgroundUnitsSet = angular.copy(view.output.unitAdjust);
 		view.isDisabled_background = true;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.output.minimum_fLC_input = 1;
 	};
 
 /* h) creating function for "run experiment" button  */

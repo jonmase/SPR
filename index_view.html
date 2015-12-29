@@ -150,35 +150,42 @@
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Welcome to the simulation challenge!]</font><br>
 							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
+							Please note that you can check your results once you have obtained suitabl values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
 						</div>
 							<!-- b. Prompt: start of day auto-setup -->
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Start of New Day @ 9.00am]</font><br>
 							Experiment automatically set-up. . . Set-up completed @ 9.30am.<br>
-							Ready to start, input value into the control to begin.<br>
+							Ready to start, input value into the <u>Control</u> to begin.<br>
 						</div>
 							<!-- c. Prompt: clear background -->
-						<div ng-show="view.isDisabled_background == false">
+						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[First helpful tip: Clear Background]</font><br>
-							You should begin the experiment by seting the value of background reading before trying any other free ligand concentration. You can do this by:<br>
+							<font color="#F5D400">[First tip: Clear Background]</font><br>
+							You should begin the experiment by seting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
 							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
 							(2) then <u>clear background</u><br>
 						</div>
-							<!-- d. Prompt: invalid free ligand conc. -->
+							<!-- d. Prompt: clear background -->
+						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Success: Clear Background]</font><br>
+							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.
+						</div>
+							<!-- e. Prompt: invalid free ligand conc. -->
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[invalid free ligand conc. input]</font><br>
-							I'm sorry but <u>free ligand conc.</u> input can only intake a number above 0.<br>
+							<font color="#F5D400">[Invalid free ligand conc. input]</font><br>
+							I'm sorry but <u>free ligand conc.</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}.<br>
 						</div>
-							<!-- e. Prompt: invalid time on -->
+							<!-- f. Prompt: invalid time on -->
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[invalid association time input]</font><br>
-							I'm sorry but <u>association time</u> input can only intake a number between 0.5 and 900.<br>
+							<font color="#F5D400">[Invalid association time input]</font><br>
+							I'm sorry but <u>association time</u> input can only intake an integral number between 1 and 900.<br>
 						</div>
-							<!-- f. Prompt: session over -->
+							<!-- g. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Experiment Ended]</font><br>
@@ -280,14 +287,14 @@
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
-								<input class="input-form" name="fLC" type="number" min="0" ng-model="input_fLC" required>
+								<input class="input-form" name="fLC" type="number" min="{{view.output.minimum_fLC_input}}" step="1" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">
-								<input class="input-form" name="timeOn" type="number" min="0.5" max="900" ng-model="input_timeOn" required>
+								<input class="input-form" name="timeOn" type="number" min="1" max="900" step="1" ng-model="input_timeOn" required>
 							</form>
 						</div>					
 					</div><br>
