@@ -153,24 +153,25 @@
 							Please note that you can check your results once you have obtained suitabl values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
 						</div>
 							<!-- b. Prompt: start of day auto-setup -->
-						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[Start of New Day @ 9.00am]</font><br>
+							<font color="#F5D400">[Start of a new day @ 9.00am]</font><br>
 							Experiment automatically set-up. . . Set-up completed @ 9.30am.<br>
 							Ready to start, input value into the <u>Control</u> to begin.<br>
 						</div>
 							<!-- c. Prompt: clear background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[First tip: Clear Background]</font><br>
-							You should begin the experiment by seting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
+							<font color="#F5D400">[First tip: clear background prior to performing an experiment]</font><br>
+							You should begin the experiment by setting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
 							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
 							(2) then <u>clear background</u><br>
+							<font color="red">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
 						</div>
 							<!-- d. Prompt: clear background -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[Success: Clear Background]</font><br>
+							<font color="#F5D400">[Success: clear background]</font><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.
 						</div>
 							<!-- e. Prompt: invalid free ligand conc. -->
@@ -287,14 +288,14 @@
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
-								<input class="input-form" name="fLC" type="number" min="{{view.output.minimum_fLC_input}}" step="1" ng-model="input_fLC" required>
+								<input class="input-form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}"  ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">
-								<input class="input-form" name="timeOn" type="number" min="1" max="900" step="1" ng-model="input_timeOn" required>
+								<input class="input-form" name="timeOn" type="number" step="1" min="1" max="900" ng-model="input_timeOn" required>
 							</form>
 						</div>					
 					</div><br>
