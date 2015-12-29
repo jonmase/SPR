@@ -144,7 +144,34 @@
 					</div><br>
 
 						<!-- v. Console -->
-					<div id="console" class="panel-body"><font color="#70BF41">> console:</font> &nbsp; hover over a any button for explanation
+					<div id="console" class="panel-body">
+							<!-- a. Prompt: initial -->
+						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
+							<font color="#70BF41">> Win:</font>&nbsp;
+							Welcome to OxSPR! I will be your AI guide companion throughout this session :)<br><br>
+						</div>
+							<!-- b. Prompt: invalid free ligand conc. -->
+						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
+							<font color="#70BF41">> Win:</font>&nbsp;
+							I'm sorry but <u>free ligand conc.</u> input can only intake a number above 0.<br>
+						</div>
+							<!-- c. Prompt: invalid time on -->
+						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
+							<font color="#70BF41">> Win:</font>&nbsp;
+							I'm sorry but <u>association time</u> input can only intake a number between 0.5 and 900.<br>
+						</div>
+							<!-- d. Prompt: clear background -->
+						<div ng-show="view.isDisabled_background == false">
+							<font color="#70BF41">> Win:</font>&nbsp;
+							First helpful tip! Begin by seting the value of background reading before trying any other free ligand concentration. You can do this by:<br><br>
+							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
+							(2) then <u>clear background</u><br>
+						</div>
+							<!-- e. Prompt: session over -->
+						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
+							<font color="#70BF41">> Win:</font>&nbsp;
+							Boooo! You ran out of time to finish experiment. Click <u>restart</u> to try again without changing the system.<br>
+						</div>
 					</div><br>
 
 						<!-- vi. Panel: results table (ui-grid) -->
@@ -249,14 +276,14 @@
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
-								<input class="input-form" name="fLC" type="number" min="1" max="999" ng-model="input_fLC" required>
+								<input class="input-form" name="fLC" type="number" min="0" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">
-								<input class="input-form" name="timeOn" type="number" min="0.5" ng-model="input_timeOn" required>
+								<input class="input-form" name="timeOn" type="number" min="0.5" max="900" ng-model="input_timeOn" required>
 							</form>
 						</div>					
 					</div><br>
