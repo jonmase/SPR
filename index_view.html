@@ -213,17 +213,23 @@
 							<!-- j. Prompt: clear background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[First tip: clear background prior to performing an experiment]</font><br>
+							<font color="#F5D400">[Tip: clear background prior to performing an experiment]</font><br>
 							You should begin the experiment by setting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
 							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
 							(2) then <u>clear background</u><br>
 							<font color="red">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
 						</div>
-							<!-- k. Prompt: clear background -->
+							<!-- k. Prompt: clear background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Success: clear background]</font><br>
-							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.
+							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
+						</div>
+							<!-- k. Prompt: RU not plateau yet -->
+						<div ng-show="view.output.fLC.length !== 0">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Tip: resulting max RU value is invalid]</font><br>
+							The peak resonance value for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet. Try increasing the input <u>association time</u> duration until you observe that the graph achieve a plateau.<br>
 						</div>
 							<!-- l. Prompt: invalid free ligand conc. -->
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">

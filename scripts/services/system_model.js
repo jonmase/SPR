@@ -6,6 +6,7 @@ angular.module('system_model', [])
 
 function systemMethod() { // creating master function object that encapsulate all methods to inject into service
 	var system = this;
+
 /* 2. creating sub-methods as part of the function object that can be called */
 
 /* a) set tRC: random assignment out of 3 possibilities from model; constant */
@@ -33,7 +34,7 @@ function systemMethod() { // creating master function object that encapsulate al
 		if (system.Kd_chance == 6) {
 			system.flip_Kd();
 		} else {
-			system.Kd = system.Kd_possible[system.Kd_chance];
+			system.Kd = (Math.round(10000000000*(system.Kd_possible[system.Kd_chance])))/10000000000;
 		}
 	};
 
@@ -54,7 +55,7 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* d) find kOn: derived from kOff/Kd; constant */
 	system.find_kOn = function(sys_Kd, sys_kOff) {
-		system.kOn = sys_kOff/sys_Kd;
+		system.kOn = Math.round(sys_kOff/sys_Kd);  // helps prevent problem of recurring 9999999 to occur
 	};
 
 /* e) set mwL: random assignment out of possibility in array; constant */
@@ -97,9 +98,9 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* h) find the RU increase when R is totally saturated by L; constant */
 	system.find_RU_Max = function(sys_tRC, sys_mwR, con_vol, con_RPUM, sys_mwL, sys_mwLR) {
-		system.RU0 = sys_tRC*sys_mwR*con_vol*con_RPUM;
-		system.RU_MaxL = sys_tRC*sys_mwL*con_vol*con_RPUM;
-		system.RU_MaxLR = sys_tRC*sys_mwLR*con_vol*con_RPUM;
+		system.RU0 = (Math.round(1000*(sys_tRC*sys_mwR*con_vol*con_RPUM)))/1000;
+		system.RU_MaxL = (Math.round(1000*(sys_tRC*sys_mwL*con_vol*con_RPUM)))/1000;
+		system.RU_MaxLR = (Math.round(1000*(sys_tRC*sys_mwLR*con_vol*con_RPUM)))/1000;
 	};
 
 /* i) generating ligand-receptor pair unique ID for demonstrator to check answer on */

@@ -18,7 +18,7 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 	output.timeOffDefault = 20; // set timeOff to 20 seconds for default
 	output.minimum_fLC_input = 0;
 		// chart coordinates calculation
-	output.RU_On_Output = []; // store max value of RU On
+	output.RU_On_Output = []; // store peak value of RU On
 	output.RU_On_Coordinate = []; // store RU vs timeOn data into [x,y] coordinates before pushing into Line
 	output.RU_Line = []; // store all coordinates to plot line in [[x1,y1],[x2,y2],[x3,y3]] format for plotting
 	output.RU_Off_Coordinate = [];
