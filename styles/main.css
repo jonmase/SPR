@@ -207,6 +207,10 @@ a.navbar-link:active {
 	font-size: 0.75em;
 }
 
+.declare-result {
+	margin-bottom: 0px;
+}
+
 /* panel: controls */
 .box-left-btn {
 	text-align: left;

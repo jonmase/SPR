@@ -85,7 +85,7 @@
 					<div class="mode-selection">
 						<font size="2">Mode:</font><br>
 						<button>Guide</button>
-						<button>Master</button><br><br>
+						<button>Mastery</button><br><br>
 					</div>
 
 						<!-- ii. Panel: high score display (mastery mode only) -->
@@ -151,6 +151,7 @@
 							<font color="#F5D400">[Welcome to the simulation challenge!]</font><br>
 							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
 							Please note that you can check your results once you have obtained suitabl values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
+							In addition, the sensorgram can display a maximum of 10 curve so please take screenshot regularly.<br>
 						</div>
 							<!-- b. Prompt: after having lunch -->
 						<div ng-show="view.experiment.timeOfDay == 13.5">
@@ -243,7 +244,36 @@
 							<font color="#F5D400">[Invalid association time input]</font><br>
 							I'm sorry but <u>association time</u> input can only intake an integral number between 1 and 900.<br>
 						</div>
-							<!-- n. Prompt: session over -->
+							<!-- n. Prompt: maximum number of curve on graph reached -->
+						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Maximum no. of plot on sensorgram reached]</font><br>
+							There are too many plots on sensorgram to interpret it productively anyway! Please <u>clear chart</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
+						</div>
+							<!-- o. Prompt: Answer is correct -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Correct answer]</font><br>
+								<p class="declare-result" ng-show="view.Kd_correct == true">Your Kd value is correct!</p>
+								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
+								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
+						</div>
+							<!-- p. Prompt: Answer is wrong -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Wrong answer]</font><br>
+								<p class="declare-result" ng-show="view.Kd_correct == false">Your Kd value is wrong!</p>
+								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
+								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
+						</div>
+							<!-- q. Prompt: All answer is correct! -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[All answer is correct!]</font><br>
+							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)
+						</div>
+
+							<!-- r. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Experiment Ended]</font><br>
@@ -262,28 +292,28 @@
 						<div class="panel-heading col-md-6 check">Check Answer</div>
 						<div class="panel-body col-md-6 check">
 								<!-- a. Form: check Kd -->
-							<div class="box-left">Kd / uM</div>
+							<div class="box-left">Kd / M</div>
 							<div class="box-right">
-								<form >
-									<input class="input-form">
+								<form novalidate name="check_Kd">
+									<input class="input-form" name="Kd_input" type="number" ng-model="input_check_Kd" required>
 								</form>
 							</div>
 								<!-- b. Form: check kOn -->
 							<div class="box-left">k<sub>on</sub> / s<sup>-1</sup></div>
 							<div class="box-right">
-								<form>
-									<input class="input-form">
+								<form novalidate name="check_kOn">
+									<input class="input-form" name="kOn_input" type="number" ng-model="input_check_kOn" required>
 								</form>
 							</div>
 								<!-- c. Form: check kOff -->
 							<div class="box-left">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 							<div class="box-right">
-								<form>
-									<input class="input-form">
+								<form novalidate name="check_kOff" >
+									<input class="input-form" name="kOff_input" type="number" ng-model="input_check_kOff" required>
 								</form>
 							</div><br>
 							<!-- d. Button: submit -->
-							<button class="check">Check</button>
+							<button class="check" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">Check</button><br>
 						</div><br>
 					</div>
 
@@ -313,7 +343,8 @@
 					<div class="panel-body">
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button btn" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay">run experiment</button>
+							<button class="button btn" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20">run experiment</button> 
+								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
@@ -371,6 +402,13 @@
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
+
+						<div class="box-left">Kd / uM</div>
+						<div class="box-right">{{view.system.Kd | uM_Filter}}</div><br>
+						<div class="box-left">k<sub>on</sub> / s<sup>-1</sup></div>
+						<div class="box-right">{{view.system.kOn}}</div><br>
+						<div class="box-left">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+						<div class="box-right">{{view.system.kOff}}</div><br>
 					</div>
 				</div>
 			</div>
