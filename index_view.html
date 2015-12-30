@@ -227,7 +227,7 @@
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- k. Prompt: RU on result is invalid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1])">
+						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Tip: resulting peak RU value is invalid]</font><br>
 							The <u>peak RU value</u> for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet before washing off. This mean that the peak RU value for this data set is <font color="red">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>association time</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it in plotting.<br>
