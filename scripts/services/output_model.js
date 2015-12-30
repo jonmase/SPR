@@ -55,9 +55,8 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 /* e) find and store the current RU peak for a given input fLC and time on */
 	output.calc_RU_OnPeak = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
 		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.timeOn[output.timeOn.length-1], out_RU0, backgroundSet);
-		output.RU_On_Output.push(angular.copy(output.RU_OnAdjusted));
+		output.RU_On_Output.push(angular.copy((Math.round(10000*output.RU_OnAdjusted))/10000)); // x10000 to round off value to 4 decimal palce
 	};
-
 /* f) find and store the theoretical max RU peak for a given input fLC */
 	output.calc_RU_OnMax = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
 		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, Infinity, out_RU0, backgroundSet);
