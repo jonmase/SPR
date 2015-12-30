@@ -125,10 +125,6 @@ a.navbar-link:active {
 	padding-bottom: 5px;
 }
 
-.input-form {
-	width: 45px
-}
-
 /* button: guide vs mastery */
 .mode-selection {
 	text-align: center;
@@ -220,6 +216,20 @@ a.navbar-link:active {
 	margin-bottom: 0px;
 }
 
+.box-left-check {
+	text-align: left;
+	width: 50%;
+}
+
+.box-right-check {
+	text-align: right;
+	width: 50%;
+}
+
+.check-form {
+	width: 70px
+}
+
 /* panel: controls */
 .box-left-btn {
 	text-align: left;
@@ -234,4 +244,8 @@ a.navbar-link:active {
 .conc-radio {
 	width: 100%;
 	text-align: center;
+}
+
+.input-form {
+	width: 45px
 }
