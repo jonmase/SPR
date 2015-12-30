@@ -190,6 +190,15 @@ a.navbar-link:active {
 	width: 25px;
 	text-align: center;
 }
+	
+#button_active {
+	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to red background-color when correct answer is obtained */
+}
+
+	
+#icon_active {
+	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to white color when correct answer is obtained */
+}
 
 /* panel: check answer */
 #check-answer {

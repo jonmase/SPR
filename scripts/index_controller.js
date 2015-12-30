@@ -22,6 +22,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.RPUM = RPUM;
 		// metrics tracked in database
 	view.restartCounter = 0;
+	view.finishedStepsCount = [];
 		// default function of various buttons
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
@@ -162,6 +163,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
+			view.finishedStepsCount.push(angular.copy(view.experiment.steps));
+				// jQuery to change the color of hamburger menu icon on results table so users will notice
+			$("#button_active").css("background-color", "red");
+			$("#icon_active").css("color", "white");
 		} else {
 			view.all_Correct = false;
 		}

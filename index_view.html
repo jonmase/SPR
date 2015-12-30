@@ -253,7 +253,7 @@
 							<!-- o. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[Correct answer]</font><br>
+							<font color="#F5D400">[Correct answers]</font><br>
 								<p class="declare-result" ng-show="view.Kd_correct == true">Your Kd value is correct!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
@@ -261,7 +261,7 @@
 							<!-- p. Prompt: Answer is wrong -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
-							<font color="#F5D400">[Wrong answer]</font><br>
+							<font color="#F5D400">[Wrong answers]</font><br>
 								<p class="declare-result" ng-show="view.Kd_correct == false">Your Kd value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
@@ -270,7 +270,8 @@
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[All answer is correct!]</font><br>
-							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)
+							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
+							<font color="red">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 
 							<!-- r. Prompt: session over -->
@@ -402,18 +403,21 @@
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
-
+							<!-- d. Values for Debugging-->
 						<div class="box-left">Kd / uM</div>
 						<div class="box-right">{{view.system.Kd | uM_Filter}}</div><br>
 						<div class="box-left">k<sub>on</sub> / s<sup>-1</sup></div>
 						<div class="box-right">{{view.system.kOn}}</div><br>
 						<div class="box-left">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 						<div class="box-right">{{view.system.kOff}}</div><br>
+						<div class="box-left">Completed steps count</div>
+						<div class="box-right">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br>
 					</div>
 				</div>
 			</div>
 
 			<!-- 3. Credit Box -->
+			
 
 		</div>   
 	</body>
