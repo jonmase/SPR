@@ -61,9 +61,9 @@ function experimentTrack() {
 		}
 	};
 
-/* e) generating Gaussian error at random */
+/* e) generating Gaussian error at random for relative error */
 		// credit: http://www.protonfish.com/random.shtml
-	experiment.measurementError = function(out_fLC) {
+	experiment.relativeError = function(out_fLC) {
 			// adjusting stdErr against normal distribution
 		experiment.stdErr_Gaussian = ((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdErr_Now;
 			// deciding if stdErr will add or subtract the mean
@@ -75,6 +75,15 @@ function experimentTrack() {
 		}
 			// modify final result with the measurement error
 		return out_fLC+experiment.plusOrMinus*experiment.stdErr_Gaussian;
+	};
+
+/* e) generating absolute error at random */
+		// credit: http://www.protonfish.com/random.shtml
+	experiment.absoluteError = function(out_fLC) {
+			// adjusting stdErr against normal distribution
+		experiment.stdErr_Gaussian = Math.abs(((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdErr_Now);
+			// modify final result with the measurement error (note absolute error is never negative since it is an error as a result of loss in solution during transfer by pipetting)
+		return out_fLC+experiment.stdErr_Gaussian;
 	};
 
 }
