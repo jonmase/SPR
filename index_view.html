@@ -84,8 +84,8 @@
 						<!-- i. Button: guide vs mastery mode selector -->
 					<div class="mode-selection">
 						<font size="2">Mode:</font><br>
-						<button>Guide</button>
-						<button>Mastery</button><br><br>
+						<button class="button" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">Guide</button>
+						<button class="button" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">Mastery</button><br><br>
 					</div>
 
 						<!-- ii. Panel: high score display (mastery mode only) -->
@@ -94,11 +94,12 @@
 							<!-- a. Lowest Number of Steps Taken -->
 						<div class="box-left">Steps Taken</div>
 						<div class="box-right">18</div>
-					</div><br>
+					</div>
+					<br>
 						<!-- iii. Panel: guiding objectives (guide mode only) -->
-					<div class="panel-heading">Guiding Objectives</div>
+					<div class="panel-heading" ng-show="view.guideMode == true">Guiding Objectives</div>
 							<!-- a. 1st Objective -->
-					<div class="panel-body">
+					<div class="panel-body" ng-show="view.guideMode == true">
 						<div class="box-left-guide">1. Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
 						<div class="box-right-guide">
 							<input type="checkbox">
@@ -212,7 +213,7 @@
 							Ready to start, input value into the <u>Control</u> to begin.<br>
 						</div>
 							<!-- j. Prompt: clear background -->
-						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty">
+						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Tip: clear background prior to performing an experiment]</font><br>
 							You should begin the experiment by setting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
@@ -227,7 +228,7 @@
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- k. Prompt: RU on result is invalid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0">
+						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Tip: resulting peak RU value is invalid]</font><br>
 							The <u>peak RU value</u> for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet before washing off. This mean that the peak RU value for this data set is <font color="red">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>association time</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it in plotting.<br>
@@ -314,13 +315,13 @@
 								</form>
 							</div><br>
 							<!-- d. Button: submit -->
-							<button class="check" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">Check</button><br>
+							<button class="button check" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">Check</button><br>
 						</div><br>
 					</div>
 
 						<!-- viii. Button: finish -->
 					<div class="finish-btn">
-						<button>Finish</button>
+						<button class="button">Finish</button>
 					</div>
 				</div>
 				
@@ -344,28 +345,28 @@
 					<div class="panel-body">
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button btn" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20">run experiment</button> 
+							<button class="button" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20">run experiment</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button btn" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
+							<button class="button" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
 						</div>
 							<!-- c) "Clear background value" button -->
 						<div class="box-left-btn">
-							<button class="button btn" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0">clear background</button>
+							<button class="button" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0">clear background</button>
 						</div>
 							<!-- d) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button btn" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">go home</button>
+							<button class="button" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">go home</button>
 						</div>
 							<!-- e) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button btn" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
+							<button class="button" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
-							<button class="button btn" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
+							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" ng-init="magnitudeSelected=2">
@@ -392,7 +393,7 @@
 					</div><br>
 
 						<!-- x. Panel: generated system info -->
-					<div class="panel-heading">About Current System</div>
+					<div class="panel-heading">About The Current System</div>
 					<div class="panel-body">
 							<!-- a. System ID -->
 						<div class="box-left">System ID</div>

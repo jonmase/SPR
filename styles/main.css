@@ -93,8 +93,12 @@ a.navbar-link:active {
 	margin-right: auto;
 }
 
-.btn {
-	height: 32px;
+.button {
+	background-color: green;
+}
+
+.button:disabled {
+	background-color: red;
 }
 
 .panel-heading {

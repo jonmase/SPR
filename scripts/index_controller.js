@@ -24,6 +24,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.restartCounter = 0;
 	view.finishedStepsCount = [];
 		// default function of various buttons
+	view.guideMode = true;
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
