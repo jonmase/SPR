@@ -227,11 +227,17 @@
 							<font color="#F5D400">[Success: clear background]</font><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
-							<!-- k. Prompt: RU on result is invalid -->
+							<!-- l. Prompt: RU on result is invalid -->
 						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[Tip: resulting peak RU value is invalid]</font><br>
 							The <u>peak RU value</u> for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet before washing off. This mean that the peak RU value for this data set is <font color="red">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>association time</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it in plotting.<br>
+						</div>
+							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
+						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
+							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#F5D400">[Tip: Be careful of working with low concentration]</font><br>
+							Using a low concentration will result in the percentage of absolute error relative to the input concentration being high. Therefore be wary of data obtained using very low concentration. Try not to use them unless necessary.<br>
 						</div>
 							<!-- l. Prompt: invalid free ligand conc. -->
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
@@ -369,7 +375,7 @@
 							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
-						<form class="conc-radio" ng-init="magnitudeSelected=2">
+						<form class="conc-radio" ng-init="magnitudeSelected = 2">
 							<input type="radio" ng-model="magnitudeSelected" ng-value="0" ng-disabled="view.output.magnitudeAdjust == 1000">&nbsp; mM &nbsp;&nbsp;&nbsp;
 							<input type="radio" ng-model="magnitudeSelected" ng-value="1" ng-disabled="view.output.magnitudeAdjust == 1000000">&nbsp; uM &nbsp;&nbsp;&nbsp;
 							<input type="radio" ng-model="magnitudeSelected" ng-value="2" ng-disabled="view.output.magnitudeAdjust == 1000000000">&nbsp; nM
