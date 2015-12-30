@@ -38,7 +38,7 @@ function outputMethod(experimentStatus, $cookies, $timeout) {
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
 		output.fLC_tableDisplay.push(new_fLC/output.magnitudeAdjust); // divided by magnitudeAdjust to convert input of various units (mM, uM, nM) into the uniform units of M for later processing
-		output.fLC.push(experiment.absoluteError(new_fLC/output.magnitudeAdjust)); 
+		output.fLC.push(experiment.absoluteError(experiment.relativeError(new_fLC/output.magnitudeAdjust))); // relative error first from measurement error, then absolute error from pipetting error
 	};
 
 /* c) set timeOn: user input via form; variable */

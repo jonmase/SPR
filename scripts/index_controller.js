@@ -79,6 +79,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* d) creating function for "run experiment" button  */
 	view.runExperiment = function (new_magnitudeSelected, new_fLC, new_timeOn) {
+		view.experiment.evalStats();
 		view.output.magnitudeAdjust = view.output.magnitudePool[new_magnitudeSelected];
 		view.output.unitAdjust = view.output.unitPool[new_magnitudeSelected];
 		view.output.add_fLC(new_fLC);

@@ -25,9 +25,16 @@ function experimentTrack() {
 	experiment.endOfExperimentTime = 0;
 		// total runs with good SD per simulation = 28
 		// total runs per simulation = 52
-	experiment.stdErr_Default = 0.000000001; // Need to figure out the right level of variation for concentration; currently default at nM level (otherwise result could become negative)
-	experiment.stdErr_Now = experiment.stdErr_Default; // starting with default level and increase as it passes different time point
-	experiment.stdErr_Gaussian = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard error to use
+/* creating variables for error generation module */
+		// for absolute error
+	experiment.stdDev_Default = 0.000000001; // Need to figure out the right level of variation for concentration; currently default variation is at nM level
+	experiment.stdDev_Absolute = experiment.stdDev_Default; // starting with default level and increase as it passes different time point
+	experiment.stdDev_Gaussian_absolute = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
+		// for relative error
+	experiment.CV_Default = 0.05; // CV means the size of stdDev relative to the mean (thus stdDev error generated from CV is dependent on size of mean, not absolute)
+	experiment.CV_Now = experiment.CV_Default;
+	experiment.stdDev_relative = 0;
+	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
 
 /* 2. creating sub-methods as part of the function object that can be called */
 
@@ -50,40 +57,44 @@ function experimentTrack() {
 		experiment.daysLeft--;
 	};
 
-/* d) evaluating standard error to use base on time of day */
-	experiment.evalStdErr = function() {
+/* d) evaluating standard deviation to use base on time of day */
+	experiment.evalStats = function() {
 		if(experiment.timeOfDay < experiment.startOfDinner) {
-			experiment.stdErr_Now = experiment.stdErr_Default;
+			experiment.stdDev_Absolute = experiment.stdDev_Default;
+			experiment.CV_Now = experiment.CV_Default;
 		} else if(experiment.timeOfDay >= experiment.startOfDinner && experiment.timeOfDay < experiment.startOfSupper){
-			experiment.stdErr_Now = experiment.stdErr_Default*2;
+			experiment.stdDev_Absolute = experiment.stdDev_Default*2;
+			experiment.CV_Now = experiment.CV_Default*4;
 		} else {
-			experiment.stdErr_Now = experiment.stdErr_Default*3;
+			experiment.stdDev_Absolute = experiment.stdDev_Default*5;
+			experiment.CV_Now = experiment.CV_Default*10;
 		}
 	};
 
-/* e) generating Gaussian error at random for relative error */
+/* e) generating absolute error at random by sampling from a normal distribution */
+		// credit: http://www.protonfish.com/random.shtml
+	experiment.absoluteError = function(out_fLC) {
+			// adjusting stdDev against normal distribution
+		experiment.stdDev_Gaussian_absolute = Math.abs(((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdDev_Absolute);
+			// modify final result with the measurement error (note: absolute error is never negative since it is an error as a result of loss in solution during transfer by pipetting)
+		return out_fLC+experiment.stdDev_Gaussian_absolute;
+	};
+
+/* e) generating relative error at random by sampling from a normal distribution */
 		// credit: http://www.protonfish.com/random.shtml
 	experiment.relativeError = function(out_fLC) {
-			// adjusting stdErr against normal distribution
-		experiment.stdErr_Gaussian = ((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdErr_Now;
-			// deciding if stdErr will add or subtract the mean
+			// calculating standard deviation of relative error from coefficient of variance
+		experiment.stdDev_relative = experiment.CV_Now*out_fLC; // CV = coefficient of variance; CV = stdDev/mean, taking mean as the input value (out_fLC)
+			// adjusting stdDev against normal distribution
+		experiment.stdDev_Gaussian_relative = ((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdDev_relative;
+			// deciding if stdDev will add or subtract the mean
 		experiment.flip_plusOrMinus = Math.random()*2;
 		if (experiment.flip_plusOrMinus > 1) {
 			experiment.plusOrMinus = 1;
 		} else {
 			experiment.plusOrMinus = -1;
 		}
-			// modify final result with the measurement error
-		return out_fLC+experiment.plusOrMinus*experiment.stdErr_Gaussian;
+			// modify final result with the measurement error (note: relative error can be negative since it is an error as a result of inaccurate measure of volume of solute)
+		return out_fLC+experiment.plusOrMinus*experiment.stdDev_Gaussian_relative;
 	};
-
-/* e) generating absolute error at random */
-		// credit: http://www.protonfish.com/random.shtml
-	experiment.absoluteError = function(out_fLC) {
-			// adjusting stdErr against normal distribution
-		experiment.stdErr_Gaussian = Math.abs(((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdErr_Now);
-			// modify final result with the measurement error (note absolute error is never negative since it is an error as a result of loss in solution during transfer by pipetting)
-		return out_fLC+experiment.stdErr_Gaussian;
-	};
-
 }
