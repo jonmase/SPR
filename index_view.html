@@ -67,14 +67,14 @@
 				<!-- 1. Navigation Bar  -->
 			<nav class="navbar navbar-fixed-top navbar-custom">
 				<div class="navbar-menu">
-					<a href="http://www.google.com" class="navbar-text navbar-link">HOME</a>
-					<a href="http://www.google.com" class="navbar-text navbar-link">OBJECTIVES</a>
-					<a href="http://www.google.com" class="navbar-text navbar-link">SPR</a>
-					<a href="http://www.google.com" class="navbar-text navbar-link">EXPERIMENT DESIGN</a>
-					<a href="http://www.google.com" class="navbar-text navbar-link">CRITIQUE</a>
-					<div class="navbar-text navbar-clicked">SIMULATION</div>
-					<a href="http://www.google.com" class="navbar-text navbar-link">SUMMARY</a>
-					<a href="http://www.google.com" class="navbar-text navbar-link">CONTACT</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Overview of the web application">HOME</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="List of learning objectives to achieve and philosophy of the project">OBJECTIVES</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Theory on surface plasmon resonance technique">SPR</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Theory on effective experimental design strategy">EXPERIMENT DESIGN</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Theory on how to crtique experimental results critically">CRITIQUE</a>
+					<div class="navbar-text navbar-clicked" data-toggle="tooltip" title="Simulation of surface plasmon resonance for mastering experimental design">SIMULATION</div>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Summary of all learning points">SUMMARY</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="About the developer">CONTACT</a>
 				</div>
 			</nav>
 
@@ -84,8 +84,8 @@
 						<!-- i. Button: guide vs mastery mode selector -->
 					<div class="mode-selection">
 						<font size="2">Mode:</font><br>
-						<button class="button" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">Guide</button>
-						<button class="button" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">Mastery</button><br><br>
+						<button class="button" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">Guide</button>
+						<button class="button" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">Mastery</button><br><br>
 					</div>
 
 						<!-- ii. Panel: high score display (mastery mode only) -->
@@ -148,7 +148,7 @@
 					<div id="console" class="panel-body">
 							<!-- a. Prompt: initialisation -->
 						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Welcome to the simulation challenge!]</font><br>
 							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
 							Please note that you can check your results once you have obtained suitabl values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
@@ -156,14 +156,14 @@
 						</div>
 							<!-- b. Prompt: after having lunch -->
 						<div ng-show="view.experiment.timeOfDay == 13.5">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Auto-logging: Break for lunch]</font><br>
 							12.00-13.00: Had lunch at Biochemistry Cafe with friends<br>
 							13.00-13.30: Began new experiment after the lunch<br>
 						</div>
 							<!-- c. Prompt: before having dinner -->
 						<div ng-show="view.experiment.timeOfDay == 17.0">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[End of official working hour]</font><br>
 							You are getting tired and the Biochemistry Department is closing.<br>
 							It is best that you <u>go home</u> and continue your experiment tomorrow<br>
@@ -171,14 +171,14 @@
 						</div>
 							<!-- d. Prompt: after having dinner -->
 						<div ng-show="view.experiment.timeOfDay == 18.5">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Auto-logging: Break for dinner]</font><br>
 							17.00-18.00: Had dinner at The Eagle & Child with friends<br>
 							18.00-18.30: Began new experiment after the dinner<br>
 						</div>
 							<!-- e. Prompt: before having supper -->
 						<div ng-show="view.experiment.timeOfDay == 21.0">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Risk notice]</font><br>
 							You are beginning to feel sleepy and lose concentration.<br>
 							It is best that you <u>go home</u> and continue your experiment tomorrow<br>
@@ -186,35 +186,35 @@
 						</div>
 							<!-- f. Prompt: after having supper -->
 						<div ng-show="view.experiment.timeOfDay == 22.5">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Auto-logging: Break for supper]</font><br>
 							21.00-22.00: Had mars bars alone in the lab. . . poor you.<br>
 							22.00-22.30: Began new experiment after the supper<br>
 						</div>
 							<!-- g. Prompt: end of day -->
 						<div ng-show="view.experiment.timeOfDay == 24.0">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Security guard warning]</font><br>
 							The security guard is closing the Biochemistry building now.<br>
 							I highly commend you for your endeavor today but unfortunately you will have to head home.<br>
 						</div>
 							<!-- h. Prompt: return home -->
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[End of a day @ {{view.experiment.endOfExperimentTime | timeFilter}}]</font><br>
 							Initialising automatic lab clean-up. . . Clean-up completed.<br>
 							See you tomorrow!<br>
 						</div>
 							<!-- i. Prompt: start of day auto-setup -->
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Start of a new day @ 9.00]</font><br>
 							Experiment automatically set-up. . . Set-up completed @ 9.30.<br>
 							Ready to start, input value into the <u>Control</u> to begin.<br>
 						</div>
 							<!-- j. Prompt: clear background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Tip: clear background prior to performing an experiment]</font><br>
 							You should begin the experiment by setting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
 							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
@@ -223,43 +223,43 @@
 						</div>
 							<!-- k. Prompt: clear background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Success: clear background]</font><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- l. Prompt: RU on result is invalid -->
 						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Tip: resulting peak RU value is invalid]</font><br>
 							The <u>peak RU value</u> for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet before washing off. This mean that the peak RU value for this data set is <font color="red">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>association time</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it in plotting.<br>
 						</div>
 							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
 						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Tip: Be careful of working with low concentration]</font><br>
 							Using a low concentration will result in the percentage of absolute error relative to the input concentration being high. Therefore be wary of data obtained using very low concentration. Try not to use them unless necessary.<br>
 						</div>
 							<!-- l. Prompt: invalid free ligand conc. -->
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Invalid free ligand conc. input]</font><br>
 							I'm sorry but <u>free ligand conc.</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}.<br>
 						</div>
 							<!-- m. Prompt: invalid time on -->
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Invalid association time input]</font><br>
 							I'm sorry but <u>association time</u> input can only intake an integral number between 1 and 900.<br>
 						</div>
 							<!-- n. Prompt: maximum number of curve on graph reached -->
 						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Maximum no. of plot on sensorgram reached]</font><br>
 							There are too many plots on sensorgram to interpret it productively anyway! Please <u>clear chart</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
 						</div>
 							<!-- o. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Correct answers]</font><br>
 								<p class="declare-result" ng-show="view.Kd_correct == true">Your Kd value is correct!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
@@ -267,7 +267,7 @@
 						</div>
 							<!-- p. Prompt: Answer is wrong -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Wrong answers]</font><br>
 								<p class="declare-result" ng-show="view.Kd_correct == false">Your Kd value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
@@ -275,7 +275,7 @@
 						</div>
 							<!-- q. Prompt: All answer is correct! -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
 							Please scroll below and click <u>summary</u> to view all learning objectives you have accomplished.
@@ -284,7 +284,7 @@
 
 							<!-- r. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
-							<font color="#70BF41">> Jarvis:</font>&nbsp;
+							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#F5D400">[Experiment Ended]</font><br>
 							Boooo! You ran out of time to finish experiment. Click <u>restart</u> to try again without changing the system.<br>
 						</div>
@@ -322,14 +322,14 @@
 								</form>
 							</div><br>
 							<!-- d. Button: submit -->
-							<button class="button check" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">Check</button><br>
+							<button class="button check" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">Check</button><br>
 						</div><br>
 					</div>
 
 						<!-- viii. Button: finish -->
 					<div id="finish-box" class="col-md-12">
 						<a href="https://www.google.com" class="finish-btn">
-							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false">Summary</button>
+							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false" data-toggle="tooltip" title="Summary of all learning points">Summary</button>
 						</a>
 					</div>	
 				</div>
@@ -354,49 +354,48 @@
 					<div class="panel-body">
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20">run experiment</button> 
+							<button class="button" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Start the ligand-receptor association phase of experiment. Require: User input on both the free ligand concentration and association time in the input box">run experiment</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true">wash-up</button>
+							<button class="button" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Begin the ligand-receptor disassociation phase of experiment. All ligand must be washed off receptor to prevent carry over to the next experimental round. This would result in an underestimated value of free ligand concentration and association time require to reach the maximum peak RU value. Require: initiated run experiment button">wash-up</button>
 						</div>
 							<!-- c) "Clear background value" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0">clear background</button>
+							<button class="button" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Measure the reading provide by receptor alone to subtract it from the output, such that the graph will began at zero. This is to allow us to focus on only the change in resonance observed by ligand binding. Require: run experiment at free ligand concentration = 0">clear background</button>
 						</div>
 							<!-- d) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">go home</button>
+							<button class="button" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0" data-toggle="tooltip" title="Stop conducting any more experiment today and skip to continue experiment tomorow. Require: running at least a single experiment during the day">go home</button>
 						</div>
 							<!-- e) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0">clear chart</button>
+							<button class="button" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Clearing all graphical plot without erasing any data created and stored on the table. Require: running at least a single experiment during the day">clear chart</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">restart</button>
+							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="Clear all data on experiment previously created but retain the same ligand and receptor. Require: running at least a single experiment during the day">restart</button>
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
-						<form class="conc-radio" ng-init="magnitudeSelected = 2">
+						<form class="conc-radio" ng-init="magnitudeSelected = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">
 							<input type="radio" ng-model="magnitudeSelected" ng-value="0" ng-disabled="view.output.magnitudeAdjust == 1000">&nbsp; mM &nbsp;&nbsp;&nbsp;
 							<input type="radio" ng-model="magnitudeSelected" ng-value="1" ng-disabled="view.output.magnitudeAdjust == 1000000">&nbsp; uM &nbsp;&nbsp;&nbsp;
 							<input type="radio" ng-model="magnitudeSelected" ng-value="2" ng-disabled="view.output.magnitudeAdjust == 1000000000">&nbsp; nM
 						</form><br><br>
 
-
 							<!-- h. Free Ligand Concentration Input -->
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
-								<input class="input-form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}"  ng-model="input_fLC" required>
+								<input class="input-form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="1" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">
-								<input class="input-form" name="timeOn" type="number" step="1" min="1" max="900" ng-model="input_timeOn" required>
+								<input class="input-form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="1" ng-model="input_timeOn" required>
 							</form>
 						</div>					
 					</div><br>

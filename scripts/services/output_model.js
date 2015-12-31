@@ -2,9 +2,9 @@
 
 /* 1. registering modules, services and constants */
 angular.module('output_model', ['cookies', 'experiment_status'])
-	.service('outputModel', ['experimentStatus', '$cookies', '$timeout', outputMethod]);
+	.service('outputModel', ['experimentStatus', '$cookies', outputMethod]);
 
-function outputMethod(experimentStatus, $cookies, $timeout) { 
+function outputMethod(experimentStatus, $cookies) { 
 
 /* 2. creating sub-methods as part of the function object that can be outputed */
 
