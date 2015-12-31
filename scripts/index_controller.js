@@ -7,9 +7,9 @@ var app = angular.module('SPR', ['model', 'display', 'cookies'])
 	.controller('viewCtrl', viewMethod);
 
 /* 2. setting up controller */
-viewMethod.$inject = ['systemModel', 'outputModel', 'experimentStatus', 'chartConfig', 'tableConfig', '$cookies', 'vol', 'RPUM']; // injecting services and constant into viewMethod function
+viewMethod.$inject = ['systemModel', 'outputModel', 'experimentStatus', 'chartConfig', 'tableConfig', '$location',  '$cookies', 'vol', 'RPUM']; // injecting services and constant into viewMethod function
 
-function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tableConfig, $cookies, vol, RPUM) {	// declaring services and constant relationship to viewMethod
+function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tableConfig, $location, $cookies, vol, RPUM) {	// declaring services and constant relationship to viewMethod
 /* a) define how different dependencies are called it out onto the view */
 	var view = this;
 	view.system = systemModel;
@@ -36,6 +36,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.kOff_correct = false;
 	view.all_Correct = false;
 		// stored cookies data
+	/*
 	view.storedDataPrompt = false;
 	view.cookiesData = {
 			// stored system
@@ -53,10 +54,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		store_timeOn: view.output.timeOn,
 		storeRU_On_Output: view.output.RU_On_Output,
 		store_tableData: view.table.data
-
 	};
 
-/* b) creating functions for the cookies prompt */
+	b) creating functions for the cookies prompt 
 	view.continueSaved = function() {
 		view.storedDataPrompt = false; // close the prompt
 	};
@@ -67,6 +67,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.restart();
 		view.storedDataPrompt = false;
 	};
+*/
 
 /* c) creating function for set "zero" button */
 	view.set_background = function() {
@@ -93,7 +94,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;
-		view.cookies.putObject("storedData", view.cookiesData);
+		// view.cookies.putObject("storedData", view.cookiesData);
 	};
 
 /* e) creating function for "wash-up" button */
@@ -103,7 +104,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], view.output.RU_On_Output[view.output.RU_On_Output.length-1]);
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
-		view.cookies.putObject("storedData", view.cookiesData);
+		// view.cookies.putObject("storedData", view.cookiesData);
 		view.isDisabled_check = true;
 	}; 
 
@@ -174,11 +175,11 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		}
 	};
 
-/* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies */
+/* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies
 
 	if (view.cookies.getObject("storedData") === undefined) { // if there are no data, generate a new system
-		view.system.loadNewPair(view.vol, view.RPUM);
-		view.storedDataPrompt = false;
+*/		view.system.loadNewPair(view.vol, view.RPUM);
+/*		view.storedDataPrompt = false;
 		view.cookies.putObject("storedData", view.cookiesData);
 	} else { // load stored data
 		view.cookies.getObject("storedData");
@@ -203,4 +204,5 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.table.data = view.cookiesData.store_tableData;
 		view.storedDataPrompt = true;
 	}
+*/
 }

@@ -129,6 +129,10 @@ a.navbar-link:active {
 	padding-bottom: 5px;
 }
 
+.debug {
+	color: blue;
+}
+
 /* button: guide vs mastery */
 .mode-selection {
 	text-align: center;
@@ -211,9 +215,29 @@ a.navbar-link:active {
 	margin-right: auto;
 }
 
-.finish-btn {
-	text-align: center;
+#finish-box {
 	font-size: 0.75em;
+	text-align: center;
+}
+
+a.finish-btn:link {
+	color: black;
+	text-decoration: none;
+}
+
+a.finish-btn:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a.finish-btn:hover {
+	color: black;
+	text-decoration: none;
+}
+
+a.finish-btn:active {
+	color: black;
+	text-decoration: none;
 }
 
 .declare-result {

@@ -67,14 +67,14 @@
 				<!-- 1. Navigation Bar  -->
 			<nav class="navbar navbar-fixed-top navbar-custom">
 				<div class="navbar-menu">
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">HOME</a>
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">OBJECTIVES</a>
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">SPR</a>
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">EXPERIMENT DESIGN</a>
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">CRITIQUE</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">HOME</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">OBJECTIVES</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">SPR</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">EXPERIMENT DESIGN</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">CRITIQUE</a>
 					<div class="navbar-text navbar-clicked">SIMULATION</div>
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">SUMMARY</a>
-					<a href="http://www.yahoo.com" class="navbar-text navbar-link">CONTACT</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">SUMMARY</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link">CONTACT</a>
 				</div>
 			</nav>
 
@@ -278,6 +278,7 @@
 							<font color="#70BF41">> Jarvis:</font>&nbsp;
 							<font color="#F5D400">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
+							Please scroll below and click <u>summary</u> to view all learning objectives you have accomplished.
 							<font color="red">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 
@@ -326,9 +327,11 @@
 					</div>
 
 						<!-- viii. Button: finish -->
-					<div class="finish-btn">
-						<button class="button">Finish</button>
-					</div>
+					<div id="finish-box" class="col-md-12">
+						<a href="https://www.google.com" class="finish-btn">
+							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false">Summary</button>
+						</a>
+					</div>	
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
@@ -411,14 +414,14 @@
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
 							<!-- d. Values for Debugging-->
-						<div class="box-left">Kd / uM</div>
-						<div class="box-right">{{view.system.Kd | uM_Filter}}</div><br>
-						<div class="box-left">k<sub>on</sub> / s<sup>-1</sup></div>
-						<div class="box-right">{{view.system.kOn}}</div><br>
-						<div class="box-left">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
-						<div class="box-right">{{view.system.kOff}}</div><br>
-						<div class="box-left">Completed steps count</div>
-						<div class="box-right">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br>
+						<div class="box-left debug">Kd / uM</div>
+						<div class="box-right debug">{{view.system.Kd | uM_Filter}}</div><br>
+						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
+						<div class="box-right debug">{{view.system.kOn}}</div><br>
+						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+						<div class="box-right debug">{{view.system.kOff}}</div><br>
+						<div class="box-left debug">Completed steps count</div>
+						<div class="box-right debug">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br>
 					</div>
 				</div>
 			</div>
