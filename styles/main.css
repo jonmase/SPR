@@ -2,7 +2,6 @@
 
 * { 
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; 
-	font-family: 'PT Sans', sans-serif;
 }
 
 /* Media query: device size below 1024 width cannot use the simulation */
@@ -10,6 +9,7 @@
 @media (max-width: 1023px) {
 	body {
 		background-color: #F5D400;
+		font-family: 'PT Sans', sans-serif;
 	}
 
 	.largeDevice {
@@ -42,12 +42,9 @@
 
 /* Top navigation bar */
 
-body {
-  background: red; /* For browsers that do not support gradients */
-  background: -webkit-radial-gradient(red 5%, yellow 15%, green 60%); /* Safari 5.1-6.0 */
-  background: -o-radial-gradient(red 5%, yellow 15%, green 60%); /* For Opera 11.6-12.0 */
-  background: -moz-radial-gradient(red 5%, yellow 15%, green 60%); /* For Firefox 3.6-15 */
-  background: radial-gradient(red 5%, yellow 15%, green 60%); /* Standard syntax */
+#navbar-font {
+	font-family: 'PT Sans', sans-serif;
+	letter-spacing: 0px;
 }
 
 .navbar-custom {
@@ -92,6 +89,11 @@ a.navbar-link:active {
 }
 
 /* Global styling of the controller box */
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: #151c28; 
+}
+
 #controller-box {
 	padding-top: 55px;
 	padding-left: 0px;
@@ -111,10 +113,12 @@ a.navbar-link:active {
 
 .panel-heading {
 	border-radius: 3px 3px 0px 0px;
-	background-color: rgba(255, 0, 0, 0.3);
-	color: #333E4F;
+	background-color: rgba(52, 68, 88, 1.0);
+	color: #e5effd;
 	text-align: center;
-	font-size: 0.85em;
+	font-size: 0.90em;
+	letter-spacing: 0.8px;
+	font-weight: 500;
 	padding-top: 7px;
 	padding-bottom: 3px;
 }
@@ -122,11 +126,13 @@ a.navbar-link:active {
 .panel-body {
 	border-radius: 0px 0px 3px 3px;
 	/* border: 1px solid #313131; */
-	background-color: rgba(255, 0, 0, 0.3);
-	color: #333E4F;
+	background-color: rgba(38, 51, 73, 1.0);
+	color: #d2e3fd;
+	font-size: 0.85em;
+	letter-spacing: 0.2px;
+	font-weight: 300;
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 0.75em;
 	padding: 12px;
 }
 
@@ -149,7 +155,6 @@ a.navbar-link:active {
 /* button: guide vs mastery */
 .mode-selection {
 	text-align: center;
-	font-size: 0.75em;
 }
 
 /* panel: guiding objectives */
@@ -177,15 +182,16 @@ a.navbar-link:active {
 	width: 100%;
 }
 
+.flot-tick-label {
+	color: #d2e3fd;
+}
+
 #sensorgram {
 	border-radius: 0px;
-	border: 1px solid #313131;
 	padding: 7px;
-	background-color: rgba(255, 0, 0, 0.9);
-	color: black;
+	background-color: rgba(38, 51, 73, 1.0);
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 0.75em;
 }
 
 /* panel: console */
@@ -203,11 +209,10 @@ a.navbar-link:active {
 #result-table {
 	padding: 0px;
 	display: block;
-	background-color: rgba(255, 0, 0, 0.9);
+	background-color: rgba(38, 51, 73, 1.0);
 	color: black;
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 0.75em;
 }
 
 .grid {
@@ -242,7 +247,6 @@ a.navbar-link:active {
 }
 
 #finish-box {
-	font-size: 0.75em;
 	text-align: center;
 }
 

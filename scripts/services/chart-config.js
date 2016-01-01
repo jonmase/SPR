@@ -13,26 +13,31 @@ function chartCreate(outputModel) {
 	
 	chart.options = {
 		grid: {
-		    backgroundColor: { colors: [ "#fff", "#eee" ] },
+		    backgroundColor: { colors: [ "#151c28", "#1c2535" ] },
 		    borderWidth: 0
+		},
+		legend: {
+			backgroundOpacity: 0.75,
 		},
 		xaxis: {
 			axisLabelUseCanvas: true,
 			axisLabel: "time/s",
 			position: "bottom",
-			axisLabelcolor: "red",
-			axisLabelFontFamily: "PT Sans",
-			axisLabelFontSizePixels: 10.5,
-			axisLabelPadding: 5
+			axisLabelFontFamily: "Work Sans",
+			axisLabelFontSizePixels: 13,
+			axisLabelColour: "#d2e3fd",
+			axisLabelPadding: 10,
+			color: "#344458",
 		},
 		yaxis: {
 			axisLabelUseCanvas: true,
 			axisLabel: "resonance/RU",
 			position: "left",
-			axisLabelcolor: "red",
-			axisLabelFontFamily: "PT Sans",
-			axisLabelFontSizePixels: 10.5,
-			axisLabelPadding: 5
+			axisLabelFontFamily: "Work Sans",
+			axisLabelFontSizePixels: 13,
+			axisLabelColour: "#d2e3fd",
+			axisLabelPadding: 10,
+			color: "#344458",
 		}
 	};
 }

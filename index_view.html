@@ -36,8 +36,9 @@
 	    <script type="text/javascript" src="libraries/ui-grid/selection.js"></script>    
 		<script type="text/javascript" src="scripts/services/table-config.js"></script>
 
-			<!-- PT Sans Google Fonts navbar-fixed-top navbar-inverse-->
+			<!-- Google Fonts Web Font Embedding -->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:700'>
+		<link href='https://fonts.googleapis.com/css?family=Work+Sans:300,500' rel='stylesheet' type='text/css'>
 
 	    	<!-- Personal libraries, load last since these files will be referencing to those previous libraries too -->
 		<script type="text/javascript" src="scripts/index_model.js"></script>
@@ -65,7 +66,7 @@
 			<!-- Distinguishing content for large device size media query --> 
 		<div class="largeDevice">	
 				<!-- 1. Navigation Bar  -->
-			<nav class="navbar navbar-fixed-top navbar-custom">
+			<nav id="navbar-font" class="navbar navbar-fixed-top navbar-custom">
 				<div class="navbar-menu">
 					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Overview of the web application">HOME</a>
 					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="List of learning objectives to achieve and philosophy of the project">OBJECTIVES</a>
@@ -84,12 +85,12 @@
 						<!-- i. Button: guide vs mastery mode selector -->
 					<div class="mode-selection">
 						<font size="2">Mode:</font><br>
-						<button class="button" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">Guide</button>
-						<button class="button" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">Mastery</button><br><br>
+						<button class="button" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">GUIDE</button>
+						<button class="button" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">MASTERY</button><br><br>
 					</div>
 
 						<!-- ii. Panel: high score display (mastery mode only) -->
-					<div class="panel-heading">Beat The Best Score!</div>
+					<div class="panel-heading">BEAT THE BEST SCORE!</div>
 					<div class="panel-body">
 							<!-- a. Lowest Number of Steps Taken -->
 						<div class="box-left">Steps Taken</div>
@@ -97,7 +98,7 @@
 					</div>
 					<br>
 						<!-- iii. Panel: guiding objectives (guide mode only) -->
-					<div class="panel-heading" ng-show="view.guideMode == true">Guiding Objectives</div>
+					<div class="panel-heading" ng-show="view.guideMode == true">GUIDING OBJECTIVES</div>
 							<!-- a. 1st Objective -->
 					<div class="panel-body" ng-show="view.guideMode == true">
 						<div class="box-left-guide">1. Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
@@ -139,7 +140,7 @@
 
 				<div id="output-box" class="container-fluid col-md-6">
 						<!-- iv. Panel: sensorgram output graph (angular flot chart) -->
-					<div class="panel-heading">Sensorgram</div>
+					<div class="panel-heading">SENSORGRAM</div>
 					<div id="sensorgram">
 						<flot id="flot" dataset="view.chart.dataset" options="view.chart.options"></flot>
 					</div><br>
@@ -151,8 +152,8 @@
 							<font color="#a6a6a6">> Console:</font>&nbsp;
 							<font color="#a6a6a6">[Welcome to the simulation challenge!]</font><br>
 							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
-							Please note that you can check your results once you have obtained suitabl values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
-							In addition, the sensorgram can display a maximum of 10 curve so please take screenshot regularly.<br>
+							Please note that you can check your results once you have obtained suitable values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
+							In addition, the sensorgram can display a maximum of 10 curves so please take screenshots regularly.<br>
 						</div>
 							<!-- b. Prompt: after having lunch -->
 						<div ng-show="view.experiment.timeOfDay == 13.5">
@@ -209,7 +210,7 @@
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
 							<font color="#a6a6a6">> Console:</font>&nbsp;
 							<font color="#a6a6a6">[Start of a new day @ 9.00]</font><br>
-							Experiment automatically set-up. . . Set-up completed @ 9.30.<br>
+							Experiment automatically setup. . . Setup completed @ 9.30.<br>
 							Ready to start, input value into the <u>Control</u> to begin.<br>
 						</div>
 							<!-- j. Prompt: clear background -->
@@ -291,14 +292,14 @@
 					</div><br>
 
 						<!-- vi. Panel: results table (ui-grid) -->
-					<div class="panel-heading">Results Table</div>
+					<div class="panel-heading">RESULTS TABLE</div>
 					<div id="result-table">
 						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter ui-grid-auto-resize></div>
 					</div><br>
 
 						<!-- vii. Panel: check your answer -->
 					<div id="check-answer">
-						<div class="panel-heading col-md-6 check">Check Answer</div>
+						<div class="panel-heading col-md-6 check">CHECK ANSWER</div>
 						<div class="panel-body col-md-6 check">
 								<!-- a. Form: check Kd -->
 							<div class="box-left-check">Kd / M</div>
@@ -336,7 +337,7 @@
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
 						<!-- viii. Panel: experiment status-->
-					<div class="panel-heading">Your Experiment Status</div>
+					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
 					<div class="panel-body">
 							<!-- a. Your Days Left -->
 						<div class="box-left">Days Left</div>
@@ -350,7 +351,7 @@
 					</div><br>
 
 						<!-- ix. Panel: controls -->
-					<div class="panel-heading">Controls</div>
+					<div class="panel-heading">CONTROLS</div>
 					<div class="panel-body">
 								<!-- a) "Run experiment" button -->
 						<div class="box-left-btn">
@@ -401,7 +402,7 @@
 					</div><br>
 
 						<!-- x. Panel: generated system info -->
-					<div class="panel-heading">About The Current System</div>
+					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
 					<div class="panel-body">
 							<!-- a. System ID -->
 						<div class="box-left">System ID</div>
