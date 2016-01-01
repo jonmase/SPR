@@ -42,6 +42,14 @@
 
 /* Top navigation bar */
 
+body {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(red 5%, yellow 15%, green 60%); /* Safari 5.1-6.0 */
+  background: -o-radial-gradient(red 5%, yellow 15%, green 60%); /* For Opera 11.6-12.0 */
+  background: -moz-radial-gradient(red 5%, yellow 15%, green 60%); /* For Firefox 3.6-15 */
+  background: radial-gradient(red 5%, yellow 15%, green 60%); /* Standard syntax */
+}
+
 .navbar-custom {
     min-height: 0px; /* override the min-height of bootstrap */
     height: 35px;
@@ -94,23 +102,28 @@ a.navbar-link:active {
 }
 
 .button {
-	background-color: #a6a6a6;
+	
 }
 
 .button:disabled {
-	background-color: #a6a6a6;
+	
 }
 
 .panel-heading {
-	background-color: #DCDEE0;
+	border-radius: 3px 3px 0px 0px;
+	background-color: rgba(255, 0, 0, 0.3);
+	color: #333E4F;
 	text-align: center;
+	font-size: 0.85em;
 	padding-top: 7px;
 	padding-bottom: 3px;
-	font-size: 0.85em;
 }
 
 .panel-body {
-	border: 1px solid #DCDEE0;
+	border-radius: 0px 0px 3px 3px;
+	/* border: 1px solid #313131; */
+	background-color: rgba(255, 0, 0, 0.3);
+	color: #333E4F;
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.75em;
@@ -165,11 +178,19 @@ a.navbar-link:active {
 }
 
 #sensorgram {
-	padding: 0px;
+	border-radius: 0px;
+	border: 1px solid #313131;
+	padding: 7px;
+	background-color: rgba(255, 0, 0, 0.9);
+	color: black;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.75em;
 }
 
 /* panel: console */
 #console {
+	border-radius: 3px;
 	height: 56px;
 	background-color: #232323;
 	color: #a6a6a6;
@@ -182,6 +203,11 @@ a.navbar-link:active {
 #result-table {
 	padding: 0px;
 	display: block;
+	background-color: rgba(255, 0, 0, 0.9);
+	color: black;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.75em;
 }
 
 .grid {

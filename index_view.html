@@ -140,7 +140,7 @@
 				<div id="output-box" class="container-fluid col-md-6">
 						<!-- iv. Panel: sensorgram output graph (angular flot chart) -->
 					<div class="panel-heading">Sensorgram</div>
-					<div id="sensorgram" class="panel-body">
+					<div id="sensorgram">
 						<flot id="flot" dataset="view.chart.dataset" options="view.chart.options"></flot>
 					</div><br>
 
@@ -292,7 +292,7 @@
 
 						<!-- vi. Panel: results table (ui-grid) -->
 					<div class="panel-heading">Results Table</div>
-					<div id="result-table" class="panel-body">
+					<div id="result-table">
 						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter ui-grid-auto-resize></div>
 					</div><br>
 
@@ -304,21 +304,21 @@
 							<div class="box-left-check">Kd / M</div>
 							<div class="box-right-check">
 								<form novalidate name="check_Kd">
-									<input class="check-form" name="Kd_input" type="number" ng-model="input_check_Kd" required>
+									<input class="check-form form-control" name="Kd_input" type="number" ng-model="input_check_Kd" required>
 								</form>
 							</div>
 								<!-- b. Form: check kOn -->
 							<div class="box-left-check">k<sub>on</sub> / s<sup>-1</sup></div>
 							<div class="box-right-check">
 								<form novalidate name="check_kOn">
-									<input class="check-form" name="kOn_input" type="number" ng-model="input_check_kOn" required>
+									<input class="check-form form-control" name="kOn_input" type="number" ng-model="input_check_kOn" required>
 								</form>
 							</div>
 								<!-- c. Form: check kOff -->
 							<div class="box-left-check">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 							<div class="box-right-check">
 								<form novalidate name="check_kOff" >
-									<input class="check-form" name="kOff_input" type="number" ng-model="input_check_kOff" required>
+									<input class="check-form form-control" name="kOff_input" type="number" ng-model="input_check_kOff" required>
 								</form>
 							</div><br>
 							<!-- d. Button: submit -->
@@ -388,14 +388,14 @@
 						<div class="box-left">Free Ligand Concentration</div>
 						<div class="box-right">
 							<form novalidate name="fLC_Form">
-								<input class="input-form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="1" ng-model="input_fLC" required>
+								<input class="input-form form-control" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="1" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="box-left">Association Time/s</div>
 						<div class="box-right">
 							<form novalidate name="timeOn_Form">
-								<input class="input-form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="1" ng-model="input_timeOn" required>
+								<input class="input-form form-control" name="timeOn" type="number" step="1" min="1" max="900" placeholder="1" ng-model="input_timeOn" required>
 							</form>
 						</div>					
 					</div><br>
