@@ -94,11 +94,11 @@ a.navbar-link:active {
 }
 
 .button {
-	background-color: green;
+	background-color: #a6a6a6;
 }
 
 .button:disabled {
-	background-color: red;
+	background-color: #a6a6a6;
 }
 
 .panel-heading {
@@ -172,7 +172,7 @@ a.navbar-link:active {
 #console {
 	height: 56px;
 	background-color: #232323;
-	color: #DCDEE0;
+	color: #a6a6a6;
 	display: table-cell;
     vertical-align: middle;
     min-width: 482px;
@@ -276,4 +276,9 @@ a.finish-btn:active {
 
 .input-form {
 	width: 45px
+}
+
+/* footer: credit box */
+#credit-box {
+	background-color: #002048;
 }
