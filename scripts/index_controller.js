@@ -32,7 +32,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.guide_five = false;
 	view.guide_six = false;
 	view.guide_seven = false;
-	view.objectives_number_style1 = "unclicked";
+	view.objectives_number_style1 = "gloss-contrast";
 	view.objectives_number_style2 = "clickable1";
 	view.objectives_number_style3 = "clickable1";
 	view.objectives_number_style4 = "clickable1";
@@ -85,10 +85,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* c) creating function for guide-objectives number button */
 	view.toggle_switchOne = function() {
-		if (view.objectives_number_style1 == "unclicked") {
+		if (view.objectives_number_style1 == "gloss-contrast") {
 			view.objectives_number_style1 = "clickable1";
 		} else {
-			view.objectives_number_style1 = "unclicked";
+			view.objectives_number_style1 = "gloss-contrast";
 		}
 
 		if (view.guide_one === true) {
@@ -99,10 +99,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 	view.toggle_switchTwo = function() {
-		if (view.objectives_number_style2 == "unclicked") {
+		if (view.objectives_number_style2 == "gloss-contrast") {
 			view.objectives_number_style2 = "clickable1";
 		} else {
-			view.objectives_number_style2 = "unclicked";
+			view.objectives_number_style2 = "gloss-contrast";
 		}
 
 		if (view.guide_two === true) {
@@ -113,10 +113,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 	view.toggle_switchThree = function() {
-		if (view.objectives_number_style3 == "unclicked") {
+		if (view.objectives_number_style3 == "gloss-contrast") {
 			view.objectives_number_style3 = "clickable1";
 		} else {
-			view.objectives_number_style3 = "unclicked";
+			view.objectives_number_style3 = "gloss-contrast";
 		}
 
 		if (view.guide_three === true) {
@@ -127,10 +127,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 	view.toggle_switchFour = function() {
-		if (view.objectives_number_style4 == "unclicked") {
+		if (view.objectives_number_style4 == "gloss-contrast") {
 			view.objectives_number_style4 = "clickable1";
 		} else {
-			view.objectives_number_style4 = "unclicked";
+			view.objectives_number_style4 = "gloss-contrast";
 		}
 
 		if (view.guide_four === true) {
@@ -141,10 +141,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 	view.toggle_switchFive = function() {
-		if (view.objectives_number_style5 == "unclicked") {
+		if (view.objectives_number_style5 == "gloss-contrast") {
 			view.objectives_number_style5 = "clickable1";
 		} else {
-			view.objectives_number_style5 = "unclicked";
+			view.objectives_number_style5 = "gloss-contrast";
 		}
 
 		if (view.guide_five === true) {
@@ -155,10 +155,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 	view.toggle_switchSix = function() {
-		if (view.objectives_number_style6 == "unclicked") {
+		if (view.objectives_number_style6 == "gloss-contrast") {
 			view.objectives_number_style6 = "clickable1";
 		} else {
-			view.objectives_number_style6 = "unclicked";
+			view.objectives_number_style6 = "gloss-contrast";
 		}
 
 		if (view.guide_six === true) {
@@ -169,10 +169,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 	view.toggle_switchSeven = function() {
-		if (view.objectives_number_style7 == "unclicked") {
+		if (view.objectives_number_style7 == "gloss-contrast") {
 			view.objectives_number_style7 = "clickable1";
 		} else {
-			view.objectives_number_style7 = "unclicked";
+			view.objectives_number_style7 = "gloss-contrast";
 		}
 
 		if (view.guide_seven === true) {

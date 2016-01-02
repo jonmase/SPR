@@ -150,13 +150,13 @@ a.navbar-link:active {
 
 .box-left {
 	text-align: left;
-	width: 73%;
+	width: 66%;
 	padding-bottom: 5px;
 }
 
 .box-right {
 	text-align: right;
-	width: 27%;
+	width: 34%;
 	padding-bottom: 5px;
 }
 
@@ -176,12 +176,11 @@ a.navbar-link:active {
 	color: red;
 }
 
-/* button: guide vs mastery */
+/* panel: guide mode */
 .mode-selection {
 	width: 100%;
 }
 
-/* panel: guiding objectives */
 .select-objectives-box {
 	padding: 3px;
 	padding-bottom: 4px;
@@ -195,8 +194,9 @@ a.navbar-link:active {
 	height: 24.5px;
 }
 
-.unclicked {
-	background-color: #232836;
+#objectives-heading {
+	text-align: center;
+	margin-bottom: 3px
 }
 
 .guide {
@@ -275,6 +275,7 @@ a.navbar-link:active {
 }
 
 #check-btn-container {
+	border-radius: 0px 0px 3px 3px;
 	padding: 0px;
 	text-align: center;
 }
@@ -285,10 +286,6 @@ a.navbar-link:active {
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
-}
-
-#finish-box {
-	text-align: center;
 }
 
 a.finish-btn:link {
@@ -321,9 +318,14 @@ a.finish-btn:active {
 }
 
 .track-panel {
+	border-radius: 0px 0px 0px 3px;
 	padding: 5px;
 	padding-top: 10px;
 	text-align: center;
+}
+
+#track-panel-steps {
+	border-radius: 0px 0px 3px 0px;
 }
 
 .tracked-value {
@@ -349,10 +351,14 @@ a.finish-btn:active {
 	width: 50%;
 }
 
+#units-heading {
+	margin-top: 10px;
+	text-align: center;
+}
+
 .conc-radio {
 	height: 28px;
 	width: 100%;
-	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: center;
 }
