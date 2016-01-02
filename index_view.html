@@ -82,58 +82,66 @@
 				<!-- 2. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
-						<!-- i. Button: guide vs mastery mode selector -->
-					<div class="mode-selection">
-						<font size="2">Mode:</font><br>
-						<button class="button" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">GUIDE</button>
-						<button class="button" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">MASTERY</button><br><br>
-					</div>
-
-						<!-- ii. Panel: high score display (mastery mode only) -->
+						<!-- i. Panel: high score display (mastery mode only) -->
 					<div class="panel-heading">BEAT THE BEST SCORE!</div>
-					<div class="panel-body">
+					<div id="dashboard" class="panel-body">
 							<!-- a. Lowest Number of Steps Taken -->
-						<div class="box-left">Steps Taken</div>
-						<div class="box-right">18</div>
+						<div class="col-md-6 track-panel gloss-contrast">
+							<div>Average Steps</div>
+							<div class="tracked-value">32</div>
+						</div>
+							<!-- b. Average Steps -->
+						<div class="col-md-6 track-panel">
+							<div>Lowest Steps</div>
+							<div class="tracked-value">18</div>
+						</div>
 					</div>
 					<br>
-						<!-- iii. Panel: guiding objectives (guide mode only) -->
-					<div class="panel-heading" ng-show="view.guideMode == true">GUIDING OBJECTIVES</div>
-							<!-- a. 1st Objective -->
-					<div class="panel-body" ng-show="view.guideMode == true">
-						<div class="box-left-guide">1. Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
-						<div class="box-right-guide">
-							<input type="checkbox">
+						<!-- ii. Panel: guiding objectives (guide mode only) -->
+					<div class="panel-heading">GUIDING OBJECTIVES</div>
+					<div class="panel-body clickable-box">
+							<!-- ii. Button: guide vs mastery mode selector -->
+						<div class="mode-selection">
+							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">ON</button>
+							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">OFF</button><br><br>
 						</div>
-							<!-- b. 2nd Objective -->
-						<div class="box-left-guide">2. Generate <u>max RU reached</u> value at  low <u>free ligand concentration</u></div>
-						<div class="box-right-guide">
-							<input type="checkbox">
-						</div>
-							<!-- c. 3rd Objective -->
-						<div class="box-left-guide">3. For a single data set, repeat 6 times  to allow calculation of standard  deviation</div>
-						<div class="box-right-guide">
-							<input type="checkbox">
-						</div>
-							<!-- d. 4th Objective -->
-						<div class="box-left-guide">4. Produce a Langmuir plot of <u>max RU  reached</u> against <u>free ligand  concentration</u></div>
-						<div class="box-right-guide">
-							<input type="checkbox">
-						</div>
-							<!-- e. 5th Objective -->
-						<div class="box-left-guide">5. Derive Kd from Langmuir plot being the  <u>free ligand concentration</u> at half  maximum <u>max RU reached</u></div>
-						<div class="box-right-guide">
-							<input type="checkbox">
-						</div>
-							<!-- f. 6th Objective -->
-						<div class="box-left-guide">6. From the sensorgram disassociation curve, calculate k<sub>off</sub> using the first order disassociation rate equation</div>
-						<div class="box-right-guide">
-							<input type="checkbox">
-						</div>
-							<!-- g. 7th Objective -->
-						<div id="guide-bottom" class="box-left-guide">7. Using Kd and k<sub>off</sub> calculated, derive  k<sub>on</sub></div>
-						<div id="guide-bottom" class="box-right-guide">
-							<input type="checkbox">
+						<div ng-show="view.guideMode == true">
+							<br>
+								<!-- a. 1st Objective -->
+							<div class="box-left-guide">1. Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
+							<div class="box-right-guide">
+								<input type="checkbox">
+							</div>
+								<!-- b. 2nd Objective -->
+							<div class="box-left-guide">2. Generate <u>max RU reached</u> value at  low <u>free ligand concentration</u></div>
+							<div class="box-right-guide">
+								<input type="checkbox">
+							</div>
+								<!-- c. 3rd Objective -->
+							<div class="box-left-guide">3. For a single data set, repeat 6 times  to allow calculation of standard  deviation</div>
+							<div class="box-right-guide">
+								<input type="checkbox">
+							</div>
+								<!-- d. 4th Objective -->
+							<div class="box-left-guide">4. Produce a Langmuir plot of <u>max RU  reached</u> against <u>free ligand  concentration</u></div>
+							<div class="box-right-guide">
+								<input type="checkbox">
+							</div>
+								<!-- e. 5th Objective -->
+							<div class="box-left-guide">5. Derive Kd from Langmuir plot being the  <u>free ligand concentration</u> at half  maximum <u>max RU reached</u></div>
+							<div class="box-right-guide">
+								<input type="checkbox">
+							</div>
+								<!-- f. 6th Objective -->
+							<div class="box-left-guide">6. From the sensorgram disassociation curve, calculate k<sub>off</sub> using the first order disassociation rate equation</div>
+							<div class="box-right-guide">
+								<input type="checkbox">
+							</div>
+								<!-- g. 7th Objective -->
+							<div id="guide-bottom" class="box-left-guide">7. Using Kd and k<sub>off</sub> calculated, derive  k<sub>on</sub></div>
+							<div id="guide-bottom" class="box-right-guide">
+								<input type="checkbox">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -338,45 +346,51 @@
 				<div id="status-system-box" class="container-fluid col-md-3">
 						<!-- viii. Panel: experiment status-->
 					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
-					<div class="panel-body">
+					<div id="dashboard" class="panel-body">
 							<!-- a. Your Days Left -->
-						<div class="box-left">Days Left</div>
-						<div class="box-right">{{view.experiment.daysLeft}}</div>
-							<!-- b. Your Time of Day -->
-						<div class="box-left">Time of Day</div>
-						<div class="box-right">{{view.experiment.timeOfDay | timeFilter}}</div>
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>Days Left</div>
+							<div class="tracked-value">{{view.experiment.daysLeft}}</div>
+						</div>
+							<!-- b. Your Time -->
+						<div class="col-md-4 track-panel">
+							<div>Time</div>
+							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
+						</div>
 							<!-- c. Your Steps Taken -->
-						<div class="box-left">Steps Taken</div>
-						<div class="box-right">{{view.experiment.steps}}</div>
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>Steps</div>
+							<div class="tracked-value">{{view.experiment.steps}}</div>
+						</div>
 					</div><br>
 
 						<!-- ix. Panel: controls -->
 					<div class="panel-heading">CONTROLS</div>
-					<div class="panel-body">
-								<!-- a) "Run experiment" button -->
+					<div class="panel-body clickable-box">
+								<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Start the ligand-receptor association phase of experiment. Require: User input on both the free ligand concentration and association time in the input box">run experiment</button> 
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Start the ligand-receptor association phase of experiment. Require: User input on both the free ligand concentration and association time in the input box">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Begin the ligand-receptor disassociation phase of experiment. All ligand must be washed off receptor to prevent carry over to the next experimental round. This would result in an underestimated value of free ligand concentration and association time require to reach the maximum peak RU value. Require: initiated run experiment button">wash-up</button>
+							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Begin the ligand-receptor disassociation phase of experiment. All ligand must be washed off receptor to prevent carry over to the next experimental round. This would result in an underestimated value of free ligand concentration and association time require to reach the maximum peak RU value. Require: initiated start button">WASH</button>
 						</div>
 							<!-- c) "Clear background value" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Measure the reading provide by receptor alone to subtract it from the output, such that the graph will began at zero. This is to allow us to focus on only the change in resonance observed by ligand binding. Require: run experiment at free ligand concentration = 0">clear background</button>
+							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Measure the reading provide by receptor alone to subtract it from the output, such that the graph will began at zero. This is to allow us to focus on only the change in resonance observed by ligand binding. Require: start at free ligand concentration = 0">BACKGROUND</button>
 						</div>
 							<!-- d) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0" data-toggle="tooltip" title="Stop conducting any more experiment today and skip to continue experiment tomorow. Require: running at least a single experiment during the day">go home</button>
+							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0" data-toggle="tooltip" title="Stop conducting any more experiment today and skip to continue experiment tomorow. Require: running at least a single experiment during the day">HOME</button>
 						</div>
 							<!-- e) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Clearing all graphical plot without erasing any data created and stored on the table. Require: running at least a single experiment during the day">clear chart</button>
+							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Clearing all graphical plot without erasing any data created and stored on the table. Require: running at least a single experiment during the day">CLEAR</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
-							<button class="button" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="Clear all data on experiment previously created but retain the same ligand and receptor. Require: running at least a single experiment during the day">restart</button>
+							<button class="button clickable2 col-md-12" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="Clear all data on experiment previously created but retain the same ligand and receptor. Require: running at least a single experiment during the day">RESTART</button>
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" ng-init="magnitudeSelected = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">

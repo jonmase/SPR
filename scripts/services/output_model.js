@@ -27,7 +27,7 @@ function outputMethod(experimentStatus, $cookies) {
 	output.currentStep = 0;
 	output.totalSteps = 100; // set number of intermediates coordinates to produce
 		// custom chart color
-	output.colorPool = ["rgb(179, 106, 226)", "rgb(236, 93, 87)", "rgb(243, 144, 25)", "rgb(245, 211, 10)", "rgb(112, 195, 65)", "rgb(81, 167, 249)", "rgb(83, 88, 95)", "rgb(218, 209, 155)", "rgb(211, 182, 176)", "rgb(204, 204, 204)"];
+	output.colorPool = ["rgb(179, 106, 226)", "rgb(236, 93, 87)", "rgb(243, 144, 25)", "rgb(245, 211, 10)", "rgb(112, 195, 65)", "rgb(81, 167, 249)", "rgb(108, 115, 124)", "rgb(218, 209, 155)", "rgb(211, 182, 176)", "rgb(204, 204, 204)"];
 	output.colorCounter = 0; // to customise color and also make on and off line having the same color
 		// units conversion
 	output.magnitudePool = [1000, 1000000, 1000000000]; 

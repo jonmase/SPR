@@ -104,16 +104,29 @@ body {
 }
 
 .button {
-	
+    height: 34px;
+    padding: 0px;
+    border: none;
+    background: none;
 }
 
 .button:disabled {
-	
+	background-color: #27292f;	
+}
+
+.clickable1 {
+	background-color: #4072b3;
+	border: 1px solid #313131;
+}
+
+.clickable2{
+	background-color: #5478b0;
+	border: 1px solid #313131;
 }
 
 .panel-heading {
 	border-radius: 3px 3px 0px 0px;
-	background-color: rgba(52, 68, 88, 1.0);
+	background-color: #344458;
 	color: #e5effd;
 	text-align: center;
 	font-size: 0.90em;
@@ -125,8 +138,7 @@ body {
 
 .panel-body {
 	border-radius: 0px 0px 3px 3px;
-	/* border: 1px solid #313131; */
-	background-color: rgba(38, 51, 73, 1.0);
+	background-color: #263349;
 	color: #d2e3fd;
 	font-size: 0.85em;
 	letter-spacing: 0.2px;
@@ -134,6 +146,10 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 12px;
+}
+
+.clickable-box {
+	padding-top: 0px;
 }
 
 .box-left {
@@ -154,7 +170,7 @@ body {
 
 /* button: guide vs mastery */
 .mode-selection {
-	text-align: center;
+	width: 100%;
 }
 
 /* panel: guiding objectives */
@@ -189,7 +205,7 @@ body {
 #sensorgram {
 	border-radius: 0px;
 	padding: 7px;
-	background-color: rgba(38, 51, 73, 1.0);
+	background-color: #263349;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -209,7 +225,7 @@ body {
 #result-table {
 	padding: 0px;
 	display: block;
-	background-color: rgba(38, 51, 73, 1.0);
+	background-color: #263349;
 	color: black;
 	display: flex;
 	flex-wrap: wrap;
@@ -288,6 +304,25 @@ a.finish-btn:active {
 	width: 70px
 }
 
+/* panel: your experiment status */
+#dashboard {
+	padding: 0px;
+}
+
+.track-panel {
+	padding: 5px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.tracked-value {
+	font-size: 2em;
+}
+
+.gloss-contrast {
+	background-color: #2b3952;
+}
+
 /* panel: controls */
 .box-left-btn {
 	text-align: left;
@@ -300,6 +335,7 @@ a.finish-btn:active {
 }
 
 .conc-radio {
+	padding-top: 5px;
 	width: 100%;
 	text-align: center;
 }
