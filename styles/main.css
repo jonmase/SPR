@@ -213,6 +213,7 @@ a.navbar-link:active {
 
 /* panel: check answer */
 .check-form {
+	margin-bottom: 5px;
 	width: 65px;
 	font-size: 0.84em;
 }
@@ -277,10 +278,18 @@ a.navbar-link:active {
 	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to white color when correct answer is obtained */
 }
 
+#check-btn-container {
+	background-color: #2f3c52;
+	padding: 0px;
+	text-align: center;
+}
+
 #check_submit {
-	margin: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	margin-left: auto;
 	margin-right: auto;
+	width: 50%;
 }
 
 #finish-box {

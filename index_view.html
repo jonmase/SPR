@@ -166,7 +166,9 @@
 							</form>
 						</div>
 							<!-- d. Button: submit -->
-						<button id="check_submit" class="button clickable1 col-md-6" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">CHECK</button>
+						<div id="check-btn-container" class="col-md-12">
+							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">CHECK</button>
+						</div>
 					</div>
 				</div>
 
