@@ -1,7 +1,6 @@
 	<!-- Main View: generate all content for display -->
 <!DOCTYPE html>
 <html lang="en" ng-app='SPR'>
-
 	<head>
 			<!-- Compatibility & view issues -->
 		<meta charset="utf-8">
@@ -50,7 +49,6 @@
 		<script type="text/javascript" src="scripts/filters/uM_filter.js"></script>
 		<script type="text/javascript" src="scripts/index_controller.js"></script>
 		<link rel="stylesheet" href="styles/main.css">
-
 	</head>
 
 	<body ng-controller="viewCtrl as view">
@@ -111,32 +109,32 @@
 							<button class="button select-objectives {{view.objectives_number_style1}}" ng-click="view.toggle_switchOne()" data-toggle="tooltip" title="Show/hide 1st objective">1</button>
 								<!-- 2. Button: "2" -->
 							<button class="button select-objectives {{view.objectives_number_style2}}" ng-click="view.toggle_switchTwo()" data-toggle="tooltip" title="Show/hide 2nd objective">2</button>
-								<!-- 1. Button: "3" -->
+								<!-- 3. Button: "3" -->
 							<button class="button select-objectives {{view.objectives_number_style3}}" ng-click="view.toggle_switchThree()" data-toggle="tooltip" title="Show/hide 3rd objective">3</button>
-								<!-- 2. Button: "4" -->
+								<!-- 4. Button: "4" -->
 							<button class="button select-objectives {{view.objectives_number_style4}}" ng-click="view.toggle_switchFour()" data-toggle="tooltip" title="Show/hide 4th objective">4</button>
-								<!-- 1. Button: "5" -->
+								<!-- 5. Button: "5" -->
 							<button class="button select-objectives {{view.objectives_number_style5}}" ng-click="view.toggle_switchFive()" data-toggle="tooltip" title="Show/hide 5th objective">5</button>
-								<!-- 2. Button: "6" -->
+								<!-- 6. Button: "6" -->
 							<button class="button select-objectives {{view.objectives_number_style6}}" ng-click="view.toggle_switchSix()" data-toggle="tooltip" title="Show/hide 6th objective">6</button>
-								<!-- 1. Button: "7" -->
+								<!-- 7. Button: "7" -->
 							<button class="button select-objectives {{view.objectives_number_style7}}" ng-click="view.toggle_switchSeven()" data-toggle="tooltip" title="Show/hide 7th objective">7</button>
 						</div>
-
+							<!-- c. Text: Objectives -->
 						<div class="guide-objectives" ng-show="view.guideMode == true">
-								<!-- a. 1st Objective -->
+								<!-- 1. 1st Objective -->
 							<div class="guide gloss-contrast" ng-show="view.guide_one == true">1 - Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
-								<!-- b. 2nd Objective -->
+								<!-- 2. 2nd Objective -->
 							<div class="guide" ng-show="view.guide_two == true">2 - Generate <u>max RU reached</u> value at  low <u>free ligand concentration</u></div>
-								<!-- c. 3rd Objective -->
+								<!-- 3. 3rd Objective -->
 							<div class="guide gloss-contrast" ng-show="view.guide_three == true">3 - For a single data set, repeat 6 times  to allow calculation of standard  deviation</div>
-								<!-- d. 4th Objective -->
+								<!-- 4. 4th Objective -->
 							<div class="guide" ng-show="view.guide_four == true">4 - Produce a Langmuir plot of <u>max RU  reached</u> against <u>free ligand  concentration</u></div>
-								<!-- e. 5th Objective -->
+								<!-- 5. 5th Objective -->
 							<div class="guide gloss-contrast" ng-show="view.guide_five == true">5 - Derive Kd from Langmuir plot being the  <u>free ligand concentration</u> at half  maximum <u>max RU reached</u></div>
-								<!-- f. 6th Objective -->
+								<!-- 6. 6th Objective -->
 							<div class="guide" ng-show="view.guide_six == true">6 - From the sensorgram disassociation curve, calculate k<sub>off</sub> using the first order disassociation rate equation</div>
-								<!-- g. 7th Objective -->
+								<!-- 7. 7th Objective -->
 							<div id="guide-bottom" class="guide gloss-contrast" ng-show="view.guide_seven == true">7 - Using Kd and k<sub>off</sub> calculated, derive  k<sub>on</sub></div>
 						</div>
 					</div>
@@ -148,25 +146,25 @@
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>Kd / M</div>
 							<form novalidate name="check_Kd">
-								<input class="form check-form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="1" required>
+								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="1" required>
 							</form>
 						</div>
 							<!-- b. Form: check kOn -->
 						<div class="col-md-4 track-panel">
 							<div>k<sub>on</sub> / s<sup>-1</sup></div>
 							<form novalidate name="check_kOn">
-								<input class="form check-form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="1" required>
+								<input class="form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="1" required>
 							</form>
 						</div>
 							<!-- c. Form: check kOff -->
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 							<form novalidate name="check_kOff" >
-								<input class="form check-form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="1" required>
+								<input class="form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="1" required>
 							</form>
 						</div>
 							<!-- d. Button: submit -->
-						<div id="check-btn-container" class="col-md-12">
+						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
 							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">CHECK</button>
 						</div>
 					</div>
@@ -330,17 +328,10 @@
 					<div id="result-table">
 						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter ui-grid-auto-resize></div>
 					</div><br>
-
-						<!-- viii. Button: finish -->
-					<div id="finish-box" class="col-md-12">
-						<a href="https://www.google.com" class="finish-btn">
-							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false" data-toggle="tooltip" title="Summary of all learning points">SUMMARY</button>
-						</a>
-					</div>	
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
-						<!-- viii. Panel: experiment status-->
+						<!-- vii. Panel: experiment status-->
 					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Your Days Left -->
@@ -360,7 +351,7 @@
 						</div>
 					</div><br>
 
-						<!-- ix. Panel: controls -->
+						<!-- viii. Panel: controls -->
 					<div class="panel-heading">CONTROLS</div>
 					<div class="panel-body clickable-box">
 								<!-- a) "Start" button -->
@@ -390,34 +381,36 @@
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" ng-init="magnitudeSelected = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">
+								<!-- 1. mM radio button -->
 							<div class="col-md-4 radio-btn">
 								<input type="radio" ng-model="magnitudeSelected" ng-value="0" ng-disabled="view.output.magnitudeAdjust == 1000">&nbsp; mM
 							</div>
+								<!-- 2. uM radio button -->
 							<div class="col-md-4 radio-btn">
 								<input type="radio" ng-model="magnitudeSelected" ng-value="1" ng-disabled="view.output.magnitudeAdjust == 1000000">&nbsp; uM
 							</div>
+								<!-- 3. nM radio button -->
 							<div class="col-md-4 radio-btn">
 								<input type="radio" ng-model="magnitudeSelected" ng-value="2" ng-disabled="view.output.magnitudeAdjust == 1000000000">&nbsp; nM
 							</div>
 						</form><br><br>
-
 							<!-- h. Free Ligand Concentration Input -->
-						<div class="box-left">Free Ligand Concentration</div>
-						<div class="box-right">
+						<div class="col-md-6 track-panel gloss-contrast">
+							<div>Free Ligand Concentration</div>
 							<form novalidate name="fLC_Form">
-								<input class="form input-form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="1" ng-model="input_fLC" required>
+								<input class="form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="1" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
-						<div class="box-left">Association Time/s</div>
-						<div class="box-right">
+						<div class="col-md-6 track-panel gloss-contrast2">
+							<div>Association Time/s</div>
 							<form novalidate name="timeOn_Form">
-								<input class="form input-form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="1" ng-model="input_timeOn" required>
+								<input class="form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="1" ng-model="input_timeOn" required>
 							</form>
-						</div>					
-					</div><br>
+						</div>				
+					</div>
 
-						<!-- x. Panel: generated system info -->
+						<!-- ix. Panel: generated system info -->
 					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
 					<div class="panel-body">
 							<!-- a. System ID -->
@@ -443,14 +436,21 @@
 			</div><br>
 
 			<!-- 3. Credit Box -->
-				<div class="row credit-box">
-					<div class="col-md-10">
-
-					</div>
-					<div class="col-md-2">
-						<img src="images/ox-uni-logo.png" id="ox-logo">
-					</div>
+			<div class="row credit-box">
+					<!-- a. credit & buttons -->
+				<div class="col-md-10">
+						<!-- Button: finish -->
+					<div id="finish-box" class="col-md-12">
+						<a href="https://www.google.com" class="finish-btn">
+							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false" data-toggle="tooltip" title="Summary of all learning points">SUMMARY</button>
+						</a>
+					</div>	
 				</div>
+					<!-- b. Logo -->
+				<div class="col-md-2">
+					<img src="images/ox-uni-logo.png" id="ox-logo">
+				</div>
+			</div>
 		</div>   
 	</body>
 
