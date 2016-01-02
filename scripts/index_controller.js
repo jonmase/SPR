@@ -259,7 +259,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.check = function(check_Kd, check_kOn, check_kOff) {
 		view.isDisabled_check = false;
 			// check if Kd answer is within acceptable range
-		if (check_Kd > 0.99*view.system.Kd && check_Kd < 1.01*view.system.Kd) {
+		if (check_Kd/1000 > 0.99*view.system.Kd && check_Kd/1000 < 1.01*view.system.Kd) {
 			view.Kd_correct = true;
 		} else {
 			view.Kd_correct = false;

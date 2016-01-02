@@ -146,7 +146,7 @@
 					<div id="dashboard" class="panel-body">
 							<!-- a. Form: check Kd -->
 						<div class="col-md-4 track-panel gloss-contrast">
-							<div>Kd / M</div>
+							<div>Kd / mM</div>
 							<form novalidate name="check_Kd">
 								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="1" required>
 							</form>
@@ -185,10 +185,13 @@
 						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Welcome to the simulation challenge!]</font><br>
+							This objective of this simulation is to help you master effective experimental design and troubleshooting skills through trying to design a strategy that uses the lowest number of steps possible to achieve the right answer, as seen in <u>BEAT THE BEST SCORE</u>.<br><br>
+							The objective of using Surface Plasmon Resonance is to find the Kd, k<sub>on</sub> and k<sub>off</sub> between a ligand-receptor pair<br><br>
 							I will be guiding you with tips to help you get up to speed with the experiment. Please take note of the points below before beginning:<br>
+							- You can find explanation for the functions of various buttons on the page by hovering over it.<br>
 							- Please note that you can check your results once you have calculated the values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>CHECK ANSWER</u> panel found at the side.<br>
 							- If you find yourself stuck, you can turn on the <u>GUIDE MODE</u> to reveal step-by-step objectives and also additional guide in the console<br>
-							- The <u>SENSORGRAM</u> can display a maximum of 10 curves so please take screenshots regularly.<br>
+							- The <u>SENSORGRAM</u> can display a maximum of 10 curves so please take screenshots regularly.<br><br>
 						</div>
 							<!-- b. Prompt: after having lunch -->
 						<div ng-show="view.experiment.timeOfDay == 13.5">
@@ -292,7 +295,7 @@
 						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Maximum no. of plot on sensorgram reached]</font><br>
-							There are too many plots on sensorgram to interpret it productively anyway! Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
+							There are too many plots on <u>SENSORGRAM</u> to interpret it productively anyway! Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
 						</div>
 							<!-- o. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
