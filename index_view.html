@@ -185,9 +185,10 @@
 						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Welcome to the simulation challenge!]</font><br>
-							I will be guiding you with tips to help you get up to speed with the experiment : )<br>
-							Please note that you can check your results once you have obtained suitable values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>Check Answer</u> panel found below by scrolling.<br>
-							In addition, the sensorgram can display a maximum of 10 curves so please take screenshots regularly.<br>
+							I will be guiding you with tips to help you get up to speed with the experiment. Please take note of the points below before beginning:<br>
+							- Please note that you can check your results once you have calculated the values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>CHECK ANSWER</u> panel found at the side.<br>
+							- If you find yourself stuck, you can turn on the <u>GUIDE MODE</u> to reveal step-by-step objectives and also additional guide in the console<br>
+							- The <u>SENSORGRAM</u> can display a maximum of 10 curves so please take screenshots regularly.<br>
 						</div>
 							<!-- b. Prompt: after having lunch -->
 						<div ng-show="view.experiment.timeOfDay == 13.5">
@@ -200,9 +201,9 @@
 						<div ng-show="view.experiment.timeOfDay == 17.0">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[End of official working hour]</font><br>
-							You are getting tired and the Biochemistry Department is closing.<br>
-							It is best that you <u>go home</u> and continue your experiment tomorrow<br>
-							<font color="#c32b2bc33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting poor standard deviation</font>
+							You are getting tired and everyone is leaving.<br>
+							It is best that you go <u>HOME</u> and continue your experiment tomorrow<br>
+							<font color="#c33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting poor standard deviation</font>
 						</div>
 							<!-- d. Prompt: after having dinner -->
 						<div ng-show="view.experiment.timeOfDay == 18.5">
@@ -216,22 +217,22 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Risk notice]</font><br>
 							You are beginning to feel sleepy and lose concentration.<br>
-							It is best that you <u>go home</u> and continue your experiment tomorrow<br>
-							<font color="#c32b2bc33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting unacceptable standard deviation</font>
+							It is best that you go <u>HOME</u> and continue your experiment tomorrow<br>
+							<font color="#c33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting unacceptable standard deviation</font>
 						</div>
 							<!-- f. Prompt: after having supper -->
 						<div ng-show="view.experiment.timeOfDay == 22.5">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Auto-logging: Break for supper]</font><br>
 							21.00-22.00: Had mars bars alone in the lab. . . poor you.<br>
-							22.00-22.30: Began new experiment after the supper<br>
+							22.00-22.30: Began new experiment after supper<br>
 						</div>
 							<!-- g. Prompt: end of day -->
 						<div ng-show="view.experiment.timeOfDay == 24.0">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Security guard warning]</font><br>
 							The security guard is closing the Biochemistry building now.<br>
-							I highly commend you for your endeavor today but unfortunately you will have to head home.<br>
+							Unfortunately, you will have to end the experiment now and go <u>HOME</u>.<br>
 						</div>
 							<!-- h. Prompt: return home -->
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
@@ -245,16 +246,17 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
 							Experiment automatically setup. . . Setup completed @ 9.30.<br>
-							Ready to start, input value into the <u>Control</u> to begin.<br>
+							Ready to <u>START</u>, input values and choose <u>Units</u> for <u>Free Ligand Concentration</u> and <u>Association Time/s</u> in <u>CONTROL PANEL</u> to begin.<br>
+							Subsequently, you will need to <u>WASH</u> up to obtain the results found in <u>RESULTS TABLE</u> below.<br>
 						</div>
 							<!-- j. Prompt: clear background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Tip: clear background prior to performing an experiment]</font><br>
-							You should begin the experiment by setting the value of background reading before trying any other <u>free ligand concentration</u>. You can do this by:<br>
-							(1) running <u>free ligand concentration</u> = 0 and <u>wash-up</u><br>
-							(2) then <u>clear background</u><br>
-							<font color="#c32b2bc33e3e">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
+							You should begin the experiment by setting the value of background reading before trying any other <u>Free Ligand Concentration</u>. You can do this by:<br>
+							(1) running <u>Free Ligand Concentration</u> = 0 M and <u>WASH</u><br>
+							(2) then clear <u>BACKGROUND</u><br>
+							<font color="#c33e3e">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
 						</div>
 							<!-- k. Prompt: clear background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
@@ -266,31 +268,31 @@
 						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Tip: resulting peak RU value is invalid]</font><br>
-							The <u>peak RU value</u> for this input <u>free ligand concentration</u> have not achieve the maximum possible value yet before washing off. This mean that the peak RU value for this data set is <font color="#c32b2bc33e3e">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>association time</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it in plotting.<br>
+							The <u>peak RU value</u> for this input <u>Free Ligand Concentration</u> have not achieve the maximum possible value yet before <u>WASH</u> off. This mean that the peak RU value for this data set is <font color="#c33e3e">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>Association Time/s</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it for plotting the Langmuir Isotherm later.<br>
 						</div>
 							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
 						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Tip: Be careful of working with low concentration]</font><br>
-							Using a low concentration will result in the percentage of absolute error relative to the input concentration being high. Therefore be wary of data obtained using very low concentration. Try not to use them unless necessary.<br>
+							Using a low <u>Free Ligand Concentration</u> will result in the percentage of absolute error relative to the input concentration being high. Therefore be wary of data obtained using very low concentration. Try not to use them unless necessary.<br>
 						</div>
 							<!-- l. Prompt: invalid free ligand conc. -->
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Invalid free ligand conc. input]</font><br>
-							I'm sorry but <u>free ligand conc.</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}.<br>
+							I'm sorry but <u>Free Ligand Concentration</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}.<br>
 						</div>
 							<!-- m. Prompt: invalid time on -->
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Invalid association time input]</font><br>
-							I'm sorry but <u>association time</u> input can only intake an integral number between 1 and 900.<br>
+							I'm sorry but <u>Association Time/s</u> input can only intake an integral number between 1 and 900.<br>
 						</div>
 							<!-- n. Prompt: maximum number of curve on graph reached -->
 						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Maximum no. of plot on sensorgram reached]</font><br>
-							There are too many plots on sensorgram to interpret it productively anyway! Please <u>clear chart</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
+							There are too many plots on sensorgram to interpret it productively anyway! Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
 						</div>
 							<!-- o. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
@@ -313,15 +315,15 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
-							Please scroll below and click <u>summary</u> to view all learning objectives you have accomplished.
-							<font color="#c32b2bc33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
+							Please scroll below and click <u>Summary</u> to view all learning objectives you have accomplished.
+							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 
 							<!-- r. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Experiment Ended]</font><br>
-							Boooo! You ran out of time to finish experiment. Click <u>restart</u> to try again without changing the system.<br>
+							Boooo! You ran out of time to finish experiment. Click <u>RESTART</u> to try again without changing the system.<br>
 						</div>
 					</div><br>
 
@@ -354,7 +356,7 @@
 					</div><br>
 
 						<!-- viii. Panel: controls -->
-					<div class="panel-heading">CONTROLS</div>
+					<div class="panel-heading">CONTROL PANEL</div>
 					<div class="panel-body clickable-box">
 								<!-- a) "Start" button -->
 						<div class="box-left-btn">
