@@ -160,8 +160,17 @@ a.navbar-link:active {
 	padding-bottom: 5px;
 }
 
+.form {
+	height: 25px;
+	margin-top: 7px;
+	border: 2px solid #3d5174;
+	border-radius: 3px;
+	background-color: #232836;
+	text-align: right;
+}
+
 .debug {
-	color: blue;
+	color: red;
 }
 
 /* button: guide vs mastery */
@@ -200,6 +209,12 @@ a.navbar-link:active {
 	display: flex;
 	flex-wrap: wrap;
 	margin-top: 10px;
+}
+
+/* panel: check answer */
+.check-form {
+	width: 65px;
+	font-size: 0.84em;
 }
 
 /* panel: sensorgram */
@@ -262,7 +277,8 @@ a.navbar-link:active {
 	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to white color when correct answer is obtained */
 }
 
-#submit {
+#check_submit {
+	margin: 10px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -293,20 +309,6 @@ a.finish-btn:active {
 
 .declare-result {
 	margin-bottom: 0px;
-}
-
-.box-left-check {
-	text-align: left;
-	width: 50%;
-}
-
-.box-right-check {
-	text-align: right;
-	width: 50%;
-}
-
-.check-form {
-	width: 70px
 }
 
 /* panel: your experiment status */
