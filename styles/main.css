@@ -38,6 +38,11 @@
 	.smallDevice {
 		display: none;
 	}
+
+	.largeDevice {
+		font-family: 'Work Sans', sans-serif;
+		background: #151c28; 
+	}
 }
 
 /* Top navigation bar */
@@ -89,11 +94,6 @@ a.navbar-link:active {
 }
 
 /* Global styling of the controller box */
-body {
-  font-family: 'Work Sans', sans-serif;
-  background: #151c28; 
-}
-
 #controller-box {
 	padding-top: 55px;
 	padding-left: 0px;
@@ -111,17 +111,17 @@ body {
 }
 
 .button:disabled {
-	background-color: #27292f;	
+	background-color: #232836;	
 }
 
 .clickable1 {
-	background-color: #4072b3;
-	border: 1px solid #313131;
+	background-color: #4273b3;
+	border: 1px solid #222530;
 }
 
 .clickable2{
 	background-color: #5478b0;
-	border: 1px solid #313131;
+	border: 1px solid #222530;
 }
 
 .panel-heading {
@@ -148,10 +148,6 @@ body {
 	padding: 12px;
 }
 
-.clickable-box {
-	padding-top: 0px;
-}
-
 .box-left {
 	text-align: left;
 	width: 73%;
@@ -174,21 +170,36 @@ body {
 }
 
 /* panel: guiding objectives */
-
-.box-left-guide {
-	text-align: left;
-	width: 90%;
-	padding-bottom: 8px;
+.select-objectives-box {
+	padding: 3px;
+	padding-bottom: 4px;
+	margin-top: 10px;
+	text-align: center;
+	background-color: #222530;
 }
 
-.box-right-guide {
-	text-align: right;
-	width: 10%;
-	padding-bottom: 8px;
+.select-objectives {
+	width: 24.5px;
+	height: 24.5px;
+}
+
+.unclicked {
+	background-color: #232836;
+}
+
+.guide {
+	text-align: left;
+	padding: 8px;
 }
 
 #guide-bottom {
 	padding-bottom: 0px;
+}
+
+.guide-objectives {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 10px;
 }
 
 /* panel: sensorgram */
@@ -251,13 +262,7 @@ body {
 	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to white color when correct answer is obtained */
 }
 
-/* panel: check answer */
-#check-answer {
-	display: flex;
-	flex-direction: column;
-}
-
-.check {
+#submit {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -335,9 +340,17 @@ a.finish-btn:active {
 }
 
 .conc-radio {
-	padding-top: 5px;
+	height: 28px;
 	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	text-align: center;
+}
+
+.radio-btn {
+	padding: 0px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 .input-form {

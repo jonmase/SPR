@@ -100,50 +100,74 @@
 						<!-- ii. Panel: guiding objectives (guide mode only) -->
 					<div class="panel-heading">GUIDING OBJECTIVES</div>
 					<div class="panel-body clickable-box">
-							<!-- ii. Button: guide vs mastery mode selector -->
+							<!-- a. Button: guide vs mastery mode selector -->
 						<div class="mode-selection">
 							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">ON</button>
 							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">OFF</button><br><br>
 						</div>
-						<div ng-show="view.guideMode == true">
-							<br>
+							<!-- b. Button: select objectvies -->
+						<div class="select-objectives-box col-md-12" ng-show="view.guideMode == true">
+								<!-- 1. Button: "1" -->
+							<button class="button select-objectives {{view.objectives_number_style1}}" ng-click="view.toggle_switchOne()" data-toggle="tooltip" title="Show/hide 1st objective">1</button>
+								<!-- 2. Button: "2" -->
+							<button class="button select-objectives {{view.objectives_number_style2}}" ng-click="view.toggle_switchTwo()" data-toggle="tooltip" title="Show/hide 2nd objective">2</button>
+								<!-- 1. Button: "3" -->
+							<button class="button select-objectives {{view.objectives_number_style3}}" ng-click="view.toggle_switchThree()" data-toggle="tooltip" title="Show/hide 3rd objective">3</button>
+								<!-- 2. Button: "4" -->
+							<button class="button select-objectives {{view.objectives_number_style4}}" ng-click="view.toggle_switchFour()" data-toggle="tooltip" title="Show/hide 4th objective">4</button>
+								<!-- 1. Button: "5" -->
+							<button class="button select-objectives {{view.objectives_number_style5}}" ng-click="view.toggle_switchFive()" data-toggle="tooltip" title="Show/hide 5th objective">5</button>
+								<!-- 2. Button: "6" -->
+							<button class="button select-objectives {{view.objectives_number_style6}}" ng-click="view.toggle_switchSix()" data-toggle="tooltip" title="Show/hide 6th objective">6</button>
+								<!-- 1. Button: "7" -->
+							<button class="button select-objectives {{view.objectives_number_style7}}" ng-click="view.toggle_switchSeven()" data-toggle="tooltip" title="Show/hide 7th objective">7</button>
+						</div>
+
+						<div class="guide-objectives" ng-show="view.guideMode == true">
 								<!-- a. 1st Objective -->
-							<div class="box-left-guide">1. Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
-							<div class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div class="guide gloss-contrast" ng-show="view.guide_one == true">1 - Find the <u>free ligand concentration</u> that <u>max RU reached</u> starts to plateau</div>
 								<!-- b. 2nd Objective -->
-							<div class="box-left-guide">2. Generate <u>max RU reached</u> value at  low <u>free ligand concentration</u></div>
-							<div class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div class="guide" ng-show="view.guide_two == true">2 - Generate <u>max RU reached</u> value at  low <u>free ligand concentration</u></div>
 								<!-- c. 3rd Objective -->
-							<div class="box-left-guide">3. For a single data set, repeat 6 times  to allow calculation of standard  deviation</div>
-							<div class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div class="guide gloss-contrast" ng-show="view.guide_three == true">3 - For a single data set, repeat 6 times  to allow calculation of standard  deviation</div>
 								<!-- d. 4th Objective -->
-							<div class="box-left-guide">4. Produce a Langmuir plot of <u>max RU  reached</u> against <u>free ligand  concentration</u></div>
-							<div class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div class="guide" ng-show="view.guide_four == true">4 - Produce a Langmuir plot of <u>max RU  reached</u> against <u>free ligand  concentration</u></div>
 								<!-- e. 5th Objective -->
-							<div class="box-left-guide">5. Derive Kd from Langmuir plot being the  <u>free ligand concentration</u> at half  maximum <u>max RU reached</u></div>
-							<div class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div class="guide gloss-contrast" ng-show="view.guide_five == true">5 - Derive Kd from Langmuir plot being the  <u>free ligand concentration</u> at half  maximum <u>max RU reached</u></div>
 								<!-- f. 6th Objective -->
-							<div class="box-left-guide">6. From the sensorgram disassociation curve, calculate k<sub>off</sub> using the first order disassociation rate equation</div>
-							<div class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div class="guide" ng-show="view.guide_six == true">6 - From the sensorgram disassociation curve, calculate k<sub>off</sub> using the first order disassociation rate equation</div>
 								<!-- g. 7th Objective -->
-							<div id="guide-bottom" class="box-left-guide">7. Using Kd and k<sub>off</sub> calculated, derive  k<sub>on</sub></div>
-							<div id="guide-bottom" class="box-right-guide">
-								<input type="checkbox">
-							</div>
+							<div id="guide-bottom" class="guide gloss-contrast" ng-show="view.guide_seven == true">7 - Using Kd and k<sub>off</sub> calculated, derive  k<sub>on</sub></div>
 						</div>
 					</div>
+					<br>
+						<!-- iii. Panel: check answer -->
+					<div class="panel-heading">CHECK ANSWER</div>
+						<div class="panel-body">
+								<!-- a. Form: check Kd -->
+							<div class="box-left-check">Kd / M</div>
+							<div class="box-right-check">
+								<form novalidate name="check_Kd">
+									<input class="check-form form-control" name="Kd_input" type="number" ng-model="input_check_Kd" required>
+								</form>
+							</div>
+								<!-- b. Form: check kOn -->
+							<div class="box-left-check">k<sub>on</sub> / s<sup>-1</sup></div>
+							<div class="box-right-check">
+								<form novalidate name="check_kOn">
+									<input class="check-form form-control" name="kOn_input" type="number" ng-model="input_check_kOn" required>
+								</form>
+							</div>
+								<!-- c. Form: check kOff -->
+							<div class="box-left-check">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+							<div class="box-right-check">
+								<form novalidate name="check_kOff" >
+									<input class="check-form form-control" name="kOff_input" type="number" ng-model="input_check_kOff" required>
+								</form>
+							</div><br>
+							<!-- d. Button: submit -->
+							<button id="submit" class="button" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">Check</button><br>
+						</div><br>
 				</div>
 
 				<div id="output-box" class="container-fluid col-md-6">
@@ -305,36 +329,6 @@
 						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter ui-grid-auto-resize></div>
 					</div><br>
 
-						<!-- vii. Panel: check your answer -->
-					<div id="check-answer">
-						<div class="panel-heading col-md-6 check">CHECK ANSWER</div>
-						<div class="panel-body col-md-6 check">
-								<!-- a. Form: check Kd -->
-							<div class="box-left-check">Kd / M</div>
-							<div class="box-right-check">
-								<form novalidate name="check_Kd">
-									<input class="check-form form-control" name="Kd_input" type="number" ng-model="input_check_Kd" required>
-								</form>
-							</div>
-								<!-- b. Form: check kOn -->
-							<div class="box-left-check">k<sub>on</sub> / s<sup>-1</sup></div>
-							<div class="box-right-check">
-								<form novalidate name="check_kOn">
-									<input class="check-form form-control" name="kOn_input" type="number" ng-model="input_check_kOn" required>
-								</form>
-							</div>
-								<!-- c. Form: check kOff -->
-							<div class="box-left-check">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
-							<div class="box-right-check">
-								<form novalidate name="check_kOff" >
-									<input class="check-form form-control" name="kOff_input" type="number" ng-model="input_check_kOff" required>
-								</form>
-							</div><br>
-							<!-- d. Button: submit -->
-							<button class="button check" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">Check</button><br>
-						</div><br>
-					</div>
-
 						<!-- viii. Button: finish -->
 					<div id="finish-box" class="col-md-12">
 						<a href="https://www.google.com" class="finish-btn">
@@ -394,9 +388,15 @@
 						</div><br><br>
 							<!-- g. Radio: Selecting for free ligand concentration units -->
 						<form class="conc-radio" ng-init="magnitudeSelected = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">
-							<input type="radio" ng-model="magnitudeSelected" ng-value="0" ng-disabled="view.output.magnitudeAdjust == 1000">&nbsp; mM &nbsp;&nbsp;&nbsp;
-							<input type="radio" ng-model="magnitudeSelected" ng-value="1" ng-disabled="view.output.magnitudeAdjust == 1000000">&nbsp; uM &nbsp;&nbsp;&nbsp;
-							<input type="radio" ng-model="magnitudeSelected" ng-value="2" ng-disabled="view.output.magnitudeAdjust == 1000000000">&nbsp; nM
+							<div class="col-md-4 radio-btn">
+								<input type="radio" ng-model="magnitudeSelected" ng-value="0" ng-disabled="view.output.magnitudeAdjust == 1000">&nbsp; mM
+							</div>
+							<div class="col-md-4 radio-btn">
+								<input type="radio" ng-model="magnitudeSelected" ng-value="1" ng-disabled="view.output.magnitudeAdjust == 1000000">&nbsp; uM
+							</div>
+							<div class="col-md-4 radio-btn">
+								<input type="radio" ng-model="magnitudeSelected" ng-value="2" ng-disabled="view.output.magnitudeAdjust == 1000000000">&nbsp; nM
+							</div>
 						</form><br><br>
 
 							<!-- h. Free Ligand Concentration Input -->

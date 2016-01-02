@@ -24,7 +24,21 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.restartCounter = 0;
 	view.finishedStepsCount = [];
 		// default function of various buttons
-	view.guideMode = true;
+	view.guideMode = false;
+	view.guide_one = true;
+	view.guide_two = false;
+	view.guide_three = false;
+	view.guide_four = false;
+	view.guide_five = false;
+	view.guide_six = false;
+	view.guide_seven = false;
+	view.objectives_number_style1 = "unclicked";
+	view.objectives_number_style2 = "clickable1";
+	view.objectives_number_style3 = "clickable1";
+	view.objectives_number_style4 = "clickable1";
+	view.objectives_number_style5 = "clickable1";
+	view.objectives_number_style6 = "clickable1";
+	view.objectives_number_style7 = "clickable1";
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
@@ -68,6 +82,105 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.storedDataPrompt = false;
 	};
 */
+
+/* c) creating function for guide-objectives number button */
+	view.toggle_switchOne = function() {
+		if (view.objectives_number_style1 == "unclicked") {
+			view.objectives_number_style1 = "clickable1";
+		} else {
+			view.objectives_number_style1 = "unclicked";
+		}
+
+		if (view.guide_one === true) {
+			view.guide_one = false;
+		} else {
+			view.guide_one = true;
+		}
+	};
+
+	view.toggle_switchTwo = function() {
+		if (view.objectives_number_style2 == "unclicked") {
+			view.objectives_number_style2 = "clickable1";
+		} else {
+			view.objectives_number_style2 = "unclicked";
+		}
+
+		if (view.guide_two === true) {
+			view.guide_two = false;
+		} else {
+			view.guide_two = true;
+		}
+	};
+
+	view.toggle_switchThree = function() {
+		if (view.objectives_number_style3 == "unclicked") {
+			view.objectives_number_style3 = "clickable1";
+		} else {
+			view.objectives_number_style3 = "unclicked";
+		}
+
+		if (view.guide_three === true) {
+			view.guide_three = false;
+		} else {
+			view.guide_three = true;
+		}
+	};
+
+	view.toggle_switchFour = function() {
+		if (view.objectives_number_style4 == "unclicked") {
+			view.objectives_number_style4 = "clickable1";
+		} else {
+			view.objectives_number_style4 = "unclicked";
+		}
+
+		if (view.guide_four === true) {
+			view.guide_four = false;
+		} else {
+			view.guide_four = true;
+		}
+	};
+
+	view.toggle_switchFive = function() {
+		if (view.objectives_number_style5 == "unclicked") {
+			view.objectives_number_style5 = "clickable1";
+		} else {
+			view.objectives_number_style5 = "unclicked";
+		}
+
+		if (view.guide_five === true) {
+			view.guide_five = false;
+		} else {
+			view.guide_five = true;
+		}
+	};
+
+	view.toggle_switchSix = function() {
+		if (view.objectives_number_style6 == "unclicked") {
+			view.objectives_number_style6 = "clickable1";
+		} else {
+			view.objectives_number_style6 = "unclicked";
+		}
+
+		if (view.guide_six === true) {
+			view.guide_six = false;
+		} else {
+			view.guide_six = true;
+		}
+	};
+
+	view.toggle_switchSeven = function() {
+		if (view.objectives_number_style7 == "unclicked") {
+			view.objectives_number_style7 = "clickable1";
+		} else {
+			view.objectives_number_style7 = "unclicked";
+		}
+
+		if (view.guide_seven === true) {
+			view.guide_seven = false;
+		} else {
+			view.guide_seven = true;
+		}
+	};
 
 /* c) creating function for set "zero" button */
 	view.set_background = function() {
