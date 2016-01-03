@@ -252,19 +252,36 @@ a.navbar-link:active {
 	color: black;
 	display: flex;
 	flex-wrap: wrap;
+	font-size: 0.80em;
 }
 
 .grid {
-	height: 187px;
+	height: 195px;
 	border: 0px;
+	color: #a6a6a6;
+}
+
+.ui-grid-cell-contents {
+	background-color: #263349 !important;
+	height: 29px !important;
+	border: 1px solid red;
 }
 
 .ui-grid-menu-button {
-	height: 25px;
-	width: 25px;
+	height: 29px;
+	width: 29px;
 	text-align: center;
+	background-color: #263349;
 }
-	
+
+.ui-grid-header-cell {
+	border: 0px;
+}
+
+.ui-grid-header {
+	border: 0px;
+}
+
 #button_active {
 	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to red background-color when correct answer is obtained */
 }
