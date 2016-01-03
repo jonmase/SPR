@@ -249,7 +249,6 @@ a.navbar-link:active {
 	padding: 0px;
 	display: block;
 	background-color: #263349;
-	color: black;
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.80em;
@@ -258,28 +257,41 @@ a.navbar-link:active {
 .grid {
 	height: 195px;
 	border: 0px;
-	color: #a6a6a6;
+	color: #d2e3fd;
 }
 
 .ui-grid-cell-contents {
-	background-color: #263349 !important;
 	height: 29px !important;
-	border: 1px solid red;
+	background-color: #1c2535 !important;
+	border: 1px solid #3d5174;
 }
 
 .ui-grid-menu-button {
 	height: 29px;
 	width: 29px;
 	text-align: center;
-	background-color: #263349;
+	padding-top: 3px;
+	padding-left: 3px;
+	background-color: #1c2535;
+	border-color: #3d5174 !important;
 }
 
-.ui-grid-header-cell {
-	border: 0px;
+.ui-grid-menu-item {
+	color: #1c2535 !important;
 }
 
 .ui-grid-header {
-	border: 0px;
+	border-color: #1c2535 !important;
+	background-color: #1c2535 !important;
+}
+
+.ui-grid-header-cell {
+	border-color: #1c2535 !important;
+}
+
+.ui-grid-cell {
+	background-color: #1c2535 !important;
+	border-color: #1c2535 !important;
 }
 
 #button_active {

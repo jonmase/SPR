@@ -148,21 +148,21 @@
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>Kd / mM</div>
 							<form novalidate name="check_Kd">
-								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="1" required>
+								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="number" required>
 							</form>
 						</div>
 							<!-- b. Form: check kOn -->
 						<div class="col-md-4 track-panel">
 							<div>k<sub>on</sub> / s<sup>-1</sup></div>
 							<form novalidate name="check_kOn">
-								<input class="form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="1" required>
+								<input class="form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="number" required>
 							</form>
 						</div>
 							<!-- c. Form: check kOff -->
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 							<form novalidate name="check_kOff" >
-								<input class="form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="1" required>
+								<input class="form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="number" required>
 							</form>
 						</div>
 							<!-- d. Button: check -->
@@ -406,14 +406,14 @@
 						<div class="col-md-6 track-panel gloss-contrast">
 							<div>Free Ligand Concentration</div>
 							<form novalidate name="fLC_Form">
-								<input class="form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="1" ng-model="input_fLC" required>
+								<input class="form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="number" ng-model="input_fLC" required>
 							</form>
 						</div>
 							<!-- i. Association Time Input -->
 						<div class="col-md-6 track-panel gloss-contrast2">
 							<div>Association Time/s</div>
 							<form novalidate name="timeOn_Form">
-								<input class="form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="1" ng-model="input_timeOn" required>
+								<input class="form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="number" ng-model="input_timeOn" required>
 							</form>
 						</div>				
 					</div><br>
