@@ -37,7 +37,7 @@ function outputMethod(experimentStatus, $cookies) {
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
-		output.fLC_tableDisplay.push(new_fLC/output.magnitudeAdjust); // divided by magnitudeAdjust to convert input of various units (mM, uM, nM) into the uniform units of M for later processing
+		output.fLC_tableDisplay.push(Math.round((10000*(new_fLC/output.magnitudeAdjust))/10000)); // divided by magnitudeAdjust to convert input of various units (mM, uM, nM) into the uniform units of M for later processing
 		output.fLC.push(experiment.absoluteError(experiment.relativeError(new_fLC/output.magnitudeAdjust))); // relative error first from measurement error, then absolute error from pipetting error
 	};
 
@@ -55,7 +55,7 @@ function outputMethod(experimentStatus, $cookies) {
 /* e) find and store the current RU peak for a given input fLC and time on */
 	output.calc_RU_OnPeak = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
 		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.timeOn[output.timeOn.length-1], out_RU0, backgroundSet);
-		output.RU_On_Output.push(angular.copy((Math.round(10000*output.RU_OnAdjusted))/10000)); // x10000 to round off value to 4 decimal palce
+		output.RU_On_Output.push(angular.copy(output.RU_OnAdjusted)); // x10000 to round off value to 4 decimal palce
 	};
 /* f) find and store the theoretical max RU peak for a given input fLC */
 	output.calc_RU_OnMax = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
