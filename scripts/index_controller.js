@@ -214,7 +214,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.washUp = function(new_timeOn) {
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, new_timeOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
-		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], view.output.RU_On_Output[view.output.RU_On_Output.length-1]);
+		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(5));
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		// view.cookies.putObject("storedData", view.cookiesData);
