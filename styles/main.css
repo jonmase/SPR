@@ -1,76 +1,415 @@
 /* Support for older version view */
 
-* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
+* { 
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; 
+}
 
-/* Chart style */
+/* Media query: device size below 1024 width cannot use the simulation */
 
-/* Debugging Border */
+@media (max-width: 1023px) {
+	body {
+		background-color: #F5D400;
+		font-family: 'PT Sans', sans-serif;
+	}
 
-.control-interface {
-	border: 3px solid black !important;
-	width: 950px;
+	.largeDevice {
+		display: none;
+	}
+
+	.smallDevice {
+		text-align: center;
+		padding-left: 5%;
+		padding-right: 5%;
+		padding-top: 15%;
+		padding-bottom: 20%;
+	}
+
+	.smallDevice-heading {
+		font-size: 5em;
+	}
+
+	.smallDevice-message {
+		font-size: 1.4em;
+		padding-bottom: 10px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.smallDevice {
+		display: none;
+	}
+
+	.largeDevice {
+		font-family: 'Work Sans', sans-serif;
+		background: #151c28; 
+	}
+}
+
+/* Top navigation bar */
+
+#navbar-font {
+	font-family: 'PT Sans', sans-serif;
+	letter-spacing: 0px;
+}
+
+.navbar-custom {
+    min-height: 0px; /* override the min-height of bootstrap */
+    height: 35px;
+    background-color: #002048;
+}
+
+.navbar-menu {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.navbar-text {
+	margin-top: 1%;
+	margin-bottom: 0px;
+}
+
+.navbar-clicked {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.navbar-link:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a.navbar-link:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a.navbar-link:hover {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.navbar-link:active {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+/* Global styling of the controller box */
+#controller-box {
+	padding-top: 55px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 1024px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.button {
+    height: 34px;
+    padding: 0px;
+    border: none;
+    background: none;
+}
+
+.button:disabled {
+	background-color: #232836;	
+}
+
+.clickable1 {
+	background-color: #4273b3;
+	border: 1px solid #222530;
+}
+
+.clickable2{
+	background-color: #5478b0;
+	border: 1px solid #222530;
+}
+
+.panel-heading {
+	border-radius: 3px 3px 0px 0px;
+	background-color: #344458;
+	color: #e5effd;
+	text-align: center;
+	font-size: 0.90em;
+	letter-spacing: 0.8px;
+	font-weight: 500;
+	padding-top: 7px;
+	padding-bottom: 3px;
+}
+
+.panel-body {
+	border-radius: 0px 0px 3px 3px;
+	background-color: #263349;
+	color: #d2e3fd;
+	font-size: 0.85em;
+	letter-spacing: 0.2px;
+	font-weight: 300;
 	display: flex;
+	flex-wrap: wrap;
+	padding: 12px;
 }
 
-.system { 
-	border: 2px solid red !important; 
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
+.box-left {
+	text-align: left;
+	width: 66%;
+	padding-bottom: 5px;
 }
 
-.output { 
-	border: 2px solid blue !important;
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.experiment { 
-	border: 2px solid green !important; 
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
+.box-right {
+	text-align: right;
+	width: 34%;
+	padding-bottom: 5px;
 }
 
 .form {
-	border: 2px solid black !important; 
-	width: 310px;
+	height: 25px;
+	width: 65px;
+	margin-top: 7px;
+	margin-bottom: 5px;
+	border: 2px solid #3d5174;
+	border-radius: 3px;
+	background-color: #232836;
+	text-align: right;
+	font-size: 0.84em;
+}
+
+.debug {
+	color: red;
+}
+
+/* panel: guide mode */
+.mode-selection {
+	width: 100%;
+}
+
+.select-objectives-box {
+	padding: 3px;
+	padding-bottom: 4px;
+	margin-top: 10px;
+	text-align: center;
+	background-color: #222530;
+}
+
+.select-objectives {
+	width: 24.5px;
+	height: 24.5px;
+}
+
+#objectives-heading {
+	text-align: center;
+	margin-bottom: 3px
+}
+
+.guide {
+	text-align: left;
+	padding: 8px;
+}
+
+#guide-bottom {
+	padding-bottom: 0px;
+}
+
+.guide-objectives {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 10px;
+}
+
+/* panel: sensorgram */
+#flot {
+	display: flex;
+	height: 195px;
+	width: 100%;
+}
+
+.flot-tick-label {
+	color: #d2e3fd;
+}
+
+#sensorgram {
+	border-radius: 0px;
+	padding: 7px;
+	background-color: #263349;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* panel: console */
+#console {
+	border-radius: 3px;
+	height: 56px;
+	background-color: #232323;
+	color: #a6a6a6;
+	display: table-cell;
+    vertical-align: middle;
+    min-width: 482px;
+}
+
+/* panel: result table */
+#result-table {
+	padding: 0px;
+	display: block;
+	background-color: #263349;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.80em;
+}
+
+.grid {
+	height: 195px;
+	border: 0px;
+	color: #d2e3fd;
+}
+
+.ui-grid-cell-contents {
+	height: 29px !important;
+	background-color: #1c2535 !important;
+	border: 1px solid #3d5174;
+}
+
+.ui-grid-menu-button {
+	height: 29px;
+	width: 29px;
+	text-align: center;
+	padding-top: 3px;
+	padding-left: 3px;
+	background-color: #1c2535;
+	border-color: #3d5174 !important;
+}
+
+.ui-grid-menu-item {
+	color: #1c2535 !important;
+}
+
+.ui-grid-header {
+	border-color: #1c2535 !important;
+	background-color: #1c2535 !important;
+}
+
+.ui-grid-header-cell {
+	border-color: #1c2535 !important;
+}
+
+.ui-grid-cell {
+	background-color: #1c2535 !important;
+	border-color: #1c2535 !important;
+}
+
+#button_active {
+	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to red background-color when correct answer is obtained */
+}
+
+	
+#icon_active {
+	/* This CSS id is inserted into ui-grid.min,js, and is for jQuery modification to white color when correct answer is obtained */
+}
+
+#check-btn-container {
+	border-radius: 0px 0px 3px 3px;
+	padding: 0px;
+	text-align: center;
+}
+
+#check_submit {
+	margin-top: 10px;
+	margin-bottom: 10px;
 	margin-left: auto;
-	margin-right: auto;	
+	margin-right: auto;
+	width: 50%;
 }
 
-/* Media Query
-
-@media (min-width: 1200px) {
-	h1 {
-		background-color: blue
-	}
+a.finish-btn:link {
+	color: black;
+	text-decoration: none;
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-	h1 {
-		background-color: green
-	}
+a.finish-btn:visited {
+	color: black;
+	text-decoration: none;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-	h1 {
-		background-color: yellow
-	}
+a.finish-btn:hover {
+	color: black;
+	text-decoration: none;
 }
 
-@media (max-width: 767px) {
-	h1 {
-		background-color: red
-	}
+a.finish-btn:active {
+	color: black;
+	text-decoration: none;
 }
 
-@media (max-width: 480px) {
-
+.declare-result {
+	margin-bottom: 0px;
 }
 
-*/
+/* panel: your experiment status */
+#dashboard {
+	padding: 0px;
+}
 
+.track-panel {
+	border-radius: 0px 0px 0px 3px;
+	padding: 5px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+#track-panel-steps {
+	border-radius: 0px 0px 3px 0px;
+}
+
+.tracked-value {
+	font-size: 2em;
+}
+
+.gloss-contrast {
+	background-color: #2b3952;
+}
+
+.gloss-contrast2{
+	background-color: #2f3c52;
+}
+
+/* panel: controls */
+.box-left-btn {
+	text-align: left;
+	width: 50%;
+}
+
+.box-right-btn {
+	text-align: left;
+	width: 50%;
+}
+
+#units-heading {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.conc-radio {
+	height: 28px;
+	width: 100%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.radio-btn {
+	padding: 0px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+/* footer: credit box */
+
+.credit-box {
+	background-color: #002048;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+#ox-logo {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 110px;
+	width: 110px;
+	border: 1px solid white;
+}

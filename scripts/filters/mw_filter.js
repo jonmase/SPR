@@ -7,5 +7,8 @@ angular.module('mw_filter', [])
 /* 2. creating sub-methods as part of the function object that can be called */
 
 function molWeight() {
-	
+	return function(mwInput){
+		mwOutput = mwInput/1000;
+		return mwOutput+"k";
+	};
 }

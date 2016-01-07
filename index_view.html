@@ -1,7 +1,6 @@
 	<!-- Main View: generate all content for display -->
 <!DOCTYPE html>
 <html lang="en" ng-app='SPR'>
-
 	<head>
 			<!-- Compatibility & view issues -->
 		<meta charset="utf-8">
@@ -10,300 +9,466 @@
     	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-	    <title>SPR Simulation Challenge</title>
+	    <title>OxSPR: Simulation Challenge</title>
 
 	    	<!-- Angular Libraries -->
 		<script type="text/javascript" src="libraries/angular/angular.min.js"></script>
 		<script type="text/javascript" src="libraries/angular/angular-cookies.min.js"></script>
 
-			<!-- jQuery Libraries, load before Bootstrap since bootstrap.js requires it -->
+			<!-- jQuery Libraries, load before Bootstrap & Flot since they requires it -->
 		<script type="text/javascript" src="libraries/jquery/jquery-1.11.3.min.js"></script>
 
 			<!-- Bootstrap Libraries -->
 		<link rel="stylesheet" href="libraries/bootstrap/bootstrap.min.css">
 		<link rel="stylesheet" href="libraries/bootstrap/bootstrap-theme.min.css">
-		<script type="text/javascript" src="libraries/bootstrap/bootstrap.min.js"></script>
 
-			<!-- Chart.js Libraries -->
-		<script type="text/javascript" src="libraries/chart-js/Chart.min.js"></script>
-		<script type="text/javascript" src="libraries/chart-js/angular-chart.min.js"></script>
-		<link rel="stylesheet" href="libraries/chart-js/angular-chart.min.css">
-		<script type="text/javascript" src="libraries/chart-js/chart-config.js"></script>
-		<link rel="stylesheet" href="libraries/chart-js/chart-style.css">
+			<!-- Angular Flot Chart Libraries -->
+		<script type="text/javascript" src="libraries/flot/jquery.flot.js"></script>			
+		<script type="text/javascript" src="libraries/flot/angular-flot.js"></script>			
+		<script type="text/javascript" src="libraries/flot/jquery.flot.axislabels.js"></script>
+		<script type="text/javascript" src="scripts/services/chart-config.js"></script>
 
-	    	<!-- ng-grid Libraries -->
+	    	<!-- Ui-grid Libraries -->
+	    <link rel="stylesheet" href="libraries/ui-grid/ui-grid.min.css">
+	    <script type="text/javascript" src="libraries/ui-grid/ui-grid.min.js"></script>
+	    <script type="text/javascript" src="libraries/ui-grid/exporter.js"></script>
+	    <script type="text/javascript" src="libraries/ui-grid/selection.js"></script>    
+		<script type="text/javascript" src="scripts/services/table-config.js"></script>
 
+			<!-- Google Fonts Web Font Embedding -->
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:700'>
+		<link href='https://fonts.googleapis.com/css?family=Work+Sans:300,500' rel='stylesheet' type='text/css'>
 
 	    	<!-- Personal libraries, load last since these files will be referencing to those previous libraries too -->
-		<link rel="stylesheet" href="styles/main.css">
-		<script type="text/javascript" src="index_model.js"></script>
+		<script type="text/javascript" src="scripts/index_model.js"></script>
 		<script type="text/javascript" src="scripts/services/system_model.js"></script>
 		<script type="text/javascript" src="scripts/services/experiment_status.js"></script>
 		<script type="text/javascript" src="scripts/services/output_model.js"></script>
-		<script type="text/javascript" src="scripts/services/simple_statistics.js"></script> 
-		<!-- credit: http://simplestatistics.org/ -->
 		<script type="text/javascript" src="scripts/filters/time_filter.js"></script>
 		<script type="text/javascript" src="scripts/filters/mw_filter.js"></script>
 		<script type="text/javascript" src="scripts/filters/uM_filter.js"></script>
-		<script type="text/javascript" src="index_controller.js"></script>
-
+		<script type="text/javascript" src="scripts/index_controller.js"></script>
+		<link rel="stylesheet" href="styles/main.css">
 	</head>
 
 	<body ng-controller="viewCtrl as view">
-		<!-- ng-init=setUpNewExperiment; ng-controller -->
+			<!-- Distinguishing content for small device size media query -->
+		<div class="smallDevice">
+			<h1 class="smallDevice-heading">Oh Snap!</h1><br>
+			<h4 class="smallDevice-message">We know you are excited to play with the simulation</h4>
+			<h4 class="smallDevice-message">However, for the best playing experience</h4>
+			<h4 class="smallDevice-message">we would suggest switching to a device with larger screen size <br><font color="red">(at least an iPad viewing in landscape)</font></h4>
+			<h4 class="smallDevice-message">See you there! :)</h4>
+		</div>
 
-<!-- Bootstrap column position: far left / far right -->
-			
-			<!-- 0. Debugging Box -->
-				<!-- 0.1. chart output -->
-					<!--canvas id="line" class="chart chart-line" chart-data="view.chart.data" chart-labels="view.chart.labels" chart-legend="true" chart-series="view.chart.series" chart-click="view.chart.onClick()" width="600" height="400"></canvas-- >
-				<!-- 0.2. system_model -->
-					<div class = "control-interface">
-						<div class="system">
-							<h1>System Model</h1>
-								<!-- a) tRC-->
-							<div>total receptor conc (M) = {{view.system.tRC}}</div><br/>
-								<!-- b) Kd -->
-							<div>Kd (M) = {{view.system.Kd}}</div><br/>
-								<!-- c) kOff -->
-							<div>kOff (s<sup>-1</sup>) = {{view.system.kOff}}</div><br/>
-								<!-- d) kOn -->
-							<div>kOn (M<sup>-1</sup> s<sup>-1</sup>) = {{view.system.kOn}}</div><br/>
-								<!-- e) mwL -->
-							<div>mol weight ligand (g/mol) = {{view.system.mwL}}</div><br/>
-								<!-- f) mwR -->
-							<div>mol weight receptor (g/mol) = {{view.system.mwR}}</div><br/>
-								<!-- g) mwP -->
-							<div>mol weight complex (g/mol) = {{view.system.mwLR}}</div><br/>
-						</div>
+			<!-- Distinguishing content for large device size media query --> 
+		<div class="largeDevice">	
+				<!-- 1. Navigation Bar  -->
+			<nav id="navbar-font" class="navbar navbar-fixed-top navbar-custom">
+				<div class="navbar-menu">
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Overview of the web application">HOME</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="List of learning objectives to achieve and philosophy of the project">OBJECTIVES</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Theory on surface plasmon resonance technique">SPR</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Theory on effective experimental design strategy">EXPERIMENT DESIGN</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Theory on how to crtique experimental results critically">CRITIQUE</a>
+					<div class="navbar-text navbar-clicked" data-toggle="tooltip" title="Simulation of surface plasmon resonance for mastering experimental design">SIMULATION</div>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="Summary of all learning points">SUMMARY</a>
+					<a href="http://www.google.com" class="navbar-text navbar-link" data-toggle="tooltip" title="About the developer">CONTACT</a>
+				</div>
+			</nav>
 
-					<!-- 0.3. ouput_model -->
-						<div class="output">
-							<h1>Output Model</h1>
-								<!-- a) combined form for input: fLC, timeOn, timeOff -->
-							<div class="form">
-									<!-- i) fLC -->
-								<form novalidate name="fLC_Form">
-									free ligand concentration (M) <br/><input name="fLC" type="number" min="0" ng-model="input_fLC" required>
-								</form><br/>
-								<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">Must be a number equal or more than 0</div><br/>
-									<!-- ii) timeOn -->
-								<form novalidate name="timeOn_Form">
-									association experiment time (s) <br/><input name="timeOn" type="number" min="0.5" max="900" ng-model="input_timeOn" required>
-								</form><br/>
-								<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">Must be a number between 0.5 and 900</div><br/>
-									<!-- iii) timeOff >
-								<form novalidate name="timeOff_Form">
-									disassociation experiment time (s) <br/><input name="timeOff" type="number" min="0.5" max="900" ng-model="input_timeOff" required>
-								</form> <br/>
-								<div ng-show="timeOff_Form.timeOff.$dirty && timeOff_Form.timeOff.$invalid">Must be a number between 0.5 and 900</div><br/-->
-									<!-- iv) "setup experiment" button-->
-								<button ng-click="view.setup()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfDay || (view.experiment.daysLeft == 0 && view.experiment.timeOfDay !== 9)">setup</button>
-									<!-- v) "run experiment" button -->
-								<button ng-click="view.runExperiment(input_fLC, input_timeOn, input_timeOff)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.timeOfDay == view.experiment.startOfLunch || view.experiment.timeOfDay == view.experiment.startOfDinner || view.experiment.timeOfDay == view.experiment.startOfNight || view.experiment.timeOfDay == view.experiment.endOfDay">run experiment</button>
-									<!-- v) "setting zero value" button -->
-								<button ng-click="view.set_RU0()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || timeOff_Form.timeOff.$invalid || view.isDisabled || view.output.RU_OnAdjusted.length == 0">zero</button>
-									<!-- vi) "eat" button -->
-								<button ng-click="view.eat()" ng-disabled="view.experiment.timeOfDay !== view.experiment.startOfLunch && view.experiment.timeOfDay !== view.experiment.startOfDinner && view.experiment.timeOfDay !== view.experiment.startOfNight">eat</button>
-									<!-- vii) "go home" button -->
-								<button ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">Go Home</button>
-									<!-- viii) "restart" button -->
-								<button ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed">Restart</button>
-									<!-- viii) experiment finishes reminder -->
-								<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">No more trials left! Restart!</div><br/>
-									<!-- viii) results display (test) -->
-								<div ng-repeat="fLC_input in view.output.fLC track by $index">fLC = {{fLC_input}}</div>
-								<div ng-repeat="timeOn_input in view.output.timeOn track by $index">timeOn = {{timeOn_input}}</div>
-								<!--div ng-repeat="timeOff_input in view.output.timeOff track by $index">timeOff = {{timeOff_input}}</div-->
-							</div><br/>
-								<!-- b) vol -->
-							<div>volume in SPR chip (dm<sup>3</sup>) = {{view.vol}}</div><br/>
-								<!-- c) RPUM -->
-							<div>response per unit mass (g<sup>-1</sup>) = {{view.RPUM}}</div><br/>	
-								<!-- d) RU Max R -->
-							<div>RU max R = {{view.output.RU0}}</div><br/>
-								<!-- e) RU Max L -->
-							<div>RU max L = {{view.output.RU_MaxL}}</div><br/>
-								<!-- f) RU Max LR -->
-							<div>RU max LR = {{view.output.RU_MaxLR}}</div><br/>					
-								<!-- g) RU0 (set) -->
-							<div>RU0 set = {{view.RU0_set}}</div><br/>	
-								<!-- h) RU_On -->
-							<div>RU on adjusted = {{view.output.RU_OnAdjusted[view.output.RU_OnAdjusted.length-1]}}</div><br/>
-								<!-- i) RU_Off >
-							<div>RU off adjusted = {{view.output.RU_OffAdjusted}}</div><br/-->
-								<!-- j) intermediate time on -->
-							<div ng-repeat="intTimeOn in view.output.intermediateTimeOn track by $index">intermediate time on = {{intTimeOn}}</div><br/>
+				<!-- 2. Main controller box -->
+			<div id="controller-box" class="container-fluid">
+				<div id="guide-mastery-box" class="container-fluid col-md-3">
+						<!-- i. Panel: high score display (mastery mode only) -->
+					<div class="panel-heading">BEAT THE BEST SCORE!</div>
+					<div id="dashboard" class="panel-body">
+							<!-- a. Lowest Number of Steps Taken -->
+						<div class="col-md-6 track-panel gloss-contrast">
+							<div>Average Steps</div>
+							<div class="tracked-value">20</div>
 						</div>
-						
-					<!-- 0.4. experiment_model -->
-						<div class="experiment">
-							<h1>Experiment Status</h1>
-								<!-- i. Showing value of all constants defined -->
-							<div>Start of Day (time) = {{view.experiment.startOfDay}}</div><br/>
-							<div>Start of Lunch (time) = {{view.experiment.startOfLunch}}</div><br/>
-							<div>Start of Dinner (time) = {{view.experiment.startOfDinner}}</div><br/>
-							<div>Start of Night (time) = {{view.experiment.startOfNight}}</div><br/>
-							<div>End of Day (time) = {{view.experiment.endOfDay}}</div><br/>
-							<div>Time per Run (time) = {{view.experiment.timePerRun}}</div><br/>
-								<!-- ii. Steps Taken -->
-							<div>Steps Taken = {{view.experiment.steps}}</div><br/>
-								<!-- iii. Days Left -->
-							<div>Days Left (days) = {{view.experiment.daysLeft}}</div><br/>
-								<!-- iv. Time of Day -->
-							<div>Time of Day (time) = {{view.experiment.timeOfDay | timeFilter}}</div><br/>
+							<!-- b. Average Steps -->
+						<div class="col-md-6 track-panel">
+							<div>Lowest Steps</div>
+							<div class="tracked-value">12</div>
 						</div>
 					</div>
+					<br>
+						<!-- ii. Panel: guide mode -->
+					<div class="panel-heading">GUIDE MODE</div>
+					<div class="panel-body clickable-box">
+							<!-- a. Button: guide vs mastery mode selector -->
+						<div class="mode-selection">
+							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">ON</button>
+							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">OFF</button><br><br>
+						</div>
+							<!-- b. Button: select objectvies -->
+						<div class="select-objectives-box col-md-12" ng-show="view.guideMode == true">
+								<!-- 1. Heading -->
+							<div id="objectives-heading" class="col-md-12">Objectives</div>
+								<!-- 1. Button: "1" -->
+							<button class="button select-objectives {{view.objectives_number_style1}}" ng-click="view.toggle_switchOne()" data-toggle="tooltip" title="Show/hide 1st objective">1</button>
+								<!-- 2. Button: "2" -->
+							<button class="button select-objectives {{view.objectives_number_style2}}" ng-click="view.toggle_switchTwo()" data-toggle="tooltip" title="Show/hide 2nd objective">2</button>
+								<!-- 3. Button: "3" -->
+							<button class="button select-objectives {{view.objectives_number_style3}}" ng-click="view.toggle_switchThree()" data-toggle="tooltip" title="Show/hide 3rd objective">3</button>
+								<!-- 4. Button: "4" -->
+							<button class="button select-objectives {{view.objectives_number_style4}}" ng-click="view.toggle_switchFour()" data-toggle="tooltip" title="Show/hide 4th objective">4</button>
+								<!-- 5. Button: "5" -->
+							<button class="button select-objectives {{view.objectives_number_style5}}" ng-click="view.toggle_switchFive()" data-toggle="tooltip" title="Show/hide 5th objective">5</button>
+								<!-- 6. Button: "6" -->
+							<button class="button select-objectives {{view.objectives_number_style6}}" ng-click="view.toggle_switchSix()" data-toggle="tooltip" title="Show/hide 6th objective">6</button>
+								<!-- 7. Button: "7" -->
+							<button class="button select-objectives {{view.objectives_number_style7}}" ng-click="view.toggle_switchSeven()" data-toggle="tooltip" title="Show/hide 7th objective">7</button>
+						</div>
+							<!-- c. Text: Objectives -->
+						<div class="guide-objectives" ng-show="view.guideMode == true">
+								<!-- 1. 1st Objective -->
+							<div class="guide gloss-contrast" ng-show="view.guide_one == true">1 - Start by clearing out the <u>BACKGROUND</u> value so the background resonance value of the chip will not be display.<br><br>
+							Do this by running <u>free ligand concentration</u> = 0 and any <u>association time</u>. Then click <u>BACKGROUND</u> button to clear it from subsequent measurements.</div>
+								<!-- 2. 2nd Objective -->
+							<div class="guide" ng-show="view.guide_two == true">2 - In order to generate coordinates to plot for Langmuir Isotherm, you will need to generate at least 5-6 sets of points that are evenly spaced from each other in terms of magnitude and all points being in the dynamic range which <u>peak RU</u> value will be responsive when <u>free ligand concentration</u> changes.<br><br>
+							To find the dynamic range, you will need to find what <u>peak RU</u> value lies at the the higher and lower end of it. An effective strategy will be to try out a very broad magnitude of <u>free ligand concentration</u>.<br><br>
+							For example, starting at 1 mM, 1 uM and 1 nM can give you an idea if the higher end of dynamic range is between 1 mM and 1 uM or between 1 uM and 1 nM. After which you can zoom into these range to pinpoint where the higher end of dynamic range is.<br><br>
+							As for the lower end of the dynamic range, you have already fixed what that value will take, which is 0 as you have set by clicking <u>BACKGROUND</u> previously.
+							</div>
+								<!-- 3. 3rd Objective -->
+							<div class="guide gloss-contrast" ng-show="view.guide_three == true">3 - Knowing  the <u>peak RU</u> values at both end of the dynamic range and its associated <u>free ligand concentration</u> can now allow you to systematically determine what are the suitable intermediate coordinates to generate between them.<br><br>
+							The most strategic thing you could do is aim to determine what <u>free ligand concentration</u> input will give the corresponding <u>peak RU</u> value which is half of the higher end of dynamic range.<br><br>
+							Once you have obtain what that <u>free ligand concentration</u> to be, you can easily sample points in between to generate coordinates of suitable spacing between higher and lower end of dynamic range that you can plot on the Langmuir Isotherm.<br><br>
+							Do ensure that all the <u>peak RU</u> values generated are valid by giving sufficient time for the ligand and receptor to bind.</div>
+								<!-- 4. 4th Objective -->
+							<div class="guide" ng-show="view.guide_four == true">4 - Next we have to find the standard deviation of this technique. For a single set of <u>free ligand concentration</u> and <u>association time</u> input, repeat 6 times  to allow calculation of standard  deviation. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.</div>
+								<!-- 5. 5th Objective -->
+							<div class="guide gloss-contrast" ng-show="view.guide_five == true">5 - Using the data you generated in the results table, draw a Langmuir Isotherm plot of <u>peak RU</u> against <u>free ligand  concentration</u>. This plot will help you derive your Kd value.<br><br>
+							You should notice that <u>peak RU</u> also plateau as <u>free ligand  concentration</u> increases. This allow you to derive Kd from the Langmuir Isotherm plot as being the  <u>free ligand concentration</u> at half  maximum <u>peak RU</u> reached.</div>
+								<!-- 6. 6th Objective -->
+							<div class="guide" ng-show="view.guide_six == true">6 - To find the k<sub>off</sub>, you need to use the first order rate equation since the disassociation process is first order. The coordinate to input into the rate equation can be found on the sensorgram. Take any point of the disassociation curve generated every time you clicked <u>WASH</u>.</div>
+								<!-- 7. 7th Objective -->
+							<div id="guide-bottom" class="guide gloss-contrast" ng-show="view.guide_seven == true">7 - Finally, using Kd and k<sub>off</sub> calculated, you can derive  k<sub>on</sub> by using the thermodynamics equation relating the three constants.</div>
+						</div>
+					</div>
+					<br>
+						<!-- iii. Panel: check answer -->
+					<div class="panel-heading">CHECK ANSWER</div>
+					<div id="dashboard" class="panel-body">
+							<!-- a. Form: check Kd -->
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>Kd / mM</div>
+							<form novalidate name="check_Kd">
+								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="number" required>
+							</form>
+						</div>
+							<!-- b. Form: check kOn -->
+						<div class="col-md-4 track-panel">
+							<div>k<sub>on</sub> / s<sup>-1</sup></div>
+							<form novalidate name="check_kOn">
+								<input class="form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="number" required>
+							</form>
+						</div>
+							<!-- c. Form: check kOff -->
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+							<form novalidate name="check_kOff" >
+								<input class="form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="number" required>
+							</form>
+						</div>
+							<!-- d. Button: check -->
+						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
+							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">CHECK</button>
+						</div>
+					</div>
+				</div>
 
-<!-- Bootstrap column position: centre full -->
+				<div id="output-box" class="container-fluid col-md-6">
+						<!-- iv. Panel: sensorgram output graph (angular flot chart) -->
+					<div class="panel-heading">SENSORGRAM</div>
+					<div id="sensorgram">
+						<flot id="flot" dataset="view.chart.dataset" options="view.chart.options"></flot>
+					</div><br>
 
-			<!-- 1. Top Box -->
-				<!-- heading text only: SURFACE PLASMON RESONANCE -->
+						<!-- v. Console -->
+					<div id="console" class="panel-body">
+							<!-- a. Prompt: initialisation -->
+						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Welcome to the simulation challenge!]</font><br>
+							The objective of this simulation is to help you master effective experimental design and troubleshooting skills when faced with an unknown system. To achieve true mastery of scientific method, you will have to both be able to obtain the correct answer and use the least number of steps possible to achieve it. You can see how your performance compared to others at <u>BEAT THE BEST SCORE</u> panel in the left.<br><br>
+							Surface plasmon resonance is a biophysical technique used to find the Kd, k<sub>on</sub> and k<sub>off</sub> between a ligand-receptor pair<br><br>
+							I will be guiding you with tips to help you get up to speed with the experiment. Please take note of the points below before beginning:<br>
+							- You can find explanation for the functions of various buttons on the page by hovering over it.<br>
+							- Please note that you can check your results once you have calculated the values for Kd, k<sub>on</sub> and k<sub>off</sub> in the <u>CHECK ANSWER</u> panel found at the left side.<br>
+							- If you find yourself stuck or need guidance on how to improve your experimental design skills, you can turn on the <u>GUIDE MODE</u> to reveal step-by-step objectives and also additional guide in the console<br>
+							- The <u>SENSORGRAM</u> can display a maximum of 10 curves so please take screenshots regularly.<br><br>
+						</div>
+							<!-- b. Prompt: after having lunch -->
+						<div ng-show="view.experiment.timeOfDay == 13.5">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Auto-logging: Break for lunch]</font><br>
+							12.00-13.00: Had lunch at Biochemistry Cafe with friends<br>
+							13.00-13.30: Began new experiment after the lunch<br>
+						</div>
+							<!-- c. Prompt: before having dinner -->
+						<div ng-show="view.experiment.timeOfDay == 17.0">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[End of official working hour]</font><br>
+							You are getting tired and everyone is leaving.<br>
+							It is best that you go <u>HOME</u> and continue your experiment tomorrow<br>
+							<font color="#c33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting poor standard deviation</font>
+						</div>
+							<!-- d. Prompt: after having dinner -->
+						<div ng-show="view.experiment.timeOfDay == 18.5">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Auto-logging: Break for dinner]</font><br>
+							17.00-18.00: Had dinner at The Eagle & Child with friends<br>
+							18.00-18.30: Began new experiment after the dinner<br>
+						</div>
+							<!-- e. Prompt: before having supper -->
+						<div ng-show="view.experiment.timeOfDay == 21.0">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Risk notice]</font><br>
+							You are beginning to feel sleepy and lose concentration.<br>
+							It is best that you go <u>HOME</u> and continue your experiment tomorrow<br>
+							<font color="#c33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting unacceptable standard deviation</font>
+						</div>
+							<!-- f. Prompt: after having supper -->
+						<div ng-show="view.experiment.timeOfDay == 22.5">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Auto-logging: Break for supper]</font><br>
+							21.00-22.00: Had mars bars alone in the lab. . . poor you.<br>
+							22.00-22.30: Began new experiment after supper<br>
+						</div>
+							<!-- g. Prompt: end of day -->
+						<div ng-show="view.experiment.timeOfDay == 24.0">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Security guard warning]</font><br>
+							The security guard is closing the Biochemistry building now.<br>
+							Unfortunately, you will have to end the experiment now and go <u>HOME</u>.<br>
+						</div>
+							<!-- h. Prompt: return home -->
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[End of a day @ {{view.experiment.endOfExperimentTime | timeFilter}}]</font><br>
+							Initialising automatic lab clean-up. . . Clean-up completed.<br>
+							See you tomorrow!<br>
+						</div>
+							<!-- i. Prompt: start of day auto-setup -->
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
+							Experiment automatically setup. . . Setup completed @ 9.30.<br>
+							Ready to <u>START</u>, input values and choose <u>Units</u> for <u>Free Ligand Concentration</u> and <u>Association Time/s</u> in <u>CONTROL PANEL</u> to begin.<br>
+							Subsequently, you will need to <u>WASH</u> up to obtain the results found in <u>RESULTS TABLE</u> below.<br>
+						</div>
+							<!-- j. Prompt: clear background -->
+						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Tip: clear background prior to performing an experiment]</font><br>
+							You should begin the experiment by setting the value of background reading before trying any other <u>Free Ligand Concentration</u>. You can do this by:<br>
+							(1) running <u>Free Ligand Concentration</u> = 0 M and <u>WASH</u><br>
+							(2) then clear <u>BACKGROUND</u><br>
+							<font color="#c33e3e">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
+						</div>
+							<!-- k. Prompt: clear background successs -->
+						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Success: clear background]</font><br>
+							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
+						</div>
+							<!-- l. Prompt: RU on result is invalid -->
+						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Tip: resulting peak RU value is invalid]</font><br>
+							The <u>peak RU</u> value for this input <u>Free Ligand Concentration</u> have not achieve the maximum possible value yet before <u>WASH</u> off. This mean that the <u>peak RU</u> value for this data set is <font color="#c33e3e">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>Association Time/s</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it for plotting the Langmuir Isotherm later.<br>
+						</div>
+							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
+						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Tip: Be careful of working with low concentration]</font><br>
+							Using a low <u>Free Ligand Concentration</u> will result in the percentage of absolute error relative to the input concentration being high. Therefore be wary of data obtained using very low concentration. Try not to use them unless necessary.<br>
+						</div>
+							<!-- l. Prompt: invalid free ligand conc. -->
+						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Invalid free ligand conc. input]</font><br>
+							I'm sorry but <u>Free Ligand Concentration</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}. Please change it before you <u>START</u> the next experiment.<br>
+						</div>
+							<!-- m. Prompt: invalid time on -->
+						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Invalid association time input]</font><br>
+							I'm sorry but <u>Association Time/s</u> input can only intake an integral number between 1 and 900. Please change it before you <u>START</u> the next experiment.<br>
+						</div>
+							<!-- n. Prompt: maximum number of curve on graph reached -->
+						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Maximum no. of plot on sensorgram reached]</font><br>
+							There are too many plots on <u>SENSORGRAM</u> to interpret it productively anyway! Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
+						</div>
+							<!-- o. Prompt: Answer is correct -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Correct answers]</font><br>
+								<p class="declare-result" ng-show="view.Kd_correct == true">Your Kd value is correct!</p>
+								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
+								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
+						</div>
+							<!-- p. Prompt: Answer is wrong -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Wrong answers]</font><br>
+								<p class="declare-result" ng-show="view.Kd_correct == false">Your Kd value is wrong!</p>
+								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
+								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
+						</div>
+							<!-- q. Prompt: All answer is correct! -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[All answer is correct!]</font><br>
+							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
+							Please scroll below and click <u>Summary</u> to view all learning objectives you have accomplished.<br>
+							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
+						</div>
 
-				<!-- Ligand ID -->
-					<!-- text only -->
+							<!-- r. Prompt: session over -->
+						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Experiment Ended]</font><br>
+							Boooo! You ran out of time to finish experiment. Click <u>RESTART</u> to try again without changing the system.<br>
+						</div>
+					</div><br>
 
-				<!-- Menu Bar -->
-					<!-- ngcontroller hover over drop down menu -->
-					<!-- for extension of functionality -->
+						<!-- vi. Panel: results table (ui-grid) -->
+					<div class="panel-heading">RESULTS TABLE</div>
+					<div id="result-table">
+						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter ui-grid-auto-resize></div>
+					</div><br>
+				</div>
+				
+				<div id="status-system-box" class="container-fluid col-md-3">
+						<!-- vii. Panel: experiment status-->
+					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
+					<div id="dashboard" class="panel-body">
+							<!-- a. Your Days Left -->
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>Days Left</div>
+							<div class="tracked-value">{{view.experiment.daysLeft}}</div>
+						</div>
+							<!-- b. Your Time -->
+						<div class="col-md-4 track-panel">
+							<div>Time</div>
+							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
+						</div>
+							<!-- c. Your Steps Taken -->
+						<div id="track-panel-steps" class="col-md-4 track-panel gloss-contrast">
+							<div>Steps</div>
+							<div class="tracked-value">{{view.experiment.steps}}</div>
+						</div>
+					</div><br>
 
-				<!-- Cookies Autosave reload -->
-					<!-- text warning -->
-					<!-- button ng-click to load or restart -->
-					<!-- ng-controllers: auto prompt to load save -->
+						<!-- viii. Panel: controls -->
+					<div class="panel-heading">CONTROL PANEL</div>
+					<div class="panel-body clickable-box">
+								<!-- a) "Start" button -->
+						<div class="box-left-btn">
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Start the ligand-receptor association phase of experiment. Require: User input on both the free ligand concentration and association time in the input box">START</button> 
+								<!-- note: set to 20 since on and off graph counted as a separate ones -->
+						</div>
+							<!-- b) "Washing up" button -->
+						<div class="box-right-btn">
+							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Begin the ligand-receptor disassociation phase of experiment. All ligand must be washed off receptor to prevent carry over to the next experimental round. This would result in an underestimated value of free ligand concentration and association time require to reach the maximum peak RU value. Require: initiated start button">WASH</button>
+						</div>
+							<!-- c) "Clear background value" button -->
+						<div class="box-left-btn">
+							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Measure the reading provide by receptor alone to subtract it from the output, such that the graph will began at zero. This is to allow us to focus on only the change in resonance observed by ligand binding. Require: start at free ligand concentration = 0">BACKGROUND</button>
+						</div>
+							<!-- d) "Go home" button -->
+						<div class="box-right-btn">
+							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0" data-toggle="tooltip" title="Stop conducting any more experiment today and skip to continue experiment tomorow. Require: running at least a single experiment during the day">HOME</button>
+						</div>
+							<!-- e) "Clear chart" button -->
+						<div class="box-left-btn">
+							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Clearing all graphical plot without erasing any data created and stored on the table. Require: running at least a single experiment during the day">CLEAR</button>
+						</div>
+							<!-- f) "Restart" button -->
+						<div class="box-right-btn">
+							<button class="button clickable2 col-md-12" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="Clear all data on experiment previously created but retain the same ligand and receptor. Require: running at least a single experiment during the day">RESTART</button>
+						</div><br><br>
+							<!-- g. Radio: Selecting for free ligand concentration units -->
+						<div id="units-heading" class="col-md-12">Units</div>
+						<form class="conc-radio" ng-init="magnitudeSelected = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">
+								<!-- 1. mM radio button -->
+							<div class="col-md-4 radio-btn">
+								<input type="radio" ng-model="magnitudeSelected" ng-value="0">&nbsp; mM
+							</div>
+								<!-- 2. uM radio button -->
+							<div class="col-md-4 radio-btn">
+								<input type="radio" ng-model="magnitudeSelected" ng-value="1">&nbsp; uM
+							</div>
+								<!-- 3. nM radio button -->
+							<div class="col-md-4 radio-btn">
+								<input type="radio" ng-model="magnitudeSelected" ng-value="2">&nbsp; nM
+							</div>
+						</form><br><br>
+							<!-- h. Free Ligand Concentration Input -->
+						<div class="col-md-6 track-panel gloss-contrast">
+							<div>Free Ligand Concentration</div>
+							<form novalidate name="fLC_Form">
+								<input class="form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="number" ng-model="input_fLC" required>
+							</form>
+						</div>
+							<!-- i. Association Time Input -->
+						<div class="col-md-6 track-panel gloss-contrast2">
+							<div>Association Time/s</div>
+							<form novalidate name="timeOn_Form">
+								<input class="form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="number" ng-model="input_timeOn" required>
+							</form>
+						</div>				
+					</div><br>
 
-<!-- Bootstrap column position: centre left -->
+						<!-- ix. Panel: generated system info -->
+					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
+					<div class="panel-body">
+							<!-- a. System ID -->
+						<div class="box-left">System ID</div>
+						<div class="box-right">{{view.system.uniqueID}}</div>
+							<!-- b. Ligand Molecular Weight -->
+						<div class="box-left">Ligand Mol Weight / gmol<sup>-1</sup></div>
+						<div class="box-right">{{view.system.mwL | mwFilter}}</div>
+							<!-- c. Receptor Molecular Weight -->
+						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
+						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
+							<!-- d. Values for Debugging-->
+						<div class="box-left debug">Kd / uM</div>
+						<div class="box-right debug">{{view.system.Kd | uM_Filter}}</div><br>
+						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
+						<div class="box-right debug">{{view.system.kOn}}</div><br>
+						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+						<div class="box-right debug">{{view.system.kOff}}</div><br>
+						<div class="box-left debug">Completed steps count</div>
+						<div class="box-right debug">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br>
+					</div>
+				</div>
+			</div><br>
 
-			<!-- 2. Output -->
-				<!-- heading text only-->
-
-				<!-- Mode A - Sensorgram: Graph of Resonance (RU) vs Time (s) -->
-					<!-- graph element -->
-					<!-- ng-controller plot sensorgram graph --> 
-					<!-- services: model -->
-
-				<!-- Mode A - Result Box: Precision  -->
-					<!-- text only -->
-
-				<!-- Mode B - Langmuir Isotherm: Graph of Resonance at Equilibrium (RU) vs [Free Ligand] (M) -->
-					<!-- graph element -->
-					<!-- ng-controller plot Langmuir graph --> 
-					<!-- services: generated data -->
-
-				<!-- Mode B - Result Box: Kd value  -->
-					<!-- text only -->
-
-			<!-- 3. Results -->
-				<!-- heading text only -->
-
-				<!-- Buttons-->
-
-					<!-- Precision -->
-						<!-- button ng-click -->
-						<!-- ng-controller: precision calculation -->
-						<!-- services: simple statitics -->
-
-					<!-- Sensorgram -->
-						<!-- button ng-click -->
-						<!-- ng-controller: plot sensorgram graph -->
-
-					<!-- Langmuir Isotherm -->
-						<!-- button ng-click -->
-						<!-- ng-controller: plot Langmuir graph -->
-
-				<!-- Table data display -->
-						<!-- directives: ng-grid -->
-						<!-- ng-click controller: select -->
-
-					<!-- No. -->
-						<!-- text only -->
-
-					<!-- Time (s) -->
-						<!-- text only -->
-
-					<!-- Free [Ligand] (M) -->
-						<!-- text only -->
-
-					<!-- Max Resonance @ on (RU) -->
-						<!-- text only -->
-
-					<!-- koff (s^-1) -->
-						<!-- text only -->
-
-<!-- Bootstrap column position: centre right -->
-
-			<!-- 4. Status -->
-				<!-- heading text only -->
-
-				<!-- Days Left -->
-					<!-- text only -->
-					<!-- text box display; directives: warning 1 -->
-
-				<!-- Time of Day -->
-					<!-- text only -->
-					<!-- text box display; directives: warning 2 -->
-
-				<!-- Steps Taken -->
-					<!-- text only -->
-					<!-- text box display; directives: warning 3 -->
-
-			<!-- 5. Control Panel -->
-				<!-- heading text only -->
-
-				<!-- Buttons -->
-
-					<!-- Setup -->
-						<!-- button ng-click -->
-						<!-- ng-controller: setup -->
-
-					<!-- Run -->
-						<!-- button ng-click -->
-						<!-- ng-controller: run -->
-
-					<!-- Eat -->
-						<!-- button ng-click -->
-						<!-- ng-controller: eat -->
-
-					<!-- Home -->
-						<!-- button ng-click -->
-						<!-- ng-controller: home -->
-
-				<!-- Association Time (s) -->
-					<!-- text only -->
-					<!-- text box form -->
-
-				<!-- Disassociation Time (s) -->
-					<!-- text only -->
-					<!-- text box form -->
-
-				<!-- Free [Ligand] (M) -->
-					<!-- text only -->
-					<!-- text box form -->
-
-			<!-- 6. Data Display -->
-				<!-- heading text only -->
-
-				<!-- Buttons -->
-
-					<!-- Zero -->
-						<!-- button ng-click -->
-						<!-- ng-controller: zero -->
-
-					<!-- Outlier -->
-						<!-- button ng-click -->
-						<!-- ng-controller: outlier -->						
-
-					<!-- Select All -->
-						<!-- button ng-click -->
-						<!-- ng-controller: select all -->
-
-					<!-- Excel Export -->
-						<!-- button ng-click -->
-						<!-- ng-controller: excell export -->
-
-			<!-- 7. Credits -->
-				<!-- text only -->
-	    
+			<!-- 3. Credit Box -->
+			<div class="row credit-box">
+					<!-- a. credit & buttons -->
+				<div class="col-md-10">
+						<!-- Button: finish -->
+					<!-- div class="col-md-12 heading">
+						<a href="https://www.google.com" class="finish-btn">
+							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false" data-toggle="tooltip" title="Summary of all learning points">SUMMARY</button>
+						</a>
+					</div-->	
+				</div>
+					<!-- b. Logo -->
+				<div class="col-md-2">
+					<img src="images/ox-uni-logo.png" id="ox-logo">
+				</div>
+			</div>
+		</div>   
 	</body>
 
 </html>

@@ -7,7 +7,6 @@ angular.module('time_filter', [])
 /* 2. creating sub-methods as part of the function object that can be called */
 
 function timeOfDay() {
-
 	return function(timeInput){
 		var hours = Math.floor(timeInput); // get the hour
 		var minutes = '00';
@@ -18,5 +17,4 @@ function timeOfDay() {
 		timeOutput = hours+':'+minutes;
 		return timeOutput;
 	};
-
 }
