@@ -36,8 +36,8 @@ function tableCreate(outputModel, experimentStatus) {
 						width: '129'
 					},
 					{
-						field: "peakRU_value",
-						displayName: "peak RU",
+						field: "maxRU_value",
+						displayName: "max RU",
 						width: '97'
 					}
 				],
@@ -55,7 +55,7 @@ function tableCreate(outputModel, experimentStatus) {
 			"fLC": out_fLC,
 			"units": output.unitAdjust,
 			"timeOn": out_timeOn,
-			"peakRU_value": out_RU_On_Output
+			"maxRU_value": out_RU_On_Output
 		};
 		table.data.push(angular.copy(table.compiledSet));
 	};

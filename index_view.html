@@ -90,7 +90,7 @@
 						</div>
 							<!-- b. Average Steps -->
 						<div class="col-md-6 track-panel">
-							<div>Lowest Steps</div>
+							<div>Optimum Steps</div>
 							<div class="tracked-value">12</div>
 						</div>
 					</div>
@@ -125,28 +125,35 @@
 							<!-- c. Text: Objectives -->
 						<div class="guide-objectives" ng-show="view.guideMode == true">
 								<!-- 1. 1st Objective -->
-							<div class="guide gloss-contrast" ng-show="view.guide_one == true">1 - Start by clearing out the <u>BACKGROUND</u> value so the background resonance value of the chip will not be display.<br><br>
-							Do this by running <u>free ligand concentration</u> = 0 and any <u>association time</u>. Then click <u>BACKGROUND</u> button to clear it from subsequent measurements.</div>
+							<div class="guide gloss-contrast" ng-show="view.guide_one == true">1 - Before performing experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0) and remove it from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
+							In a real world experiment, artefacts from background such as baseline drift could occur which would cause an increase in resonance over time. Thus the <u>association time</u> you run to remove background must cover the longest <u>association time</u> you would be using in the whole experiment to subtract all baseline drift. However, for this simulation, you can assume there is no baseline drift and input any <u>association time</u> you like.
+							</div>
 								<!-- 2. 2nd Objective -->
-							<div class="guide" ng-show="view.guide_two == true">2 - In order to generate coordinates to plot for Langmuir Isotherm, you will need to generate at least 5-6 sets of points that are evenly spaced from each other in terms of magnitude and all points being in the dynamic range which <u>peak RU</u> value will be responsive when <u>free ligand concentration</u> changes.<br><br>
-							To find the dynamic range, you will need to find what <u>peak RU</u> value lies at the the higher and lower end of it. An effective strategy will be to try out a very broad magnitude of <u>free ligand concentration</u>.<br><br>
-							For example, starting at 1 mM, 1 uM and 1 nM can give you an idea if the higher end of dynamic range is between 1 mM and 1 uM or between 1 uM and 1 nM. After which you can zoom into these range to pinpoint where the higher end of dynamic range is.<br><br>
-							As for the lower end of the dynamic range, you have already fixed what that value will take, which is 0 as you have set by clicking <u>BACKGROUND</u> previously.
+							<div class="guide" ng-show="view.guide_two == true">2 - You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>association time</u><br><br>
+							We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium at nM <u>free ligand concentration</u> since this length would cover for all higher <u>free ligand concentration</u>.<br><br>
+							A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low seed value such as 1 second and estimate from the projection, assuming that the curve is a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
+							Ultimately, you will know that you have reached equilibrium by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.
 							</div>
 								<!-- 3. 3rd Objective -->
-							<div class="guide gloss-contrast" ng-show="view.guide_three == true">3 - Knowing  the <u>peak RU</u> values at both end of the dynamic range and its associated <u>free ligand concentration</u> can now allow you to systematically determine what are the suitable intermediate coordinates to generate between them.<br><br>
-							The most strategic thing you could do is aim to determine what <u>free ligand concentration</u> input will give the corresponding <u>peak RU</u> value which is half of the higher end of dynamic range.<br><br>
-							Once you have obtain what that <u>free ligand concentration</u> to be, you can easily sample points in between to generate coordinates of suitable spacing between higher and lower end of dynamic range that you can plot on the Langmuir Isotherm.<br><br>
-							Do ensure that all the <u>peak RU</u> values generated are valid by giving sufficient time for the ligand and receptor to bind.</div>
+							<div class="guide gloss-contrast" ng-show="view.guide_three == true">3 - The purpose of plotting Langmuir Isotherm is to find out the resonance value for maximum binding at equilibrium and from the curve, derive the <u>free ligand concentration</u> which gives the half maximal binding resonance value which is the Kd. We use SPR to find the resonance values at equilibrium and its corresponding <u>free ligand concentration</u> for plotting in Langmuir Isotherm. We have previously determined the minimum <u>association time</u> require for the binding to reach equilibrium and will use this length to run subsequent experiments for <u>max RU</u> measured to be valid. However, we still have to find out the <u>free ligand concentration</u> range to input such the points obtained are sufficiently scattered for plotting an accurate Langmuir Isotherm.<br><br> 
+							Our theoretical knowledge about ligand-receptor pair give us the context that Kd usually lies between mM to nM range for weak to strong binding respectively. Thus, given an unknown system, a suitable strategy would be to seed values broadly between these range, such as 1 nM, 1 uM and 1 mM.<br><br>
+							The result will tell us roughly where the dynamic range lies by observing the position of the 1 uM curve. The dynamic range is when a change in <u>free ligand concentration</u> still result in change in <u>max RU</u> measured at equilibrium binding as it has not yet reached the maximum binding at equilibrium on Langmuir Isotherm curve. If the 1 uM curve <u>max RU</u> is closer to the 1 mM curve <u>max RU</u>, it is likely that the <u>max RU</u> at equilibrium of 1 mM curve has reached the maximum binding at equilibrium on Langmuir Isotherm. This mean that you should sample for more coordinates between the 1 uM and the 1 nM curve. Otherwise try running another curve at higher magnitude than 1 mM to confirm if the maximum binding at equilibrium on Langmuir Isotherm has been reached. At the end, you want to generate at least 6 points in the dynamic range of Langmuir Isotherm with reasonable spacing of <u>max RU</u> at equilibrium binding value so you could plot easily.
+							</div>
 								<!-- 4. 4th Objective -->
-							<div class="guide" ng-show="view.guide_four == true">4 - Next we have to find the standard deviation of this technique. For a single set of <u>free ligand concentration</u> and <u>association time</u> input, repeat 6 times  to allow calculation of standard  deviation. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.</div>
+							<div class="guide" ng-show="view.guide_four == true">4 - We must also find the k<sub>off</sub> from the experiment for calculating k<sub>on</sub> later. In this simulation, we can assume that the disassociation is a first order model, thus from the disassociation curve generated after clicking <u>WASH</u>, we can take a coordinate and use it to calculate the disassociation constant with the first order decay equation.<br><br>
+							A good practice would be to sample points at even spacing on a disassociaiton curve to use for determining k<sub>off</sub>, such as from the 1st and 2nd half-life.
+							</div>
 								<!-- 5. 5th Objective -->
-							<div class="guide gloss-contrast" ng-show="view.guide_five == true">5 - Using the data you generated in the results table, draw a Langmuir Isotherm plot of <u>peak RU</u> against <u>free ligand  concentration</u>. This plot will help you derive your Kd value.<br><br>
-							You should notice that <u>peak RU</u> also plateau as <u>free ligand  concentration</u> increases. This allow you to derive Kd from the Langmuir Isotherm plot as being the  <u>free ligand concentration</u> at half  maximum <u>peak RU</u> reached.</div>
+							<div class="guide gloss-contrast" ng-show="view.guide_five == true">5 - With 6 coordinates that are evenly spaced for <u>max RU</u> at equilibrium binding and its corresponding <u>free ligand concentration</u>, perform at least 3 replicates per point such that you have a total of 6x3 = 18 coordinates. Replicates allow us to see which points are outliers and should be discarded.<br><br>
+							In addition, although theoretically k<sub>off</sub> should be same, as a good practice you should also calculate the k<sub>off</sub> value from the graphs generated at different <u>free ligand concentration</u> to check for errors.
+							</div>
 								<!-- 6. 6th Objective -->
-							<div class="guide" ng-show="view.guide_six == true">6 - To find the k<sub>off</sub>, you need to use the first order rate equation since the disassociation process is first order. The coordinate to input into the rate equation can be found on the sensorgram. Take any point of the disassociation curve generated every time you clicked <u>WASH</u>.</div>
+							<div class="guide" ng-show="view.guide_six == true">6 - Next we have to find the standard deviation of the SPR technique. To achieve 95% confidence, 6 duplicates must be perform on a single set of <u>free ligand concentration</u> and <u>association time</u> combination. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.<br><br>
+							Note that you should obtain the standard deviation for both the association experiment (<u>max RU</u> at equilibrium binding) and disassociation experiment (k<sub>off</sub>) to allow you to calculate the standard deviation for k<sub>on</sub> later.
+							</div>
 								<!-- 7. 7th Objective -->
-							<div id="guide-bottom" class="guide gloss-contrast" ng-show="view.guide_seven == true">7 - Finally, using Kd and k<sub>off</sub> calculated, you can derive  k<sub>on</sub> by using the thermodynamics equation relating the three constants.</div>
+							<div id="guide-bottom" class="guide gloss-contrast" ng-show="view.guide_seven == true">7 - Finally, export the data into excel. Plot the Langmuir Isotherm by hand or use the curve fitting function on excel with hyperbola shaped curve. There should be at least 6x3=18 plots on there. From the curve, you can derive what the RU value for maximum binding at equilibrium is by observing where the curve plateau. This will allow you to find the Kd as the <u>free ligand concentration</u> at half maximal binding at equilibrium. Use this Kd value and k<sub>off</sub> value obtained to calculate k<sub>on</sub> and its standard deviation.
+							</div>
 						</div>
 					</div>
 					<br>
@@ -194,7 +201,7 @@
 						<div ng-show="view.experiment.steps == 0 && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Welcome to the simulation challenge!]</font><br>
-							The objective of this simulation is to help you master effective experimental design and troubleshooting skills when faced with an unknown system. To achieve true mastery of scientific method, you will have to both be able to obtain the correct answer and use the least number of steps possible to achieve it. You can see how your performance compared to others at <u>BEAT THE BEST SCORE</u> panel in the left.<br><br>
+							The objective of this simulation is to help you master effective experimental design and troubleshooting skills when faced with an unknown system. To achieve mastery of scientific method, you will have to both be able to obtain the correct answer and use close to the number of steps possible to achieve it.<br><br>
 							Surface plasmon resonance is a biophysical technique used to find the Kd, k<sub>on</sub> and k<sub>off</sub> between a ligand-receptor pair<br><br>
 							I will be guiding you with tips to help you get up to speed with the experiment. Please take note of the points below before beginning:<br>
 							- You can find explanation for the functions of various buttons on the page by hovering over it.<br>
@@ -261,26 +268,26 @@
 							Ready to <u>START</u>, input values and choose <u>Units</u> for <u>Free Ligand Concentration</u> and <u>Association Time/s</u> in <u>CONTROL PANEL</u> to begin.<br>
 							Subsequently, you will need to <u>WASH</u> up to obtain the results found in <u>RESULTS TABLE</u> below.<br>
 						</div>
-							<!-- j. Prompt: clear background -->
+							<!-- j. Prompt: remove background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Tip: clear background prior to performing an experiment]</font><br>
+							<font color="#ececec">[Tip: remove background prior to performing an experiment]</font><br>
 							You should begin the experiment by setting the value of background reading before trying any other <u>Free Ligand Concentration</u>. You can do this by:<br>
 							(1) running <u>Free Ligand Concentration</u> = 0 M and <u>WASH</u><br>
 							(2) then clear <u>BACKGROUND</u><br>
 							<font color="#c33e3e">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
 						</div>
-							<!-- k. Prompt: clear background successs -->
+							<!-- k. Prompt: remove background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Success: clear background]</font><br>
+							<font color="#ececec">[Success: remove background]</font><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- l. Prompt: RU on result is invalid -->
 						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Tip: resulting peak RU value is invalid]</font><br>
-							The <u>peak RU</u> value for this input <u>Free Ligand Concentration</u> have not achieve the maximum possible value yet before <u>WASH</u> off. This mean that the <u>peak RU</u> value for this data set is <font color="#c33e3e">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>Association Time/s</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it for plotting the Langmuir Isotherm later.<br>
+							<font color="#ececec">[Tip: resulting max RU value is invalid]</font><br>
+							The <u>max RU</u> value for this input <u>Free Ligand Concentration</u> have not reached the equilibrium binding yet before <u>WASH</u> off. This mean that the <u>max RU</u> value for this data set is <font color="#c33e3e">invalid and cannot be use for plotting in Langmuir Isotherm</font>. Please increase the input <u>Association Time/s</u> duration until you observe that the graph achieve a plateau. Also, do note down the trial number of this dataset so you will not use it for plotting the Langmuir Isotherm later.<br>
 						</div>
 							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
 						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
@@ -292,13 +299,13 @@
 						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Invalid free ligand conc. input]</font><br>
-							I'm sorry but <u>Free Ligand Concentration</u> input can only intake an integral number equal or above {{view.output.minimum_fLC_input}}. Please change it before you <u>START</u> the next experiment.<br>
+							I'm sorry but <u>Free Ligand Concentration</u> input can only intake a number equal or above {{view.output.minimum_fLC_input}}. Please change it before you <u>START</u> the next experiment.<br>
 						</div>
 							<!-- m. Prompt: invalid time on -->
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Invalid association time input]</font><br>
-							I'm sorry but <u>Association Time/s</u> input can only intake an integral number between 1 and 900. Please change it before you <u>START</u> the next experiment.<br>
+							I'm sorry but <u>Association Time/s</u> input can only intake a number between 1 and 900. Please change it before you <u>START</u> the next experiment.<br>
 						</div>
 							<!-- n. Prompt: maximum number of curve on graph reached -->
 						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
@@ -327,7 +334,6 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
-							Please scroll below and click <u>Summary</u> to view all learning objectives you have accomplished.<br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 
@@ -335,7 +341,7 @@
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Experiment Ended]</font><br>
-							Boooo! You ran out of time to finish experiment. Click <u>RESTART</u> to try again without changing the system.<br>
+							You ran out of time to finish the experiment. Click <u>RESTART</u> to try again without changing the system.<br>
 						</div>
 					</div><br>
 
@@ -377,9 +383,9 @@
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Begin the ligand-receptor disassociation phase of experiment. All ligand must be washed off receptor to prevent carry over to the next experimental round. This would result in an underestimated value of free ligand concentration and association time require to reach the maximum peak RU value. Require: initiated start button">WASH</button>
+							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Begin the ligand-receptor disassociation phase of experiment. All ligand must be washed off receptor to prevent carry over to the next experimental round. This would result in an underestimated value of free ligand concentration and association time require to reach the maximum max RU value. Require: initiated start button">WASH</button>
 						</div>
-							<!-- c) "Clear background value" button -->
+							<!-- c) "remove background value" button -->
 						<div class="box-left-btn">
 							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Measure the reading provide by receptor alone to subtract it from the output, such that the graph will began at zero. This is to allow us to focus on only the change in resonance observed by ligand binding. Require: start at free ligand concentration = 0">BACKGROUND</button>
 						</div>
@@ -441,7 +447,7 @@
 						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
 							<!-- d. Values for Debugging-->
 						<div class="box-left debug">Kd / uM</div>
-						<div class="box-right debug">{{view.system.Kd | uM_Filter}}</div><br>
+						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2) * 1}}</div><br>
 						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
 						<div class="box-right debug">{{view.system.kOn}}</div><br>
 						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
