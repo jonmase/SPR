@@ -25,13 +25,13 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* b) set Kd: random assignment out of possibility in array; constant */
 	system.set_Kd = function() {
-		system.Kd_possible = [0.00000005, 0.0000001, 0.0000002, 0.0000003, 0.000004, 0.0000005];
+		system.Kd_possible = [0.00000005, 0.00000009, 0.0000003, 0.0000008, 0.0000004, 0.000007, 0.000002, 0.00001, 0.0006, 0.002];
 		system.flip_Kd = function() {
-			system.Kd_chance = Math.floor(6*Math.random());
+			system.Kd_chance = Math.floor(10*Math.random());
 		};
 		system.flip_Kd();
 
-		if (system.Kd_chance == 6) {
+		if (system.Kd_chance == 10) {
 			system.flip_Kd();
 		} else {
 			system.Kd = (Math.round(10000000000*(system.Kd_possible[system.Kd_chance])))/10000000000;
@@ -40,13 +40,13 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* c) set kOff: random assignment out of possibility in array; constant */
 	system.set_kOff = function() {
-		system.kOff_possible = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5];
+		system.kOff_possible = [0.05, 0.2, 0.8, 1.5, 2.2, 2.9, 3.4, 4.0, 4.4, 5.0];
 		system.flip_kOff = function() {
-			system.kOff_chance = Math.floor(6*Math.random());
+			system.kOff_chance = Math.floor(10*Math.random());
 		};
 		system.flip_kOff();
 
-		if (system.flip_kOff == 6) {
+		if (system.flip_kOff == 10) {
 			system.flip_kOff();
 		} else {
 			system.kOff = system.kOff_possible[system.kOff_chance];
