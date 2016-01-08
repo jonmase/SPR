@@ -353,6 +353,13 @@ a.finish-btn:active {
 	text-align: center;
 }
 
+.unit-panel {
+	border-radius: 0px 0px 0px 3px;
+	padding: 5px;
+	padding-top: 0px;
+	text-align: center;
+}
+
 #track-panel-steps {
 	border-radius: 0px 0px 3px 0px;
 }
@@ -382,20 +389,9 @@ a.finish-btn:active {
 
 #units-heading {
 	margin-top: 10px;
+	padding-top: 5px;
 	text-align: center;
-}
-
-.conc-radio {
-	height: 28px;
-	width: 100%;
-	margin-bottom: 10px;
-	text-align: center;
-}
-
-.radio-btn {
-	padding: 0px;
-	padding-top: 4px;
-	padding-bottom: 4px;
+	background-color: red;
 }
 
 /* footer: credit box */
