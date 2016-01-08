@@ -211,19 +211,13 @@ a.navbar-link:active {
 	margin-bottom: 3px
 }
 
-.guide {
-	text-align: left;
-	padding: 8px;
+.modal-header {
+	border-color: #222530;
+	background-color: #344458;
 }
 
-#guide-bottom {
-	padding-bottom: 0px;
-}
-
-.guide-objectives {
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 10px;
+.modal-body {
+	background-color: #263349;
 }
 
 /* panel: sensorgram */
