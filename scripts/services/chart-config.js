@@ -14,7 +14,8 @@ function chartCreate(outputModel) {
 	chart.options = {
 		grid: {
 		    backgroundColor: { colors: [ "#151c28", "#1c2535" ] },
-		    borderWidth: 0
+		    borderWidth: 0,
+		    hoverable: true
 		},
 		legend: {
 			backgroundOpacity: 0.75,
@@ -38,6 +39,10 @@ function chartCreate(outputModel) {
 			axisLabelColour: "#d2e3fd",
 			axisLabelPadding: 10,
 			color: "#344458",
+		},
+		tooltip: {
+			show: true,
+			content: "(%x, %y)"
 		}
 	};
 }
