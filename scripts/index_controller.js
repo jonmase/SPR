@@ -45,6 +45,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.isDisabled_run = false;
 	view.isDisabled_wash = true;
 	view.isDisabled_check = true;
+	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
+	view.magnitudeCheck_kOn = [1000000, 1000, 1];
 	view.Kd_correct = false;
 	view.kOn_correct = false;
 	view.kOff_correct = false;
@@ -256,16 +258,16 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 /* i) creating a function for "check" answer button */
-	view.check = function(check_Kd, check_kOn, check_kOff) {
+	view.check = function(check_Kd, check_kOn, check_kOff, magnitudeCheck_Kd, magnitudeCheck_kOn) {
 		view.isDisabled_check = false;
 			// check if Kd answer is within acceptable range
-		if (check_Kd/1000 > 0.99*view.system.Kd && check_Kd/1000 < 1.01*view.system.Kd) {
+		if (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] > 0.99*view.system.Kd && check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] < 1.01*view.system.Kd) {
 			view.Kd_correct = true;
 		} else {
 			view.Kd_correct = false;
 		}
 			// check if kOn answer is within acceptable range
-		if (check_kOn > 0.99*view.system.kOn && check_kOn < 1.01*view.system.kOn) {
+		if (check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] > 0.99*view.system.kOn && check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] < 1.01*view.system.kOn) {
 			view.kOn_correct = true;
 		} else {
 			view.kOn_correct = false;

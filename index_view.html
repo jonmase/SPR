@@ -183,27 +183,27 @@
 						</div>
 							<!-- d. Dropdown Menu: units for check Kd -->
 						<div class="col-md-4 unit-panel gloss-contrast">
-							<select>
-								<option value="saab">mM</option>
-								<option value="mercedes">uM</option>
-								<option value="audi">nM</option>
-							</select>							
+							<select class="units_dropdown" ng-model="magnitudeSelected_check_Kd" ng-init="magnitudeSelected_check_Kd = 2" data-toggle="tooltip" title="Change the unit of Kd for Check Answer">
+								<option ng-value="0">mM</option>
+								<option ng-value="1">uM</option>
+								<option ng-value="2" ng-selected="true">nM</option>
+							</select>						
 						</div>
 							<!-- e. Dropdown Menu: units for check kOn -->
 						<div class="col-md-4 unit-panel">
-							<select>
-								<option value="volvo">Ms&#x207b;&#xb9;</option>
-								<option value="saab">ks&#x207b;&#xb9;</option>
-								<option value="mercedes">s&#x207b;&#xb9;</option>
-							</select>							
+							<select class="units_dropdown" ng-model="magnitudeSelected_check_kOn" ng-init="magnitudeSelected_check_kOn = 2" data-toggle="tooltip" title="Change the unit of k on for Check Answer">
+								<option value="0">Ms&#x207b;&#xb9;</option>
+								<option value="1">ks&#x207b;&#xb9;</option>
+								<option value="2" ng-selected="true">s&#x207b;&#xb9;</option>
+							</select>						
 						</div>
 							<!-- f. Dropdown Menu: units for check Kd -->
-						<div class="col-md-4 unit-panel gloss-contrast">
+						<div id="default_unit" class="col-md-4 unit-panel gloss-contrast">
 							<div>M<sup>-1</sup>s<sup>-1</sup></div>
 						</div>
 							<!-- g. Button: check -->
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
-							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">CHECK</button>
+							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid"data-toggle="tooltip" title="Check your answer">CHECK</button>
 						</div>
 					</div>
 				</div>
@@ -386,7 +386,7 @@
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Start the ligand-receptor association phase of experiment. Require: User input on both the free ligand concentration and association time in the input box">START</button> 
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Start the ligand-receptor association phase of experiment. Require: User input on both the free ligand concentration and association time in the input box">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
@@ -425,31 +425,14 @@
 						</div>
 							<!-- j. Drop-down Menu: Selecting units for free ligand concentration units -->
 						<div class="col-md-6 unit-panel gloss-contrast">
-							<select>
-								<option value="saab">mM</option>
-								<option value="mercedes">uM</option>
-								<option value="audi">nM</option>
+							<select class="units_dropdown" ng-model="magnitudeSelected_input_Kd" ng-init="magnitudeSelected_input_Kd = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">
+								<option ng-value="0">mM</option>
+								<option ng-value="1">uM</option>
+								<option ng-value="2" ng-selected="true">nM</option>
 							</select>
 						</div>
 							<!-- k. Association Time Units -->
-						<div class="col-md-6 unit-panel gloss-contrast2">seconds</div>
-
-
-						<div id="units-heading" class="col-md-12">Units</div>
-							<form class="conc-radio" ng-init="magnitudeSelected = 2" data-toggle="tooltip" title="Change the unit of free ligand concentration input">
-									<!-- 1. mM radio button -->
-								<div class="col-md-4 radio-btn">
-									<input type="radio" ng-model="magnitudeSelected" ng-value="0">&nbsp; mM
-								</div>
-									<!-- 2. uM radio button -->
-								<div class="col-md-4 radio-btn">
-									<input type="radio" ng-model="magnitudeSelected" ng-value="1">&nbsp; uM
-								</div>
-									<!-- 3. nM radio button -->
-								<div class="col-md-4 radio-btn">
-									<input type="radio" ng-model="magnitudeSelected" ng-value="2">&nbsp; nM
-								</div>
-							</form>							
+						<div id="default_unit" class="col-md-6 unit-panel gloss-contrast2">seconds</div>
 					</div><br>
 						<!-- ix. Panel: generated system info -->
 					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>

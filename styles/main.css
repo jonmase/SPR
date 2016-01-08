@@ -166,10 +166,22 @@ a.navbar-link:active {
 	margin-top: 7px;
 	margin-bottom: 5px;
 	border: 2px solid #3d5174;
-	border-radius: 3px;
+	border-radius: 5px;
 	background-color: #232836;
 	text-align: right;
 	font-size: 0.84em;
+}
+
+.units_dropdown {
+	height: 25px;
+	width: 65px;
+	border: 2px solid #3d5174;
+	background-color: #232836;
+	text-align: right;
+}
+
+#default_unit {
+	padding-top: 3px;
 }
 
 .debug {
@@ -385,13 +397,6 @@ a.finish-btn:active {
 .box-right-btn {
 	text-align: left;
 	width: 50%;
-}
-
-#units-heading {
-	margin-top: 10px;
-	padding-top: 5px;
-	text-align: center;
-	background-color: red;
 }
 
 /* footer: credit box */
