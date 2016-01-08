@@ -220,6 +220,10 @@ a.navbar-link:active {
 	background-color: #263349;
 }
 
+.modal-cross {
+	color: #e5effd;
+}
+
 /* panel: sensorgram */
 #flot {
 	display: flex;
