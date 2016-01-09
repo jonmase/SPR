@@ -16,7 +16,7 @@ function outputMethod(experimentStatus, systemModel, $cookies) {
 	output.fLC_tableDisplay = []; // units = M but no error adjusted; input fLC value specify by the user, display on table and charts so user can track progress
 	output.fLC = []; // units = M but error adjusted; actual fLC value use in plotting as adjusted by standard error
 	output.timeOn = []; // timeOn must be > 0
-	output.timeOffDefault = 20; // set timeOff to 20 seconds for default
+	output.timeOffDefault = 30; // set timeOff to 30 seconds for default, but will be override by min time off set in controller at starting
 	output.minimum_fLC_input = 0;
 		// tracked value
 	output.machineTime = 0;
@@ -47,7 +47,7 @@ function outputMethod(experimentStatus, systemModel, $cookies) {
 		output.fLC.push(experiment.absoluteError(experiment.relativeError(new_fLC/output.magnitudeAdjust))); // relative error first from measurement error, then absolute error from pipetting error
 	};
 
-/* c) set timeOn: user input via form; variable */
+/* c) set timeOn and timeOffDefault: user input via form; variable */
 	output.add_timeOn = function(new_timeOn) {
 		output.timeOn.push(new_timeOn);
 	};

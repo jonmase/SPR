@@ -183,6 +183,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 	if (view.cookies.getObject("storedData") === undefined) { // if there are no data, generate a new system
 */		view.system.loadNewPair(view.vol, view.RPUM);
+		view.output.timeOffDefault = view.system.min_timeOff;
 /*		view.storedDataPrompt = false;
 		view.cookies.putObject("storedData", view.cookiesData);
 	} else { // load stored data

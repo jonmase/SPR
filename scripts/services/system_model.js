@@ -104,8 +104,9 @@ function systemMethod() { // creating master function object that encapsulate al
 	};
 
 /* i) calculate time on to reach 0.9999 RU at equilibrium for 1 nM free ligand concentration */
-	system.find_min_timeOn = function() {
-		system.min_timeOn = -(Math.log(0.001)/((-system.kOn*0.000000001)+system.kOff)); 
+	system.find_min_timeOnOff = function() {
+		system.min_timeOn = -(Math.log(0.001)/((-system.kOn*0.000000001)+system.kOff));
+		system.min_timeOff = -Math.log(0.001)/system.kOff;
 	};
 
 /* j) generating ligand-receptor pair unique ID for demonstrator to check answer on */
@@ -125,7 +126,7 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.set_mwR();
 		system.find_mwLR(system.mwL, system.mwR);
 		system.find_RU_Max(system.tRC, system.mwR, con_vol, con_RPUM, system.mwL, system.mwLR);
-		system.find_min_timeOn();
+		system.find_min_timeOnOff();
 		system.createID(system.Kd, system.kOff, system.kOn);
 	};
 }
