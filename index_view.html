@@ -84,12 +84,12 @@
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
 						<!-- i. Panel: high score display (mastery mode only) -->
-					<div class="panel-heading">BEAT THE BEST SCORE!</div>
+					<div class="panel-heading">MASTERY SCORE</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Lowest Number of Steps Taken -->
-						<div class="col-md-6 track-panel gloss-contrast">
-							<div>Average Steps</div>
-							<div class="tracked-value">20</div>
+						<div class="col-md-6 track-panel gloss-contrast" data-toggle="tooltip" title="total time using SPR machine (association time)">
+							<div>Efficiency Rating</div>
+							<div class="tracked-value">?</div>
 						</div>
 							<!-- b. Average Steps -->
 						<div class="col-md-6 track-panel" data-toggle="tooltip" title="excluding outliers">
@@ -103,8 +103,8 @@
 					<div class="panel-body clickable-box">
 							<!-- a. Button: guide vs mastery mode selector -->
 						<div class="mode-selection">
-							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">ON</button>
-							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">OFF</button><br><br>
+							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true" data-toggle="tooltip" title="Guiding objectives and extra hints from Console enable">OPEN</button>
+							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false" data-toggle="tooltip" title="Guiding objectives and extra hints from Console disabled">CLOSE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
 						<div class="select-objectives-box col-md-12" ng-show="view.guideMode == true">
@@ -443,17 +443,22 @@
 					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Your Days Left -->
-						<div class="col-md-4 track-panel gloss-contrast">
+						<div class="col-md-6 track-panel gloss-contrast">
 							<div>Days Left</div>
 							<div class="tracked-value">{{view.experiment.daysLeft}}</div>
 						</div>
 							<!-- b. Your Time -->
-						<div class="col-md-4 track-panel">
+						<div class="col-md-6 track-panel">
 							<div>Time</div>
 							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
 						</div>
-							<!-- c. Your Steps Taken -->
-						<div id="track-panel-steps" class="col-md-4 track-panel gloss-contrast">
+							<!-- c. Yout Efficiency Rating -->
+						<div class="col-md-6 track-panel"  ng-show="view.guideMode == true">
+							<div>Efficiency Rating</div>
+							<div class="tracked-value">{{view.output.efficiencyRating}}</div>
+						</div>
+							<!-- d. Your Steps Taken -->
+						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast" ng-show="view.guideMode == true">
 							<div>Steps</div>
 							<div class="tracked-value">{{view.experiment.steps}}</div>
 						</div>
@@ -553,6 +558,8 @@
 						<div class="box-right debug">{{view.system.kOff}}</div><br>
 						<div class="box-left debug">Completed steps count</div>
 						<div class="box-right debug">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br-->
+						<div class="box-left debug">Minimum time on</div>
+						<div class="box-right debug"><u>{{view.system.min_timeOn}}</u></div>
 					</div>
 				</div>
 			</div><br>

@@ -103,14 +103,19 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.RU_MaxLR = (Math.round(1000*(sys_tRC*sys_mwLR*con_vol*con_RPUM)))/1000;
 	};
 
-/* i) generating ligand-receptor pair unique ID for demonstrator to check answer on */
+/* i) calculate time on to reach 0.9999 RU at equilibrium for 1 nM free ligand concentration */
+	system.find_min_timeOn = function() {
+		system.min_timeOn = -(Math.log(0.001)/((-system.kOn*0.000000001)+system.kOff)); 
+	};
+
+/* j) generating ligand-receptor pair unique ID for demonstrator to check answer on */
 	system.createID = function(sys_Kd, sys_kOff, sys_kOn) {
 		system.Kd_code = $.inArray(sys_Kd, system.Kd_possible);
 		system.kOff_code = $.inArray(sys_kOff, system.kOff_possible);
 		system.uniqueID = 'D'+system.Kd_code.toString()+'F'+system.kOff_code.toString();
 	};
 
-/* j) load new set of receptor-ligand pair */
+/* k) load new set of receptor-ligand pair */
 	system.loadNewPair = function(con_vol, con_RPUM) {
 		system.set_tRC();
 		system.set_Kd();
@@ -120,6 +125,7 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.set_mwR();
 		system.find_mwLR(system.mwL, system.mwR);
 		system.find_RU_Max(system.tRC, system.mwR, con_vol, con_RPUM, system.mwL, system.mwLR);
+		system.find_min_timeOn();
 		system.createID(system.Kd, system.kOff, system.kOn);
 	};
 }

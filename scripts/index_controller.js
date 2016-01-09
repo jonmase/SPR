@@ -93,6 +93,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.plotCompileLabelOn();
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
+		view.output.efficiencyCalculator(new_timeOn);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;
@@ -128,6 +129,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.restart = function() {
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
+		view.output.machineTime = 0;
 		view.experiment.steps = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
