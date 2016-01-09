@@ -534,16 +534,16 @@
 					</div><br>
 						<!-- ix. Panel: generated system info -->
 					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
-					<div class="panel-body">
+					<div id="sys_info" class="panel-body">
 							<!-- a. System ID -->
 						<div class="box-left">System ID</div>
-						<div class="box-right">{{view.system.uniqueID}}</div>
+						<div class="box-right"><u>{{view.system.uniqueID}}</u></div>
 							<!-- b. Ligand Molecular Weight -->
 						<div class="box-left">Ligand Mol Weight / gmol<sup>-1</sup></div>
-						<div class="box-right">{{view.system.mwL | mwFilter}}</div>
+						<div class="box-right"><u>{{view.system.mwL | mwFilter}}</u></div>
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
-						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
+						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
 							<!-- d. Values for Debugging>
 						<div class="box-left debug">Kd / uM</div>
 						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2) * 1}}</div><br>

@@ -105,10 +105,9 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* i) generating ligand-receptor pair unique ID for demonstrator to check answer on */
 	system.createID = function(sys_Kd, sys_kOff, sys_kOn) {
-		system.Kd_code = parseInt(sys_Kd*10000000);
-		system.kOff_code = parseInt(sys_kOff*100);
-		system.kOn_code = parseInt(sys_kOn/10000);
-		system.uniqueID = 'D'+system.Kd_code.toString()+'F'+system.kOff_code.toString()+'N'+system.kOn_code.toString();
+		system.Kd_code = $.inArray(sys_Kd, system.Kd_possible);
+		system.kOff_code = $.inArray(sys_kOff, system.kOff_possible);
+		system.uniqueID = 'D'+system.Kd_code.toString()+'F'+system.kOff_code.toString();
 	};
 
 /* j) load new set of receptor-ligand pair */

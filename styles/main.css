@@ -150,13 +150,13 @@ a.navbar-link:active {
 
 .box-left {
 	text-align: left;
-	width: 66%;
+	width: 85%;
 	padding-bottom: 5px;
 }
 
 .box-right {
 	text-align: right;
-	width: 34%;
+	width: 15%;
 	padding-bottom: 5px;
 }
 
@@ -418,6 +418,11 @@ a.finish-btn:active {
 
 #restart_buttons {
 	text-align: center;
+}
+
+/* panel: system info */
+#sys_info {
+	font-size: 0.81em;
 }
 
 /* footer: credit box */
