@@ -3,7 +3,7 @@
 /* 1. master module to compile in all sub-modules for embedding ng-app in HTML */
 var app = angular.module('SPR', ['model', 'display', 'cookies'])
 	.constant('vol', 0.000001) // volume inside chip
-	.constant('RPUM', 100000000) // response per unit mass (RU/g)
+	.constant('RPUM', 1000000000) // response per unit mass (RU/g)
 	.controller('viewCtrl', viewMethod);
 
 /* 2. setting up controller */
@@ -23,6 +23,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		// metrics tracked in database
 	view.restartCounter = 0;
 	view.finishedStepsCount = [];
+	view.finishedEfficiencyCount = [];
 		// default function of various buttons
 	view.guideMode = false;
 	view.backgroundSet = 0;
@@ -171,6 +172,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
 			view.finishedStepsCount.push(angular.copy(view.experiment.steps));
+			view.finishedEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
