@@ -188,6 +188,33 @@ a.navbar-link:active {
 	color: red;
 }
 
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-header {
+	border-color: #222530;
+	background-color: #344458;
+}
+
+.modal-body {
+	background-color: #263349;
+}
+
+.modal-cross {
+	color: #e5effd;
+}
+
 /* panel: guide mode */
 .mode-selection {
 	width: 100%;
@@ -211,17 +238,9 @@ a.navbar-link:active {
 	margin-bottom: 3px
 }
 
-.modal-header {
-	border-color: #222530;
-	background-color: #344458;
-}
-
-.modal-body {
-	background-color: #263349;
-}
-
-.modal-cross {
-	color: #e5effd;
+.modal {
+  text-align: center;
+  padding: 0!important;
 }
 
 /* panel: sensorgram */
@@ -395,6 +414,10 @@ a.finish-btn:active {
 .box-right-btn {
 	text-align: left;
 	width: 50%;
+}
+
+#restart_buttons {
+	text-align: center;
 }
 
 /* footer: credit box */

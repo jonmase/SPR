@@ -28,6 +28,7 @@
 		<script type="text/javascript" src="libraries/flot/angular-flot.js"></script>			
 		<script type="text/javascript" src="libraries/flot/jquery.flot.tooltip.min.js"></script>
 		<script type="text/javascript" src="libraries/flot/jquery.flot.axislabels.js"></script>
+		<script type="text/javascript" src="libraries/flot/jquery.flot.selection.js"></script>
 		<script type="text/javascript" src="scripts/services/chart-config.js"></script>
 
 	    	<!-- Ui-grid Libraries -->
@@ -91,7 +92,7 @@
 							<div class="tracked-value">20</div>
 						</div>
 							<!-- b. Average Steps -->
-						<div class="col-md-6 track-panel">
+						<div class="col-md-6 track-panel" data-toggle="tooltip" title="excluding outliers">
 							<div>Optimum Steps</div>
 							<div class="tracked-value">24</div>
 						</div>
@@ -484,8 +485,22 @@
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.restart()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="Clear all data on experiment previously created but retain the same ligand and receptor. Require: running at least a single experiment during the day">RESTART</button>
+							<button type="button" class="button clickable2 col-md-12" data-toggle="modal" data-target="#restart_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="Clear all data on experiment previously created but retain the same ligand and receptor. Require: running at least a single experiment during the day">RESTART</button>
 						</div><br><br>
+								<!-- Modal: Prompt confirm restart -->
+						<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="myModalLabel">Warning: Are you sure you wish to restart your experiment? All data in table will be clear.</h4><br>
+										<div id="restart_buttons">
+											<button type="button" class="button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
+											<button type="button" class="button clickable2" data-dismiss="modal">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 							<!-- h. Free Ligand Concentration Input -->
 						<div class="col-md-6 track-panel gloss-contrast">
 							<div>Free Ligand Concentration</div>
@@ -523,7 +538,7 @@
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right">{{view.system.mwR | mwFilter}}</div>
-							<!-- d. Values for Debugging-->
+							<!-- d. Values for Debugging>
 						<div class="box-left debug">Kd / uM</div>
 						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2) * 1}}</div><br>
 						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
@@ -531,7 +546,7 @@
 						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 						<div class="box-right debug">{{view.system.kOff}}</div><br>
 						<div class="box-left debug">Completed steps count</div>
-						<div class="box-right debug">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br>
+						<div class="box-right debug">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br-->
 					</div>
 				</div>
 			</div><br>
