@@ -77,7 +77,11 @@ function experimentTrack() {
 			// adjusting stdDev against normal distribution
 		experiment.stdDev_Gaussian_absolute = Math.abs(((Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1))*experiment.stdDev_Absolute);
 			// modify final result with the measurement error (note: absolute error is never negative since it is an error as a result of loss in solution during transfer by pipetting)
-		return out_fLC+experiment.stdDev_Gaussian_absolute;
+		if (out_fLC === 0) {
+			return out_fLC; // if user is creating output for background, no absolute error is suffered
+		} else {
+			return out_fLC+experiment.stdDev_Gaussian_absolute;
+		}
 	};
 
 /* e) generating relative error at random by sampling from a normal distribution */
@@ -95,6 +99,10 @@ function experimentTrack() {
 			experiment.plusOrMinus = -1;
 		}
 			// modify final result with the measurement error (note: relative error can be negative since it is an error as a result of inaccurate measure of volume of solute)
-		return out_fLC+experiment.plusOrMinus*experiment.stdDev_Gaussian_relative;
+		if (out_fLC === 0) {
+			return out_fLC; // if user is creating output for background, no relative error is suffered
+		} else {
+			return out_fLC+experiment.plusOrMinus*experiment.stdDev_Gaussian_relative;
+		}
 	};
 }
