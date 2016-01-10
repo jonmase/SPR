@@ -435,6 +435,7 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
+							OxSPR is still currently a prototype. If you like the software, please support the project by providing <b><a href="" class="blue-link">feedback</a></b> and <b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> it to anyone you think might be helpful.<br><br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 
@@ -518,10 +519,30 @@
 									<div class="modal-body">
 										Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
 										<br><br>
-										If you wish to keep the data and restart, export it as excel by clicking on the menu button at the top-right corner of results table header
+										If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
 										<br><br>
 										<div id="restart_buttons">
 											<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+									<!-- Modal: Prompt confirm play again -->
+						<div id="replay_modal" class="modal fade" tabindex="-1" role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="modalLabel">Confirm Replay</h4>
+									</div>
+									<div class="modal-body">
+										Are you sure you wish to replay? A new pair of ligand-receptor will be generated and all data in the table previously generated will be clear.
+										<br><br>
+										If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
+										<br><br>
+										<div id="restart_buttons">
+											<button type="button" class="modal-button clickable1" ng-click="view.replay()"  data-dismiss="modal">Confirm</button>
 										</div>
 									</div>
 								</div>
@@ -591,7 +612,7 @@
 				<div id="credit-box" class="col-md-10">
 					<div id="credit-buttons">
 							<!-- i. replay -->
-						<button id="replay_button" class="button actions" data-toggle="modal" data-target="#restart_modal">PLAY AGAIN</button>&nbsp;&nbsp;&nbsp;&nbsp;
+						<button id="replay_button" class="button actions" data-toggle="modal" data-target="#replay_modal">PLAY AGAIN</button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<!-- ii. email to others -->
 						<a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="action-link"><button id="email_button" class="button actions">CHALLENGE FRIENDS</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<!-- iii. facebook share -->
@@ -601,31 +622,11 @@
 						<a href="" class="action-link"><button id="survey_button" class="button actions">SURVEY</button></a>
 					</div>
 					<div id="credit-text">
-						OxSPR is still currently a prototype. If you like the software, please support the project by providing feedback and share it to anyone you think might be helpful.
-						<br>
-						Developed for <a href="http://www.bioch.ox.ac.uk/" class="credit-link">Department of Biochemistry</a>, <a href="http://www.ox.ac.uk/" class="credit-link">University of Oxford</a> undergraduate course by <a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="credit-link">Chaiyakorn Srisakvarakul</a>, under supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="credit-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="credit-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="credit-link">Jon Mason</a>.
+						OxSPR is still currently a <font color="red">prototype</font>. If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
 						<br><br>
-						License: Creative Commons
-					</div>
-				</div>
-					<!-- Modal: Prompt confirm restart -->
-				<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Confirm Restart</h4>
-							</div>
-							<div class="modal-body">
-								Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
-								<br><br>
-								If you wish to keep the data and restart, export it as excel by clicking on the menu button at the top-right corner of results table header
-								<br><br>
-								<div id="restart_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
-								</div>
-							</div>
-						</div>
+						Developed for <a href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, <a href="http://www.ox.ac.uk/" class="blue-link">University of Oxford</a> undergraduate course by <a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, under supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
+						<br>
+						The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul
 					</div>
 				</div>
 						<!-- Button: finish -->

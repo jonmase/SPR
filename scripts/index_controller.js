@@ -22,6 +22,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.RPUM = RPUM;
 		// metrics tracked in database
 	view.restartCounter = 0;
+	view.replayCounter = 0;
 	view.checkCounter = 0;
 	view.finishedStepsCount = [];
 	view.finishedEfficiencyCount = [];
@@ -64,14 +65,15 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.continueSaved = function() {
 		view.storedDataPrompt = false; // close the prompt
 	};
+*/
 
-	view.restartExperiment = function(){
-		view.cookies.remove("storedData");
+	view.replay = function(){
+		/* view.cookies.remove("storedData"); */
 		view.system.loadNewPair(view.vol, view.RPUM);
 		view.restart();
-		view.storedDataPrompt = false;
+		view.replayCounter++;
+		/* view.storedDataPrompt = false; */
 	};
-*/
 
 /* c) creating function for set "zero" button */
 	view.set_background = function() {

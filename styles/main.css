@@ -225,6 +225,26 @@ a.navbar-link:active {
 	color: #e5effd;
 }
 
+a.blue-link:link {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.blue-link:visited {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.blue-link:hover {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
+a.blue-link:active {
+	color: #51A7F9;
+	text-decoration: none;
+}
+
 /* panel: guide mode */
 .mode-selection {
 	width: 100%;
@@ -519,24 +539,4 @@ a.action-link:active {
 
 #credit-text {
 	margin-top: 13px;
-}
-
-a.credit-link:link {
-	color: #51A7F9;
-	text-decoration: none;
-}
-
-a.credit-link:visited {
-	color: #51A7F9;
-	text-decoration: none;
-}
-
-a.credit-link:hover {
-	color: #51A7F9;
-	text-decoration: none;
-}
-
-a.credit-link:active {
-	color: #51A7F9;
-	text-decoration: none;
 }
