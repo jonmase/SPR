@@ -22,6 +22,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.RPUM = RPUM;
 		// metrics tracked in database
 	view.restartCounter = 0;
+	view.checkCounter = 0;
 	view.finishedStepsCount = [];
 	view.finishedEfficiencyCount = [];
 		// default function of various buttons
@@ -142,6 +143,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.table.data.length = 0;
 		view.restartCounter++;
+		view.checkCounter = 0;
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
@@ -150,6 +152,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 /* i) creating a function for "check" answer button */
 	view.check = function(check_Kd, check_kOn, check_kOff, magnitudeCheck_Kd, magnitudeCheck_kOn) {
 		view.isDisabled_check = false;
+		view.checkCounter++;
 			// check if Kd answer is within acceptable range
 		if (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] > 0.99*view.system.Kd && check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] < 1.01*view.system.Kd) {
 			view.Kd_correct = true;

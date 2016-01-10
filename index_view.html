@@ -10,12 +10,17 @@
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 	    <title>OxSPR: Simulation Challenge</title>
+	    	<meta property="og:url"           content="https://learntech.imsu.ox.ac.uk/SPR/" />
+			<meta property="og:type"          content="website" />
+			<meta property="og:title"         content="Oxford Biochemistry: SPR Simulation Challenge" />
+			<meta property="og:description"   content="Learn experimental design through simulation of surface plasmon resonance created by Oxford Biochemistry Department" />
+			<!--meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" /-->
 
-	    	<!-- Angular Libraries -->
+	    	<!-- Angular Libraries & Credits -->
 		<script type="text/javascript" src="libraries/angular/angular.min.js"></script>
 		<script type="text/javascript" src="libraries/angular/angular-cookies.min.js"></script>
 
-			<!-- jQuery Libraries, load before Bootstrap & Flot since they requires it -->
+			<!-- jQuery Libraries & Credits, load before Bootstrap & Flot since they requires it -->
 		<script type="text/javascript" src="libraries/jquery/jquery-1.11.3.min.js"></script>
 
 			<!-- Bootstrap Libraries -->
@@ -23,7 +28,7 @@
 		<link rel="stylesheet" href="libraries/bootstrap/bootstrap-theme.min.css">
 		<script type="text/javascript" src="libraries/bootstrap/bootstrap.min.js"></script>
 
-			<!-- Angular Flot Chart Libraries -->
+			<!-- Angular Flot Chart Libraries & Credits -->
 		<script type="text/javascript" src="libraries/flot/jquery.flot.js"></script>			
 		<script type="text/javascript" src="libraries/flot/angular-flot.js"></script>			
 		<script type="text/javascript" src="libraries/flot/jquery.flot.tooltip.min.js"></script>
@@ -31,14 +36,14 @@
 		<script type="text/javascript" src="libraries/flot/jquery.flot.selection.js"></script>
 		<script type="text/javascript" src="scripts/services/chart-config.js"></script>
 
-	    	<!-- Ui-grid Libraries -->
+	    	<!-- Ui-grid Libraries & Credits -->
 	    <link rel="stylesheet" href="libraries/ui-grid/ui-grid.min.css">
 	    <script type="text/javascript" src="libraries/ui-grid/ui-grid.min.js"></script>
 	    <script type="text/javascript" src="libraries/ui-grid/exporter.js"></script>
 	    <script type="text/javascript" src="libraries/ui-grid/selection.js"></script>    
 		<script type="text/javascript" src="scripts/services/table-config.js"></script>
 
-			<!-- Google Fonts Web Font Embedding -->
+			<!-- Google Fonts Web Font Embedding & Credits -->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:700'>
 		<link href='https://fonts.googleapis.com/css?family=Work+Sans:300,500' rel='stylesheet' type='text/css'>
 
@@ -55,6 +60,17 @@
 	</head>
 
 	<body ng-controller="viewCtrl as view">
+
+		<!-- Load Facebook SDK for JavaScript -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 			<!-- Distinguishing content for small device size media query -->
 		<div class="smallDevice">
 			<h1 class="smallDevice-heading">Oh Snap!</h1><br>
@@ -67,7 +83,7 @@
 			<!-- Distinguishing content for large device size media query --> 
 		<div class="largeDevice">	
 				<!-- 1. Navigation Bar  -->
-			<nav id="navbar-font" class="navbar navbar-fixed-top navbar-custom">
+			<nav id="oxonHeaderFooter" class="navbar navbar-fixed-top navbar-custom">
 				<div class="navbar-menu">
 					<a href="http://www.google.com" class="navbar-text navbar-link">HOME</a>
 					<a href="http://www.google.com" class="navbar-text navbar-link">OBJECTIVES</a>
@@ -84,7 +100,7 @@
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
 						<!-- i. Panel: high score display (mastery mode only) -->
-					<div class="panel-heading">SCORE TO MASTERY</div>
+					<div class="panel-heading">MASTERY SCORE</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Lowest Number of Steps Taken -->
 						<div class="col-md-6 track-panel gloss-contrast">
@@ -566,20 +582,58 @@
 			</div><br>
 
 			<!-- 3. Credit Box -->
-			<div class="row credit-box">
-					<!-- a. credit & buttons -->
-				<div class="col-md-10">
+			<div id="oxonHeaderFooter" class="row credit-box">
+					<!-- a. Logo -->
+				<div id="credit-left" class="col-md-2">
+					<a href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
+				</div>
+					<!-- b. credit & buttons -->
+				<div id="credit-box" class="col-md-10">
+					<div id="credit-buttons">
+							<!-- replay -->
+						<button id="replay_button" class="button actions" data-toggle="modal" data-target="#restart_modal">PLAY AGAIN</button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- email to others -->
+						<a href="
+						mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="action-link"><button id="email_button" class="button actions">CHALLENGE OTHERS</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- facebook share -->
+						<button id="facebook_button" class="button actions" data-href="https://learntech.imsu.ox.ac.uk/SPR/" data-layout="link">SHARE</button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- take survey in survey monkey -->
+						<a href="" class="action-link"><button id="survey_button" class="button actions">SURVEY</button></a>
+					</div>
+					<div id="credit-text">
+						OxSPR is still currently a prototype. If you like the software, please support the project by the survey and share it to anyone you think might be helpful.
+						<br>
+						Developed for <a href="http://www.bioch.ox.ac.uk/" class="credit-link">Department of Biochemistry</a>, <a href="http://www.ox.ac.uk/" class="credit-link">University of Oxford</a> undergraduate course by <a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="credit-link">Chaiyakorn Srisakvarakul</a>, under supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="credit-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="credit-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="credit-link">Jon Mason</a>.
+						<br><br>
+						License: Creative Commons
+					</div>
+				</div>
+					<!-- Modal: Prompt confirm restart -->
+				<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="modalLabel">Confirm Restart</h4>
+							</div>
+							<div class="modal-body">
+								Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
+								<br><br>
+								If you wish to keep the data and restart, export it as excel by clicking on the menu button at the top-right corner of results table header
+								<br><br>
+								<div id="restart_buttons">
+									<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 						<!-- Button: finish -->
 					<!-- div class="col-md-12 heading">
 						<a href="https://www.google.com" class="finish-btn">
 							<button class="button" ng-click"view.summary()" ng-disabled="view.all_Correct == false">SUMMARY</button>
 						</a>
 					</div-->	
-				</div>
-					<!-- b. Logo -->
-				<div class="col-md-2">
-					<img src="images/ox-uni-logo.png" id="ox-logo">
-				</div>
 			</div>
 		</div>   
 	</body>
