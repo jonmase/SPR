@@ -188,6 +188,15 @@ a.navbar-link:active {
 	color: red;
 }
 
+.modal-button{
+	height: 33px;
+	width: 65px;
+}
+
+#modalLabel {
+	text-align: center;
+}
+
 .modal:before {
   content: '';
   display: inline-block;
@@ -205,6 +214,7 @@ a.navbar-link:active {
 .modal-header {
 	border-color: #222530;
 	background-color: #344458;
+	padding: 10px;
 }
 
 .modal-body {
