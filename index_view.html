@@ -308,23 +308,23 @@
 							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CLOSE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
-						<div class="select-objectives-box col-md-12" ng-show="view.guideMode == true">
+						<div class="select-hints-box col-md-12" ng-show="view.guideMode == true">
 								<!-- 1. Heading -->
-							<div id="objectives-heading" class="col-md-12">Show Hints</div>
+							<div id="hints-heading" class="col-md-12">Show Hints</div>
 								<!-- 1. Button: "1" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#firstObjective_modal">1</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#firstObjective_modal">1</button>
 								<!-- 2. Button: "2" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#secondObjective_modal">2</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#secondObjective_modal">2</button>
 								<!-- 3. Button: "3" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#thirdObjective_modal">3</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#thirdObjective_modal">3</button>
 								<!-- 4. Button: "4" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#forthObjective_modal">4</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#forthObjective_modal">4</button>
 								<!-- 5. Button: "5" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#fifthObjective_modal">5</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#fifthObjective_modal">5</button>
 								<!-- 6. Button: "6" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#sixthObjective_modal">6</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#sixthObjective_modal">6</button>
 								<!-- 7. Button: "7" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#seventhObjective_modal">7</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#seventhObjective_modal">7</button>
 						</div>
 					</div><br>
 						<!-- iii. Panel: check answer -->
@@ -624,7 +624,7 @@
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
-							<!-- d. Values for Debugging -->
+							<!-- d. Values for Debugging >
 						<br><br><div class="debug"><u>[Debug Mode] Answers values</u></div><br>
 						<div class="box-left debug">Kd / uM</div>
 						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
@@ -652,11 +652,7 @@
 						<div class="box-left debug">Session check count</div>
 						<div class="box-right debug">{{view.sessionCheckCount}}</div><br>
 						<div class="box-left debug">Check results log</div>
-						<div class="box-right debug">{{view.checkResults}}</div><br>
-						<div class="box-left debug">Cookies: stored table data</div>
-						<div class="box-right debug">{{view.cookiesData.store_tableData}}</div><br>
-						<div class="box-left debug">Table data</div>
-						<div class="box-right debug">{{view.table.data}}</div><br>
+						<div class="box-right debug">{{view.checkResults}}</div><br-->
 					</div>
 				</div>
 			</div><br>
