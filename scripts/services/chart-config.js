@@ -14,7 +14,8 @@ function chartCreate(outputModel) {
 	chart.options = {
 		grid: {
 		    backgroundColor: { colors: [ "#151c28", "#1c2535" ] },
-		    borderWidth: 0
+		    borderWidth: 0,
+		    hoverable: true
 		},
 		legend: {
 			backgroundOpacity: 0.75,
@@ -38,6 +39,31 @@ function chartCreate(outputModel) {
 			axisLabelColour: "#d2e3fd",
 			axisLabelPadding: 10,
 			color: "#344458",
+		},
+		tooltip: {
+			show: true,
+			content: "(%x, %y)"
+		},
+		selection: {
+			mode: "xy"
 		}
 	};
+/*
+	$("#flot").bind("plotselected", function (event, ranges) {
+			/ clamp the zooming to prevent eternal zoom
+		if (ranges.xaxis.to - ranges.xaxis.from < 0.00001) {
+			ranges.xaxis.to = ranges.xaxis.from + 0.00001;
+		}
+		if (ranges.yaxis.to - ranges.yaxis.from < 0.00001) {
+			ranges.yaxis.to = ranges.yaxis.from + 0.00001;
+		}
+			// do the zooming
+		plotObj = $.plot("#flot", chart.dataset,
+			$.extend(true, {}, options, {
+				xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to },
+				yaxis: { min: ranges.yaxis.from, max: ranges.yaxis.to }
+			})
+		);
+	});
+*/
 }

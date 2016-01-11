@@ -3,7 +3,7 @@
 /* 1. master module to compile in all sub-modules for embedding ng-app in HTML */
 var app = angular.module('SPR', ['model', 'display', 'cookies'])
 	.constant('vol', 0.000001) // volume inside chip
-	.constant('RPUM', 100000000) // response per unit mass (RU/g)
+	.constant('RPUM', 1000000000) // response per unit mass (RU/g)
 	.controller('viewCtrl', viewMethod);
 
 /* 2. setting up controller */
@@ -21,30 +21,26 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.vol = vol;
 	view.RPUM = RPUM;
 		// metrics tracked in database
+	view.user_type = null;
 	view.restartCounter = 0;
-	view.finishedStepsCount = [];
+	view.replayCounter = 0;
+	view.checkCounter = 0;
+	view.finishedStepsCount = null;
+	view.finishedEfficiencyCount = null;
+	view.startTime = null;
+	view.endTime = null;
+	view.elapsed = null; // seconds from time defining user_type until all_Correct = true
 		// default function of various buttons
+	view.initialising = true;
 	view.guideMode = false;
-	view.guide_one = true;
-	view.guide_two = false;
-	view.guide_three = false;
-	view.guide_four = false;
-	view.guide_five = false;
-	view.guide_six = false;
-	view.guide_seven = false;
-	view.objectives_number_style1 = "gloss-contrast";
-	view.objectives_number_style2 = "clickable1";
-	view.objectives_number_style3 = "clickable1";
-	view.objectives_number_style4 = "clickable1";
-	view.objectives_number_style5 = "clickable1";
-	view.objectives_number_style6 = "clickable1";
-	view.objectives_number_style7 = "clickable1";
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
 	view.isDisabled_run = false;
 	view.isDisabled_wash = true;
 	view.isDisabled_check = true;
+	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
+	view.magnitudeCheck_kOn = [1000000, 1000, 1];
 	view.Kd_correct = false;
 	view.kOn_correct = false;
 	view.kOff_correct = false;
@@ -74,113 +70,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.continueSaved = function() {
 		view.storedDataPrompt = false; // close the prompt
 	};
-
-	view.restartExperiment = function(){
-		view.cookies.remove("storedData");
-		view.system.loadNewPair(view.vol, view.RPUM);
-		view.restart();
-		view.storedDataPrompt = false;
-	};
 */
-
-/* c) creating function for guide-objectives number button */
-	view.toggle_switchOne = function() {
-		if (view.objectives_number_style1 == "gloss-contrast") {
-			view.objectives_number_style1 = "clickable1";
-		} else {
-			view.objectives_number_style1 = "gloss-contrast";
-		}
-
-		if (view.guide_one === true) {
-			view.guide_one = false;
-		} else {
-			view.guide_one = true;
-		}
-	};
-
-	view.toggle_switchTwo = function() {
-		if (view.objectives_number_style2 == "gloss-contrast") {
-			view.objectives_number_style2 = "clickable1";
-		} else {
-			view.objectives_number_style2 = "gloss-contrast";
-		}
-
-		if (view.guide_two === true) {
-			view.guide_two = false;
-		} else {
-			view.guide_two = true;
-		}
-	};
-
-	view.toggle_switchThree = function() {
-		if (view.objectives_number_style3 == "gloss-contrast") {
-			view.objectives_number_style3 = "clickable1";
-		} else {
-			view.objectives_number_style3 = "gloss-contrast";
-		}
-
-		if (view.guide_three === true) {
-			view.guide_three = false;
-		} else {
-			view.guide_three = true;
-		}
-	};
-
-	view.toggle_switchFour = function() {
-		if (view.objectives_number_style4 == "gloss-contrast") {
-			view.objectives_number_style4 = "clickable1";
-		} else {
-			view.objectives_number_style4 = "gloss-contrast";
-		}
-
-		if (view.guide_four === true) {
-			view.guide_four = false;
-		} else {
-			view.guide_four = true;
-		}
-	};
-
-	view.toggle_switchFive = function() {
-		if (view.objectives_number_style5 == "gloss-contrast") {
-			view.objectives_number_style5 = "clickable1";
-		} else {
-			view.objectives_number_style5 = "gloss-contrast";
-		}
-
-		if (view.guide_five === true) {
-			view.guide_five = false;
-		} else {
-			view.guide_five = true;
-		}
-	};
-
-	view.toggle_switchSix = function() {
-		if (view.objectives_number_style6 == "gloss-contrast") {
-			view.objectives_number_style6 = "clickable1";
-		} else {
-			view.objectives_number_style6 = "gloss-contrast";
-		}
-
-		if (view.guide_six === true) {
-			view.guide_six = false;
-		} else {
-			view.guide_six = true;
-		}
-	};
-
-	view.toggle_switchSeven = function() {
-		if (view.objectives_number_style7 == "gloss-contrast") {
-			view.objectives_number_style7 = "clickable1";
-		} else {
-			view.objectives_number_style7 = "gloss-contrast";
-		}
-
-		if (view.guide_seven === true) {
-			view.guide_seven = false;
-		} else {
-			view.guide_seven = true;
-		}
-	};
 
 /* c) creating function for set "zero" button */
 	view.set_background = function() {
@@ -204,6 +94,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.plotCompileLabelOn();
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
+		view.output.efficiencyCalculator(new_timeOn);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;
@@ -211,10 +102,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	};
 
 /* e) creating function for "wash-up" button */
-	view.washUp = function(new_timeOn) {
-		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, new_timeOn, view.system.kOff, view.system.RU0, view.backgroundSet);
+	view.washUp = function() {
+		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
-		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(5));
+		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4));
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		// view.cookies.putObject("storedData", view.cookiesData);
@@ -239,6 +130,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.restart = function() {
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
+		view.output.machineTime = 0;
 		view.experiment.steps = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
@@ -250,22 +142,24 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.table.data.length = 0;
 		view.restartCounter++;
+		view.checkCounter = 0;
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
 	};
 
 /* i) creating a function for "check" answer button */
-	view.check = function(check_Kd, check_kOn, check_kOff) {
+	view.check = function(check_Kd, check_kOn, check_kOff, magnitudeCheck_Kd, magnitudeCheck_kOn) {
 		view.isDisabled_check = false;
+		view.checkCounter++;
 			// check if Kd answer is within acceptable range
-		if (check_Kd/1000 > 0.99*view.system.Kd && check_Kd/1000 < 1.01*view.system.Kd) {
+		if (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] > 0.99*view.system.Kd && check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] < 1.01*view.system.Kd) {
 			view.Kd_correct = true;
 		} else {
 			view.Kd_correct = false;
 		}
 			// check if kOn answer is within acceptable range
-		if (check_kOn > 0.99*view.system.kOn && check_kOn < 1.01*view.system.kOn) {
+		if (check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] > 0.99*view.system.kOn && check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] < 1.01*view.system.kOn) {
 			view.kOn_correct = true;
 		} else {
 			view.kOn_correct = false;
@@ -279,7 +173,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
-			view.finishedStepsCount.push(angular.copy(view.experiment.steps));
+			view.finishedStepsCount = view.experiment.steps;
+			view.finishedEfficiencyCount = view.output.efficiencyRating;			
+			view.endTime = Date.now();
+			view.elapsed = (view.endTime-view.startTime)/1000;
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
@@ -288,10 +185,34 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		}
 	};
 
+/* j) creating functions to track if new or returning user */
+	view.new_user = function() {
+		view.user_type = "new";
+		view.guideMode = true;
+		view.startTime = Date.now();
+	};
+
+	view.returning_user = function() {
+		view.user_type = "returning";
+		view.guideMode = false;
+		view.startTime = Date.now();
+	};
+
+/* j) creating functions for play again button */
+	view.replay = function(){
+		/* view.cookies.remove("storedData"); */
+		view.system.loadNewPair(view.vol, view.RPUM);
+		view.restart();
+		view.replayCounter++;
+		/* view.storedDataPrompt = false; */
+	};
+
+
 /* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies
 
 	if (view.cookies.getObject("storedData") === undefined) { // if there are no data, generate a new system
 */		view.system.loadNewPair(view.vol, view.RPUM);
+		view.output.timeOffDefault = view.system.min_timeOff;
 /*		view.storedDataPrompt = false;
 		view.cookies.putObject("storedData", view.cookiesData);
 	} else { // load stored data

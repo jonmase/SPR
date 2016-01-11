@@ -25,13 +25,13 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* b) set Kd: random assignment out of possibility in array; constant */
 	system.set_Kd = function() {
-		system.Kd_possible = [0.00000005, 0.0000001, 0.0000002, 0.0000003, 0.000004, 0.0000005];
+		system.Kd_possible = [0.00000005, 0.00000009, 0.0000003, 0.0000008, 0.0000004, 0.000007, 0.000002, 0.00001, 0.0006, 0.002];
 		system.flip_Kd = function() {
-			system.Kd_chance = Math.floor(6*Math.random());
+			system.Kd_chance = Math.floor(10*Math.random());
 		};
 		system.flip_Kd();
 
-		if (system.Kd_chance == 6) {
+		if (system.Kd_chance == 10) {
 			system.flip_Kd();
 		} else {
 			system.Kd = (Math.round(10000000000*(system.Kd_possible[system.Kd_chance])))/10000000000;
@@ -40,13 +40,13 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* c) set kOff: random assignment out of possibility in array; constant */
 	system.set_kOff = function() {
-		system.kOff_possible = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5];
+		system.kOff_possible = [0.05, 0.2, 0.8, 1.5, 2.2, 2.9, 3.4, 4.0, 4.4, 5.0];
 		system.flip_kOff = function() {
-			system.kOff_chance = Math.floor(6*Math.random());
+			system.kOff_chance = Math.floor(10*Math.random());
 		};
 		system.flip_kOff();
 
-		if (system.flip_kOff == 6) {
+		if (system.flip_kOff == 10) {
 			system.flip_kOff();
 		} else {
 			system.kOff = system.kOff_possible[system.kOff_chance];
@@ -103,15 +103,20 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.RU_MaxLR = (Math.round(1000*(sys_tRC*sys_mwLR*con_vol*con_RPUM)))/1000;
 	};
 
-/* i) generating ligand-receptor pair unique ID for demonstrator to check answer on */
-	system.createID = function(sys_Kd, sys_kOff, sys_kOn) {
-		system.Kd_code = parseInt(sys_Kd*10000000);
-		system.kOff_code = parseInt(sys_kOff*100);
-		system.kOn_code = parseInt(sys_kOn/10000);
-		system.uniqueID = 'D'+system.Kd_code.toString()+'F'+system.kOff_code.toString()+'N'+system.kOn_code.toString();
+/* i) calculate time on to reach 0.9999 RU at equilibrium for 1 nM free ligand concentration */
+	system.find_min_timeOnOff = function() {
+		system.min_timeOn = -(Math.log(0.0005)/((-system.kOn*0.000000001)+system.kOff)); // 0.0005 give a reasonable gap for single curve comparison of RU on value to check if plateau is reached
+		system.min_timeOff = -Math.log(0.001)/system.kOff;
 	};
 
-/* j) load new set of receptor-ligand pair */
+/* j) generating ligand-receptor pair unique ID for demonstrator to check answer on */
+	system.createID = function(sys_Kd, sys_kOff, sys_kOn) {
+		system.Kd_code = $.inArray(sys_Kd, system.Kd_possible);
+		system.kOff_code = $.inArray(sys_kOff, system.kOff_possible);
+		system.uniqueID = 'D'+system.Kd_code.toString()+'F'+system.kOff_code.toString();
+	};
+
+/* k) load new set of receptor-ligand pair */
 	system.loadNewPair = function(con_vol, con_RPUM) {
 		system.set_tRC();
 		system.set_Kd();
@@ -121,6 +126,7 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.set_mwR();
 		system.find_mwLR(system.mwL, system.mwR);
 		system.find_RU_Max(system.tRC, system.mwR, con_vol, con_RPUM, system.mwL, system.mwLR);
+		system.find_min_timeOnOff();
 		system.createID(system.Kd, system.kOff, system.kOn);
 	};
 }

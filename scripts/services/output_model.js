@@ -1,22 +1,27 @@
 	/* Output Mathematical Model: contain functions to input user-generated parameters and ouput values for graphical display */
 
 /* 1. registering modules, services and constants */
-angular.module('output_model', ['cookies', 'experiment_status'])
-	.service('outputModel', ['experimentStatus', '$cookies', outputMethod]);
+angular.module('output_model', ['cookies', 'experiment_status', 'system_model'])
+	.service('outputModel', ['experimentStatus', 'systemModel', '$cookies', outputMethod]);
 
-function outputMethod(experimentStatus, $cookies) { 
+function outputMethod(experimentStatus, systemModel, $cookies) { 
 
 /* 2. creating sub-methods as part of the function object that can be outputed */
 
 /* a) all the data to be stored */
 	var output = this; // create a specific selector for outputMethod specific module required in plotCoordinates but used with 'all or nothing' principle
 	var experiment = experimentStatus;
+	var system = systemModel;
 		// data input value
 	output.fLC_tableDisplay = []; // units = M but no error adjusted; input fLC value specify by the user, display on table and charts so user can track progress
 	output.fLC = []; // units = M but error adjusted; actual fLC value use in plotting as adjusted by standard error
 	output.timeOn = []; // timeOn must be > 0
-	output.timeOffDefault = 20; // set timeOff to 20 seconds for default
+	output.timeOffDefault = 30; // set timeOff to 30 seconds for default, but will be override by min time off set in controller at starting
 	output.minimum_fLC_input = 0;
+		// tracked value
+	output.machineTime = 0;
+	output.inefficiency = 0;
+	output.efficiencyRating = 100;
 		// chart coordinates calculation
 	output.RU_On_Output = []; // store current peak value of RU On for this fLC and input time on
 	output.RU_On_Output_table = [];
@@ -42,7 +47,7 @@ function outputMethod(experimentStatus, $cookies) {
 		output.fLC.push(experiment.absoluteError(experiment.relativeError(new_fLC/output.magnitudeAdjust))); // relative error first from measurement error, then absolute error from pipetting error
 	};
 
-/* c) set timeOn: user input via form; variable */
+/* c) set timeOn and timeOffDefault: user input via form; variable */
 	output.add_timeOn = function(new_timeOn) {
 		output.timeOn.push(new_timeOn);
 	};
@@ -56,7 +61,7 @@ function outputMethod(experimentStatus, $cookies) {
 /* e) find and store the current RU peak for a given input fLC and time on */
 	output.calc_RU_OnPeak = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
 		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.timeOn[output.timeOn.length-1], out_RU0, backgroundSet);
-		output.RU_On_Output_table.push(angular.copy(((Math.round(10000*output.RU_OnAdjusted))/10000))); // x10000 to round off value to 4 decimal place
+		output.RU_On_Output_table.push(angular.copy(((Math.round(1000*output.RU_OnAdjusted))/1000))); // x1000 to round off value to 2 decimal place
 		output.RU_On_Output.push(angular.copy(output.RU_OnAdjusted));
 	};
 /* f) find and store the theoretical max RU peak for a given input fLC */
@@ -124,5 +129,18 @@ function outputMethod(experimentStatus, $cookies) {
 			currentStep++;
 			output.plotCoordinatesOff(currentStep, totalSteps, out_timeOn, sys_kOff, out_RU0, backgroundSet);
 		}
+	};
+
+/* l) efficiency calculator */
+	output.efficiencyCalculator = function(new_timeOn) {
+		output.machineTime += new_timeOn;
+		output.checkTimeInefficiency = output.machineTime/system.min_timeOn; // scaling all time input to its minimum time on to reach plateau at 1 nM (minimum time on)
+		if (output.checkTimeInefficiency > 1) {
+				// 10 = maximum efficiency rating, 52 = total possible steps; thus, at step = 52, the inefficiency should reach 10, and thus efficiency = 0
+			output.inefficiency = (100/52)*output.checkTimeInefficiency; // minimum inefficiency per step (10/52) is scaled by how much over time user over input above minimum time on
+		} else {
+			output.inefficiency = 100/52; // this means that the lower ceiling of ineffiency is the minimum time on. any time on below that suffers from inefficiency by using additional steps only, which is 10/52
+		}
+		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
 	};
 }
