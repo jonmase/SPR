@@ -129,4 +129,12 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.find_min_timeOnOff();
 		system.createID(system.Kd, system.kOff, system.kOn);
 	};
+/* l) calculate all derived variables from assigned variables */
+	system.calculateSystem = function() {
+		system.find_kOn(system.Kd, system.kOff);
+		system.find_mwLR(system.mwL, system.mwR);
+		system.find_RU_Max(system.tRC, system.mwR, con_vol, con_RPUM, system.mwL, system.mwLR);
+		system.find_min_timeOnOff();
+		system.createID(system.Kd, system.kOff, system.kOn);
+	};
 }

@@ -237,7 +237,25 @@
 							If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
 							<br><br>
 							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.replay()"  data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+								<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- Modal: Cookies Detected -->
+			<div id="cookies_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalLabel">Incomplete experiment detected</h4>
+						</div>
+						<div class="modal-body">
+							We have detected an auto-saved experiment which have not been completed before you leave the simulator. Do wish to continue with the auto-saved experiment or reload a new pair of ligand-receptor?
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">New Pair</button>
 							</div>
 						</div>
 					</div>
@@ -263,7 +281,6 @@
 					</div>
 				</div>
 			</div>
-
 				<!-- 3. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
@@ -638,6 +655,8 @@
 						<div class="box-right debug">{{view.checkResults.toString()}}</div><br>
 						<div class="box-left debug">Session results checked</div>
 						<div class="box-right debug">{{view.checkResults_bySession.toString()}}</div><br>
+						<div class="box-left debug">Cookies saving</div>
+						<div class="box-right debug">{{view.cookiesData.storedSteps}}</div><br>
 					</div>
 				</div>
 			</div><br>
@@ -664,15 +683,12 @@
 					<div id="credit-text">
 						OxSPR is still currently a <font color="red">prototype</font>. If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
 						<br><br>
-						Developed for <a href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, <a href="http://www.ox.ac.uk/" class="blue-link">University of Oxford</a> undergraduate course by <a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, under supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
+						Developed for <a href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford <a href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate course</a> by <a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, under supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
 						<br>
-						The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul
+						<font color="#A6AAA9">The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul</font>
 					</div>
 				</div>					
 			</div>
-				<!-- Start the page by loading the initialising modal, which cannot be skipped -->
-			<script type="text/javascript">$(window).load(function(){$('#initialising_modal').modal('show');});$('#initialising_modal').modal({backdrop: 'static',keyboard: false});</script>
 		</div>   
 	</body>
-
 </html>

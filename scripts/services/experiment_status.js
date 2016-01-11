@@ -19,7 +19,7 @@ function experimentTrack() {
 		// total runs per day = 26
 /* creating tracked variables */
 	experiment.steps = 0;
-	experiment.timeOfDay = experiment.startOfDay;
+	experiment.timeOfDay = 9.5;
 	experiment.daysAllowed = 1; 
 	experiment.daysLeft = 1;
 	experiment.endOfExperimentTime = 0;
