@@ -25,8 +25,11 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.restartCounter = 0;
 	view.replayCounter = 0;
 	view.checkCounter = 0;
-	view.finishedStepsCount = [];
-	view.finishedEfficiencyCount = [];
+	view.finishedStepsCount = null;
+	view.finishedEfficiencyCount = null;
+	view.startTime = null;
+	view.endTime = null;
+	view.elapsed = null; // seconds from time defining user_type until all_Correct = true
 		// default function of various buttons
 	view.initialising = true;
 	view.guideMode = false;
@@ -170,8 +173,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
-			view.finishedStepsCount.push(angular.copy(view.experiment.steps));
-			view.finishedEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.finishedStepsCount = view.experiment.steps;
+			view.finishedEfficiencyCount = view.output.efficiencyRating;			
+			view.endTime = Date.now();
+			view.elapsed = (view.endTime-view.startTime)/1000;
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
@@ -184,11 +189,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.new_user = function() {
 		view.user_type = "new";
 		view.guideMode = true;
+		view.startTime = Date.now();
 	};
 
 	view.returning_user = function() {
 		view.user_type = "returning";
 		view.guideMode = false;
+		view.startTime = Date.now();
 	};
 
 /* j) creating functions for play again button */
