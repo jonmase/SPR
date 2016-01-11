@@ -22,17 +22,18 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.RPUM = RPUM;
 		// metrics tracked in database
 	view.user_type = [];
-	view.restartCounter = 0;
-	view.replayCounter = 0;
-	view.checkCounter = 0;
 	view.startTime = [];
 	view.endTime = [];
 	view.elapsed = []; // seconds from time defining user_type until all_Correct = true
-	view.finishedStepsCount = [];
-	view.finishedEfficiencyCount = [];
+	view.sessionStepsCount = [];
+	view.sessionEfficiencyCount = [];
+	view.sessionCheckCount = [];
+	view.checkResults = [];
 		// default function of various buttons
 	view.initialising = true;
 	view.guideMode = false;
+	view.checkCounter = 0;
+	view.checkResults_bySession = [];
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
@@ -128,11 +129,27 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* h) creating a function for "restart" button */
 	view.restart = function() {
-			// tracked experiment status
+			// for backend
+		if (view.all_Correct === false) {
+			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
+			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionCheckCount.push(angular.copy(view.checkCounter));
+			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
+			view.endTime.push(angular.copy(Date.now()));
+			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
+			view.user_type.push(angular.copy("restart"));
+			view.startTime.push(angular.copy(Date.now())); // create a new session
+		} else {
+			view.user_type.push(angular.copy("restart"));
+			view.startTime.push(angular.copy(Date.now())); // create a new session
+		}
+			// reset experiment status
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		view.output.machineTime = 0;
 		view.experiment.steps = 0;
+		view.checkCounter = 0;
+		view.checkResults_bySession.length = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -145,8 +162,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
-			// for backend
-		view.restartCounter++;
 	};
 
 /* i) creating a function for "check" answer button */
@@ -174,15 +189,19 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
-			view.finishedStepsCount.push(angular.copy(view.experiment.steps));
-			view.finishedEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
+			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.endTime.push(angular.copy(Date.now()));
 			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
+			view.checkResults_bySession.push("correct");
+			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
 		} else {
 			view.all_Correct = false;
+			view.checkResults_bySession.push("wrong");
 		}
 	};
 
@@ -201,12 +220,23 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* j) creating functions for play again button */
 	view.replay = function(){
-			// tracked experiment status
+			// for backend
+		if (view.all_Correct === false) {
+			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
+			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionCheckCount.push(angular.copy(view.checkCounter));
+			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
+			view.endTime.push(angular.copy(Date.now()));
+			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
+		}
+			// reset experiment status
 		view.system.loadNewPair(view.vol, view.RPUM);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		view.output.machineTime = 0;
 		view.experiment.steps = 0;
+		view.checkCounter = 0;
+		view.checkResults_bySession.length = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -219,8 +249,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
-			// for backend
-		view.replayCounter++;
 	};
 		/* view.cookies.remove("storedData"); */
 		/* view.storedDataPrompt = false; */

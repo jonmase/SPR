@@ -494,7 +494,11 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
-							OxSPR is still currently a prototype. If you like the software, please support the project by providing <b><a href="" class="blue-link">feedback</a></b> and <b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> it to anyone you think might be helpful.<br><br>
+							OxSPR is still currently a prototype. If you like the software, please support the project by providing 
+							<b><a href="" class="blue-link">feedback</a></b> and 
+							<b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or 
+							<b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> 
+							it to anyone you think might be helpful.<br><br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 							<!-- r. Prompt: session over -->
@@ -618,22 +622,22 @@
 						<br><div class="debug"><u>[Debug Mode] Backend values</u></div><br>
 						<div class="box-left debug">User Type</div>
 						<div class="box-right debug">{{view.user_type.toString()}}</div><br>
-						<div class="box-left debug">Restart Counter</div>
-						<div class="box-right debug">{{view.restartCounter}}</div><br>
-						<div class="box-left debug">Replay Counter</div>
-						<div class="box-right debug">{{view.replayCounter}}</div><br>
-						<div class="box-left debug">Check Counter</div>
-						<div class="box-right debug">{{view.checkCounter}}</div><br>
 						<div class="box-left debug">Start Timestamp</div>
 						<div class="box-right debug">{{view.startTime.toString()}}</div><br>
 						<div class="box-left debug">End Timestamp</div>
 						<div class="box-right debug">{{view.endTime.toString()}}</div><br>
-						<div class="box-left debug">Elapsed time</div>
+						<div class="box-left debug">Session elapsed time</div>
 						<div class="box-right debug">{{view.elapsed.toString()}}</div><br>
-						<div class="box-left debug">Completed steps count</div>
-						<div class="box-right debug">{{view.finishedStepsCount.toString()}}</div><br>
-						<div class="box-left debug">Completed efficiency count</div>
-						<div class="box-right debug">{{view.finishedEfficiencyCount.toString()}}</div><br>
+						<div class="box-left debug">Session steps count</div>
+						<div class="box-right debug">{{view.sessionStepsCount.toString()}}</div><br>
+						<div class="box-left debug">Session efficiency count</div>
+						<div class="box-right debug">{{view.sessionEfficiencyCount.toString()}}</div><br>
+						<div class="box-left debug">Session check count</div>
+						<div class="box-right debug">{{view.sessionCheckCount.toString()}}</div><br>
+						<div class="box-left debug">Check results log</div>
+						<div class="box-right debug">{{view.checkResults.toString()}}</div><br>
+						<div class="box-left debug">Session results checked</div>
+						<div class="box-right debug">{{view.checkResults_bySession.toString()}}</div><br>
 					</div>
 				</div>
 			</div><br>
