@@ -6,6 +6,10 @@ angular.module('system_model', [])
 
 function systemMethod() { // creating master function object that encapsulate all methods to inject into service
 	var system = this;
+	system.Kd_possible = [0.00000005, 0.00000009, 0.0000003, 0.0000008, 0.0000004, 0.000007, 0.000002, 0.00001, 0.0006, 0.002];
+	system.kOff_possible = [0.05, 0.2, 0.8, 1.5, 2.2, 2.9, 3.4, 4.0, 4.4, 5.0];
+	system.mwL_possible = [30000, 40000, 45000, 50000, 60000];
+	system.mwR_possible = [60000, 80000, 100000, 120000, 140000];
 
 /* 2. creating sub-methods as part of the function object that can be called */
 
@@ -25,7 +29,6 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* b) set Kd: random assignment out of possibility in array; constant */
 	system.set_Kd = function() {
-		system.Kd_possible = [0.00000005, 0.00000009, 0.0000003, 0.0000008, 0.0000004, 0.000007, 0.000002, 0.00001, 0.0006, 0.002];
 		system.flip_Kd = function() {
 			system.Kd_chance = Math.floor(10*Math.random());
 		};
@@ -40,7 +43,6 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* c) set kOff: random assignment out of possibility in array; constant */
 	system.set_kOff = function() {
-		system.kOff_possible = [0.05, 0.2, 0.8, 1.5, 2.2, 2.9, 3.4, 4.0, 4.4, 5.0];
 		system.flip_kOff = function() {
 			system.kOff_chance = Math.floor(10*Math.random());
 		};
@@ -60,8 +62,6 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* e) set mwL: random assignment out of possibility in array; constant */
 	system.set_mwL = function() {
-		system.mwL_possible = [30000, 40000, 45000, 50000, 60000];
-
 		system.flip_mwL = function() {
 			system.mwL_chance = Math.floor(5*Math.random());
 		};
@@ -77,8 +77,6 @@ function systemMethod() { // creating master function object that encapsulate al
 
 /* f) set mwR: random assignment out of possibility in array; constant */
 	system.set_mwR = function() {
-		system.mwR_possible = [60000, 80000, 100000, 120000, 140000];
-
 		system.flip_mwR = function() {
 			system.mwR_chance = Math.floor(5*Math.random());
 		};

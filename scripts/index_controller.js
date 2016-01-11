@@ -30,7 +30,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.sessionCheckCount = [];
 	view.checkResults = [];
 		// default function of various buttons
-	view.initialising = true;
 	view.guideMode = false;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
