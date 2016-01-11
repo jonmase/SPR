@@ -21,15 +21,15 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.vol = vol;
 	view.RPUM = RPUM;
 		// metrics tracked in database
-	view.user_type = null;
+	view.user_type = [];
 	view.restartCounter = 0;
 	view.replayCounter = 0;
 	view.checkCounter = 0;
-	view.finishedStepsCount = null;
-	view.finishedEfficiencyCount = null;
-	view.startTime = null;
-	view.endTime = null;
-	view.elapsed = null; // seconds from time defining user_type until all_Correct = true
+	view.startTime = [];
+	view.endTime = [];
+	view.elapsed = []; // seconds from time defining user_type until all_Correct = true
+	view.finishedStepsCount = [];
+	view.finishedEfficiencyCount = [];
 		// default function of various buttons
 	view.initialising = true;
 	view.guideMode = false;
@@ -128,6 +128,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* h) creating a function for "restart" button */
 	view.restart = function() {
+			// tracked experiment status
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		view.output.machineTime = 0;
@@ -141,11 +142,11 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.table.data.length = 0;
-		view.restartCounter++;
-		view.checkCounter = 0;
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
+			// for backend
+		view.restartCounter++;
 	};
 
 /* i) creating a function for "check" answer button */
@@ -173,10 +174,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
-			view.finishedStepsCount = view.experiment.steps;
-			view.finishedEfficiencyCount = view.output.efficiencyRating;			
-			view.endTime = Date.now();
-			view.elapsed = Math.round((view.endTime-view.startTime)/1000);
+			view.finishedStepsCount.push(angular.copy(view.experiment.steps));
+			view.finishedEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.endTime.push(angular.copy(Date.now()));
+			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
@@ -187,25 +188,42 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* j) creating functions to track if new or returning user */
 	view.new_user = function() {
-		view.user_type = "new";
+		view.user_type.push(angular.copy("new"));
 		view.guideMode = true;
-		view.startTime = Date.now();
+		view.startTime.push(angular.copy(Date.now()));
 	};
 
 	view.returning_user = function() {
-		view.user_type = "returning";
+		view.user_type.push(angular.copy("returning"));
 		view.guideMode = false;
-		view.startTime = Date.now();
+		view.startTime.push(angular.copy(Date.now()));
 	};
 
 /* j) creating functions for play again button */
 	view.replay = function(){
-		/* view.cookies.remove("storedData"); */
+			// tracked experiment status
 		view.system.loadNewPair(view.vol, view.RPUM);
-		view.restart();
+		view.experiment.daysLeft = view.experiment.daysAllowed;
+		view.experiment.timeOfDay = view.experiment.startOfDay;
+		view.output.machineTime = 0;
+		view.experiment.steps = 0;
+			// remove all data in existing arrays
+		view.output.fLC.length = 0;
+		view.output.timeOn.length = 0;
+		view.output.RU_On_Output.length = 0;
+		view.output.RU_On_Coordinate.length = 0;
+		view.output.RU_Off_Coordinate.length = 0;
+		view.output.RU_Line.length = 0;
+		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.table.data.length = 0;
+		view.isDisabled_run = false;
+		view.isDisabled_wash = true;
+		view.isDisabled_check = true;
+			// for backend
 		view.replayCounter++;
-		/* view.storedDataPrompt = false; */
 	};
+		/* view.cookies.remove("storedData"); */
+		/* view.storedDataPrompt = false; */
 
 
 /* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies

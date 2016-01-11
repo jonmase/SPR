@@ -48,7 +48,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Work+Sans:300,500' rel='stylesheet' type='text/css'>
 
 	    	<!-- Personal libraries, load last since these files will be referencing to those previous libraries too -->
-		<script type="text/javascript" src="scripts/index_model.js"></script>
+		<script type="text/javascript" src="scripts/index_modules.js"></script>
 		<script type="text/javascript" src="scripts/services/system_model.js"></script>
 		<script type="text/javascript" src="scripts/services/experiment_status.js"></script>
 		<script type="text/javascript" src="scripts/services/output_model.js"></script>
@@ -326,10 +326,9 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
-							OxSPR is still currently a prototype. If you like the software, please support the project by providing <b><a href="" class="blue-link">feedback</a></b> and <b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> it to anyone you think might be helpful.<br><br>
+							OxSPR is still currently a prototype. If you like the software, please support the project by providing <b><a href="" class="blue-link">feedback</a></b> and <b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or <a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a> it to anyone you think might be helpful.<br><br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
-
 							<!-- r. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Console:</font>&nbsp;
@@ -437,6 +436,7 @@
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
 							<!-- d. Values for Debugging -->
+						<br><br><div class="debug"><u>[Debug Mode] Answers values</u></div><br>
 						<div class="box-left debug">Kd / uM</div>
 						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
 						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
@@ -444,19 +444,28 @@
 						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 						<div class="box-right debug">{{view.system.kOff}}</div><br>
 						<div class="box-left debug">Minimum time on</div>
-						<div class="box-right debug"><u>{{view.system.min_timeOn | number: 2}}</u></div><br>
+						<div class="box-right debug">{{view.system.min_timeOn | number: 2}}</div><br>
 						<div class="box-left debug">Minimum time off</div>
-						<div class="box-right debug"><u>{{view.system.min_timeOff | number: 2}}</u></div><br>
-						<div class="box-left debug">Completed steps count</div>
-						<div class="box-right debug">{{view.finishedStepsCount}}</div><br>
-						<div class="box-left debug">Completed efficiency count</div>
-						<div class="box-right debug">{{view.finishedEfficiencyCount}}</div><br>
+						<div class="box-right debug">{{view.system.min_timeOff | number: 2}}</div><br>
+						<br><div class="debug"><u>[Debug Mode] Backend values</u></div><br>
+						<div class="box-left debug">User Type</div>
+						<div class="box-right debug">{{view.user_type.toString()}}</div><br>
+						<div class="box-left debug">Restart Counter</div>
+						<div class="box-right debug">{{view.restartCounter}}</div><br>
+						<div class="box-left debug">Replay Counter</div>
+						<div class="box-right debug">{{view.replayCounter}}</div><br>
+						<div class="box-left debug">Check Counter</div>
+						<div class="box-right debug">{{view.checkCounter}}</div><br>
 						<div class="box-left debug">Start Timestamp</div>
-						<div class="box-right debug"><u>{{view.startTime}}</u></div><br>
+						<div class="box-right debug">{{view.startTime.toString()}}</div><br>
 						<div class="box-left debug">End Timestamp</div>
-						<div class="box-right debug"><u>{{view.endTime}}</u></div><br>
+						<div class="box-right debug">{{view.endTime.toString()}}</div><br>
 						<div class="box-left debug">Elapsed time</div>
-						<div class="box-right debug"><u>{{view.elapsed}}</u></div><br>
+						<div class="box-right debug">{{view.elapsed.toString()}}</div><br>
+						<div class="box-left debug">Completed steps count</div>
+						<div class="box-right debug">{{view.finishedStepsCount.toString()}}</div><br>
+						<div class="box-left debug">Completed efficiency count</div>
+						<div class="box-right debug">{{view.finishedEfficiencyCount.toString()}}</div><br>
 					</div>
 				</div>
 			</div><br>
@@ -642,7 +651,7 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title" id="modalLabel">Welcome to <font color="#c33e3e">OxSPR!</font></h4>
+							<h4 class="modal-title" id="modalLabel">Welcome to OxSPR!</h4>
 						</div>
 						<div class="modal-body">
 							<font color="#c33e3e">*Note: OxSPR is still currently a prototype.</font><br><br>
