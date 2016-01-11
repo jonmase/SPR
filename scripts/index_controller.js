@@ -186,15 +186,15 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		}
 	};
 
-/* j) creating functions to track if new or returning user */
-	view.new_user = function() {
-		view.user_type.push(angular.copy("new"));
+/* j) creating functions to track if learn or mastery user */
+	view.learn_user = function() {
+		view.user_type.push(angular.copy("learn"));
 		view.guideMode = true;
 		view.startTime.push(angular.copy(Date.now()));
 	};
 
-	view.returning_user = function() {
-		view.user_type.push(angular.copy("returning"));
+	view.mastery_user = function() {
+		view.user_type.push(angular.copy("mastery"));
 		view.guideMode = false;
 		view.startTime.push(angular.copy(Date.now()));
 	};

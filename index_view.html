@@ -9,11 +9,11 @@
     	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-	    <title>OxSPR: Simulation Challenge</title>
+	    <title>Oxford Biochemistry Simulation Challenge (SPR)</title>
 	    	<meta property="og:url"           content="https://learntech.imsu.ox.ac.uk/SPR/" />
 			<meta property="og:type"          content="website" />
-			<meta property="og:title"         content="Oxford Biochemistry: SPR Simulation Challenge" />
-			<meta property="og:description"   content="Learn experimental design through simulation of surface plasmon resonance created by Oxford Biochemistry Department" />
+			<meta property="og:title"         content="Oxford Biochemistry Simulation Challenge (SPR)" />
+			<meta property="og:description"   content="Learn experimental design through playing with a simulation of surface plasmon resonance. Created by Oxford Biochemistry Department." />
 			<!--meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" /-->
 
 	    	<!-- Angular Libraries & Credits -->
@@ -95,8 +95,176 @@
 					<a href="" class="navbar-text navbar-link">CONTACT</a>
 				</div>
 			</nav>
+							<!-- 2. Modals -->
+					<!-- a. 1st Objective -->
+			<div id="firstObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 1: Remove background</h4>
+						</div>
+						<div class="modal-body">
+							Before performing experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0) and remove it from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
+							In a real world experiment, artefacts from background such as baseline drift could occur which would cause an increase in resonance over time. Thus the <u>association time</u> you run to remove background must cover the longest <u>association time</u> you would be using in the whole experiment to subtract all baseline drift. However, for this simulation, you can assume there is no baseline drift and input any <u>association time</u> you like.
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- b. 2nd Objective -->
+			<div id="secondObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 2: Find appropriate association time length</h4>
+						</div>
+						<div class="modal-body">
+							You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>association time</u><br><br>
+							We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium at nM <u>free ligand concentration</u> since this length would cover for all higher <u>free ligand concentration</u>.<br><br>
+							A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low seed value such as 1 second and estimate from the projection, assuming that the curve is a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
+							Ultimately, you will know that you have reached equilibrium by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- c. 3rd Objective -->
+			<div id="thirdObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 3: Seeding free ligand concentration values</h4>
+						</div>
+						<div class="modal-body">
+							The purpose of plotting Langmuir Isotherm is to find out the resonance value for maximum binding at equilibrium and from the curve, derive the <u>free ligand concentration</u> which gives the half maximal binding resonance value which is the Kd. We use SPR to find the resonance values at equilibrium and its corresponding <u>free ligand concentration</u> for plotting in Langmuir Isotherm. We have previously determined the minimum <u>association time</u> require for the binding to reach equilibrium and will use this length to run subsequent experiments for <u>max RU</u> measured to be valid. However, we still have to find out the <u>free ligand concentration</u> range to input such the points obtained are sufficiently scattered for plotting an accurate Langmuir Isotherm.<br><br> 
+							Our theoretical knowledge about ligand-receptor pair give us the context that Kd usually lies between mM to nM range for weak to strong binding respectively. Thus, given an unknown system, a suitable strategy would be to seed values broadly between these range, such as 1 nM, 1 uM and 1 mM.<br><br>
+							The result will tell us roughly where the dynamic range lies by observing the position of the 1 uM curve. The dynamic range is when a change in <u>free ligand concentration</u> still result in change in <u>max RU</u> measured at equilibrium binding as it has not yet reached the maximum binding at equilibrium on Langmuir Isotherm curve. If the 1 uM curve <u>max RU</u> is closer to the 1 mM curve <u>max RU</u>, it is likely that the <u>max RU</u> at equilibrium of 1 mM curve has reached the maximum binding at equilibrium on Langmuir Isotherm. This mean that you should sample for more coordinates between the 1 uM and the 1 nM curve. Otherwise try running another curve at higher magnitude than 1 mM to confirm if the maximum binding at equilibrium on Langmuir Isotherm has been reached. At the end, you want to generate at least 6 points in the dynamic range of Langmuir Isotherm with reasonable spacing of <u>max RU</u> at equilibrium binding value so you could plot easily.
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- d. 4th Objective -->
+			<div id="forthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 4: Calculate k<sub>off</sub></h4>
+						</div>
+						<div class="modal-body">
+							We must also find the k<sub>off</sub> from the experiment for calculating k<sub>on</sub> later. In this simulation, we can assume that the disassociation is a first order model, thus from the disassociation curve generated after clicking <u>WASH</u>, we can take a coordinate and use it to calculate the disassociation constant with the first order decay equation.<br><br>
+							A good practice would be to sample points at even spacing on a disassociation curve to use for determining k<sub>off</sub>, such as from the 1st and 2nd half-life.
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- e. 5th Objective -->
+			<div id="fifthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 5: Perform sufficient replicates</h4>
+						</div>
+						<div class="modal-body">
+							With 6 coordinates that are evenly spaced for <u>max RU</u> at equilibrium binding and its corresponding <u>free ligand concentration</u>, perform at least 3 replicates per point such that you have a total of 6x3 = 18 coordinates. Replicates allow us to see which points are outliers and should be discarded.<br><br>
+							In addition, although theoretically k<sub>off</sub> should be same, as a good practice you should also calculate the k<sub>off</sub> value from the graphs generated at different <u>free ligand concentration</u> to check for errors.
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- f. 6th Objective -->
+			<div id="sixthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 6: Obtain standard deviation</h4>
+						</div>
+						<div class="modal-body">
+							Next we have to find the standard deviation of the SPR technique. To achieve 95% confidence, 6 duplicates must be perform on a single set of <u>free ligand concentration</u> and <u>association time</u> combination. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.<br><br>
+							Note that you should obtain the standard deviation for both the association experiment (<u>max RU</u> at equilibrium binding) and disassociation experiment (k<sub>off</sub>) to allow you to calculate the standard deviation for k<sub>on</sub> later.
+						</div>
+					</div>
+				</div>
+			</div>
+					<!-- g. 7th Objective -->
+			<div id="seventhObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Objective 7: Calculate Kd, k<sub>off</sub>, k<sub>on</sub> and standard deviation</h4>
+						</div>
+						<div class="modal-body">
+							Finally, export the data into excel. Plot the Langmuir Isotherm by hand or use the curve fitting function on excel with hyperbola shaped curve. There should be at least 6x3=18 plots on there. From the curve, you can derive what the RU value for maximum binding at equilibrium is by observing where the curve plateau. This will allow you to find the Kd as the <u>free ligand concentration</u> at half maximal binding at equilibrium. Use this Kd value and k<sub>off</sub> value obtained to calculate k<sub>on</sub> and its standard deviation.
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- Modal: Prompt confirm restart -->
+			<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Confirm Restart</h4>
+						</div>
+						<div class="modal-body">
+							Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
+							<br><br>
+							If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- Modal: Prompt confirm play again -->
+			<div id="replay_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Confirm Replay</h4>
+						</div>
+						<div class="modal-body">
+							Are you sure you wish to replay? A new pair of ligand-receptor will be generated and all data in the table previously generated will be clear.
+							<br><br>
+							If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" ng-click="view.replay()"  data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- Modal: Initialising -->
+			<div id="initialising_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalLabel">Welcome to OxSPR!</h4>
+						</div>
+						<div class="modal-body">
+							<font color="#c33e3e">*Note: OxSPR is still currently a prototype.</font><br><br>
+							OxSPR is a Surface Plasmon Resonance simulator developed to help Biochemistry undergraduates master experimental design skills. Students can use the <u>GUIDE MODE</u> to walk-through the thought process in designing scientifically sound experiments, or practice their skills by trying to solve the challenge within the <u>MASTERY SCORE</u>. The aim of this experiment is to find Kd, k<sub>off</sub>, k<sub>on</sub> and its associated statistics given an unknown ligand-receptor pair.<br><br>
+							Before we begin, please choose a mode for the simulation suitable for your purpose.
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Learn</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Mastery</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-				<!-- 2. Main controller box -->
+				<!-- 3. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
 						<!-- i. Panel: high score display (mastery mode only) -->
@@ -326,7 +494,7 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
-							OxSPR is still currently a prototype. If you like the software, please support the project by providing <b><a href="" class="blue-link">feedback</a></b> and <b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or <a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a> it to anyone you think might be helpful.<br><br>
+							OxSPR is still currently a prototype. If you like the software, please support the project by providing <b><a href="" class="blue-link">feedback</a></b> and <b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> it to anyone you think might be helpful.<br><br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
 							<!-- r. Prompt: session over -->
@@ -470,7 +638,7 @@
 				</div>
 			</div><br>
 
-			<!-- 3. Credit Box -->
+			<!-- 4. Credit Box -->
 			<div id="oxonHeaderFooter" class="row credit-box">
 					<!-- a. Logo -->
 				<div id="credit-left" class="col-md-2">
@@ -497,174 +665,6 @@
 						The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul
 					</div>
 				</div>					
-			</div>
-				<!-- 4. Modals -->
-					<!-- a. 1st Objective -->
-			<div id="firstObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 1: Remove background</h4>
-						</div>
-						<div class="modal-body">
-							Before performing experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0) and remove it from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
-							In a real world experiment, artefacts from background such as baseline drift could occur which would cause an increase in resonance over time. Thus the <u>association time</u> you run to remove background must cover the longest <u>association time</u> you would be using in the whole experiment to subtract all baseline drift. However, for this simulation, you can assume there is no baseline drift and input any <u>association time</u> you like.
-						</div>
-					</div>
-				</div>
-			</div>
-					<!-- b. 2nd Objective -->
-			<div id="secondObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 2: Find appropriate association time length</h4>
-						</div>
-						<div class="modal-body">
-							You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>association time</u><br><br>
-							We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium at nM <u>free ligand concentration</u> since this length would cover for all higher <u>free ligand concentration</u>.<br><br>
-							A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low seed value such as 1 second and estimate from the projection, assuming that the curve is a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
-							Ultimately, you will know that you have reached equilibrium by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.
-						</div>
-					</div>
-				</div>
-			</div>
-					<!-- c. 3rd Objective -->
-			<div id="thirdObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 3: Seeding free ligand concentration values</h4>
-						</div>
-						<div class="modal-body">
-							The purpose of plotting Langmuir Isotherm is to find out the resonance value for maximum binding at equilibrium and from the curve, derive the <u>free ligand concentration</u> which gives the half maximal binding resonance value which is the Kd. We use SPR to find the resonance values at equilibrium and its corresponding <u>free ligand concentration</u> for plotting in Langmuir Isotherm. We have previously determined the minimum <u>association time</u> require for the binding to reach equilibrium and will use this length to run subsequent experiments for <u>max RU</u> measured to be valid. However, we still have to find out the <u>free ligand concentration</u> range to input such the points obtained are sufficiently scattered for plotting an accurate Langmuir Isotherm.<br><br> 
-							Our theoretical knowledge about ligand-receptor pair give us the context that Kd usually lies between mM to nM range for weak to strong binding respectively. Thus, given an unknown system, a suitable strategy would be to seed values broadly between these range, such as 1 nM, 1 uM and 1 mM.<br><br>
-							The result will tell us roughly where the dynamic range lies by observing the position of the 1 uM curve. The dynamic range is when a change in <u>free ligand concentration</u> still result in change in <u>max RU</u> measured at equilibrium binding as it has not yet reached the maximum binding at equilibrium on Langmuir Isotherm curve. If the 1 uM curve <u>max RU</u> is closer to the 1 mM curve <u>max RU</u>, it is likely that the <u>max RU</u> at equilibrium of 1 mM curve has reached the maximum binding at equilibrium on Langmuir Isotherm. This mean that you should sample for more coordinates between the 1 uM and the 1 nM curve. Otherwise try running another curve at higher magnitude than 1 mM to confirm if the maximum binding at equilibrium on Langmuir Isotherm has been reached. At the end, you want to generate at least 6 points in the dynamic range of Langmuir Isotherm with reasonable spacing of <u>max RU</u> at equilibrium binding value so you could plot easily.
-						</div>
-					</div>
-				</div>
-			</div>
-					<!-- d. 4th Objective -->
-			<div id="forthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 4: Calculate k<sub>off</sub></h4>
-						</div>
-						<div class="modal-body">
-							We must also find the k<sub>off</sub> from the experiment for calculating k<sub>on</sub> later. In this simulation, we can assume that the disassociation is a first order model, thus from the disassociation curve generated after clicking <u>WASH</u>, we can take a coordinate and use it to calculate the disassociation constant with the first order decay equation.<br><br>
-							A good practice would be to sample points at even spacing on a disassociation curve to use for determining k<sub>off</sub>, such as from the 1st and 2nd half-life.
-						</div>
-					</div>
-				</div>
-			</div>
-					<!-- e. 5th Objective -->
-			<div id="fifthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 5: Perform sufficient replicates</h4>
-						</div>
-						<div class="modal-body">
-							With 6 coordinates that are evenly spaced for <u>max RU</u> at equilibrium binding and its corresponding <u>free ligand concentration</u>, perform at least 3 replicates per point such that you have a total of 6x3 = 18 coordinates. Replicates allow us to see which points are outliers and should be discarded.<br><br>
-							In addition, although theoretically k<sub>off</sub> should be same, as a good practice you should also calculate the k<sub>off</sub> value from the graphs generated at different <u>free ligand concentration</u> to check for errors.
-						</div>
-					</div>
-				</div>
-			</div>
-					<!-- f. 6th Objective -->
-			<div id="sixthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 6: Obtain standard deviation</h4>
-						</div>
-						<div class="modal-body">
-							Next we have to find the standard deviation of the SPR technique. To achieve 95% confidence, 6 duplicates must be perform on a single set of <u>free ligand concentration</u> and <u>association time</u> combination. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.<br><br>
-							Note that you should obtain the standard deviation for both the association experiment (<u>max RU</u> at equilibrium binding) and disassociation experiment (k<sub>off</sub>) to allow you to calculate the standard deviation for k<sub>on</sub> later.
-						</div>
-					</div>
-				</div>
-			</div>
-					<!-- g. 7th Objective -->
-			<div id="seventhObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 7: Calculate Kd, k<sub>off</sub>, k<sub>on</sub> and standard deviation</h4>
-						</div>
-						<div class="modal-body">
-							Finally, export the data into excel. Plot the Langmuir Isotherm by hand or use the curve fitting function on excel with hyperbola shaped curve. There should be at least 6x3=18 plots on there. From the curve, you can derive what the RU value for maximum binding at equilibrium is by observing where the curve plateau. This will allow you to find the Kd as the <u>free ligand concentration</u> at half maximal binding at equilibrium. Use this Kd value and k<sub>off</sub> value obtained to calculate k<sub>on</sub> and its standard deviation.
-						</div>
-					</div>
-				</div>
-			</div>
-				<!-- Modal: Prompt confirm restart -->
-			<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Confirm Restart</h4>
-						</div>
-						<div class="modal-body">
-							Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
-							<br><br>
-							If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
-							<br><br>
-							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-				<!-- Modal: Prompt confirm play again -->
-			<div id="replay_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Confirm Replay</h4>
-						</div>
-						<div class="modal-body">
-							Are you sure you wish to replay? A new pair of ligand-receptor will be generated and all data in the table previously generated will be clear.
-							<br><br>
-							If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
-							<br><br>
-							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.replay()"  data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-				<!-- Modal: Initialising -->
-			<div id="initialising_modal" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="modalLabel">Welcome to OxSPR!</h4>
-						</div>
-						<div class="modal-body">
-							<font color="#c33e3e">*Note: OxSPR is still currently a prototype.</font><br><br>
-							OxSPR is a Surface Plasmon Resonance simulator developed to help Biochemistry undergraduates master experimental design skills. Students can use the <u>GUIDE MODE</u> to walk-through the thought process in designing scientifically sound experiments, or practice their skills by trying to solve the challenge within the <u>MASTERY SCORE</u>. The aim of this experiment is to find Kd, k<sub>off</sub>, k<sub>on</sub> and its associated statistics given an unknown ligand-receptor pair.<br><br>
-							Before we being, please let us know if you are a new or returning user?
-							<br><br>
-							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.new_user()"  data-dismiss="modal">New</button>&nbsp;&nbsp;&nbsp;
-								<button type="button" class="modal-button clickable1" ng-click="view.returning_user()"  data-dismiss="modal">Returning</button>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 				<!-- Start the page by loading the initialising modal, which cannot be skipped -->
 			<script type="text/javascript">$(window).load(function(){$('#initialising_modal').modal('show');});$('#initialising_modal').modal({backdrop: 'static',keyboard: false});</script>
