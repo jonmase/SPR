@@ -176,7 +176,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			view.finishedStepsCount = view.experiment.steps;
 			view.finishedEfficiencyCount = view.output.efficiencyRating;			
 			view.endTime = Date.now();
-			view.elapsed = (view.endTime-view.startTime)/1000;
+			view.elapsed = Math.round((view.endTime-view.startTime)/1000);
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");

@@ -436,25 +436,27 @@
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
-							<!-- d. Values for Debugging>
+							<!-- d. Values for Debugging -->
 						<div class="box-left debug">Kd / uM</div>
-						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2) * 1}}</div><br>
+						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
 						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
 						<div class="box-right debug">{{view.system.kOn}}</div><br>
 						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
 						<div class="box-right debug">{{view.system.kOff}}</div><br>
-						<div class="box-left debug">Completed steps count</div>
-						<div class="box-right debug">{{view.finishedStepsCount[view.finishedStepsCount.length-1]}}</div><br>
 						<div class="box-left debug">Minimum time on</div>
-						<div class="box-right debug"><u>{{view.system.min_timeOn}}</u></div><br>
+						<div class="box-right debug"><u>{{view.system.min_timeOn | number: 2}}</u></div><br>
 						<div class="box-left debug">Minimum time off</div>
-						<div class="box-right debug"><u>{{view.system.min_timeOff}}</u></div><br>
+						<div class="box-right debug"><u>{{view.system.min_timeOff | number: 2}}</u></div><br>
+						<div class="box-left debug">Completed steps count</div>
+						<div class="box-right debug">{{view.finishedStepsCount}}</div><br>
+						<div class="box-left debug">Completed efficiency count</div>
+						<div class="box-right debug">{{view.finishedEfficiencyCount}}</div><br>
 						<div class="box-left debug">Start Timestamp</div>
 						<div class="box-right debug"><u>{{view.startTime}}</u></div><br>
 						<div class="box-left debug">End Timestamp</div>
 						<div class="box-right debug"><u>{{view.endTime}}</u></div><br>
 						<div class="box-left debug">Elapsed time</div>
-						<div class="box-right debug"><u>{{view.elapsed}}</u></div><br-->
+						<div class="box-right debug"><u>{{view.elapsed}}</u></div><br>
 					</div>
 				</div>
 			</div><br>
@@ -640,13 +642,14 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Welcome to OxSPR!</h4>
+							<h4 class="modal-title" id="modalLabel">Welcome to <font color="#c33e3e">OxSPR!</font></h4>
 						</div>
 						<div class="modal-body">
+							<font color="#c33e3e">*Note: OxSPR is still currently a prototype.</font><br><br>
+							OxSPR is a Surface Plasmon Resonance simulator developed to help Biochemistry undergraduates master experimental design skills. Students can use the <u>GUIDE MODE</u> to walk-through the thought process in designing scientifically sound experiments, or practice their skills by trying to solve the challenge within the <u>MASTERY SCORE</u>. The aim of this experiment is to find Kd, k<sub>off</sub>, k<sub>on</sub> and its associated statistics given an unknown ligand-receptor pair.<br><br>
+							Before we being, please let us know if you are a new or returning user?
+							<br><br>
 							<div id="center_buttons">
-								Are you a new or returning user?
-								<br><br>
 								<button type="button" class="modal-button clickable1" ng-click="view.new_user()"  data-dismiss="modal">New</button>&nbsp;&nbsp;&nbsp;
 								<button type="button" class="modal-button clickable1" ng-click="view.returning_user()"  data-dismiss="modal">Returning</button>
 							</div>
@@ -654,8 +657,8 @@
 					</div>
 				</div>
 			</div>
-				<!-- Start the page by loading the initialising modal -->
-			<script type="text/javascript">$(window).load(function(){$('#initialising_modal').modal('show');});</script>
+				<!-- Start the page by loading the initialising modal, which cannot be skipped -->
+			<script type="text/javascript">$(window).load(function(){$('#initialising_modal').modal('show');});$('#initialising_modal').modal({backdrop: 'static',keyboard: false});</script>
 		</div>   
 	</body>
 
