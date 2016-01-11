@@ -251,6 +251,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			stored_backgroundUnitsSet: view.backgroundUnitsSet,
 				// stored output
 			store_tableData: view.table.data,
+			store_fLC: view.output.fLC,
+			store_timeOn: view.output.timeOn,
 				// stored backend values
 			store_userType: view.user_type,
 			store_startTime: view.startTime,
@@ -284,6 +286,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundUnitsSet = view.cookiesData.stored_backgroundUnitsSet;
 			// set output to as stored
 		view.table.data = view.cookiesData.store_tableData;
+		view.output.fLC = view.cookiesData.store_fLC;
+		view.output.timeOn = view.cookiesData.store_timeOn;
 			// set backend values as stored
 		view.user_type = view.cookiesData.store_userType;
 		view.startTime = view.cookiesData.store_startTime;
