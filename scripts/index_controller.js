@@ -284,7 +284,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = view.cookiesData.stored_backgroundSet;
 		view.backgroundUnitsSet = view.cookiesData.stored_backgroundUnitsSet;
 			// set output to as stored
-		view.table.data = view.cookiesData.store_tableData;
+		for (var i = 0; i < view.cookiesData.store_tableData.length; i++) {
+			view.table.data.push(view.cookiesData.store_tableData[i]);
+		}
 		view.output.fLC = view.cookiesData.store_fLC;
 		view.output.timeOn = view.cookiesData.store_timeOn;
 			// set backend values as stored

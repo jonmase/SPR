@@ -548,12 +548,12 @@
 							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
 						</div>
 							<!-- c. Yout Efficiency Points -->
-						<div class="col-md-6 track-panel"  ng-show="view.guideMode == true">
+						<div class="col-md-6 track-panel"  ng-show="view.guideMode == false">
 							<div>Efficiency Points</div>
 							<div class="tracked-value">{{view.output.efficiencyRating}}</div>
 						</div>
 							<!-- d. Your Steps Taken -->
-						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast" ng-show="view.guideMode == true">
+						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast" ng-show="view.guideMode == false">
 							<div>Steps</div>
 							<div class="tracked-value">{{view.experiment.steps}}</div>
 						</div>
@@ -655,6 +655,8 @@
 						<div class="box-right debug">{{view.checkResults}}</div><br>
 						<div class="box-left debug">Cookies: stored table data</div>
 						<div class="box-right debug">{{view.cookiesData.store_tableData}}</div><br>
+						<div class="box-left debug">Table data</div>
+						<div class="box-right debug">{{view.table.data}}</div><br>
 					</div>
 				</div>
 			</div><br>
