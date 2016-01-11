@@ -86,7 +86,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
 		view.compileCookiesData();
-		view.cookies.put("storedData", view.cookiesData);
+		view.cookies.putObject("storedData", view.cookiesData);
 	}; 
 
 /* e) creating function for "home" button */
@@ -139,6 +139,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
 		view.cookies.remove("storedData");
+		view.cookiesData = {};
 	};
 
 /* h) creating a function for "check" answer button */
@@ -174,6 +175,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			view.checkResults_bySession.push("correct");
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 			view.cookies.remove("storedData");
+			view.cookiesData = {};
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
@@ -228,6 +230,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
 		view.cookies.remove("storedData");
+		view.cookiesData = {};
 	};
 
 /* k) create function to compile all relevant data to save into cookies */
@@ -240,14 +243,15 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			stored_mwL: view.system.mwL,
 			stored_mwR: view.system.mwR,
 				// stored experiment status
-			storedSteps: view.experiment.steps,
+			storedDaysLeft: view.experiment.daysLeft,
 			storedTimeOfDay: view.experiment.timeOfDay,
+			store_effRating: view.output.efficiencyRating,
+			storedSteps: view.experiment.steps,
 			stored_backgroundSet: view.backgroundSet,
 			stored_backgroundUnitsSet: view.backgroundUnitsSet,
 				// stored output
 			store_tableData: view.table.data,
 				// stored backend values
-			store_effRating: view.output.efficiencyRating,
 			store_userType: view.user_type,
 			store_startTime: view.startTime,
 			store_endTime: view.endTime,
@@ -261,38 +265,41 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* l) functions to run when starting the software */
 		// open initialising modal window if no cookies, if not check if restarting or continue
-	if (view.cookies.getAll("storedData")) {
-		view.system.loadNewPair(view.vol, view.RPUM);
-		view.experiment.daysLeft = view.experiment.daysAllowed;
-		view.experiment.timeOfDay = view.experiment.startOfDay;
-		$(window).load(function(){$('#initialising_modal').modal('show');});
-		$('#initialising_modal').modal({backdrop: 'static',keyboard: false});
-	} else {
+	if (view.cookies.getObject("storedData")) {
+			// load cookies data
+		view.cookiesData = view.cookies.getObject("storedData");
 			// set system to as stored
 		view.system.tRC = view.cookiesData.stored_tRC;
 		view.system.Kd = view.cookiesData.storedKd;
 		view.system.kOff = view.cookiesData.stored_kOff;
 		view.system.mwL = view.cookiesData.stored_mwL;
 		view.system.mwR = view.cookiesData.stored_mwR;
-		view.system.calculateSystem();
+		view.system.calculateSystem(view.vol, view.RPUM);
 			// set experiment status to as stored
-		view.experiment.steps = view.cookiesData.storedSteps;
+		view.experiment.daysLeft = view.cookiesData.storedDaysLeft;
 		view.experiment.timeOfDay = view.cookiesData.storedTimeOfDay;
+		view.output.efficiencyRating = view.cookiesData.store_effRating;
+		view.experiment.steps = view.cookiesData.storedSteps;
 		view.backgroundSet = view.cookiesData.stored_backgroundSet;
 		view.backgroundUnitsSet = view.cookiesData.stored_backgroundUnitsSet;
 			// set output to as stored
 		view.table.data = view.cookiesData.store_tableData;
 			// set backend values as stored
-		view.output.efficiencyRating = view.cookiesData.store_effRating;
-		view.user_type = store_userType;
-		view.startTime = store_startTime;
-		view.endTime = store_endTime;
-		view.elapsed = store_elapsed;
-		view.sessionStepsCount = store_sessionStepCount;
-		view.sessionEfficiencyCount = store_sessionEfficiencyCount;
-		view.sessionCheckCount = store_sessionCheckCount;
-		view.checkResults = store_checkResults;
+		view.user_type = view.cookiesData.store_userType;
+		view.startTime = view.cookiesData.store_startTime;
+		view.endTime = view.cookiesData.store_endTime;
+		view.elapsed = view.cookiesData.store_elapsed;
+		view.sessionStepsCount = view.cookiesData.store_sessionStepCount;
+		view.sessionEfficiencyCount = view.cookiesData.store_sessionEfficiencyCount;
+		view.sessionCheckCount = view.cookiesData.store_sessionCheckCount;
+		view.checkResults = view.cookiesData.store_checkResults;
 		$(window).load(function(){$('#cookies_modal').modal('show');});
 		$('#cookies_modal').modal({backdrop: 'static',keyboard: false});
+	} else {
+		view.system.loadNewPair(view.vol, view.RPUM);
+		view.experiment.daysLeft = view.experiment.daysAllowed;
+		view.experiment.timeOfDay = view.experiment.startOfDay;
+		$(window).load(function(){$('#initialising_modal').modal('show');});
+		$('#initialising_modal').modal({backdrop: 'static',keyboard: false});
 	}
 }

@@ -130,7 +130,7 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.createID(system.Kd, system.kOff, system.kOn);
 	};
 /* l) calculate all derived variables from assigned variables */
-	system.calculateSystem = function() {
+	system.calculateSystem = function(con_vol, con_RPUM) {
 		system.find_kOn(system.Kd, system.kOff);
 		system.find_mwLR(system.mwL, system.mwR);
 		system.find_RU_Max(system.tRC, system.mwR, con_vol, con_RPUM, system.mwL, system.mwLR);

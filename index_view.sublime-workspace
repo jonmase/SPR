@@ -1,0 +1,665 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"all",
+				"all_Correct	(index_controller.js)"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"backgr",
+				"backgroundUnitsSet"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"con_",
+				"con_vol"
+			],
+			[
+				"displ",
+				"displayName"
+			],
+			[
+				"time",
+				"timeOff"
+			],
+			[
+				"new",
+				"new_timeOff"
+			],
+			[
+				"new_",
+				"new_fLC"
+			],
+			[
+				"new_time",
+				"new_timeOff	(index_view.html)"
+			],
+			[
+				"add_",
+				"add_timeOff	(output_model.js)"
+			],
+			[
+				"add",
+				"add_timeOn	(output_model.js)"
+			],
+			[
+				"run",
+				"runSPR	(index_view.html)"
+			],
+			[
+				"output",
+				"outputModel"
+			],
+			[
+				"anal",
+				"analysis_model	(index.html)"
+			],
+			[
+				"expe",
+				"experiment_model	(index.html)"
+			],
+			[
+				"ligandRece",
+				"ligandReceptorConc"
+			],
+			[
+				"free",
+				"freeReceptorConc"
+			],
+			[
+				"start",
+				"start_of_night"
+			],
+			[
+				"star",
+				"start_of_lunch"
+			],
+			[
+				"title",
+				"titles"
+			],
+			[
+				"bio",
+				"bioPic"
+			],
+			[
+				"form",
+				"formattedTitle"
+			],
+			[
+				"format",
+				"formattedEmployer"
+			],
+			[
+				"formattedE",
+				"formattedEmployerTitle"
+			],
+			[
+				"work",
+				"workExperience"
+			],
+			[
+				"choi",
+				"choice1"
+			],
+			[
+				"forma",
+				"formattedSkills"
+			],
+			[
+				"fun",
+				"funThoughts"
+			],
+			[
+				"resum",
+				"resumeBuilder"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"border",
+				"border-color"
+			],
+			[
+				"img",
+				"images_src"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"colo",
+				"border-color"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 347.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"packag",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib2,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Win/Sites/SPR/index_view.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/index_view.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/index_controller.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/services/chart-config.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/services/output_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/index_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/services/system_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/styles/main.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/services/table-config.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/services/experiment_status.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/libraries/flot/angular-flot.js",
+		"/Users/Win/Desktop/temp",
+		"/Users/Win/Sites/my_phpinfo.php",
+		"/Users/Win/Sites/index_view.html",
+		"/Users/Win/Sites/index.html",
+		"/Applications/XAMPP/xamppfiles/etc/httpd.conf",
+		"/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf",
+		"/Applications/XAMPP/xamppfiles/etc/extra/httpd-userdir.conf",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/scripts/filters/uM_filter.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/libraries/ui-grid/ui-grid.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/libraries/ui-grid/ui-grid.min.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/libraries/ui-grid/ui-grid.woff",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/libraries/ui-grid/ui-grid.ttf",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/debugger.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/styles/debugger.css",
+		"/Users/Win/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/private/etc/apache2/users/Win",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/styles/chart-style.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/index_prototype.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/styles/main_prototype.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/SPR-Software/styles/table-style.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Software/todo.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Existing Work/Michaelis-Menten Enzyme Kinetics/Enz-Lab/js/controllers.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/styles/main.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/system_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/index_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/experiment_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/output_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/analysis_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/pair_model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/model_index.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/model.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/services/services.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/filters/filters.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/app.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/index.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Front-End/SPR-Software/scripts/controllers/controllers.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/home.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics_.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/MM Kinetics.sublime-project",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics_.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/angular-cookies.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/angular.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/app.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/beaker-full-small.png",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/bootstrap-theme.min.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/bootstrap.min.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/bootstrap.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/controllers.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/filters.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/jqplot.cursor.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/jqplot.highlighter.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/jquery.jqplot.min.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/jquery.jqplot.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/jquery.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/michaelismenten.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/ng-grid-csv-export-injection-mod-for-ie.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/ng-grid-flexible-height.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/ng-grid-layout.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/ng-grid.min.css",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/ng-grid.min.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/oxford_logo.gif",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/services.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Content/Existing Work/Michaelis-Menten Enzyme Kinetics/Software/Michaelis-Menten Enzyme Kinetics__files/simple_statistics.js",
+		"/Users/Win/Desktop/ImmunoLab_files/styles.css",
+		"/Users/Win/Desktop/ImmunoLab_files/javascriptTutorial.js",
+		"/Users/Win/Desktop/ImmunoLab_files/javascriptControl.js",
+		"/Users/Win/Desktop/ImmunoLab_files/ImmunoLab.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Archive/Previous Work/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics_.html",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Archive/Previous Work/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/controllers.js",
+		"/Users/Win/Dropbox/Study/Biochemistry @ Oxford/4th Year/Project/Archive/Previous Work/ImmunoLAB/ImmunoLab.html",
+		"/Users/Win/Desktop/My Notes/[Content] SPR.html",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/jquery.jqplot.min.js",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/app.js",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/michaelismenten.css",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/jquery.min.js",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/simple_statistics.js",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics__files/angular-cookies.js",
+		"/Users/Win/Desktop/Part II/ITC & SPR/Michaelis-Menten Enzyme Kinetics/Michaelis-Menten Enzyme Kinetics_.html",
+		"/Users/Win/Downloads/jquery-1.11.3.min.js",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/index.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/js/resumeBuilder.js",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/js/helper.js",
+		"/Users/Win/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/Win/Library/Application Support/Sublime Text 3/Packages/User/JavaScript.sublime-settings",
+		"/Users/Win/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/js/jQuery.js",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/css/style.css",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/version-control/reflections/lesson_3_reflections.txt",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/version-control/reflections/lesson_2_reflections.txt",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/README.md",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/frontend-nanodegree-resume/index2.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/version-control/reflections/lesson_1_reflections.txt",
+		"/Users/Win/.bash_profile",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/P1-Porfolio/index.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/P1-Porfolio/css/style.css",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/P1 - Portfolio/Code/index.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/P1 - Portfolio/Code/style.css",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/P1 - Portfolio/Code/gruntfile.js",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/P1 - Portfolio/Code/package.json",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Project-Part-1-Start/Gruntfile.js",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Project-Part-1-Start/index.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Project-Part-1-Start/css/main.css",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Project-Part-1-Start/package.json",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Project-Part-1-Start/css/750px.css",
+		"/Users/Win/Desktop/package.json",
+		"/Users/Win/Downloads/pattern-mostly-fluid-quiz-blankcss.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/4 - Viewport/index.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/4 - Viewport/main.css",
+		"/Users/Win/Desktop/style.css",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Toplist/index.html",
+		"/Users/Win/Desktop/Nanodegree/Portfolio/Toplist/abc.css",
+		"/index.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"restart",
+			"checkResults",
+			"view.check",
+			"check results",
+			"view.checkCounter",
+			"view.check",
+			"view.CheckCounter",
+			"finished",
+			"checkCount",
+			"view.checkCount",
+			"view.user_type",
+			"view.finishedStepsCount",
+			"email",
+			"feedback and share",
+			"view.finishedEfficiencyCount",
+			"view.finishedStepsCount",
+			"view.endTime",
+			"view.startTime",
+			"view.user_type",
+			"restart",
+			"model",
+			"cookies",
+			"date.now",
+			"view.endTime",
+			"finishedStepsCount",
+			"SURVEY",
+			"modal",
+			"restart",
+			"replay_modal",
+			"confirm",
+			"view.summary()",
+			"credit-link",
+			"share",
+			"replay_modal",
+			"replay_button",
+			"if you wish to",
+			"restart_modal",
+			"import",
+			"importa",
+			"modal",
+			"navbar-link",
+			"white",
+			"restart",
+			"sensorgram",
+			"tooltip",
+			"modal",
+			"confirm",
+			"modealLabel",
+			"myModalLabel",
+			"association time/s",
+			"RU_On_Output_table",
+			"efficiency rating",
+			"math.round",
+			"RU_CompiledLabelPlotAll",
+			"finishedStepsCount",
+			"find_min_timeOn",
+			"timeOffDefault",
+			"experiment",
+			"RU_On_Max",
+			"RU_MaxLR",
+			"machine",
+			"counter",
+			"resources used",
+			"box-left",
+			"wash",
+			"restart",
+			"plotObj",
+			"flot",
+			"span",
+			"button",
+			"btn",
+			"magnitudeSelected",
+			"input_check_Kd",
+			"check",
+			"output.magnitudeAdjust",
+			"form",
+			"magnitudeSelected",
+			"peak RU",
+			"remove background",
+			"clear background",
+			"daemon",
+			"flot",
+			"toggle_switchOne",
+			"output.RU_On_Output_table",
+			"table.compileData",
+			"max RU reached",
+			"output.RU_On_Output",
+			"output.RU_On_Max",
+			"RU_OnAdjusted",
+			"RU_On_Output",
+			"output.RU_On_Output",
+			"low free ligand concentration",
+			"low free ligand",
+			"output.RU_On_Output",
+			"RU_CompiledLabelPlotAll",
+			"placeholder=\"1\"",
+			"border: ",
+			"border",
+			"border-color",
+			"peak RU",
+			"sensorgram",
+			"check_Kd",
+			"view.check",
+			"input_check_Kd",
+			"<font color=\"#c32b2bc33e3e\">",
+			"<font color=\"#c32b2b\">",
+			"<font color=\"#e84d4d\">",
+			"<font color=\"#bf3f3f\">",
+			"<font color=\"#db1e1e\">",
+			"<font color=\"red\">",
+			"d6d5d5",
+			"F5D400",
+			"<font color=\"#a6a6a6\">[",
+			"<font color=\"#a6a6a6\">> Console",
+			"steps",
+			"check-btn-container",
+			"control",
+			"headi",
+			"heading",
+			"unclicked",
+			"center",
+			"summary",
+			"box-left",
+			"form",
+			"summary",
+			"sensorgram",
+			"form",
+			"border"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"session",
+			"sessionCheckCount",
+			"blue-link",
+			"SPR-link",
+			"modalLabel",
+			"modealLabel",
+			"max RU",
+			"remove background",
+			"placeholder=\"number\"",
+			"<font color=\"#c33e3e\">",
+			"<font color=\"#c32b2bc33e3e\">",
+			"<font color=\"#c32b2b\">",
+			"<font color=\"#e84d4d\">",
+			"<font color=\"#bf3f3f\">",
+			"<font color=\"#db1e1e\">",
+			"ececec",
+			"d6d5d5",
+			"<font color=\"#F5D400\">[",
+			"<font color=\"#70BF41\">> Console",
+			"gloss-contrast",
+			"",
+			"#a6a6a6",
+			"Console",
+			"stdDev",
+			"relativeError",
+			"absoluteError",
+			"Supper",
+			"stdErr"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 25.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index_view.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 179.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
