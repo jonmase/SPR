@@ -188,9 +188,16 @@ a.navbar-link:active {
 	color: red;
 }
 
+.modal {
+	color: #d2e3fd;
+	font-size: 0.85em;
+	letter-spacing: 0.2px;
+	font-weight: 300;
+}
+
 .modal-button{
 	height: 33px;
-	width: 65px;
+	width: 70px;
 }
 
 #modalLabel {
@@ -243,6 +250,10 @@ a.blue-link:hover {
 a.blue-link:active {
 	color: #51A7F9;
 	text-decoration: none;
+}
+
+#center_buttons {
+	text-align: center;
 }
 
 /* panel: guide mode */
@@ -448,10 +459,6 @@ a.finish-btn:active {
 .box-right-btn {
 	text-align: left;
 	width: 50%;
-}
-
-#restart_buttons {
-	text-align: center;
 }
 
 /* panel: system info */

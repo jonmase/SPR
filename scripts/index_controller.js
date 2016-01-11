@@ -21,12 +21,14 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.vol = vol;
 	view.RPUM = RPUM;
 		// metrics tracked in database
+	view.user_type = null;
 	view.restartCounter = 0;
 	view.replayCounter = 0;
 	view.checkCounter = 0;
 	view.finishedStepsCount = [];
 	view.finishedEfficiencyCount = [];
 		// default function of various buttons
+	view.initialising = true;
 	view.guideMode = false;
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
@@ -66,14 +68,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.storedDataPrompt = false; // close the prompt
 	};
 */
-
-	view.replay = function(){
-		/* view.cookies.remove("storedData"); */
-		view.system.loadNewPair(view.vol, view.RPUM);
-		view.restart();
-		view.replayCounter++;
-		/* view.storedDataPrompt = false; */
-	};
 
 /* c) creating function for set "zero" button */
 	view.set_background = function() {
@@ -185,6 +179,27 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			view.all_Correct = false;
 		}
 	};
+
+/* j) creating functions to track if new or returning user */
+	view.new_user = function() {
+		view.user_type = "new";
+		view.guideMode = true;
+	};
+
+	view.returning_user = function() {
+		view.user_type = "returning";
+		view.guideMode = false;
+	};
+
+/* j) creating functions for play again button */
+	view.replay = function(){
+		/* view.cookies.remove("storedData"); */
+		view.system.loadNewPair(view.vol, view.RPUM);
+		view.restart();
+		view.replayCounter++;
+		/* view.storedDataPrompt = false; */
+	};
+
 
 /* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies
 
