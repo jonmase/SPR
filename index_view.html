@@ -575,13 +575,13 @@
 						<div class="box-left-btn">
 							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
 						</div>
-							<!-- d) "Go home" button -->
-						<div class="box-right-btn">
-							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
-						</div>
-							<!-- e) "Clear chart" button -->
+							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
 							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+						</div>
+							<!-- e) "Go home" button -->
+						<div class="box-right-btn">
+							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
@@ -661,7 +661,7 @@
 			<div id="oxonHeaderFooter" class="row credit-box">
 					<!-- a. Logo -->
 				<div id="credit-left" class="col-md-2">
-					<a href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
+					<a target="_blank" href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
 				</div>
 					<!-- b. credit & buttons -->
 				<div id="credit-box" class="col-md-10">
@@ -679,7 +679,7 @@
 					<div id="credit-text">
 						OxSPR is still currently a <font color="red">prototype</font>. If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
 						<br><br>
-						Developed for <a href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by<a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, with supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
+						Developed for <a target="_blank" href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a target="_blank" href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by<a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, with supervision by <a target="_blank" href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
 						<br>
 						<font color="#A6AAA9">The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul</font>
 					</div>
