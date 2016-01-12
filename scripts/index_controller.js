@@ -21,18 +21,19 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.vol = vol;
 	view.RPUM = RPUM;
 		// metrics tracked in database
-	view.user_type = null;
-	view.restartCounter = 0;
-	view.replayCounter = 0;
-	view.checkCounter = 0;
-	view.finishedStepsCount = null;
-	view.finishedEfficiencyCount = null;
-	view.startTime = null;
-	view.endTime = null;
-	view.elapsed = null; // seconds from time defining user_type until all_Correct = true
+	view.user_type = [];
+	view.startTime = [];
+	view.endTime = [];
+	view.elapsed = []; // seconds from time defining user_type until all_Correct = true
+	view.sessionStepsCount = [];
+	view.sessionEfficiencyCount = [];
+	view.sessionCheckCount = [];
+	view.checkResults = [];
 		// default function of various buttons
 	view.initialising = true;
 	view.guideMode = false;
+	view.checkCounter = 0;
+	view.checkResults_bySession = [];
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
@@ -128,10 +129,27 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* h) creating a function for "restart" button */
 	view.restart = function() {
+			// for backend
+		if (view.all_Correct === false) {
+			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
+			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionCheckCount.push(angular.copy(view.checkCounter));
+			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
+			view.endTime.push(angular.copy(Date.now()));
+			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
+			view.user_type.push(angular.copy("restart"));
+			view.startTime.push(angular.copy(Date.now())); // create a new session
+		} else {
+			view.user_type.push(angular.copy("restart"));
+			view.startTime.push(angular.copy(Date.now())); // create a new session
+		}
+			// reset experiment status
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		view.output.machineTime = 0;
 		view.experiment.steps = 0;
+		view.checkCounter = 0;
+		view.checkResults_bySession.length = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -141,8 +159,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.table.data.length = 0;
-		view.restartCounter++;
-		view.checkCounter = 0;
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
@@ -173,39 +189,69 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
-			view.finishedStepsCount = view.experiment.steps;
-			view.finishedEfficiencyCount = view.output.efficiencyRating;			
-			view.endTime = Date.now();
-			view.elapsed = (view.endTime-view.startTime)/1000;
+			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
+			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionCheckCount.push(angular.copy(view.checkCounter));
+			view.endTime.push(angular.copy(Date.now()));
+			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
+			view.checkResults_bySession.push("correct");
+			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
 		} else {
 			view.all_Correct = false;
+			view.checkResults_bySession.push("wrong");
 		}
 	};
 
-/* j) creating functions to track if new or returning user */
-	view.new_user = function() {
-		view.user_type = "new";
+/* j) creating functions to track if learn or mastery user */
+	view.learn_user = function() {
+		view.user_type.push(angular.copy("learn"));
 		view.guideMode = true;
-		view.startTime = Date.now();
+		view.startTime.push(angular.copy(Date.now()));
 	};
 
-	view.returning_user = function() {
-		view.user_type = "returning";
+	view.mastery_user = function() {
+		view.user_type.push(angular.copy("mastery"));
 		view.guideMode = false;
-		view.startTime = Date.now();
+		view.startTime.push(angular.copy(Date.now()));
 	};
 
 /* j) creating functions for play again button */
 	view.replay = function(){
-		/* view.cookies.remove("storedData"); */
+			// for backend
+		if (view.all_Correct === false) {
+			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
+			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionCheckCount.push(angular.copy(view.checkCounter));
+			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
+			view.endTime.push(angular.copy(Date.now()));
+			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
+		}
+			// reset experiment status
 		view.system.loadNewPair(view.vol, view.RPUM);
-		view.restart();
-		view.replayCounter++;
-		/* view.storedDataPrompt = false; */
+		view.experiment.daysLeft = view.experiment.daysAllowed;
+		view.experiment.timeOfDay = view.experiment.startOfDay;
+		view.output.machineTime = 0;
+		view.experiment.steps = 0;
+		view.checkCounter = 0;
+		view.checkResults_bySession.length = 0;
+			// remove all data in existing arrays
+		view.output.fLC.length = 0;
+		view.output.timeOn.length = 0;
+		view.output.RU_On_Output.length = 0;
+		view.output.RU_On_Coordinate.length = 0;
+		view.output.RU_Off_Coordinate.length = 0;
+		view.output.RU_Line.length = 0;
+		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.table.data.length = 0;
+		view.isDisabled_run = false;
+		view.isDisabled_wash = true;
+		view.isDisabled_check = true;
 	};
+		/* view.cookies.remove("storedData"); */
+		/* view.storedDataPrompt = false; */
 
 
 /* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies

@@ -1,10 +1,10 @@
 	/* Output Mathematical Model: contain functions to input user-generated parameters and ouput values for graphical display */
 
 /* 1. registering modules, services and constants */
-angular.module('output_model', ['cookies', 'experiment_status', 'system_model'])
-	.service('outputModel', ['experimentStatus', 'systemModel', '$cookies', outputMethod]);
+angular.module('output_model', ['experiment_status', 'system_model'])
+	.service('outputModel', ['experimentStatus', 'systemModel', outputMethod]);
 
-function outputMethod(experimentStatus, systemModel, $cookies) { 
+function outputMethod(experimentStatus, systemModel) { 
 
 /* 2. creating sub-methods as part of the function object that can be outputed */
 
@@ -18,10 +18,6 @@ function outputMethod(experimentStatus, systemModel, $cookies) {
 	output.timeOn = []; // timeOn must be > 0
 	output.timeOffDefault = 30; // set timeOff to 30 seconds for default, but will be override by min time off set in controller at starting
 	output.minimum_fLC_input = 0;
-		// tracked value
-	output.machineTime = 0;
-	output.inefficiency = 0;
-	output.efficiencyRating = 100;
 		// chart coordinates calculation
 	output.RU_On_Output = []; // store current peak value of RU On for this fLC and input time on
 	output.RU_On_Output_table = [];
@@ -40,6 +36,10 @@ function outputMethod(experimentStatus, systemModel, $cookies) {
 	output.unitPool = ["mM", "uM", "nM"];
 	output.magnitudeAdjust = null; // default input unit of magnitude and unit adjust can be altered at the radio button ng-init
 	output.unitAdjust = null;
+		// tracked value for efficiency calculator
+	output.machineTime = 0;
+	output.inefficiency = 0;
+	output.efficiencyRating = 100;
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
