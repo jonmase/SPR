@@ -1,6 +1,6 @@
 	<!-- Main View: generate all content for display -->
 <!DOCTYPE html>
-<html lang="en" ng-app='SPR'>
+<html lang="en" ng-app='SPR' style="height: 100%">
 	<head>
 			<!-- Compatibility & view issues -->
 		<meta charset="utf-8">
@@ -59,7 +59,7 @@
 		<link rel="stylesheet" href="styles/main.css">
 	</head>
 
-	<body ng-controller="viewCtrl as view">
+	<body ng-controller="viewCtrl as view" style="height: 100%">
 
 		<!-- Load Facebook SDK for JavaScript -->
 		<div id="fb-root"></div>
@@ -81,7 +81,7 @@
 		</div>
 
 			<!-- Distinguishing content for large device size media query --> 
-		<div class="largeDevice">	
+		<div class="largeDevice" style="min-height: 100%; padding-bottom: 150px; position:relative;">	
 				<!-- 1. Navigation Bar  -->
 			<nav id="oxonHeaderFooter" class="navbar navbar-fixed-top navbar-custom">
 				<div class="navbar-menu">
@@ -656,9 +656,9 @@
 					</div>
 				</div>
 			</div><br>
-
+			
 			<!-- 4. Credit Box -->
-			<div id="oxonHeaderFooter" class="row credit-box">
+			<div id="oxonHeaderFooter" class="row credit-box" style="position: absolute; width: 100%; bottom: 0;">
 					<!-- a. Logo -->
 				<div id="credit-left" class="col-md-2">
 					<a target="_blank" href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
