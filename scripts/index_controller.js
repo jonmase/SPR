@@ -3,7 +3,7 @@
 /* 1. master module to compile in all sub-modules for embedding ng-app in HTML */
 var app = angular.module('SPR', ['model', 'display', 'cookies'])
 	.constant('vol', 0.000001) // volume inside chip
-	.constant('RPUM', 1000000000) // response per unit mass (RU/g)
+	.constant('RPUM', 5000000000) // response per unit mass (RU/g)
 	.controller('viewCtrl', viewMethod);
 
 /* 2. setting up controller */
@@ -30,7 +30,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.sessionCheckCount = [];
 	view.checkResults = [];
 		// default function of various buttons
-	view.initialising = true;
 	view.guideMode = false;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
@@ -47,33 +46,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.kOff_correct = false;
 	view.all_Correct = false;
 		// stored cookies data
-	/*
-	view.storedDataPrompt = false;
-	view.cookiesData = {
-			// stored system
-		stored_tRC: view.system.tRC,
-		storedKd: view.system.Kd,
-		stored_kOff: view.system.kOff,
-		stored_mwL: view.system.mwL,
-		stored_mwR: view.system.mwR,
-			// stored experiment status
-		storedSteps: view.experiment.steps,
-		storedTimeOfDay: view.experiment.timeOfDay,
-			// stored output
-		stored_fLC_tableDisplay: view.output.fLC_tableDisplay,
-		stored_fLC: view.output.fLC,
-		store_timeOn: view.output.timeOn,
-		storeRU_On_Output: view.output.RU_On_Output,
-		store_tableData: view.table.data
-	};
+	view.cookiesData = {};
 
-	b) creating functions for the cookies prompt 
-	view.continueSaved = function() {
-		view.storedDataPrompt = false; // close the prompt
-	};
-*/
-
-/* c) creating function for set "zero" button */
+/* b) creating function for set "zero" button */
 	view.set_background = function() {
 		view.backgroundSet = angular.copy(view.output.RU_On_Output[view.output.RU_On_Output.length-1]);
 		view.backgroundUnitsSet = angular.copy(view.output.unitAdjust);
@@ -82,7 +57,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.minimum_fLC_input = 1;
 	};
 
-/* d) creating function for "run experiment" button  */
+/* c) creating function for "run experiment" button  */
 	view.runExperiment = function (new_magnitudeSelected, new_fLC, new_timeOn) {
 		view.experiment.evalStats();
 		view.output.magnitudeAdjust = view.output.magnitudePool[new_magnitudeSelected];
@@ -99,21 +74,21 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;
-		// view.cookies.putObject("storedData", view.cookiesData);
 	};
 
-/* e) creating function for "wash-up" button */
+/* d) creating function for "wash-up" button */
 	view.washUp = function() {
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
 		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4));
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
-		// view.cookies.putObject("storedData", view.cookiesData);
 		view.isDisabled_check = true;
+		view.compileCookiesData();
+		view.cookies.putObject("storedData", view.cookiesData);
 	}; 
 
-/* f) creating function for "home" button */
+/* e) creating function for "home" button */
 	view.goHome = function() {
 		view.experiment.endOfExperimentTime = angular.copy(view.experiment.timeOfDay);
 		view.experiment.timeOfDay = view.experiment.startOfDay;
@@ -121,13 +96,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_check = true;
 	};
 
-/* g) creating function for "clear graph" button */
+/* f) creating function for "clear graph" button */
 	view.clearChart = function() {
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.isDisabled_check = true;
 	};
 
-/* h) creating a function for "restart" button */
+/* g) creating a function for "restart" button */
 	view.restart = function() {
 			// for backend
 		if (view.all_Correct === false) {
@@ -164,7 +139,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_check = true;
 	};
 
-/* i) creating a function for "check" answer button */
+/* h) creating a function for "check" answer button */
 	view.check = function(check_Kd, check_kOn, check_kOff, magnitudeCheck_Kd, magnitudeCheck_kOn) {
 		view.isDisabled_check = false;
 		view.checkCounter++;
@@ -196,6 +171,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
 			view.checkResults_bySession.push("correct");
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
+			view.cookies.remove("storedData");
+			view.cookiesData = {};
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
 			$("#button_active").css("background-color", "red");
 			$("#icon_active").css("color", "white");
@@ -205,7 +182,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		}
 	};
 
-/* j) creating functions to track if learn or mastery user */
+/* i) creating functions to track if learn or mastery user */
 	view.learn_user = function() {
 		view.user_type.push(angular.copy("learn"));
 		view.guideMode = true;
@@ -250,39 +227,80 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
 	};
-		/* view.cookies.remove("storedData"); */
-		/* view.storedDataPrompt = false; */
 
+/* k) create function to compile all relevant data to save into cookies */
+	view.compileCookiesData = function() {
+		view.cookiesData = {
+				// stored system
+			stored_tRC: view.system.tRC,
+			storedKd: view.system.Kd,
+			stored_kOff: view.system.kOff,
+			stored_mwL: view.system.mwL,
+			stored_mwR: view.system.mwR,
+				// stored experiment status
+			storedDaysLeft: view.experiment.daysLeft,
+			storedTimeOfDay: view.experiment.timeOfDay,
+			store_effRating: view.output.efficiencyRating,
+			storedSteps: view.experiment.steps,
+			stored_backgroundSet: view.backgroundSet,
+			stored_backgroundUnitsSet: view.backgroundUnitsSet,
+				// stored output
+			store_tableData: view.table.data,
+			store_fLC: view.output.fLC,
+			store_timeOn: view.output.timeOn,
+				// stored backend values
+			store_userType: view.user_type,
+			store_startTime: view.startTime,
+			store_endTime: view.endTime,
+			store_elapsed: view.elapsed,
+			store_sessionStepCount: view.sessionStepsCount,
+			store_sessionEfficiencyCount: view.sessionEfficiencyCount,
+			store_sessionCheckCount: view.sessionCheckCount,
+			store_checkResults: view.checkResults
+		};
+	};
 
-/* j) initialise application to generate unique values for the new system, else load previous experiment state from cookies
-
-	if (view.cookies.getObject("storedData") === undefined) { // if there are no data, generate a new system
-*/		view.system.loadNewPair(view.vol, view.RPUM);
-		view.output.timeOffDefault = view.system.min_timeOff;
-/*		view.storedDataPrompt = false;
-		view.cookies.putObject("storedData", view.cookiesData);
-	} else { // load stored data
-		view.cookies.getObject("storedData");
+/* l) functions to run when starting the software */
+		// open initialising modal window if no cookies, if not check if restarting or continue
+	if (view.cookies.getObject("storedData")) {
+			// load cookies data
+		view.cookiesData = view.cookies.getObject("storedData");
 			// set system to as stored
 		view.system.tRC = view.cookiesData.stored_tRC;
 		view.system.Kd = view.cookiesData.storedKd;
 		view.system.kOff = view.cookiesData.stored_kOff;
-		view.system.find_kOn(view.system.Kd, view.system.kOff);
 		view.system.mwL = view.cookiesData.stored_mwL;
 		view.system.mwR = view.cookiesData.stored_mwR;
-		view.system.find_mwLR(view.system.mwL, view.system.mwR);
-		view.system.find_RU_Max(view.system.tRC, view.system.mwR, view.vol, view.RPUM, view.system.mwL, view.system.mwLR);
-		view.system.uniqueID(view.system.Kd, view.system.kOff, view.system.kOn);
+		view.system.calculateSystem(view.vol, view.RPUM);
 			// set experiment status to as stored
-		view.experiment.steps = view.cookiesData.storedSteps;
+		view.experiment.daysLeft = view.cookiesData.storedDaysLeft;
 		view.experiment.timeOfDay = view.cookiesData.storedTimeOfDay;
+		view.output.efficiencyRating = view.cookiesData.store_effRating;
+		view.experiment.steps = view.cookiesData.storedSteps;
+		view.backgroundSet = view.cookiesData.stored_backgroundSet;
+		view.backgroundUnitsSet = view.cookiesData.stored_backgroundUnitsSet;
 			// set output to as stored
-		view.output.fLC_tableDisplay = view.cookiesData.stored_fLC_tableDisplay;
-		view.output.fLC = view.cookiesData.stored_fLC;
+		for (var i = 0; i < view.cookiesData.store_tableData.length; i++) {
+			view.table.data.push(view.cookiesData.store_tableData[i]);
+		}
+		view.output.fLC = view.cookiesData.store_fLC;
 		view.output.timeOn = view.cookiesData.store_timeOn;
-		view.output.RU_On_Output = view.cookiesData.storeRU_On_Output;
-		view.table.data = view.cookiesData.store_tableData;
-		view.storedDataPrompt = true;
+			// set backend values as stored
+		view.user_type = view.cookiesData.store_userType;
+		view.startTime = view.cookiesData.store_startTime;
+		view.endTime = view.cookiesData.store_endTime;
+		view.elapsed = view.cookiesData.store_elapsed;
+		view.sessionStepsCount = view.cookiesData.store_sessionStepCount;
+		view.sessionEfficiencyCount = view.cookiesData.store_sessionEfficiencyCount;
+		view.sessionCheckCount = view.cookiesData.store_sessionCheckCount;
+		view.checkResults = view.cookiesData.store_checkResults;
+		$(window).load(function(){$('#cookies_modal').modal('show');});
+		$('#cookies_modal').modal({backdrop: 'static',keyboard: false});
+	} else {
+		view.system.loadNewPair(view.vol, view.RPUM);
+		view.experiment.daysLeft = view.experiment.daysAllowed;
+		view.experiment.timeOfDay = view.experiment.startOfDay;
+		$(window).load(function(){$('#initialising_modal').modal('show');});
+		$('#initialising_modal').modal({backdrop: 'static',keyboard: false});
 	}
-*/
 }

@@ -9,22 +9,21 @@ function experimentTrack() {
 /* creating concept for time of day to alter output standard deviation */
 	experiment.timePerRun = 0.5;
 	experiment.timePerBreak = 1.5;
-	experiment.startOfDay = 9.5; // 5 runs available
-	experiment.startOfLunch = 12.0; // 9 runs available
-		// total runs with good SD per day = 14
-	experiment.startOfDinner = 17.0; // 7 runs available
-	experiment.startOfSupper = 21.0; // 5 runs available
-		// total runs with good SD per day = 12
+	experiment.startOfDay = 9.5;
+	experiment.startOfLunch = 12.0;
+		// total runs with good SD per day = 13
+	experiment.startOfDinner = 17.0;
+	experiment.startOfSupper = 21.0;
 	experiment.endOfDay = 24.0;
-		// total runs per day = 26
+		// total runs per day = 23
 /* creating tracked variables */
 	experiment.steps = 0;
-	experiment.timeOfDay = experiment.startOfDay;
+	experiment.timeOfDay = 9.5;
 	experiment.daysAllowed = 1; 
 	experiment.daysLeft = 1;
 	experiment.endOfExperimentTime = 0;
-		// total runs with good SD per simulation = 28
-		// total runs per simulation = 52
+		// total runs with good SD per simulation = 26
+		// total runs per simulation = 46
 /* creating variables for error generation module */
 		// for absolute error
 	experiment.stdDev_Default = 0.000000001; // Need to figure out the right level of variation for concentration; currently default variation is at nM level

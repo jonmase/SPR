@@ -37,7 +37,6 @@ function outputMethod(experimentStatus, systemModel) {
 	output.magnitudeAdjust = null; // default input unit of magnitude and unit adjust can be altered at the radio button ng-init
 	output.unitAdjust = null;
 		// tracked value for efficiency calculator
-	output.machineTime = 0;
 	output.inefficiency = 0;
 	output.efficiencyRating = 100;
 
@@ -133,13 +132,12 @@ function outputMethod(experimentStatus, systemModel) {
 
 /* l) efficiency calculator */
 	output.efficiencyCalculator = function(new_timeOn) {
-		output.machineTime += new_timeOn;
-		output.checkTimeInefficiency = output.machineTime/system.min_timeOn; // scaling all time input to its minimum time on to reach plateau at 1 nM (minimum time on)
+		output.checkTimeInefficiency = new_timeOn/system.min_timeOn; // scaling all time input to its minimum time on to reach plateau at 1 nM (minimum time on)
 		if (output.checkTimeInefficiency > 1) {
-				// 10 = maximum efficiency rating, 52 = total possible steps; thus, at step = 52, the inefficiency should reach 10, and thus efficiency = 0
-			output.inefficiency = (100/52)*output.checkTimeInefficiency; // minimum inefficiency per step (10/52) is scaled by how much over time user over input above minimum time on
+				// 10 = maximum efficiency rating, 46 = total possible steps; thus, at step = 46, the inefficiency should reach 10, and thus efficiency = 0
+			output.inefficiency = (100/46)*output.checkTimeInefficiency; // minimum inefficiency per step (10/46) is scaled by how much over time user over input above minimum time on
 		} else {
-			output.inefficiency = 100/52; // this means that the lower ceiling of ineffiency is the minimum time on. any time on below that suffers from inefficiency by using additional steps only, which is 10/52
+			output.inefficiency = 100/46; // this means that the lower ceiling of ineffiency is the minimum time on. any time on below that suffers from inefficiency by using additional steps only, which is 10/46
 		}
 		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
 	};

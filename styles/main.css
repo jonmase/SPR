@@ -261,7 +261,7 @@ a.blue-link:active {
 	width: 100%;
 }
 
-.select-objectives-box {
+.select-hints-box {
 	padding: 3px;
 	padding-bottom: 4px;
 	margin-top: 10px;
@@ -269,12 +269,12 @@ a.blue-link:active {
 	background-color: #222530;
 }
 
-.select-objectives {
+.select-hints {
 	width: 24.5px;
 	height: 24.5px;
 }
 
-#objectives-heading {
+#hints-heading {
 	text-align: center;
 	margin-bottom: 3px
 }

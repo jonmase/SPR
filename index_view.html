@@ -237,7 +237,25 @@
 							If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
 							<br><br>
 							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.replay()"  data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+								<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- Modal: Cookies Detected -->
+			<div id="cookies_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalLabel">Incomplete experiment detected</h4>
+						</div>
+						<div class="modal-body">
+							We have detected an auto-saved experiment which have not been completed before you leave the simulator. Do wish to continue with the auto-saved experiment or reload a new pair of ligand-receptor?
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">New Pair</button>
 							</div>
 						</div>
 					</div>
@@ -263,7 +281,6 @@
 					</div>
 				</div>
 			</div>
-
 				<!-- 3. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
@@ -291,23 +308,23 @@
 							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CLOSE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
-						<div class="select-objectives-box col-md-12" ng-show="view.guideMode == true">
+						<div class="select-hints-box col-md-12" ng-show="view.guideMode == true">
 								<!-- 1. Heading -->
-							<div id="objectives-heading" class="col-md-12">Show Hints</div>
+							<div id="hints-heading" class="col-md-12">Show Hints</div>
 								<!-- 1. Button: "1" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#firstObjective_modal">1</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#firstObjective_modal">1</button>
 								<!-- 2. Button: "2" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#secondObjective_modal">2</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#secondObjective_modal">2</button>
 								<!-- 3. Button: "3" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#thirdObjective_modal">3</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#thirdObjective_modal">3</button>
 								<!-- 4. Button: "4" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#forthObjective_modal">4</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#forthObjective_modal">4</button>
 								<!-- 5. Button: "5" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#fifthObjective_modal">5</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#fifthObjective_modal">5</button>
 								<!-- 6. Button: "6" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#sixthObjective_modal">6</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#sixthObjective_modal">6</button>
 								<!-- 7. Button: "7" -->
-							<button type="button" class="button select-objectives clickable1" data-toggle="modal" data-target="#seventhObjective_modal">7</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#seventhObjective_modal">7</button>
 						</div>
 					</div><br>
 						<!-- iii. Panel: check answer -->
@@ -495,7 +512,7 @@
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
 							OxSPR is still currently a prototype. If you like the software, please support the project by providing 
-							<b><a href="" class="blue-link">feedback</a></b> and 
+							<b><a target="_blank" href="http://goo.gl/forms/L7rs7PUVoc" class="blue-link">feedback</a></b> and 
 							<b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or 
 							<b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> 
 							it to anyone you think might be helpful.<br><br>
@@ -531,12 +548,12 @@
 							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
 						</div>
 							<!-- c. Yout Efficiency Points -->
-						<div class="col-md-6 track-panel"  ng-show="view.guideMode == true">
+						<div class="col-md-6 track-panel"  ng-show="view.guideMode == false">
 							<div>Efficiency Points</div>
 							<div class="tracked-value">{{view.output.efficiencyRating}}</div>
 						</div>
 							<!-- d. Your Steps Taken -->
-						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast" ng-show="view.guideMode == true">
+						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast" ng-show="view.guideMode == false">
 							<div>Steps</div>
 							<div class="tracked-value">{{view.experiment.steps}}</div>
 						</div>
@@ -558,13 +575,13 @@
 						<div class="box-left-btn">
 							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
 						</div>
-							<!-- d) "Go home" button -->
-						<div class="box-right-btn">
-							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
-						</div>
-							<!-- e) "Clear chart" button -->
+							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
 							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+						</div>
+							<!-- e) "Go home" button -->
+						<div class="box-right-btn">
+							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
@@ -607,7 +624,7 @@
 							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
-							<!-- d. Values for Debugging -->
+							<!-- d. Values for Debugging >
 						<br><br><div class="debug"><u>[Debug Mode] Answers values</u></div><br>
 						<div class="box-left debug">Kd / uM</div>
 						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
@@ -619,25 +636,23 @@
 						<div class="box-right debug">{{view.system.min_timeOn | number: 2}}</div><br>
 						<div class="box-left debug">Minimum time off</div>
 						<div class="box-right debug">{{view.system.min_timeOff | number: 2}}</div><br>
-						<br><div class="debug"><u>[Debug Mode] Backend values</u></div><br>
+						<br><div class="debug"><u>[Debug Mode] Backend Data Storage</u></div><br>
 						<div class="box-left debug">User Type</div>
-						<div class="box-right debug">{{view.user_type.toString()}}</div><br>
+						<div class="box-right debug">{{view.user_type}}</div><br>
 						<div class="box-left debug">Start Timestamp</div>
-						<div class="box-right debug">{{view.startTime.toString()}}</div><br>
+						<div class="box-right debug">{{view.startTime}}</div><br>
 						<div class="box-left debug">End Timestamp</div>
-						<div class="box-right debug">{{view.endTime.toString()}}</div><br>
+						<div class="box-right debug">{{view.endTime}}</div><br>
 						<div class="box-left debug">Session elapsed time</div>
-						<div class="box-right debug">{{view.elapsed.toString()}}</div><br>
+						<div class="box-right debug">{{view.elapsed}}</div><br>
 						<div class="box-left debug">Session steps count</div>
-						<div class="box-right debug">{{view.sessionStepsCount.toString()}}</div><br>
+						<div class="box-right debug">{{view.sessionStepsCount}}</div><br>
 						<div class="box-left debug">Session efficiency count</div>
-						<div class="box-right debug">{{view.sessionEfficiencyCount.toString()}}</div><br>
+						<div class="box-right debug">{{view.sessionEfficiencyCount}}</div><br>
 						<div class="box-left debug">Session check count</div>
-						<div class="box-right debug">{{view.sessionCheckCount.toString()}}</div><br>
+						<div class="box-right debug">{{view.sessionCheckCount}}</div><br>
 						<div class="box-left debug">Check results log</div>
-						<div class="box-right debug">{{view.checkResults.toString()}}</div><br>
-						<div class="box-left debug">Session results checked</div>
-						<div class="box-right debug">{{view.checkResults_bySession.toString()}}</div><br>
+						<div class="box-right debug">{{view.checkResults}}</div><br-->
 					</div>
 				</div>
 			</div><br>
@@ -646,7 +661,7 @@
 			<div id="oxonHeaderFooter" class="row credit-box">
 					<!-- a. Logo -->
 				<div id="credit-left" class="col-md-2">
-					<a href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
+					<a target="_blank" href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
 				</div>
 					<!-- b. credit & buttons -->
 				<div id="credit-box" class="col-md-10">
@@ -659,20 +674,17 @@
 						<a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="action-link">
 						<button id="facebook_button" class="button actions" data-href="https://learntech.imsu.ox.ac.uk/SPR/" data-layout="link">SHARE</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<!-- iv. feedback in survey monkey -->
-						<a href="" class="action-link"><button id="survey_button" class="button actions">FEEDBACK</button></a>
+						<a target="_blank" href="http://goo.gl/forms/L7rs7PUVoc" class="action-link"><button id="survey_button" class="button actions">FEEDBACK</button></a>
 					</div>
 					<div id="credit-text">
 						OxSPR is still currently a <font color="red">prototype</font>. If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
 						<br><br>
-						Developed for <a href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, <a href="http://www.ox.ac.uk/" class="blue-link">University of Oxford</a> undergraduate course by <a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, under supervision by <a href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
+						Developed for <a target="_blank" href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a target="_blank" href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by<a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, with supervision by <a target="_blank" href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
 						<br>
-						The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul
+						<font color="#A6AAA9">The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul</font>
 					</div>
 				</div>					
 			</div>
-				<!-- Start the page by loading the initialising modal, which cannot be skipped -->
-			<script type="text/javascript">$(window).load(function(){$('#initialising_modal').modal('show');});$('#initialising_modal').modal({backdrop: 'static',keyboard: false});</script>
 		</div>   
 	</body>
-
 </html>
