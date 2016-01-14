@@ -121,7 +121,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// reset experiment status
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
-		view.output.machineTime = 0;
+		view.output.efficiencyRating = 100;
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
@@ -210,7 +210,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.loadNewPair(view.vol, view.RPUM);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
-		view.output.machineTime = 0;
+		view.output.efficiencyRating = 100;
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
