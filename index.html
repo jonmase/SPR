@@ -10,11 +10,11 @@
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 	    <title>Oxford Biochemistry Simulation Challenge (SPR)</title>
-	    	<meta property="og:url"           content="https://learntech.imsu.ox.ac.uk/SPR/" />
+	    	<!--meta property="og:url"           content="https://learntech.imsu.ox.ac.uk/SPR/" />
 			<meta property="og:type"          content="website" />
 			<meta property="og:title"         content="Oxford Biochemistry Simulation Challenge (SPR)" />
 			<meta property="og:description"   content="Learn experimental design through playing with a simulation of surface plasmon resonance. Created by Oxford Biochemistry Department." />
-			<!--meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" /-->
+			<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" /-->
 
 	    	<!-- Angular Libraries & Credits -->
 		<script type="text/javascript" src="libraries/angular/angular.min.js"></script>
@@ -274,7 +274,7 @@
 							Before we begin, please choose a mode for the simulation suitable for your purpose.
 							<br><br>
 							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Learn</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Guide</button>&nbsp;&nbsp;&nbsp;
 								<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Mastery</button>
 							</div>
 						</div>
@@ -362,14 +362,14 @@
 							<!-- e. Dropdown Menu: units for check kOn -->
 						<div class="col-md-4 unit-panel">
 							<select class="units_dropdown" ng-model="magnitudeSelected_check_kOn" ng-init="magnitudeSelected_check_kOn = 2">
-								<option value="0">Ms&#x207b;&#xb9;</option>
-								<option value="1">ks&#x207b;&#xb9;</option>
-								<option value="2" ng-selected="true">s&#x207b;&#xb9;</option>
+								<option value="0">Ms&#x207b;&#xb9; x 10&#x2076;</option>
+								<option value="1">Ms&#x207b;&#xb9; x 10&#xb3;</option>
+								<option value="2" ng-selected="true">Ms&#x207b;&#xb9;</option>
 							</select>						
 						</div>
 							<!-- f. Dropdown Menu: units for check Kd -->
 						<div id="default_unit" class="col-md-4 unit-panel gloss-contrast">
-							<div>M<sup>-1</sup>s<sup>-1</sup></div>
+							<div>s<sup>-1</sup></div>
 						</div>
 							<!-- g. Button: check -->
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
@@ -451,8 +451,8 @@
 							<font color="#ececec">[Tip: remove background reading prior to performing an experiment]</font><br>
 							You should begin the experiment by setting the value of background reading before trying any other <u>Free Ligand Concentration</u>. You can do this by:<br>
 							(1) running <u>Free Ligand Concentration</u> = 0 M and <u>WASH</u><br>
-							(2) then clear <u>BACKGROUND</u><br>
-							<font color="#c33e3e">*Note: Any previously generated sensorgram plot will be clear once a new background had been set.</font><br>
+							(2) then remove <u>BACKGROUND</u><br>
+							<font color="#c33e3e">*Note: Any previously generated sensorgram plot will be remove once a new background had been set.</font><br>
 						</div>
 							<!-- k. Prompt: remove background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">

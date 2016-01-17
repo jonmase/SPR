@@ -41,6 +41,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.isDisabled_check = true;
 	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
 	view.magnitudeCheck_kOn = [1000000, 1000, 1];
+	view.allowedAnswerDeviation = 0.2; // answer input must be within this confidence limit range of the true answer
 	view.Kd_correct = false;
 	view.kOn_correct = false;
 	view.kOff_correct = false;
@@ -144,19 +145,19 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_check = false;
 		view.checkCounter++;
 			// check if Kd answer is within acceptable range
-		if (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] > 0.99*view.system.Kd && check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] < 1.01*view.system.Kd) {
+		if (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] > (1-view.allowedAnswerDeviation)*view.system.Kd && check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] < (1+view.allowedAnswerDeviation)*view.system.Kd) {
 			view.Kd_correct = true;
 		} else {
 			view.Kd_correct = false;
 		}
 			// check if kOn answer is within acceptable range
-		if (check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] > 0.99*view.system.kOn && check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] < 1.01*view.system.kOn) {
+		if (check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] > (1-view.allowedAnswerDeviation)*view.system.kOn && check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] < (1+view.allowedAnswerDeviation)*view.system.kOn) {
 			view.kOn_correct = true;
 		} else {
 			view.kOn_correct = false;
 		}
 			// check if kOff answer is within acceptable range
-		if (check_kOff > 0.99*view.system.kOff && check_kOff < 1.01*view.system.kOff) {
+		if (check_kOff > (1-view.allowedAnswerDeviation)*view.system.kOff && check_kOff < (1+view.allowedAnswerDeviation)*view.system.kOff) {
 			view.kOff_correct = true;
 		} else {
 			view.kOff_correct = false;
