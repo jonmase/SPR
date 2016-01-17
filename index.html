@@ -270,11 +270,16 @@
 						</div>
 						<div class="modal-body">
 							<font color="#c33e3e">*Note: OxSPR is still currently a prototype.</font><br><br>
-							OxSPR is a Surface Plasmon Resonance simulator developed to help Biochemistry undergraduates master experimental design skills. Students can use the <u>GUIDE MODE</u> to walk-through the thought process in designing scientifically sound experiments, or practice their skills by trying to solve the challenge within the <u>MASTERY SCORE</u>. The aim of this experiment is to find Kd, k<sub>off</sub>, k<sub>on</sub> and its associated statistics given an unknown ligand-receptor pair.<br><br>
-							Before we begin, please choose a mode for the simulation suitable for your purpose.
+							OxSPR is a Surface Plasmon Resonance simulator developed to help Biochemistry undergraduates master experimental design skills. The aim of this experiment is to find Kd, k<sub>off</sub>, k<sub>on</sub> and its associated statistics given an unknown ligand-receptor pair. Students can use OxSPR in two different modes:<br><br>
+
+							In <u>LEARN MODE</u>, students can walk-through the thought process in designing scientifically sound experiments with available hints.<br><br>
+
+							In <u>MASTERY mode</u>, students can practice by trying to obtain the correct answer with their <u>Efficiency Points</u> not lower than 52, and finishing at exactly 24 <u>Steps</u> which is the optimum number, excluding outliers.<br><br>
+
+							Before we begin, please let us know your purpose in using OxSPR for this session. Rest assure, you may switch between the different mode by turning <u>LEARN MODE</u> on or off.
 							<br><br>
 							<div id="center_buttons">
-								<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Guide</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Learn</button>&nbsp;&nbsp;&nbsp;
 								<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Mastery</button>
 							</div>
 						</div>
@@ -284,50 +289,35 @@
 				<!-- 3. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
-						<!-- i. Panel: high score display (mastery mode only) -->
-					<div class="panel-heading">MASTERY SCORE</div>
-					<div id="dashboard" class="panel-body">
-							<!-- a. Lowest Number of Steps Taken -->
-						<div class="col-md-6 track-panel gloss-contrast">
-							<div>Efficiency Points</div>
-							<div class="tracked-value">52</div>
-						</div>
-							<!-- b. Average Steps -->
-						<div class="col-md-6 track-panel" data-toggle="tooltip" title="exclude accounting outliers">
-							<div>Optimum Steps</div>
-							<div class="tracked-value">24</div>
-						</div>
-					</div>
-					<br>
-						<!-- ii. Panel: guide mode -->
-					<div class="panel-heading">GUIDE MODE</div>
+						<!-- i. Panel: learn mode -->
+					<div class="panel-heading">LEARN MODE</div>
 					<div class="panel-body clickable-box">
-							<!-- a. Button: guide vs mastery mode selector -->
+							<!-- a. Button: learn vs mastery mode selector -->
 						<div class="mode-selection">
 							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">OPEN</button>
 							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CLOSE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
-						<div class="select-hints-box col-md-12" ng-show="view.guideMode == true">
+						<div class="select-hints-box col-md-12">
 								<!-- 1. Heading -->
 							<div id="hints-heading" class="col-md-12">Show Hints</div>
 								<!-- 1. Button: "1" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#firstObjective_modal">1</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#firstObjective_modal" ng-disabled="view.guideMode == false">1</button>
 								<!-- 2. Button: "2" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#secondObjective_modal">2</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#secondObjective_modal" ng-disabled="view.guideMode == false">2</button>
 								<!-- 3. Button: "3" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#thirdObjective_modal">3</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#thirdObjective_modal" ng-disabled="view.guideMode == false">3</button>
 								<!-- 4. Button: "4" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#forthObjective_modal">4</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#forthObjective_modal" ng-disabled="view.guideMode == false">4</button>
 								<!-- 5. Button: "5" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#fifthObjective_modal">5</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#fifthObjective_modal" ng-disabled="view.guideMode == false">5</button>
 								<!-- 6. Button: "6" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#sixthObjective_modal">6</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#sixthObjective_modal" ng-disabled="view.guideMode == false">6</button>
 								<!-- 7. Button: "7" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#seventhObjective_modal">7</button>
+							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#seventhObjective_modal" ng-disabled="view.guideMode == false">7</button>
 						</div>
 					</div><br>
-						<!-- iii. Panel: check answer -->
+						<!-- ii. Panel: check answer -->
 					<div class="panel-heading">CHECK ANSWER</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Form: check Kd -->
@@ -362,8 +352,8 @@
 							<!-- e. Dropdown Menu: units for check kOn -->
 						<div class="col-md-4 unit-panel">
 							<select class="units_dropdown" ng-model="magnitudeSelected_check_kOn" ng-init="magnitudeSelected_check_kOn = 2">
-								<option value="0">Ms&#x207b;&#xb9; x 10&#x2076;</option>
-								<option value="1">Ms&#x207b;&#xb9; x 10&#xb3;</option>
+								<option value="0">MMs&#x207b;&#xb9;</option>
+								<option value="1">kMs&#x207b;&#xb9;</option>
 								<option value="2" ng-selected="true">Ms&#x207b;&#xb9;</option>
 							</select>						
 						</div>
@@ -375,6 +365,48 @@
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
 							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">SUBMIT</button>
 						</div>
+					</div><br>
+						<!-- iii. Panel: generated system info -->
+					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
+					<div id="sys_info" class="panel-body">
+							<!-- a. System ID -->
+						<div class="box-left">System ID</div>
+						<div class="box-right"><u>{{view.system.uniqueID}}</u></div>
+							<!-- b. Ligand Molecular Weight -->
+						<div class="box-left">Ligand Mol Weight / gmol<sup>-1</sup></div>
+						<div class="box-right"><u>{{view.system.mwL | mwFilter}}</u></div>
+							<!-- c. Receptor Molecular Weight -->
+						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
+						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
+							<!-- d. Values for Debugging >
+						<br><br><div class="debug"><u>[Debug Mode] Answers values</u></div><br>
+						<div class="box-left debug">Kd / uM</div>
+						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
+						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
+						<div class="box-right debug">{{view.system.kOn}}</div><br>
+						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+						<div class="box-right debug">{{view.system.kOff}}</div><br>
+						<div class="box-left debug">Minimum time on</div>
+						<div class="box-right debug">{{view.system.min_timeOn | number: 2}}</div><br>
+						<div class="box-left debug">Minimum time off</div>
+						<div class="box-right debug">{{view.system.min_timeOff | number: 2}}</div><br>
+						<br><div class="debug"><u>[Debug Mode] Backend Data Storage</u></div><br>
+						<div class="box-left debug">User Type</div>
+						<div class="box-right debug">{{view.user_type}}</div><br>
+						<div class="box-left debug">Start Timestamp</div>
+						<div class="box-right debug">{{view.startTime}}</div><br>
+						<div class="box-left debug">End Timestamp</div>
+						<div class="box-right debug">{{view.endTime}}</div><br>
+						<div class="box-left debug">Session elapsed time</div>
+						<div class="box-right debug">{{view.elapsed}}</div><br>
+						<div class="box-left debug">Session steps count</div>
+						<div class="box-right debug">{{view.sessionStepsCount}}</div><br>
+						<div class="box-left debug">Session efficiency count</div>
+						<div class="box-right debug">{{view.sessionEfficiencyCount}}</div><br>
+						<div class="box-left debug">Session check count</div>
+						<div class="box-right debug">{{view.sessionCheckCount}}</div><br>
+						<div class="box-left debug">Check results log</div>
+						<div class="box-right debug">{{view.checkResults}}</div><br-->
 					</div>
 				</div>
 
@@ -513,7 +545,7 @@
 							Well done! You have achieved all correct answers and finish the simulation! Thanks for playing :)<br>
 							OxSPR is still currently a prototype. If you like the software, please support the project by providing 
 							<b><a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="blue-link">feedback</a></b> and 
-							<b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or 
+							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
 							<b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> 
 							it to anyone you think might be helpful.<br><br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
@@ -534,7 +566,7 @@
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
-						<!-- vii. Panel: experiment status-->
+					<!-- i. Panel: experiment status-->
 					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Your Days Left -->
@@ -558,8 +590,7 @@
 							<div class="tracked-value">{{view.experiment.steps}}</div>
 						</div>
 					</div><br>
-
-						<!-- viii. Panel: controls -->
+					<!-- ii. Panel: controls -->
 					<div class="panel-heading">CONTROL PANEL</div>
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
@@ -612,48 +643,22 @@
 							<!-- k. Association Time Units -->
 						<div id="default_unit" class="col-md-6 unit-panel gloss-contrast2">seconds</div>
 					</div><br>
-						<!-- ix. Panel: generated system info -->
-					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
-					<div id="sys_info" class="panel-body">
-							<!-- a. System ID -->
-						<div class="box-left">System ID</div>
-						<div class="box-right"><u>{{view.system.uniqueID}}</u></div>
-							<!-- b. Ligand Molecular Weight -->
-						<div class="box-left">Ligand Mol Weight / gmol<sup>-1</sup></div>
-						<div class="box-right"><u>{{view.system.mwL | mwFilter}}</u></div>
-							<!-- c. Receptor Molecular Weight -->
-						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
-						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
-							<!-- d. Values for Debugging >
-						<br><br><div class="debug"><u>[Debug Mode] Answers values</u></div><br>
-						<div class="box-left debug">Kd / uM</div>
-						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
-						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
-						<div class="box-right debug">{{view.system.kOn}}</div><br>
-						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
-						<div class="box-right debug">{{view.system.kOff}}</div><br>
-						<div class="box-left debug">Minimum time on</div>
-						<div class="box-right debug">{{view.system.min_timeOn | number: 2}}</div><br>
-						<div class="box-left debug">Minimum time off</div>
-						<div class="box-right debug">{{view.system.min_timeOff | number: 2}}</div><br>
-						<br><div class="debug"><u>[Debug Mode] Backend Data Storage</u></div><br>
-						<div class="box-left debug">User Type</div>
-						<div class="box-right debug">{{view.user_type}}</div><br>
-						<div class="box-left debug">Start Timestamp</div>
-						<div class="box-right debug">{{view.startTime}}</div><br>
-						<div class="box-left debug">End Timestamp</div>
-						<div class="box-right debug">{{view.endTime}}</div><br>
-						<div class="box-left debug">Session elapsed time</div>
-						<div class="box-right debug">{{view.elapsed}}</div><br>
-						<div class="box-left debug">Session steps count</div>
-						<div class="box-right debug">{{view.sessionStepsCount}}</div><br>
-						<div class="box-left debug">Session efficiency count</div>
-						<div class="box-right debug">{{view.sessionEfficiencyCount}}</div><br>
-						<div class="box-left debug">Session check count</div>
-						<div class="box-right debug">{{view.sessionCheckCount}}</div><br>
-						<div class="box-left debug">Check results log</div>
-						<div class="box-right debug">{{view.checkResults}}</div><br-->
-					</div>
+						<!-- iii. Panel: high score display (mastery mode only) -->
+					<!--div ng-show="view.guideMode == false">
+						<div class="panel-heading">MASTERY SCORE</div>
+						<div id="dashboard" class="panel-body">
+								< a. Lowest Number of Steps Taken >
+							<div class="col-md-6 track-panel gloss-contrast">
+								<div>Efficiency Points</div>
+								<div class="tracked-value">52</div>
+							</div>
+								< b. Average Steps >
+							<div class="col-md-6 track-panel" data-toggle="tooltip" title="exclude accounting outliers">
+								<div>Optimum Steps</div>
+								<div class="tracked-value">24</div>
+							</div>
+						</div><br>
+					</div-->
 				</div>
 			</div><br>
 			
@@ -679,7 +684,7 @@
 					<div id="credit-text">
 						OxSPR is still currently a <font color="red">prototype</font>. If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
 						<br><br>
-						Developed for <a target="_blank" href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a target="_blank" href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by<a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link">Chaiyakorn Srisakvarakul</a>, with supervision by <a target="_blank" href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
+						Developed for <a target="_blank" href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a target="_blank" href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by<a href="mailto:chaiyakorn.srisakvarakul@oriel.ox.ac.uk" class="blue-link"> Chaiyakorn Srisakvarakul</a>, with supervision by <a target="_blank" href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
 						<br>
 						<font color="#A6AAA9">The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul</font>
 					</div>

@@ -138,6 +138,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
+		view.cookies.remove("storedData");
 	};
 
 /* h) creating a function for "check" answer button */
@@ -227,6 +228,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
+		view.cookies.remove("storedData");
 	};
 
 /* k) create function to compile all relevant data to save into cookies */
