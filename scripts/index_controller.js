@@ -126,6 +126,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
+		view.backgroundSet = 0;
+		view.backgroundUnitsSet = null;
+		view.isDisabled_background = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -176,8 +179,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			view.cookies.remove("storedData");
 			view.cookiesData = {};
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
+			/* 
 			$("#button_active").css("background-color", "red");
-			$("#icon_active").css("color", "white");
+			$("#icon_active").css("color", "white"); 
+			*/
 		} else {
 			view.all_Correct = false;
 			view.checkResults_bySession.push("wrong");
@@ -216,6 +221,9 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
+		view.backgroundSet = 0;
+		view.backgroundUnitsSet = null;
+		view.isDisabled_background = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;

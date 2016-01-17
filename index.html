@@ -608,7 +608,7 @@
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
 						</div>
 							<!-- e) "Go home" button -->
 						<div class="box-right-btn">
