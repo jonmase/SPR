@@ -105,9 +105,14 @@
 							<h4 class="modal-title" id="modalLabel">Objective 1: Remove background</h4>
 						</div>
 						<div class="modal-body">
-							Before performing an experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0).  This background signal represents the mass of receptor bound to the chip, in response units.  The program then allows you to subtract this background signal from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
+							<font color="#70BF41">a) How to remove background reading</font><br>
+							Before performing an experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0). The program then allows you to subtract this background signal from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
 
-							In a real world experiment, artefacts such as baseline drift could occur, which would cause an increase in resonance over time. Thus the background should be measured over the longest <u>association time</u> you would be using in the experiment to subtract all baseline drift, and this time would have to be determined by trial and error. However, for this simulation, you can assume there is no baseline drift and input any reasonable <u>association time</u> to assess background.
+							<font color="#70BF41">b) What causes the background reading?</font><br>
+							SPR machine functions by measuring the mass detected on the chip in general, without distinguishing between receptor or ligand. This background signal detected represents the mass of receptor bound to the chip, in response units. Thus, we can remove this reading by measuring the chip without before any ligand is bound by inputing <u>free ligand concentration</u> as 0.<br><br>
+
+							<font color="#70BF41">c) Proper practice of background removal</font><br>
+							In a real world experiment, artefacts such as baseline drift could occur, which would cause an increase in resonance over time. Thus the background should be measured over the longest <u>association time</u> you would be using in the experiment to subtract all baseline drift from subsequent experiments. This time would have to be determined by trial and error. However, for this simulation, you can assume there is no baseline drift and input any reasonable <u>association time</u> to assess background.
 						</div>
 					</div>
 				</div>
@@ -121,10 +126,14 @@
 							<h4 class="modal-title" id="modalLabel">Objective 2: Find appropriate association time length</h4>
 						</div>
 						<div class="modal-body">
+							<font color="#70BF41">a) Importance of allowing sufficient <u>association time</u></font><br>
 							You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>association time</u><br><br>
-							We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium at nM <u>free ligand concentration</u> since this length would cover for all higher <u>free ligand concentration</u>.<br><br>
-							A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low seed value such as 1 second and estimate from the projection, assuming that the curve is a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
-							Ultimately, you will know that you have reached equilibrium by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.
+
+							<font color="#70BF41">b) Strategy to finding an unknown <u>association time</u></font><br>
+							We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium at nM <u>free ligand concentration</u> since this length would cover for all higher <u>free ligand concentration</u>. A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low seed value such as 1 second and estimate from the projection, assuming that the curve is a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
+
+							<font color="#70BF41">c) Quantitative measure of equilibrium binding</font><br>
+							Ultimately, you will know that the <u>association time</u> input allow sufficient time for ligand and receptor equilibrate in binding by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.
 						</div>
 					</div>
 				</div>
@@ -135,12 +144,14 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 3: Seeding free ligand concentration values</h4>
+							<h4 class="modal-title" id="modalLabel">Objective 3: Generating data for Langmuir Isotherm</h4>
 						</div>
 						<div class="modal-body">
-							The purpose of plotting Langmuir Isotherm is to find out the resonance value for maximum binding at equilibrium and from the curve, derive the <u>free ligand concentration</u> which gives the half maximal binding resonance value which is the Kd. We use SPR to find the resonance values at equilibrium and its corresponding <u>free ligand concentration</u> for plotting in Langmuir Isotherm. We have previously determined the minimum <u>association time</u> require for the binding to reach equilibrium and will use this length to run subsequent experiments for <u>max RU</u> measured to be valid. However, we still have to find out the <u>free ligand concentration</u> range to input such the points obtained are sufficiently scattered for plotting an accurate Langmuir Isotherm.<br><br> 
-							Our theoretical knowledge about ligand-receptor pair give us the context that Kd usually lies between mM to nM range for weak to strong binding respectively. Thus, given an unknown system, a suitable strategy would be to seed values broadly between these range, such as 1 nM, 1 uM and 1 mM.<br><br>
-							The result will tell us roughly where the dynamic range lies by observing the position of the 1 uM curve. The dynamic range is when a change in <u>free ligand concentration</u> still result in change in <u>max RU</u> measured at equilibrium binding as it has not yet reached the maximum binding at equilibrium on Langmuir Isotherm curve. If the 1 uM curve <u>max RU</u> is closer to the 1 mM curve <u>max RU</u>, it is likely that the <u>max RU</u> at equilibrium of 1 mM curve has reached the maximum binding at equilibrium on Langmuir Isotherm. This mean that you should sample for more coordinates between the 1 uM and the 1 nM curve. Otherwise try running another curve at higher magnitude than 1 mM to confirm if the maximum binding at equilibrium on Langmuir Isotherm has been reached. At the end, you want to generate at least 6 points in the dynamic range of Langmuir Isotherm with reasonable spacing of <u>max RU</u> at equilibrium binding value so you could plot easily.
+							<font color="#70BF41">a) The dynamic range</font><br>
+							Having decided on a suitable incubation time, you will then investigate the effect of varying <u>free ligand concentrations</u> on the equilibrium binding. This is to establish the Langmuir Isotherm curve which gives the relationship between ligand-receptor pair at equilibrium binding. Obviously you would expect the amount of ligand bound to increase up to saturation of the receptor. However, after reaching saturation, any increase in <u>free ligand concentration</u> will be irrelevant since it is beyond the dynamic range. The dynamic range is defined as the range over which a change in free ligand concentration results in change in max RU. Hence, you should generate results by varying the <u>free ligand concentration</u> over this dynamic range (ideally from around 5% saturation to 95% saturation).<br><br>
+
+							<font color="#70BF41">b) Strategy for determining dynamic range of unknown biological systems</font><br>
+							Unfortunately you have no idea initially of the affinity of the interaction, and hence no idea where the dynamic range lies. However, our general experience with biological systems is that ligand-receptor interactions normally have Kd between nM (very tight) and mM (loose) orders of magnitude. Thus, given a totally unknown system, a suitable strategy might be to start with values broadly between these range, such as 1 nM, 1 uM and 1 mM. The result will tell us roughly where the dynamic range lies by observing the position of the 1 uM curve. If, say the 1 uM curve is close to the 1 mM curve, it is likely that the receptor is close to saturation at 1µM and that a lower concentration range should be studied. Alternatively, if the equilibrium RU rises considerably between 1µM and 1mM, concentrations in this range should be studied. It may take several trials to home in on the range (normally one order of magnitude) which gives a good binding curve, with all points lying between 5% and 95% saturation.
 						</div>
 					</div>
 				</div>
@@ -151,11 +162,16 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 4: Calculate k<sub>off</sub></h4>
+							<h4 class="modal-title" id="modalLabel">Objective 4: Perform sufficient replicates</h4>
 						</div>
 						<div class="modal-body">
-							We must also find the k<sub>off</sub> from the experiment for calculating k<sub>on</sub> later. In this simulation, we can assume that the disassociation is a first order model, thus from the disassociation curve generated after clicking <u>WASH</u>, we can take a coordinate and use it to calculate the disassociation constant with the first order decay equation.<br><br>
-							A good practice would be to sample points at even spacing on a disassociation curve to use for determining k<sub>off</sub>, such as from the 1st and 2nd half-life.
+							Try to generate at least 6 points spread across this region.
+							
+							<font color="#70BF41">a) Generating replicates</font><br>
+							Next perform at least 3 replicates per point such that you have a total of at least 18 measurements. Replicates allow us to see which points are outliers. When encountered, these points should not be considered as part of your data. <br><br>
+							
+							<font color="#70BF41">b) Identifying replicates</font><br>
+							Normally you can determine your outlier as points which lie beyond 1.5 interquartile range. However in this case, you have too few points to rely on calculating from interquartile range, and judge quantitatively if a point is an outlier. Thus, a scientifically acceptable would be to perform additional replicates to confirm your judgement, such that you have at least 3 points which cluster together at acceptable standard deviation (5%).<br><br>
 						</div>
 					</div>
 				</div>
@@ -166,11 +182,11 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Objective 5: Perform sufficient replicates</h4>
+							<h4 class="modal-title" id="modalLabel">Objective 5: Calculate k<sub>off</sub></h4>
 						</div>
 						<div class="modal-body">
-							With 6 coordinates that are evenly spaced for <u>max RU</u> at equilibrium binding and its corresponding <u>free ligand concentration</u>, perform at least 3 replicates per point such that you have a total of 6x3 = 18 coordinates. Replicates allow us to see which points are outliers and should be discarded.<br><br>
-							In addition, although theoretically k<sub>off</sub> should be same, as a good practice you should also calculate the k<sub>off</sub> value from the graphs generated at different <u>free ligand concentration</u> to check for errors.
+							We must also find the k<sub>off</sub> from the experiment for calculating k<sub>on</sub> later. In this simulation, we can assume that the disassociation is a first order model, thus from the disassociation curve generated after clicking <u>WASH</u>, we can take a coordinate and use it to calculate the disassociation constant with the first order decay equation.<br><br>
+							A good practice would be to sample points at even spacing on a disassociation curve to use for determining k<sub>off</sub>, such as from the 1st and 2nd half-life.
 						</div>
 					</div>
 				</div>
