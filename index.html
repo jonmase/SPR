@@ -9,7 +9,7 @@
     	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-	    <title>Oxford Biochemistry Simulation Challenge (SPR)</title>
+	    <title>Oxford Biochemistry - SPR Simulation Challenge</title>
 	    	<!--meta property="og:url"           content="https://learntech.imsu.ox.ac.uk/SPR/" />
 			<meta property="og:type"          content="website" />
 			<meta property="og:title"         content="Oxford Biochemistry Simulation Challenge (SPR)" />
@@ -95,7 +95,7 @@
 					<a href="" class="navbar-text navbar-link">CONTACT</a>
 				</div>
 			</nav>
-							<!-- 2. Modals -->
+				<!-- 2. Modals -->
 					<!-- a. 1st Objective -->
 			<div id="firstObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
@@ -105,8 +105,9 @@
 							<h4 class="modal-title" id="modalLabel">Objective 1: Remove background</h4>
 						</div>
 						<div class="modal-body">
-							Before performing experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0) and remove it from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
-							In a real world experiment, artefacts from background such as baseline drift could occur which would cause an increase in resonance over time. Thus the <u>association time</u> you run to remove background must cover the longest <u>association time</u> you would be using in the whole experiment to subtract all baseline drift. However, for this simulation, you can assume there is no baseline drift and input any <u>association time</u> you like.
+							Before performing an experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0).  This background signal represents the mass of receptor bound to the chip, in response units.  The program then allows you to subtract this background signal from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
+
+							In a real world experiment, artefacts such as baseline drift could occur, which would cause an increase in resonance over time. Thus the background should be measured over the longest <u>association time</u> you would be using in the experiment to subtract all baseline drift, and this time would have to be determined by trial and error. However, for this simulation, you can assume there is no baseline drift and input any reasonable <u>association time</u> to assess background.
 						</div>
 					</div>
 				</div>
@@ -203,7 +204,43 @@
 					</div>
 				</div>
 			</div>
-				<!-- Modal: Prompt confirm restart -->
+				<!-- h. Modal: Prompt confirm home -->
+			<div id="home_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Confirm Home</h4>
+						</div>
+						<div class="modal-body">
+							Are you sure you wish to finish your experiment for today? After you click, you will have {{view.experiment.daysLeft}} full day left to perform your experiment.
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" ng-click="view.goHome()"  data-dismiss="modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- i. Modal: Prompt confirm clear -->
+			<div id="clear_modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLabel">Confirm Clear</h4>
+						</div>
+						<div class="modal-body">
+							Are you sure you wish to clear your <u>SENSORGRAM</u>? The data in the <u>RESULTS TABLE</u> will not be clear.
+							<br><br>
+							<div id="center_buttons">
+								<button type="button" class="modal-button clickable1" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- j. Modal: Prompt confirm restart -->
 			<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -223,7 +260,7 @@
 					</div>
 				</div>
 			</div>
-				<!-- Modal: Prompt confirm play again -->
+				<!-- k. Modal: Prompt confirm play again -->
 			<div id="replay_modal" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -243,7 +280,7 @@
 					</div>
 				</div>
 			</div>
-				<!-- Modal: Cookies Detected -->
+				<!-- l. Modal: Cookies Detected -->
 			<div id="cookies_modal" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -261,7 +298,7 @@
 					</div>
 				</div>
 			</div>
-				<!-- Modal: Initialising -->
+				<!-- m. Modal: Initialising -->
 			<div id="initialising_modal" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -270,11 +307,17 @@
 						</div>
 						<div class="modal-body">
 							<font color="#c33e3e">*Note: OxSPR is still currently a prototype.</font><br><br>
-							OxSPR is a Surface Plasmon Resonance simulator developed to help Biochemistry undergraduates master experimental design skills. The aim of this experiment is to find Kd, k<sub>off</sub>, k<sub>on</sub> and its associated statistics given an unknown ligand-receptor pair. Students can use OxSPR in two different modes:<br><br>
+							OxSPR is a Surface Plasmon Resonance simulator developed to help undergraduates practice their experimental design skills and develop experience on SPR binding experiment.<br><br>
 
-							In <u>LEARN MODE</u>, students can walk-through the thought process in designing scientifically sound experiments with available hints.<br><br>
+							The aim of this experiment is to find the equilibrium (dissociation) constant, Kd, and the on and off rate constants k<sub>on</sub> and k<sub>off</sub> for an unknown ligand-receptor pair. Both ligand and receptor are assumed to be proteins – the receptor is immobilized on the SPR chip, and the ligand is added to the perfusing solution at various concentrations.  Binding is indicated by an increase in ‘response units’, which are proportional to the mass of protein bound to the chip. As in a real experiment, the readings are subject to experimental error and you should design your experiment to estimate this error and estimate confidence limits on your measured values.<br><br>
 
-							In <u>MASTERY mode</u>, students can practice by trying to obtain the correct answer with their <u>Efficiency Points</u> not lower than 52, and finishing at exactly 24 <u>Steps</u> which is the optimum number, excluding outliers.<br><br>
+							You can use OxSPR in two different modes:<br><br>
+
+							In <u>LEARN mode</u>, you can walk-through the thought process in designing scientifically sound experiments with available hints.<br><br>
+
+							In <u>MASTERY mode</u>, students can track the efficiency of their experimental design and are challenged to try and obtain the correct answer with their ‘efficiency points’ not lower than 52, and finishing the experiment with the optimum steps of 24 (excluding outliers).<br><br>
+
+							You may switch between the different modes by turning LEARN mode on or off.<br><br>
 
 							Before we begin, please let us know your purpose in using OxSPR for this session. Rest assure, you may switch between the different mode by turning <u>LEARN MODE</u> on or off.
 							<br><br>
@@ -294,8 +337,8 @@
 					<div class="panel-body clickable-box">
 							<!-- a. Button: learn vs mastery mode selector -->
 						<div class="mode-selection">
-							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">OPEN</button>
-							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CLOSE</button><br><br>
+							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">ON</button>
+							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">OFF</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
 						<div class="select-hints-box col-md-12">
@@ -317,7 +360,23 @@
 							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#seventhObjective_modal" ng-disabled="view.guideMode == false">7</button>
 						</div>
 					</div><br>
-						<!-- ii. Panel: check answer -->
+						<!-- ii. Panel: high score display (mastery mode only) -->
+					<div ng-show="view.guideMode == false">
+						<div class="panel-heading">MASTERY SCORES</div>
+						<div id="dashboard" class="panel-body">
+								<!-- a. Lowest Number of Steps Taken -->
+							<div class="col-md-6 track-panel gloss-contrast">
+								<div>Efficiency Points</div>
+								<div class="tracked-value">52</div>
+							</div>
+								<!-- b. Average Steps -->
+							<div class="col-md-6 track-panel" data-toggle="tooltip" title="exclude accounting outliers">
+								<div>Optimum Steps</div>
+								<div class="tracked-value">24</div>
+							</div>
+						</div><br>
+					</div>
+						<!-- iii. Panel: check answer -->
 					<div class="panel-heading">CHECK ANSWER</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Form: check Kd -->
@@ -366,7 +425,7 @@
 							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">SUBMIT</button>
 						</div>
 					</div><br>
-						<!-- iii. Panel: generated system info -->
+						<!-- vi. Panel: generated system info -->
 					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
 					<div id="sys_info" class="panel-body">
 							<!-- a. System ID -->
@@ -608,11 +667,11 @@
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button clickable1 col-md-12" ng-click="view.clearChart()" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
 						</div>
 							<!-- e) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button clickable1 col-md-12" ng-click="view.goHome()" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
 						</div>
 							<!-- f) "Restart" button -->
 						<div class="box-right-btn">
@@ -643,22 +702,6 @@
 							<!-- k. Association Time Units -->
 						<div id="default_unit" class="col-md-6 unit-panel gloss-contrast2">seconds</div>
 					</div><br>
-						<!-- iii. Panel: high score display (mastery mode only) -->
-					<!--div ng-show="view.guideMode == false">
-						<div class="panel-heading">MASTERY SCORE</div>
-						<div id="dashboard" class="panel-body">
-								< a. Lowest Number of Steps Taken >
-							<div class="col-md-6 track-panel gloss-contrast">
-								<div>Efficiency Points</div>
-								<div class="tracked-value">52</div>
-							</div>
-								< b. Average Steps >
-							<div class="col-md-6 track-panel" data-toggle="tooltip" title="exclude accounting outliers">
-								<div>Optimum Steps</div>
-								<div class="tracked-value">24</div>
-							</div>
-						</div><br>
-					</div-->
 				</div>
 			</div><br>
 			
