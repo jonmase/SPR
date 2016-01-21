@@ -257,6 +257,14 @@ a.blue-link:active {
 	text-align: center;
 }
 
+/* Initialising modal */
+#here_button {
+	padding: 0px;
+	border: none;
+    background: none;
+    color: #51A7F9;
+}
+
 /* panel: guide mode */
 .mode-selection {
 	width: 100%;
@@ -505,17 +513,7 @@ a.finish-btn:active {
 	width: 111px;
 }
 
-#replay_button {
-	background-color: #4273b3;
-	border: 1px solid #222530;
-}
-
-#email_button {
-	background-color: #4273b3;
-	border: 1px solid #222530;
-}
-
-#facebook_button {
+#bottom_button {
 	background-color: #4273b3;
 	border: 1px solid #222530;
 }
