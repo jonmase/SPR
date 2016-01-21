@@ -26,7 +26,7 @@ function experimentTrack() {
 		// total runs per simulation = 46
 /* creating variables for error generation module */
 		// for absolute error
-	experiment.stdDev_Default = 0.000000001; // Need to figure out the right level of variation for concentration; currently default variation is at nM level
+	experiment.stdDev_Default = 0.000000004; // Need to figure out the right level of variation for concentration; currently default variation is at nM level
 	experiment.stdDev_Absolute = experiment.stdDev_Default; // starting with default level and increase as it passes different time point
 	experiment.stdDev_Gaussian_absolute = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
 		// for relative error

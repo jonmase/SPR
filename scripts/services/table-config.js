@@ -18,27 +18,31 @@ function tableCreate(outputModel, experimentStatus) {
 					{
 						field: "trial",
 						displayName: "trial",
-						width: '51'
+						width: "51"
 					},
 					{
 						field: "fLC",
 						displayName: "free ligand conc.",
-						width: '120'
+						width: "120",
+						enableSorting: false // ui-grid have sort column issue when different columns have both strings and text, so currently allow only sort by trial number
 					},
 					{
 						field: "units",
 						displayName: "units",
-						width: '55'
+						width: "55",
+						enableSorting: false
 					},
 					{
 						field: "timeOn",
 						displayName: "association time/s",
-						width: '129'
+						width: "129",
+						enableSorting: false
 					},
 					{
 						field: "maxRU_value",
 						displayName: "max RU",
-						width: '97'
+						width: "97",
+						enableSorting: false
 					}
 				],
 				// exporting
