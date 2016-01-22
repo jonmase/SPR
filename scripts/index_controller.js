@@ -189,6 +189,14 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		}
 	};
 
+/* i) change system */
+	view.change = function(change_Kd, change_kOn, change_kOff, magnitudeChange_Kd, magnitudeChange_kOn) {
+		view.system.Kd = change_Kd/view.magnitudeCheck_Kd[magnitudeChange_Kd];
+		view.system.kOn = change_kOn*view.magnitudeCheck_kOn[magnitudeChange_kOn];
+		view.system.kOff = change_kOff;
+		view.system.uniqueID = "custom";
+	};
+
 /* i) creating functions to track if learn or mastery user */
 	view.learn_user = function() {
 		view.user_type.push(angular.copy("learn"));

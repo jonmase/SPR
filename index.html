@@ -622,51 +622,96 @@
 						</div>
 							<!-- g. Button: check -->
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
-							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">SUBMIT</button>
+							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">CHECK</button>
 						</div>
 					</div><br>
-						<!-- vi. Panel: generated system info -->
-					<div class="panel-heading">ABOUT CURRENT SYSTEM</div>
+										<!-- Start of debugging box -->
+					<!--div class="panel-heading">DEBUG: SYSTEM INFO</div>
 					<div id="sys_info" class="panel-body">
-							<!-- a. System ID -->
+						<br><br><div class="debug"><u>Answers values</u></div><br>
 						<div class="box-left">System ID</div>
 						<div class="box-right"><u>{{view.system.uniqueID}}</u></div>
-							<!-- b. Ligand Molecular Weight -->
+						<div class="box-left">Kd / M</div>
+						<div class="box-right"><u>{{view.system.Kd}}</u></div>
+						<div class="box-left">k<sub>on</sub> / Ms<sup>-1</sup></div>
+						<div class="box-right"><u>{{view.system.kOn}}</u></div>
+						<div class="box-left">k<sub>off</sub> / s<sup>-1</sup></div>
+						<div class="box-right"><u>{{view.system.kOff}}</u></div>
 						<div class="box-left">Ligand Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right"><u>{{view.system.mwL | mwFilter}}</u></div>
-							<!-- c. Receptor Molecular Weight -->
 						<div class="box-left">Receptor Mol Weight / gmol<sup>-1</sup></div>
 						<div class="box-right"><u>{{view.system.mwR | mwFilter}}</u></div>
-							<!-- d. Values for Debugging >
-						<br><br><div class="debug"><u>[Debug Mode] Answers values</u></div><br>
-						<div class="box-left debug">Kd / uM</div>
-						<div class="box-right debug">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
-						<div class="box-left debug">k<sub>on</sub> / s<sup>-1</sup></div>
-						<div class="box-right debug">{{view.system.kOn}}</div><br>
-						<div class="box-left debug">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
-						<div class="box-right debug">{{view.system.kOff}}</div><br>
-						<div class="box-left debug">Minimum time on</div>
-						<div class="box-right debug">{{view.system.min_timeOn | number: 2}}</div><br>
-						<div class="box-left debug">Minimum time off</div>
-						<div class="box-right debug">{{view.system.min_timeOff | number: 2}}</div><br>
-						<br><div class="debug"><u>[Debug Mode] Backend Data Storage</u></div><br>
-						<div class="box-left debug">User Type</div>
-						<div class="box-right debug">{{view.user_type}}</div><br>
-						<div class="box-left debug">Start Timestamp</div>
-						<div class="box-right debug">{{view.startTime}}</div><br>
-						<div class="box-left debug">End Timestamp</div>
-						<div class="box-right debug">{{view.endTime}}</div><br>
-						<div class="box-left debug">Session elapsed time</div>
-						<div class="box-right debug">{{view.elapsed}}</div><br>
-						<div class="box-left debug">Session steps count</div>
-						<div class="box-right debug">{{view.sessionStepsCount}}</div><br>
-						<div class="box-left debug">Session efficiency count</div>
-						<div class="box-right debug">{{view.sessionEfficiencyCount}}</div><br>
-						<div class="box-left debug">Session check count</div>
-						<div class="box-right debug">{{view.sessionCheckCount}}</div><br>
-						<div class="box-left debug">Check results log</div>
-						<div class="box-right debug">{{view.checkResults}}</div><br-->
-					</div>
+						<div class="box-left">Kd / uM</div>
+						<div class="box-right">{{(view.system.Kd | uM_Filter | number: 2)}}</div><br>
+						<div class="box-left">k<sub>on</sub> / s<sup>-1</sup></div>
+						<div class="box-right">{{view.system.kOn}}</div><br>
+						<div class="box-left">k<sub>off</sub> / M<sup>-1</sup>s<sup>-1</sup></div>
+						<div class="box-right">{{view.system.kOff}}</div><br>
+						<div class="box-left">Minimum time on</div>
+						<div class="box-right">{{view.system.min_timeOn | number: 2}}</div><br>
+						<div class="box-left">Minimum time off</div>
+						<div class="box-right">{{view.system.min_timeOff | number: 2}}</div><br>
+
+						<br><div class="debug"><u>Backend Data Storage</u></div><br><br>
+						<div class="box-left">User Type</div>
+						<div class="box-right">{{view.user_type}}</div><br>
+						<div class="box-left">Start Timestamp</div>
+						<div class="box-right">{{view.startTime}}</div><br>
+						<div class="box-left">End Timestamp</div>
+						<div class="box-right">{{view.endTime}}</div><br>
+						<div class="box-left">Session elapsed time</div>
+						<div class="box-right">{{view.elapsed}}</div><br>
+						<div class="box-left">Session steps count</div>
+						<div class="box-right">{{view.sessionStepsCount}}</div><br>
+						<div class="box-left">Session efficiency count</div>
+						<div class="box-right">{{view.sessionEfficiencyCount}}</div><br>
+						<div class="box-left">Session check count</div>
+						<div class="box-right">{{view.sessionCheckCount}}</div><br>
+						<div class="box-left">Check results log</div>
+						<div class="box-right">{{view.checkResults}}</div><br>
+					</div><br>
+					<div class="panel-heading">DEBUG: CHANGE SYSTEM</div>
+					<div id="dashboard" class="panel-body">
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>Kd</div>
+							<form novalidate name="change_Kd">
+								<input class="form" name="Kd_change_input" type="number" ng-model="input_change_Kd" placeholder="number" required>
+							</form>
+						</div>
+						<div class="col-md-4 track-panel">
+							<div>k<sub>on</sub></div>
+							<form novalidate name="change_kOn">
+								<input class="form" name="kOn_change_input" type="number" ng-model="input_change_kOn" placeholder="number" required>
+							</form>
+						</div>
+						<div class="col-md-4 track-panel gloss-contrast">
+							<div>k<sub>off</sub></div>
+							<form novalidate name="change_kOff" >
+								<input class="form" name="kOff_change_input" type="number" ng-model="input_change_kOff" placeholder="number" required>
+							</form>
+						</div>
+						<div class="col-md-4 unit-panel gloss-contrast">
+							<select class="units_dropdown" ng-model="magnitudeSelected_change_Kd" ng-init="magnitudeSelected_change_Kd = 2">
+								<option ng-value="0">mM</option>
+								<option ng-value="1">uM</option>
+								<option ng-value="2" ng-selected="true">nM</option>
+							</select>						
+						</div>
+						<div class="col-md-4 unit-panel">
+							<select class="units_dropdown" ng-model="magnitudeSelected_change_kOn" ng-init="magnitudeSelected_change_kOn = 2">
+								<option value="0">MMs&#x207b;&#xb9;</option>
+								<option value="1">kMs&#x207b;&#xb9;</option>
+								<option value="2" ng-selected="true">Ms&#x207b;&#xb9;</option>
+							</select>						
+						</div>
+						<div id="default_unit" class="col-md-4 unit-panel gloss-contrast">
+							<div>s<sup>-1</sup></div>
+						</div>
+						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
+							<button id="check_submit" class="button clickable1" ng-click="view.change(input_change_Kd, input_change_kOn, input_change_kOff, magnitudeSelected_change_Kd, magnitudeSelected_change_kOn)" ng-disabled="change_Kd.Kd_change_input.$invalid || change_kOn.kOn_change_input.$invalid || change_kOff.kOff_change_input.$invalid">CHANGE</button>
+						</div>
+					</div-->
+										<!-- End of debugging box -->
 				</div>
 				<div id="output-box" class="container-fluid col-md-6">
 						<!-- v. Panel: sensorgram output graph (angular flot chart) -->
@@ -779,7 +824,15 @@
 							<font color="#ececec">[Maximum no. of plot on sensorgram reached]</font><br>
 							There are too many plots on <u>SENSORGRAM</u>. Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
 						</div>
-							<!-- o. Prompt: Answer is correct -->
+							<!-- o. Prompt: Unknown System Information -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
+							<font color="#70BF41">> Console:</font>&nbsp;
+							<font color="#ececec">[Identity of Ligand Receptor Pair]</font><br>
+								- Ligand-Receptor Pair Unique ID: <u>{{view.system.uniqueID}}</u><br>
+								- Ligand Molecular Weight / gmol<sup>-1</sup>: <u>{{view.system.mwL | mwFilter}}</u><br>
+								- Receptor Molecular Weight / gmol<sup>-1</sup>: <u>{{view.system.mwR | mwFilter}}</u>
+						</div>
+							<!-- p. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Correct answers]</font><br>
@@ -787,7 +840,7 @@
 								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
 						</div>
-							<!-- p. Prompt: Answer is wrong -->
+							<!-- q. Prompt: Answer is wrong -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Wrong answers]</font><br>
@@ -795,12 +848,12 @@
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
 						</div>
-							<!-- q. Prompt: All answer is correct! -->
+							<!-- r. Prompt: All answer is correct! -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[All answer is correct!]</font><br>
 							Well done! You have achieved all correct answers and finish the simulation! :)<br>
-							Click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b> you want to replay again to try and achieve the <u>MASTERY SCORE</u>
+							Click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b> you want to replay again to try and achieve the <u>MASTERY SCORE</u>.<br><br>
 							OxSPR is still currently a prototype. If you like the software, please support the project by providing 
 							<b><a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="blue-link">feedback</a></b> and 
 							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
@@ -808,7 +861,7 @@
 							it to anyone you think might be helpful.<br><br>
 							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
 						</div>
-							<!-- r. Prompt: session over -->
+							<!-- s. Prompt: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Experiment Ended]</font><br>
