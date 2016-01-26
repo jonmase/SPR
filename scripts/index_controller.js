@@ -41,7 +41,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.isDisabled_check = true;
 	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
 	view.magnitudeCheck_kOn = [1000000, 1000, 1];
-	view.allowedAnswerDeviation = 0.2; // answer input must be within this confidence limit range of the true answer
+	view.allowedAnswerDeviation = 0.10; // answer input must be within this confidence limit range of the true answer
 	view.Kd_correct = false;
 	view.kOn_correct = false;
 	view.kOff_correct = false;
@@ -71,7 +71,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.plotCompileLabelOn();
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
-		view.output.efficiencyCalculator(new_timeOn);
+		view.output.efficiencyCalculator(new_fLC, new_timeOn);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;
