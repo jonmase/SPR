@@ -79,6 +79,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 
 /* d) creating function for "wash-up" button */
 	view.washUp = function() {
+		view.output.timeOffDefault = view.system.min_timeOff;
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
 		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4));
