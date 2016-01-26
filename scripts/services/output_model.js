@@ -27,7 +27,7 @@ function outputMethod(experimentStatus, systemModel) {
 	output.RU_Off_Coordinate = [];
 	output.RU_CompiledLabelPlotAll = []; // store all plot into format that adds label of [{label: "abc1", data: [line1]}, {label: "abc2", data: [line2]}...] for overlapping display
 	output.currentStep = 0;
-	output.totalSteps = 100; // set number of intermediates coordinates to produce
+	output.totalSteps = 500; // set number of intermediates coordinates to produce
 		// custom chart color
 	output.colorPool = ["rgb(179, 106, 226)", "rgb(236, 93, 87)", "rgb(243, 144, 25)", "rgb(245, 211, 10)", "rgb(112, 195, 65)", "rgb(81, 167, 249)", "rgb(108, 115, 124)", "rgb(218, 209, 155)", "rgb(211, 182, 176)", "rgb(204, 204, 204)"];
 	output.colorCounter = 0; // to customise color and also make on and off line having the same color
@@ -78,7 +78,7 @@ function outputMethod(experimentStatus, systemModel) {
 /* h) compiling the plot together as a single line and add label */
 	output.plotCompileLabelOn = function() {
 		output.compileLabel = {
-			label: angular.copy(output.fLC_tableDisplay[output.fLC_tableDisplay.length-1]*output.magnitudeAdjust)+" "+output.unitAdjust,
+			label: angular.copy((Math.round((output.fLC_tableDisplay[output.fLC_tableDisplay.length-1]*output.magnitudeAdjust)*100))/100)+" "+output.unitAdjust,
 			data: angular.copy(output.RU_Line),
 			color: output.colorPool[output.colorCounter]
 		};
