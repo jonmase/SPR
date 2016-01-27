@@ -337,6 +337,22 @@ a.blue-link:active {
 	height: 232px;
 	border: 0px;
 	color: #d2e3fd;
+	overflow-y: hidden;
+}
+
+div::-webkit-scrollbar {
+	width: 20px;
+}
+
+div::-webkit-scrollbar-track {
+	background-color: rgba(28, 37, 53, 0);
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #3d5174;
+    border: 7px solid transparent;
+    border-radius: 9px;
+    background-clip: content-box;
 }
 
 .ui-grid-header-viewport {

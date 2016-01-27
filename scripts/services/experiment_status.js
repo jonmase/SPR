@@ -19,8 +19,8 @@ function experimentTrack() {
 /* creating tracked variables */
 	experiment.steps = 0;
 	experiment.timeOfDay = 9.5;
-	experiment.daysAllowed = 1; 
-	experiment.daysLeft = 1;
+	experiment.daysAllowed = 2; 
+	experiment.daysLeft = 2;
 	experiment.endOfExperimentTime = 0;
 		// total runs with good SD per simulation = 26
 		// total runs per simulation = 46

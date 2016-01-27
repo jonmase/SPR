@@ -1,7 +1,7 @@
 	/* Creating table using ui-grid API */
 
 /* 1. registering modules, services and constants */
-angular.module('table_config', ['output_model', 'experiment_status', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.autoResize'])
+angular.module('table_config', ['output_model', 'experiment_status', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter'])
 	.service('tableConfig', ['outputModel', 'experimentStatus', tableCreate]);
 
 /* 2. creating sub-methods as part of the function object that can be called */
@@ -41,10 +41,20 @@ function tableCreate(outputModel, experimentStatus) {
 					{
 						field: "maxRU_value",
 						displayName: "max RU",
-						width: "97",
+						width: "90",
 						enableSorting: false
+					},
+					{
+						field: "fLC_standard",
+						displayName: "free ligand conc. standard display",
+						width: "120",
+						enableSorting: false
+						// visible: false
 					}
 				],
+				// miscellaneous
+			enableHorizontalScrollbar: 0,
+			enableColumnMenus: false,
 				// exporting
 			enableGridMenu: true,
 			exporterMenuCsv: true,
@@ -53,13 +63,14 @@ function tableCreate(outputModel, experimentStatus) {
     		exporterCsvFilename: 'SPR_Data.csv'
 		};
 
-	table.compileData = function(experiment_steps, out_fLC, out_timeOn, out_RU_On_Output) {
+	table.compileData = function(experiment_steps, out_fLC, out_timeOn, out_RU_On_Output, out_fLC_standard) {
 		table.compiledSet = {
 			"trial": experiment_steps,
 			"fLC": out_fLC,
 			"units": output.unitAdjust,
 			"timeOn": out_timeOn,
-			"maxRU_value": out_RU_On_Output
+			"maxRU_value": out_RU_On_Output,
+			"fLC_standard": out_fLC_standard
 		};
 		table.data.push(angular.copy(table.compiledSet));
 	};

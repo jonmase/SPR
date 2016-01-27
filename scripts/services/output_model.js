@@ -27,7 +27,7 @@ function outputMethod(experimentStatus, systemModel) {
 	output.RU_Off_Coordinate = [];
 	output.RU_CompiledLabelPlotAll = []; // store all plot into format that adds label of [{label: "abc1", data: [line1]}, {label: "abc2", data: [line2]}...] for overlapping display
 	output.currentStep = 0;
-	output.totalSteps = 100; // set number of intermediates coordinates to produce
+	output.totalSteps = 300; // set number of intermediates coordinates to produce
 		// custom chart color
 	output.colorPool = ["rgb(179, 106, 226)", "rgb(236, 93, 87)", "rgb(243, 144, 25)", "rgb(245, 211, 10)", "rgb(112, 195, 65)", "rgb(81, 167, 249)", "rgb(108, 115, 124)", "rgb(218, 209, 155)", "rgb(211, 182, 176)", "rgb(204, 204, 204)"];
 	output.colorCounter = 0; // to customise color and also make on and off line having the same color
@@ -78,7 +78,7 @@ function outputMethod(experimentStatus, systemModel) {
 /* h) compiling the plot together as a single line and add label */
 	output.plotCompileLabelOn = function() {
 		output.compileLabel = {
-			label: angular.copy(output.fLC_tableDisplay[output.fLC_tableDisplay.length-1]*output.magnitudeAdjust)+" "+output.unitAdjust,
+			label: angular.copy((Math.round((output.fLC_tableDisplay[output.fLC_tableDisplay.length-1]*output.magnitudeAdjust)*100))/100)+" "+output.unitAdjust,
 			data: angular.copy(output.RU_Line),
 			color: output.colorPool[output.colorCounter]
 		};
@@ -131,13 +131,17 @@ function outputMethod(experimentStatus, systemModel) {
 	};
 
 /* l) efficiency calculator */
-	output.efficiencyCalculator = function(new_timeOn) {
-		output.checkTimeInefficiency = new_timeOn/system.min_timeOn; // scaling all time input to its minimum time on to reach plateau at 1 nM (minimum time on)
-		if (output.checkTimeInefficiency > 1) {
-				// 10 = maximum efficiency rating, 46 = total possible steps; thus, at step = 46, the inefficiency should reach 10, and thus efficiency = 0
-			output.inefficiency = (100/46)*output.checkTimeInefficiency; // minimum inefficiency per step (10/46) is scaled by how much over time user over input above minimum time on
+	output.efficiencyCalculator = function(new_fLC, new_timeOn) {
+		if (new_fLC === 0) {
+			output.inefficiency = 100/46;
 		} else {
-			output.inefficiency = 100/46; // this means that the lower ceiling of ineffiency is the minimum time on. any time on below that suffers from inefficiency by using additional steps only, which is 10/46
+			output.checkTimeInefficiency = (new_timeOn-5)/system.min_timeOn; // scaling all time input to its minimum time on to reach plateau at 1 nM (minimum time on); -5 is to allow extra 5 seconds buffer after plateau to be include and not deduct extra efficiency points
+			if (output.checkTimeInefficiency > 1) {
+					// 10 = maximum efficiency rating, 46 = total possible steps; thus, at step = 46, the inefficiency should reach 10, and thus efficiency = 0
+				output.inefficiency = (100/46)*output.checkTimeInefficiency; // minimum inefficiency per step (10/46) is scaled by how much over time user over input above minimum time on
+			} else {
+				output.inefficiency = 100/46; // this means that the lower ceiling of ineffiency is the minimum time on. any time on below that suffers from inefficiency by using additional steps only, which is 10/46
+			}
 		}
 		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
 	};
