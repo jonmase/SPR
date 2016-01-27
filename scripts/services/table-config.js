@@ -41,7 +41,7 @@ function tableCreate(outputModel, experimentStatus) {
 					{
 						field: "maxRU_value",
 						displayName: "max RU",
-						width: "97",
+						width: "90",
 						enableSorting: false
 					},
 					{
@@ -49,14 +49,17 @@ function tableCreate(outputModel, experimentStatus) {
 						displayName: "free ligand conc. standard display",
 						width: "120",
 						enableSorting: false
+						// visible: false
 					}
 				],
+				// miscellaneous
+			enableHorizontalScrollbar: 0,
+			enableColumnMenus: false,
 				// exporting
 			enableGridMenu: true,
 			exporterMenuCsv: true,
 			exporterMenuPdf: false,
 			exporterEnableExporting: true,
-			enableHorizontalScrollbar: 0,
     		exporterCsvFilename: 'SPR_Data.csv'
 		};
 

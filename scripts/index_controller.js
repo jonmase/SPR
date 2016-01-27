@@ -56,6 +56,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_background = true;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.output.minimum_fLC_input = 1;
+		view.chart.replot();
 	};
 
 /* c) creating function for "run experiment" button  */
@@ -69,6 +70,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.calc_RU_OnMax(view.system.RU_MaxL, view.output.fLC[view.experiment.steps], view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCoordinatesOn(new_timeOn, view.output.currentStep, view.output.totalSteps, view.system.RU_MaxL, view.output.fLC[view.experiment.steps], view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOn();
+		view.chart.replot();
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
 		view.output.efficiencyCalculator(new_fLC, new_timeOn);
@@ -83,6 +85,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
 		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]);
+		view.chart.replot();
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
@@ -101,6 +104,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 /* f) creating function for "clear graph" button */
 	view.clearChart = function() {
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.chart.replot();
 		view.isDisabled_check = true;
 	};
 
@@ -138,6 +142,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Off_Coordinate.length = 0;
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.chart.replot();
 		view.table.data.length = 0;
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
@@ -241,6 +246,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Off_Coordinate.length = 0;
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.chart.replot();
 		view.table.data.length = 0;
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;

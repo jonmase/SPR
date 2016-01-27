@@ -69,4 +69,8 @@ function chartCreate(outputModel) {
 	$("#flot").dblclick(function () {
 		plotObj = $.plot("#flot", chart.dataset, chart.options);
 	});
+
+	chart.replot = function() {
+		plotObj = $.plot("#flot", chart.dataset, chart.options);
+	};
 }
