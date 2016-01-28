@@ -47,6 +47,10 @@
 
 /* Top navigation bar */
 
+body {
+	padding-right: 0px !important;
+}
+
 #oxonHeaderFooter {
 	font-family: 'PT Sans', sans-serif;
 	letter-spacing: 0px;
