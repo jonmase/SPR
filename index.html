@@ -842,18 +842,16 @@
 							<font color="#ececec">[Maximum no. of plot on sensorgram reached]</font><br>
 							There are too many plots on <u>SENSORGRAM</u>. Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
 						</div>
-							<!-- o. Prompt: Unknown System Information -->
-						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
+							<!-- o. Prompt: Efficiency Points Lost -->
+						<div ng-show="view.output.fLC.length !== 0 && view.guideMode == false">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Identity of Ligand Receptor Pair]</font><br>
-								- Ligand-Receptor Pair Unique ID: <u>{{view.system.uniqueID}}</u><br>
-								- Ligand Molecular Weight / gmol<sup>-1</sup>: <u>{{view.system.mwL | mwFilter}}</u><br>
-								- Receptor Molecular Weight / gmol<sup>-1</sup>: <u>{{view.system.mwR | mwFilter}}</u>
+							<font color="#ececec">[Trial {{view.experiment.steps}} Status]</font><br>
+							{{view.output.inefficiency_display}} <u>Effiency Point(s)</u> lost.
 						</div>
 							<!-- p. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Correct answers]</font><br>
+							<font color="#ececec">[Attempt {{view.checkCounter}} - Correct answers]</font><br>
 								<p class="declare-result" ng-show="view.Kd_correct == true">Your Kd value is correct!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
@@ -861,7 +859,7 @@
 							<!-- q. Prompt: Answer is wrong -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Wrong answers]</font><br>
+							<font color="#ececec">[Attempt {{view.checkCounter}} - Wrong answers]</font><br>
 								<p class="declare-result" ng-show="view.Kd_correct == false">Your Kd value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>

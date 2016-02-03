@@ -145,5 +145,6 @@ function outputMethod(experimentStatus, systemModel) {
 			}
 		}
 		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
+		output.inefficiency_display = (Math.round(output.inefficiency*100))/100;
 	};
 }
