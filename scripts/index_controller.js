@@ -204,6 +204,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.Kd = change_Kd/view.magnitudeCheck_Kd[magnitudeChange_Kd];
 		view.system.kOn = change_kOn*view.magnitudeCheck_kOn[magnitudeChange_kOn];
 		view.system.kOff = change_kOff;
+		view.system.find_min_timeOnOff();
 		view.system.uniqueID = "custom";
 	};
 

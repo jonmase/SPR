@@ -101,7 +101,7 @@ function systemMethod() { // creating master function object that encapsulate al
 		system.RU_MaxLR = (Math.round(1000*(sys_tRC*sys_mwLR*con_vol*con_RPUM)))/1000;
 	};
 
-/* i) calculate time on to reach 0.9999 RU at equilibrium for 1 nM free ligand concentration */
+/* i) calculate time on to reach 0.9995 RU at equilibrium for 1 nM free ligand concentration */
 	system.find_min_timeOnOff = function() {
 		system.min_timeOn = -(Math.log(0.0005)/((-system.kOn*0.000000001)+system.kOff)); // 0.0005 give a reasonable gap for single curve comparison of RU on value to check if plateau is reached
 		system.min_timeOff = -Math.log(0.001)/system.kOff;
