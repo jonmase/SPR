@@ -134,6 +134,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
+		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -238,6 +239,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
+		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;

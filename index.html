@@ -120,7 +120,7 @@
 								Even when tackling an unknown system, there are strategies which biochemists can use to approach such system efficiently and methodically. This walk-through aims to articulate these heuristics, after which you can practice your learning in <u>MASTERY MODE</u><br><br>
 
 								<b><font color="#51A7F9">a) Overview of the experiment</font></b><br>
-								Start by thinking of the end result, what you want to find is the Kd, k<sub>off</sub> and k<sub>on</sub> that characterise the energetics of this binding pair. To obtain Kd from SPR, you need to plot the Langmuir Isotherm which is the graph of equilibrium binding activity (resonance) against <u>free ligand concentration</u> - obtainable from <u>SENSORGRAM</u> since it outputs the binding activity (resonance) against <u>incubation time</u> given <u>free ligand concentration</u> input. k<sub>off</sub> kinetics can also be determine from the shape of the dissociation phase of the curve when you <u>WASH</u>. Together, we can then derive the k<sub>on</sub>.<br><br>
+								Start by thinking of the end result, what you want to find is the Kd, k<sub>off</sub> and k<sub>on</sub> that characterise the energetics of this binding pair. To obtain Kd from SPR, you need to plot the Langmuir Isotherm which is the graph of equilibrium binding activity (resonance) against <u>free ligand concentration</u> - obtainable from <u>SENSORGRAM</u> since it outputs the binding activity (resonance) against <u>association time</u> given <u>free ligand concentration</u> input. k<sub>off</sub> kinetics can also be determine from the shape of the dissociation phase of the curve when you <u>WASH</u>. Together, we can then derive the k<sub>on</sub>.<br><br>
 
 								<b><font color="#51A7F9">b) Questions & Interpretations</font></b><br>
 								These are questions you should aim to answer while doing the simulation:<br><br>
@@ -155,7 +155,7 @@
 								SPR machine functions by measuring the mass detected on the chip in general, without distinguishing between receptor or ligand. This background signal detected represents the mass of receptor bound to the chip, in response units. Thus, we can remove this reading by measuring the chip without before any ligand is bound by inputing <u>free ligand concentration</u> as 0.<br><br>
 
 								<b><font color="#51A7F9">c) Proper practice of background removal</font></b><br>
-								In a real world experiment, artefacts such as baseline drift could occur, which would cause an increase in resonance over time. Thus the background should be measured over the longest <u>incubation time</u> you would be using in the experiment to subtract all baseline drift from subsequent experiments. This time would have to be determined by trial and error. However, for this simulation, you can assume there is no baseline drift and input any reasonable <u>incubation time</u> to assess background.
+								In a real world experiment, artefacts such as baseline drift could occur, which would cause an increase in resonance over time. Thus the background should be measured over the longest <u>association time</u> you would be using in the experiment to subtract all baseline drift from subsequent experiments. This time would have to be determined by trial and error. However, for this simulation, you can assume there is no baseline drift and input any reasonable <u>association time</u> to assess background.
 							</div>
 						</div>
 					</div>
@@ -166,22 +166,22 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 2: Find appropriate incubation time length</h4>
+								<h4 class="modal-title" id="modalLabel">Objective 2: Find appropriate association time length</h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) Importance of using appropriate <u>incubation time</u></font></b><br>
-								You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>incubation time</u>. On the other end, we should also aim to use as short <u>incubation time</u> as possible similar to reality where you would want to finish your experiment as fast as possible.<br><br>
+								<b><font color="#51A7F9">a) Importance of using appropriate <u>association time</u></font></b><br>
+								You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>association time</u>. On the other end, we should also aim to use as short <u>association time</u> as possible similar to reality where you would want to finish your experiment as fast as possible.<br><br>
 
-								<b><font color="#51A7F9">b) Strategy to finding an unknown <u>incubation time</u></font></b><br>
-								We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>incubation time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>incubation time</u> require to reach equilibrium with the lowest logical <u>free ligand concentration</u> input (e.g. 1 nM) since this time length would cover for all higher <u>free ligand concentration</u>.<br><br>
+								<b><font color="#51A7F9">b) Strategy to finding an unknown <u>association time</u></font></b><br>
+								We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium with the lowest logical <u>free ligand concentration</u> input (e.g. 1 nM) since this time length would cover for all higher <u>free ligand concentration</u>.<br><br>
 
-								A good strategy to find out the sufficient <u>incubation time</u> until plateau would be to try with a low starting value such as 1 second and estimate from the projection, knowing that the curve follow a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
+								A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low starting value such as 1 second and estimate from the projection, knowing that the curve follow a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
 
 								<b><font color="#51A7F9">c) Quantitative confirmation of equilibrium binding</font></b><br>
-								Ultimately, you will know that the <u>incubation time</u> input allow sufficient time for ligand and receptor equilibrate in binding by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.<br><br>
+								Ultimately, you will know that the <u>association time</u> input allow sufficient time for ligand and receptor equilibrate in binding by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.<br><br>
 
-								<b><font color="#51A7F9">d) Your final <u>incubation time</u></font></b><br>
-								This <u>incubation time</u> required to reach equlibrium binding that is derived using the lowest <u>free ligand concentration</u> can be use as your standard input for all other experiment with higher <u>free ligand concentration</u> input. Make sure this time is roughly within 5 seconds of reaching equilibrium binding since running for unnecessary <u>incubation time</u> will decrease your efficiency point!
+								<b><font color="#51A7F9">d) Your final <u>association time</u></font></b><br>
+								This <u>association time</u> required to reach equlibrium binding that is derived using the lowest <u>free ligand concentration</u> can be use as your standard input for all other experiment with higher <u>free ligand concentration</u> input. Make sure this time is roughly within 5 seconds of reaching equilibrium binding since running for unnecessary <u>association time</u> will decrease your efficiency point!
 							</div>
 						</div>
 					</div>
@@ -196,7 +196,7 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">a) The dynamic range</font></b><br>
-								Having decided on a suitable incubation time, you will then investigate the effect of varying <u>free ligand concentrations</u> on the equilibrium binding. This is to establish the Langmuir Isotherm curve which gives the relationship between ligand-receptor pair at equilibrium binding.<br><br>
+								Having decided on a suitable association time, you will then investigate the effect of varying <u>free ligand concentrations</u> on the equilibrium binding. This is to establish the Langmuir Isotherm curve which gives the relationship between ligand-receptor pair at equilibrium binding.<br><br>
 
 								Obviously you would expect the amount of ligand bound to increase up to saturation of the receptor. However, after reaching saturation, any increase in <u>free ligand concentration</u> will be irrelevant since it is beyond the dynamic range, which is defined as the range over which a change in free ligand concentration results in change in max RU. Hence, you should generate at least 6 points spreading over this dynamic range (ideally from around 5% saturation to 95% saturation) by varying the <u>free ligand concentration</u>.<br><br>
 
@@ -224,7 +224,7 @@
 								Normally you can determine your outlier as points which lie beyond 1.5 interquartile range. However in this case, you have too few points to rely on calculating from interquartile range, and judge quantitatively if a point is an outlier. Thus, a scientifically acceptable would be to perform additional replicates to confirm your judgement, such that you have at least 3 points which cluster together at acceptable standard deviation (5%).<br><br>
 
 								<b><font color="#51A7F9">c) Obtaining standard deviation for association experiment</font></b><br>
-								We also must perform at least 6 duplicates on one single set of free ligand concentration and incubation time combination. 6 duplicates would statistically give us up to 95% confidence for the SPR technique association experiment. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.
+								We also must perform at least 6 duplicates on one single set of free ligand concentration and association time combination. 6 duplicates would statistically give us up to 95% confidence for the SPR technique association experiment. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.
 							</div>
 						</div>
 					</div>
@@ -242,7 +242,7 @@
 								SPR also allows us to follow the kinetics of binding/dissociation rather than just the thermodynamics of equilibrium position. Thus, the k<sub>off</sub> (dissociation rate constant) from this experiment can be determine by following the decrease in bound ligand (resonance) until it reaches baseline. This is performed every round of experiment when you click <u>WASH</u>. By assuming in this system that the disassociation is a first order process (PL→ P + L), this will allow us to estimate the first order rate constant for dissociation using the first order decay equation.<br><br>
 
 								<b><font color="#51A7F9">b) Calculating k<sub>off</sub> form <u>SENSORGRAM</u></font></b><br>
-								To estimate koff we can take the resonance (RU) and its corresponding time (t) on the decay curve (hover over the points) and fit the data to the first order decay equation to derive the constant (k<sub>off</sub>). A rough estimate can be obtained by estimating half lives, but any known times will do. Please remember that you must take away the <u>incubation time</u> from your disincubation time in the calculation since disassociation starts only when <u>WASH</u> occur.<br><br>
+								To estimate koff we can take the resonance (RU) and its corresponding time (t) on the decay curve (hover over the points) and fit the data to the first order decay equation to derive the constant (k<sub>off</sub>). A rough estimate can be obtained by estimating half lives, but any known times will do. Please remember that you must take away the <u>association time</u> from your disassociation time in the calculation since disassociation starts only when <u>WASH</u> occur.<br><br>
 
 								<b><font color="#51A7F9">c) Obtaining standard deviation for disassociation experiment</font></b><br>
 								Although since the decay is first order, your k<sub>off</sub> will be independent of your starting RU, and should be identical for any of your dissociation curves of different <u>free ligand concentration</u>. However, as a good practice you should also calculate the koff values from graphs generated at different free ligand concentrations to estimate error. You should then calculate the standard deviation for the disassociation experiment using these data with at least 6 points for 95% confidence.
@@ -430,7 +430,7 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">d) Running your SPR trials</font></b><br>
-								The SPR experiment follow a cycle of <u>START</u>ing the association experiment by injecting ligand with your input <u>free ligand concentration</u> and <u>incubation time</u> at the <u>CONTROL PANEL</u>, then subsequently <u>WASH</u> off the ligand to disassociate it from the receptor to be ready for the next round of experiment.<br><br>
+								The SPR experiment follow a cycle of <u>START</u>ing the association experiment by injecting ligand with your input <u>free ligand concentration</u> and <u>association time</u> at the <u>CONTROL PANEL</u>, then subsequently <u>WASH</u> off the ligand to disassociate it from the receptor to be ready for the next round of experiment.<br><br>
 
 								<b><font color="#51A7F9">e) Important notice before beginning</font></b><br>
 								1. Your <u>SENSORGRAM</u> can only display a maximum of 10 curves before you have to <u>CLEAR</u> so please take screenshots regularly. Your data will not be clear in the process.<br>
@@ -496,10 +496,10 @@
 								<b><font color="#51A7F9">i) Interface functionality (2)</font></b><br>
 								8. <u>YOUR EXPERIMENT STATUS</u>:<br>
 								a) <u>Days Left</u> and <u>Time</u> indicates how long you have left to finish the experiment. In total, you have 2 days, starting from 09:30 to 00:00. Note that your result will have a higher chance of getting higher standard deviation once you pass 17:00. Theoretically this means you have a total of 46 trials available.<br>
-								b) <u>Efficiency Points</u> and <u>Steps</u> shows if you are on track to achieving the <u>MASTERY SCORE</u>. <u>Efficiency Points</u> is an indicator that you do not over use your <u>incubation time</u> while <u>Steps</u> shows how many steps have you taken so far.<br><br>
+								b) <u>Efficiency Points</u> and <u>Steps</u> shows if you are on track to achieving the <u>MASTERY SCORE</u>. <u>Efficiency Points</u> is an indicator that you do not over use your <u>association time</u> while <u>Steps</u> shows how many steps have you taken so far.<br><br>
 
 								9. <u>CONTROL PANEL</u>:<br>
-								a) <u>START</u> means taking the input <u>free ligand concentration</u> and inject into the SPR machine for time length of input <u>incubation time</u><br>
+								a) <u>START</u> means taking the input <u>free ligand concentration</u> and inject into the SPR machine for time length of input <u>association time</u><br>
 								b) <u>WASH</u> means injecting cleaning buffer into SPR machine to disassociate the ligand from the receptor.<br>
 								c) <u>BACKGROUND</u> means setting the measured <u>max RU</u> as the background reading to be remove from subsequent experiment. Note that clicking it will clear all previous curve on <u>SENSORGRAM</u> so do it immediately when you start.<br>
 								d) <u>CLEAR</u> means clearing all the plotted curve from the <u>SENSORGRAM</u>. It will not clear the data you produced in <u>RESULTS TABLE</u>.<br>
@@ -801,7 +801,7 @@
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
 							Experiment automatically setup. . . Setup completed @ 9.30.<br>
-							Ready to <u>START</u>. Please input values for <u>free ligand concentration</u> and <u>incubation time</u> in <u>CONTROL PANEL</u> to begin.<br>
+							Ready to <u>START</u>. Please input values for <u>free ligand concentration</u> and <u>association time</u> in <u>CONTROL PANEL</u> to begin.<br>
 						</div>
 							<!-- j. Prompt: remove background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
@@ -822,7 +822,7 @@
 						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
 							<font color="#70BF41">> Console:</font>&nbsp;
 							<font color="#ececec">[Tip: resulting max RU value is invalid]</font><br>
-							This message indicates that the <u>max RU</u> value measured for this input <u>free ligand concentration</u> is not yet at equilibrium binding before <u>WASH</u> off. This means that binding has not reached equilibrium and <u>max RU</u> cannot be use for plotting in Langmuir Isotherm. Please increase the input <u>incubation time</u> duration until you observe that the graph reaches a plateau. Also, note down the trial number of this dataset so you do not use it for plotting the Langmuir Isotherm later.
+							This message indicates that the <u>max RU</u> value measured for this input <u>free ligand concentration</u> is not yet at equilibrium binding before <u>WASH</u> off. This means that binding has not reached equilibrium and <u>max RU</u> cannot be use for plotting in Langmuir Isotherm. Please increase the input <u>association time</u> duration until you observe that the graph reaches a plateau. Also, note down the trial number of this dataset so you do not use it for plotting the Langmuir Isotherm later.
 						</div>
 							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
 						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
@@ -839,8 +839,8 @@
 							<!-- m. Prompt: invalid time on -->
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
 							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Invalid incubation time input]</font><br>
-							I'm sorry but <u>incubation time</u> input can only intake a number between 1 to 900. Please change it before you <u>START</u> the next experiment.<br>
+							<font color="#ececec">[Invalid association time input]</font><br>
+							I'm sorry but <u>association time</u> input can only intake a number between 1 to 900. Please change it before you <u>START</u> the next experiment.<br>
 						</div>
 							<!-- n. Prompt: maximum number of curve on graph reached -->
 						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
@@ -929,7 +929,7 @@
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and incubation time input">START</button> 
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
@@ -959,9 +959,9 @@
 								<input class="form" name="fLC" type="number" step="1" min="{{view.output.minimum_fLC_input}}" placeholder="number" ng-model="input_fLC" required>
 							</form>
 						</div>
-							<!-- i. incubation time Input -->
+							<!-- i. association time Input -->
 						<div class="col-md-6 track-panel gloss-contrast2">
-							<div>Incubation Time</div>
+							<div>Association Time</div>
 							<form novalidate name="timeOn_Form">
 								<input class="form" name="timeOn" type="number" step="1" min="1" max="900" placeholder="number" ng-model="input_timeOn" required>
 							</form>
@@ -974,7 +974,7 @@
 								<option ng-value="2" ng-selected="true">nM</option>
 							</select>
 						</div>
-							<!-- k. incubation time Units -->
+							<!-- k. association time Units -->
 						<div id="default_unit" class="col-md-6 unit-panel gloss-contrast2">seconds</div>
 					</div><br>
 				</div>
