@@ -104,169 +104,104 @@
 					<div class="navbar-text navbar-clicked">SIMULATION</div>
 					<a href="" class="navbar-text navbar-link">SUMMARY</a>
 					<a href="" class="navbar-text navbar-link">CONTACT</a-->
-					<div id="navbar-placeholder">Objective: Design an experiment to obtain Kd, k<sub>off</sub> and k<sub>on</sub> using the <u>Optimum Steps</u> and <u>Efficiency Points</u></div>
+					<div id="navbar-placeholder">Objective: Design a strategy to obtain Kd, k<sub>off</sub> and k<sub>on</sub> using the Optimum Steps and Efficiency Points</div>
 				</div>
 			</nav>
 				<!-- 2. Modals -->
-					<!-- a. 1st Objective -->
+					<!-- a. 1st Help Text -->
 				<div id="firstObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Overview, Questions & Interpretations</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								Even when tackling an unknown system, there are strategies which biochemists can use to approach such system efficiently and methodically. This walk-through aims to articulate these heuristics, after which you can practice your learning in <u>MASTERY MODE</u><br><br>
-
-								<b><font color="#51A7F9">a) Overview of the experiment</font></b><br>
-								Start by thinking of the end result, what you want to find is the Kd, k<sub>off</sub> and k<sub>on</sub> that characterise the energetics of this binding pair. To obtain Kd from SPR, you need to plot the Langmuir Isotherm which is the graph of equilibrium binding activity (resonance) against <u>free ligand concentration</u> - obtainable from <u>SENSORGRAM</u> since it outputs the binding activity (resonance) against <u>association time</u> given <u>free ligand concentration</u> input. k<sub>off</sub> kinetics can also be determine from the shape of the dissociation phase of the curve when you <u>WASH</u>. Together, we can then derive the k<sub>on</sub>.<br><br>
-
-								<b><font color="#51A7F9">b) Questions & Interpretations</font></b><br>
-								These are questions you should aim to answer while doing the simulation:<br><br>
-
-								<u>Basic</u><br>
-								1. What is the value of Kd, k<sub>off</sub> and k<sub>on</sub>?<br>
-								2. What is the standard deviation for the above values?<br>
-								3. What is absolute vs relative error? How will they affect your strategy?<br>
-								4. Physiological relevance: If the cellular concentration for this ligand is 100 nM, what state are the ligand and receptors in? Can they be control?<br>
-								5. Given the molecular weight of ligand and receptor, how do you calculate their stoichiometry of binding from SPR information?<br><br>
-
-								<u>Advance</u><br>
-								6. What further experimental techniques can be use to confirm your results?<br>
-								7. What are the limitations you can think of for SPR? Thus, what controls should you be doing to prove that your results are not effected by those limitations?
+								
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- b. 2nd Objective -->
+					<!-- b. 2nd Help Text -->
 				<div id="secondObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 1: Remove background</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) How to remove background reading</font></b><br>
-								Before performing an experiment to obtain data, you must measure the background resonance (START <u>free ligand concentration</u> = 0). The program then allows you to subtract this background signal from subsequent experimental results (<u>BACKGROUND</u>).<br><br>
-
-								<b><font color="#51A7F9">b) What causes the background reading?</font></b><br>
-								SPR machine functions by measuring the mass detected on the chip in general, without distinguishing between receptor or ligand. This background signal detected represents the mass of receptor bound to the chip, in response units. Thus, we can remove this reading by measuring the chip without before any ligand is bound by inputing <u>free ligand concentration</u> as 0.<br><br>
-
-								<b><font color="#51A7F9">c) Proper practice of background removal</font></b><br>
-								In a real world experiment, artefacts such as baseline drift could occur, which would cause an increase in resonance over time. Thus the background should be measured over the longest <u>association time</u> you would be using in the experiment to subtract all baseline drift from subsequent experiments. This time would have to be determined by trial and error. However, for this simulation, you can assume there is no baseline drift and input any reasonable <u>association time</u> to assess background.
+								
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- c. 3rd Objective -->
+					<!-- c. 3rd Help Text -->
 				<div id="thirdObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 2: Find appropriate association time length</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) Importance of using appropriate <u>association time</u></font></b><br>
-								You must know how long you need to run the association experiment for until equilibrium binding between ligand-receptor is reached. This is because only at equilibrium binding will the <u>max RU</u> obtained be valid for plotting in Langmuir Isotherm. This equilibrium binding state is characterised by a plateau in <u>SENSORGRAM</u> obtained by running the experiment with sufficiently long <u>association time</u>. On the other end, we should also aim to use as short <u>association time</u> as possible similar to reality where you would want to finish your experiment as fast as possible.<br><br>
-
-								<b><font color="#51A7F9">b) Strategy to finding an unknown <u>association time</u></font></b><br>
-								We know theoretically that the lower the <u>free ligand concentration</u>, a higher <u>association time</u> is needed to reach equilibrium due to lower chance of effective collision. We also know that in Biochemistry, Kd range could be as low as nM level for very strong binding. Therefore, we should first attempt to find the <u>association time</u> require to reach equilibrium with the lowest logical <u>free ligand concentration</u> input (e.g. 1 nM) since this time length would cover for all higher <u>free ligand concentration</u>.<br><br>
-
-								A good strategy to find out the sufficient <u>association time</u> until plateau would be to try with a low starting value such as 1 second and estimate from the projection, knowing that the curve follow a hyperbola model, how long it would take to reach plateau. If the curve is still too steep, try increasing by a magnitude of 10 to see sufficient effect.<br><br>
-
-								<b><font color="#51A7F9">c) Quantitative confirmation of equilibrium binding</font></b><br>
-								Ultimately, you will know that the <u>association time</u> input allow sufficient time for ligand and receptor equilibrate in binding by quantitatively sampling 2 consecutive points on the same curve (hover over the curve for coordinates) and observe that the <u>resonance</u> value does not change.<br><br>
-
-								<b><font color="#51A7F9">d) Your final <u>association time</u></font></b><br>
-								This <u>association time</u> required to reach equlibrium binding that is derived using the lowest <u>free ligand concentration</u> can be use as your standard input for all other experiment with higher <u>free ligand concentration</u> input. Make sure this time is roughly within 5 seconds of reaching equilibrium binding since running for unnecessary <u>association time</u> will decrease your efficiency point!
+								
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- d. 4th Objective -->
+					<!-- d. 4th Help Text -->
 				<div id="forthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 3: Generating data for Langmuir Isotherm</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) The dynamic range</font></b><br>
-								Having decided on a suitable association time, you will then investigate the effect of varying <u>free ligand concentrations</u> on the equilibrium binding. This is to establish the Langmuir Isotherm curve which gives the relationship between ligand-receptor pair at equilibrium binding.<br><br>
-
-								Obviously you would expect the amount of ligand bound to increase up to saturation of the receptor. However, after reaching saturation, any increase in <u>free ligand concentration</u> will be irrelevant since it is beyond the dynamic range, which is defined as the range over which a change in free ligand concentration results in change in max RU. Hence, you should generate at least 6 points spreading over this dynamic range (ideally from around 5% saturation to 95% saturation) by varying the <u>free ligand concentration</u>.<br><br>
-
-								<b><font color="#51A7F9">b) Strategy for determining dynamic range of unknown biological systems</font></b><br>
-								Unfortunately you have no idea initially of the affinity of the interaction, and hence no idea where the dynamic range lies. However, our general experience with biological systems is that ligand-receptor interactions normally have Kd between nM (very tight) and mM (loose) orders of magnitude. Thus, given a totally unknown system, a suitable strategy might be to start with values broadly between these range, such as 1 nM, 1 uM and 1 mM.<br><br>
-
-								The result will tell us roughly where the dynamic range lies by observing the position of the 1 uM curve. If, say the 1 uM curve is close to the 1 mM curve, it is likely that the receptor is close to saturation at 1µM and that a lower concentration range should be studied. Alternatively, if the equilibrium RU rises considerably between 1µM and 1mM, concentrations in this range should be studied. It may take several trials to home in on the range (normally one order of magnitude) which gives a good binding curve, with all points lying between 5% and 95% saturation. As a confirmation, you should also perform a trial above 1 mM to check if saturation has been reached at 1 mM.
+								
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- e. 5th Objective -->
+					<!-- e. 5th Help Text -->
 				<div id="fifthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 4: Perform sufficient replicates</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) Generating replicates</font></b><br>
-								Next perform at least 3 replicates per point such that you have a total of at least 18 measurements. Replicates allow us to see which points are outliers. When encountered, these points should not be considered as part of your data. <br><br>
 								
-								<b><font color="#51A7F9">b) Identifying and dealing with outliers</font></b><br>
-								Normally you can determine your outlier as points which lie beyond 1.5 interquartile range. However in this case, you have too few points to rely on calculating from interquartile range, and judge quantitatively if a point is an outlier. Thus, a scientifically acceptable would be to perform additional replicates to confirm your judgement, such that you have at least 3 points which cluster together at acceptable standard deviation (5%).<br><br>
-
-								<b><font color="#51A7F9">c) Obtaining standard deviation for association experiment</font></b><br>
-								We also must perform at least 6 duplicates on one single set of free ligand concentration and association time combination. 6 duplicates would statistically give us up to 95% confidence for the SPR technique association experiment. Be sure not to perform this after 17.00 since a higher proportion of the standard deviation then will be due to human error rather than the technique alone.
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- f. 6th Objective -->
+					<!-- f. 6th Help Text -->
 				<div id="sixthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 5: Measuring k<sub>off</sub></h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) Interpreting kinetics from <u>SENSORGRAM</u></font></b><br>
-								SPR also allows us to follow the kinetics of binding/dissociation rather than just the thermodynamics of equilibrium position. Thus, the k<sub>off</sub> (dissociation rate constant) from this experiment can be determine by following the decrease in bound ligand (resonance) until it reaches baseline. This is performed every round of experiment when you click <u>WASH</u>. By assuming in this system that the disassociation is a first order process (PL→ P + L), this will allow us to estimate the first order rate constant for dissociation using the first order decay equation.<br><br>
-
-								<b><font color="#51A7F9">b) Calculating k<sub>off</sub> form <u>SENSORGRAM</u></font></b><br>
-								To estimate koff we can take the resonance (RU) and its corresponding time (t) on the decay curve (hover over the points) and fit the data to the first order decay equation to derive the constant (k<sub>off</sub>). A rough estimate can be obtained by estimating half lives, but any known times will do. Please remember that you must take away the <u>association time</u> from your disassociation time in the calculation since disassociation starts only when <u>WASH</u> occur.<br><br>
-
-								<b><font color="#51A7F9">c) Obtaining standard deviation for disassociation experiment</font></b><br>
-								Although since the decay is first order, your k<sub>off</sub> will be independent of your starting RU, and should be identical for any of your dissociation curves of different <u>free ligand concentration</u>. However, as a good practice you should also calculate the koff values from graphs generated at different free ligand concentrations to estimate error. You should then calculate the standard deviation for the disassociation experiment using these data with at least 6 points for 95% confidence.
+								
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- g. 7th Objective -->
+					<!-- g. 7th Help Text -->
 				<div id="seventhObjective_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel">Objective 6: Obtaining Kd and k<sub>on</sub></h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) Plotting the Langmuir Isotherm</font></b><br>
-								You can now plot the Langmuir Isotherm as the graph of binding at equilibrium (resonance) vs <u>free ligand concentration</u>. This will give a hyperbolic curve, from which you can derived the free ligand concentration which gives the half maximal binding (≈Kd). The simplest way to do this is to export the data into Excel and use the graph plotting/data analysis functions. You can export by clicking the menu button at the top left hand corner of the <u>RESULTS TABLE</u><br><br>
-
-								<b><font color="#51A7F9">b) Plotting Scatchard Plot</font></b><br>
-								The data can also be plotted in linearized form (e.g. a Scatchard plot) where Kd can be estimated from the slope of the line, and n, the number of binding sites, from the x intercept. This can be done by plotting bound/<u>free ligand concentration</u> against bound, where bound is the binding at equilibrium (resonance). Compare the values estimated by the two methods. Are they different?<br><br>
-
-								<b><font color="#51A7F9">c) Deriving k<sub>on</sub></font></b><br>
-								You will have calculated Kd and k<sub>off</sub> as above, and estimated their standard deviations. k<sub>on</sub> cannot be measured simply, as binding is a second order process and the concentrations of the reactants (free ligand and free receptor) are both changing during the binding process. However, at equilibrium, Kd = k<sub>off</sub>/k<sub>on</sub>, and so, given the other two values, k<sub>on</sub> can be calculated.
+								
 							</div>
 						</div>
 					</div>
@@ -280,7 +215,7 @@
 								<h4 class="modal-title" id="modalLabel">Confirm Home</h4>
 							</div>
 							<div class="modal-body">
-								Are you sure you wish to finish your experiment for today? After you click, you will have {{view.experiment.daysLeft}} full day left to perform your experiment.
+								Please confirm if you want to finish the experiment for the day. After you click, you will have {{view.experiment.daysLeft}} full day(s) left to perform your experiment.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.goHome()"  data-dismiss="modal">Confirm</button>
@@ -298,7 +233,7 @@
 								<h4 class="modal-title" id="modalLabel">Confirm Clear</h4>
 							</div>
 							<div class="modal-body">
-								Are you sure you wish to clear your <u>SENSORGRAM</u>? The data in the <u>RESULTS TABLE</u> will not be clear. It is advised that you take a screenshot of the <u>SENSORGRAM</u> before clearing.
+								Please confirm that you want to clear the <u>SENSORGRAM</u>. The data in the <u>RESULTS TABLE</u> will not be clear. It is advised that you take a screenshot of the <u>SENSORGRAM</u> before clearing.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
@@ -318,7 +253,7 @@
 							<div class="modal-body">
 								Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
 								<br><br>
-								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
+								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <u>RESULTS TABLE</u> header.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
@@ -338,7 +273,7 @@
 							<div class="modal-body">
 								Are you sure you wish to replay? A new pair of ligand-receptor will be generated and all data in the table previously generated will be clear.
 								<br><br>
-								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of results table header.
+								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <u>RESULTS TABLE</u> header.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
@@ -355,7 +290,7 @@
 								<h4 class="modal-title" id="modalLabel">Incomplete experiment detected</h4>
 							</div>
 							<div class="modal-body">
-								We have detected an auto-saved experiment which have not been completed before you leave the simulator. Do wish to continue with the auto-saved experiment or reload a new pair of ligand-receptor?
+								We have detected an auto-saved incomplete experiment before you left the simulator. Do wish to continue with the auto-saved experiment or reload a new pair of ligand-receptor?
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
@@ -370,81 +305,77 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">Welcome to OxSPR!</h4>
+								<h4 class="modal-title" id="modalLabel">SPR Experimental Design Game</h4>
 							</div>
 							<div class="modal-body">
-								<font color="#c33e3e">OxSPR is still currently a prototype. If you are here to help test the OxSPR software, please click <b><button id="here_button" data-toggle="modal" data-target="#testing_modal">here</button></b> for a briefing.</font><br><br>
+								<b><font color="#51A7F9">Before you begin the game</font></b><br>
+								This game assume that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. 
+								<br><br>
 
-								OxSPR is a Surface Plasmon Resonance simulator developed to help undergraduates master the skills of designing an efficient experiment to test an unknown system, in addition to developing experience on SPR binding experiment.<br><br>
+								<b><font color="#51A7F9">Criteria to completing the challenge</font></b><br>
+								+ Achieve the correct Kd, k<sub>on</sub>, k<sub>off</sub> within the days allowed<br>
+								+ Using the <b>Optimum Steps</b>, excluding outliers<br>
+								+ Without losing any <b>Efficiency Points</b><br><br>
 
-								The aim of this simulation experiment is to find the equilibrium dissociation constant (Kd), and the on and off rate constants (k<sub>on</sub> and k<sub>off</sub>) given an unknown ligand-receptor combination, within time limit available.<br><br>
-
-								If this is your first time trying OxSPR, please click <b><button id="here_button" data-toggle="modal" data-target="#intro1_modal">here</button></b> for an <u>INTRODUCTION</u>, or you can review them later by clicking at <u>INTRODUCTION</u> button below the simulator. It is strongly advised to read at least the <u>Overview</u> and <u>Getting Started</u> section of the <u>INTRODUCTION</u>.<br><br>
-
-								Before we begin, please let us know your purpose in using OxSPR for this session. Rest assure, you may switch between the different mode by turning <u>LEARN MODE</u> on or off later.<br><br>
+								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, <b>Training</b> mode will teach you how to beat the challenge methodically. Otherwise, you can be daring and try beating the <b>Challenge</b> straight away!
+								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Learn</button>&nbsp;&nbsp;&nbsp;
-									<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Mastery</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
+									<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Challenge</button>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>			
 					<!-- n. Modal: Introduction 1 -->
 				<div id="intro1_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">Introduction to OxSPR (1): Overview</h4>
+								<h4 class="modal-title" id="modalLabel">Game Mechanics</h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">a) Scenario</font></b><br>
-								When you begin, you will be randomly assigned a receptor-immobilised chip and a ligand to test its binding affinity through SPR. You will need to use your knowledge on SPR and prior knowledge of molecular binding in biochemistry to design an experiment to find the binding and kinetics constants which characterise the binding between this ligand-receptor pair. As in a real experiment, the readings are subject to experimental error and you should design your experiment to estimate this error and estimate confidence limits on your measured values.<br><br>
+								<b><font color="#51A7F9">1. Basics</font></b><br>
+								- Input desired <b>Free Ligand Concentration</b> and <b>Association Time</b><br>
+								- Click <b>START</b> to begin ligand-receptor association phase<br>
+								- Click <b>WASH</b> to begin ligand-receptor disassociation phase<br>
+								- Click <b>BACKGROUND</b> to remove it from future readings
+								<br><br>
 
-								<b><font color="#51A7F9">b) Assumptions made in OxSPR</font></b><br>
-								1. We assume that both ligand and receptor are proteins<br>
-								2. This surface plasmon resonance technique suffer from no baseline drift.<br>
-								3. The binding stoichiometry is a 1:1 interaction.<br>
-								4. No non-specific binding<br><br>
+								<b><font color="#51A7F9">2. Essential tips to completing the game</font></b><br>
+								- Absolute and relative errors are built into the game.<br>
+								- The probability of outputting results with high standard deviation increases after 17.00, and even further at 21.00.<br>
+								- A maximum of 10 curves can be display on <b>SENSORGRAM</b> before <b>CLEAR</b> is required.<br>
+								- You can drag an area on <b>SENSORGRAM</b> to zoom into it, double click to zoom out.<br>
+								- Every <b>RUN</b>-<b>WASH</b> cycle uses up 30 minutes per day regardless of <b>Association Time</b> input.<br>
+								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of <b>RESULTS TABLE</b>.
+								<br><br>
 
-								<b><font color="#51A7F9">c) Usage mode</font></b><br>
-								You can use OxSPR in two different modes, switchable by turning <u>LEARN MODE</u> at the top-left corner of interface on or off:<br><br>
-
-								In <u>LEARN mode</u>, you can walk-through the thought process in designing scientifically sound experiments with available hints.<br><br>
-
-								In <u>MASTERY mode</u>, students can track the efficiency of their experimental design and are challenged to obtain the correct answer without losing any efficiency points, and finishing the experiment with the optimum steps of 25 (excluding outliers).<br><br>
+								<b><font color="#51A7F9">3. SPR assumptions</font></b><br>
+								- No baseline drift in background<br>
+								- Absolute error of SPR machine is +/-4 nM<br>
+								- Both ligand and receptor are proteins<br>
+								- Binding stoichiometry is a 1:1 interaction.<br>
+								- No non-specific binding
+								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button>
+									<!--button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button-->
 									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- n. Modal: Introduction 2 -->
-				<div id="intro2_modal" class="modal fade" tabindex="-1" role="dialog">
+					<!-- n. Modal: Extras Introduction -->
+				<!--div id="intro2_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">Introduction to OxSPR (2): Getting Started</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">d) Running your SPR trials</font></b><br>
-								The SPR experiment follow a cycle of <u>START</u>ing the association experiment by injecting ligand with your input <u>free ligand concentration</u> and <u>association time</u> at the <u>CONTROL PANEL</u>, then subsequently <u>WASH</u> off the ligand to disassociate it from the receptor to be ready for the next round of experiment.<br><br>
-
-								<b><font color="#51A7F9">e) Important notice before beginning</font></b><br>
-								1. Your <u>SENSORGRAM</u> can only display a maximum of 10 curves before you have to <u>CLEAR</u> so please take screenshots regularly. Your data will not be clear in the process.<br>
-								2. Your curve on your <u>SENSORGRAM</u> will also be clear when you click <u>BACKGROUND</u> so we suggest you run <u>BACKGROUND</u> as early as possible.<br>
-								3. The chance of your experiment obtaining higher standard deviation will increase as the day progress, starting from 17.00.
+								
 								<br><br>
-
-								<b><font color="#51A7F9">f) Saving your experiment</font></b><br>
-								1. Cookies: Data of your experiment will regularly be save every time you run an experiment in this browser. So if your computer crash or you wish to continue later, you can just close and click <u>CONTINUE</u> when you start the page.<br><br>
-								2. Exporting to excel: You can export all your data by clicking at the menu icon in the top-right of the <u>RESULT TABLE</u> to find this function.<br><br>
-
-								<b><font color="#51A7F9">g) Other helpful features</font></b><br>
-								1. You can hover over buttons to see helpful tooltips on some features.<br>
-								2. Every explanation underlined signifies a feature which you can find on the interface.<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Next</button>
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro1_modal">Back</button>
@@ -454,28 +385,15 @@
 						</div>
 					</div>
 				</div>
-					<!-- n. Modal: Introduction 3 -->
 				<div id="intro3_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">Introduction to OxSPR (3): Key Controls</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">h) Interface functionality (1)</font></b><br>
-								1. <u>LEARN MODE</u>: Turning it on allow you to access the <u>Walk-through</u> hints and also additional tips will appear in the console when you make mistakes. Turning it off puts you into the mastery mode allowing you to track variables which correspond to those in <u>MASTERY SCORE</u> against the optimum value to aim for.<br><br>
-
-								2. <u>MASTERY SCORE</u>: Contains the scores to aim for. Note that <u>Optimum Steps</u> excludes outliers.<br><br>
-
-								3. <u>CHECK ANSWER</u>: Input your answer and the console will reveal if your answers are in the range of acceptable values (+/-20% around the correct answer). Check with the demonstrator to see if you reach the actual value.<br><br>
-
-								4. <u>ABOUT CURRENT SYSTEM</u>: <u>System ID</u> contains the identity of ligand-receptor pair for demonstrator. Ligand and Receptor molecular weight allows you to calculate actual stoichiometry of binding later.<br><br>
-
-								5. <u>SENSORGRAM</u>: Shows the output from the SPR machine. Note that <u>SENSORGRAM</u> can only display a maximum of 10 curves before require to be <u>CLEAR</u> so take screenshots regularly. In addition, you can drag on the <u>SENSORGRAM</u> to zoom into areas and double click to zoom out.<br><br>
-
-								6. <u>CONSOLE</u>: Keep track of your current experiment status and show additional hints if <u>LEARN MODE</u> is turned on.<br><br>
-
-								7. <u>RESULTS TABLE</u>: Display every set of your experiment, and gives you the <u>max RU</u> which is the highest point in your association curve. You can sort the table by trial so the latest one always appear first. You can also export as excel by clicking the menu button in the top-right to reveal the option. *Note that the <u>trial</u> column can be sorted by clicking the heading.<br><br>
+								
+								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro4_modal">Next</button>
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Back</button>
@@ -485,26 +403,15 @@
 						</div>
 					</div>
 				</div>
-					<!-- n. Modal: Introduction 4 -->
 				<div id="intro4_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">Introduction to OxSPR (4): Key Controls (continue)</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">i) Interface functionality (2)</font></b><br>
-								8. <u>YOUR EXPERIMENT STATUS</u>:<br>
-								a) <u>Days Left</u> and <u>Time</u> indicates how long you have left to finish the experiment. In total, you have 2 days, starting from 09:30 to 00:00. Note that your result will have a higher chance of getting higher standard deviation once you pass 17:00. Theoretically this means you have a total of 46 trials available.<br>
-								b) <u>Efficiency Points</u> and <u>Steps</u> shows if you are on track to achieving the <u>MASTERY SCORE</u>. <u>Efficiency Points</u> is an indicator that you do not over use your <u>association time</u> while <u>Steps</u> shows how many steps have you taken so far.<br><br>
-
-								9. <u>CONTROL PANEL</u>:<br>
-								a) <u>START</u> means taking the input <u>free ligand concentration</u> and inject into the SPR machine for time length of input <u>association time</u><br>
-								b) <u>WASH</u> means injecting cleaning buffer into SPR machine to disassociate the ligand from the receptor.<br>
-								c) <u>BACKGROUND</u> means setting the measured <u>max RU</u> as the background reading to be remove from subsequent experiment. Note that clicking it will clear all previous curve on <u>SENSORGRAM</u> so do it immediately when you start.<br>
-								d) <u>CLEAR</u> means clearing all the plotted curve from the <u>SENSORGRAM</u>. It will not clear the data you produced in <u>RESULTS TABLE</u>.<br>
-								e) <u>HOME</u> means stop performing further experiment today and resume again at 09:30 tomorrow.<br>
-								f) <u>RESTART</u> means clearing all your data by do not change your unknown ligand-receptor combination. Suitable for letting you try again to improve efficiencies of your strategies.<br><br>
+								
+								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Back</button>
 									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
@@ -512,39 +419,16 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div-->
 								<!-- n. Modal: Testing -->
 				<div id="testing_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">Testing Brief</h4>
+								<h4 class="modal-title" id="modalLabel"></h4>
 							</div>
 							<div class="modal-body">
-								The question list below will help you be aware of the areas you can look out for.<br><br>
-
-								<b><font color="#51A7F9">a) Instructional design</font></b><br>
-								- How can we make the <u>walk-through</u> and hints from the <u>console</u> clearer?<br>
-								- Did you learn anything new things from the <u>walk-through</u> such that it changes the way you think and approach an experiment?<br>
-								- What do you think would be very helpful to have that will help you learn even better and faster?<br>
-								- What was your experience like trying to achieve the <u>Efficiency Points</u> and <u>Steps</u> as those of the <u>MASTERY SCORE</u>?<br>
-								- How can we make the learning experience better? Were there any features you think that will be very helpful to have?
-								<br><br>
-
-								<b><font color="#51A7F9">b) User interface</font></b><br>
-								- Did you need a long time to understand the features and familiarised?<br>
-								- How can we improve the layout? Was it difficult to find things?<br>
-								- Were there any distracting features? Were there anything you kept accidentlly clicking?<br>
-								- Were there any thing difficult to read?
-								<br><br>
-
-								<b><font color="#51A7F9">c) Software robustness</font></b><br>
-								- Were there any bugs?<br>
-								- Was it slow?<br>
-								- Did it crash?<br>
-								- Did any part of the interface not load properly?<br><br>
-
-								After you complete trying out the software, please fill out your finding into the feedback form accessible by clicking <b><a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="blue-link">here</a></b>, or the red button at below the simulator in the footer.
+								
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
@@ -556,13 +440,13 @@
 				<!-- 3. Main controller box -->
 			<div id="controller-box" class="container-fluid">
 				<div id="guide-mastery-box" class="container-fluid col-md-3">
-						<!-- i. Panel: learn mode -->
-					<div class="panel-heading">LEARN MODE</div>
+						<!-- i. Panel: mode -->
+					<div class="panel-heading">MODE</div>
 					<div class="panel-body clickable-box">
-							<!-- a. Button: learn vs mastery mode selector -->
+							<!-- a. Button: training vs mastery mode selector -->
 						<div class="mode-selection">
-							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">ON</button>
-							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">OFF</button><br><br>
+							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">TRAINING</button>
+							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CHALLENGE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
 						<div class="select-hints-box col-md-12">
@@ -586,7 +470,7 @@
 					</div><br>
 						<!-- ii. Panel: high score display (mastery mode only) -->
 					<div ng-show="view.guideMode == false">
-						<div class="panel-heading">MASTERY SCORES</div>
+						<div class="panel-heading">COMPLETION SCORES</div>
 						<div id="dashboard" class="panel-body">
 								<!-- a. Lowest Number of Steps Taken -->
 							<div class="col-md-6 track-panel gloss-contrast">
@@ -739,148 +623,180 @@
 					</div><br>
 						<!-- vi. Console -->
 					<div id="console" class="panel-body">
-							<!-- b. Prompt: after having lunch -->
-						<div ng-show="view.experiment.timeOfDay == 13.5">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Break for lunch]</font><br>
-							12.00-13.00: Had lunch at Biochemistry Cafe with friends<br>
-							13.00-13.30: Began new experiment after the lunch<br>
-						</div>
-							<!-- c. Prompt: before having dinner -->
-						<div ng-show="view.experiment.timeOfDay == 17.0">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[End of official working hour]</font><br>
-							You are getting tired and everyone is leaving.<br>
-							It is best that you go <u>HOME</u> and continue your experiment tomorrow<br>
-							<font color="#c33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting poor standard deviation</font>
-						</div>
-							<!-- d. Prompt: after having dinner -->
-						<div ng-show="view.experiment.timeOfDay == 18.5">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Break for dinner]</font><br>
-							17.00-18.00: Had dinner at The Eagle & Child with friends<br>
-							18.00-18.30: Began new experiment after the dinner<br>
-						</div>
-							<!-- e. Prompt: before having supper -->
-						<div ng-show="view.experiment.timeOfDay == 21.0">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[High risk of human error]</font><br>
-							You are beginning to feel sleepy and lose concentration.<br>
-							It is best that you go <u>HOME</u> and continue your experiment tomorrow<br>
-							<font color="#c33e3e">*note: any experiment performed after this time onwards will have a higher chance of getting unacceptable standard deviation</font>
-						</div>
-							<!-- f. Prompt: after having supper -->
-						<div ng-show="view.experiment.timeOfDay == 22.5">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Break for supper]</font><br>
-							21.00-22.00: Had mars bars alone in the lab.<br>
-							22.00-22.30: Began new experiment after supper<br>
-						</div>
-							<!-- g. Prompt: end of day -->
-						<div ng-show="view.experiment.timeOfDay == 24.0">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Security guard warning]</font><br>
-							The security guard is closing the Biochemistry building now.<br>
-							Unfortunately, you will have to end the experiment now and go <u>HOME</u>.<br>
-						</div>
-							<!-- h. Prompt: return home -->
-						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[End of a day @ {{view.experiment.endOfExperimentTime | timeFilter}}]</font><br>
-							Automatic lab clean-up. . . Clean-up completed.<br>
-							See you tomorrow!<br>
-						</div>
-							<!-- i. Prompt: start of day auto-setup -->
-						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
-							Experiment automatically setup. . . Setup completed @ 9.30.<br>
-							Ready to <u>START</u>. Please input values for <u>free ligand concentration</u> and <u>association time</u> in <u>CONTROL PANEL</u> to begin.<br>
-						</div>
-							<!-- j. Prompt: remove background -->
-						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Tip: remove background reading prior to performing an experiment]</font><br>
-							You should begin the experiment by setting the value of background reading before investigating <u>free ligand concentration</u> on binding at equilibrium. You can do this by:<br>
-							(1) running <u>free ligand concentration</u> = 0 M and <u>WASH</u><br>
-							(2) then remove <u>BACKGROUND</u><br>
-							<font color="#c33e3e">*Note: Any previously generated sensorgram plot will be remove once a new background had been set.</font><br>
-						</div>
-							<!-- k. Prompt: remove background successs -->
-						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Success: remove background]</font><br>
-							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
-						</div>
-							<!-- l. Prompt: RU on result is invalid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.99*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Tip: resulting max RU value is invalid]</font><br>
-							This message indicates that the <u>max RU</u> value measured for this input <u>free ligand concentration</u> is not yet at equilibrium binding before <u>WASH</u> off. This means that binding has not reached equilibrium and <u>max RU</u> cannot be use for plotting in Langmuir Isotherm. Please increase the input <u>association time</u> duration until you observe that the graph reaches a plateau. Also, note down the trial number of this dataset so you do not use it for plotting the Langmuir Isotherm later.
-						</div>
-							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
-						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000001 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Tip: Be careful of working with low concentration]</font><br>
-							Using a low <u>free ligand concentration</u> will result in high percentage of absolute error relative to the resonance output. Try not to use them unless necessary.<br>
-						</div>
-							<!-- l. Prompt: invalid free ligand conc. -->
-						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Invalid free ligand concentration input]</font><br>
-							I'm sorry but <u>free ligand concentration</u> can only intake a number equal or above {{view.output.minimum_fLC_input}}. Please change it before you <u>START</u> the next experiment.<br>
-						</div>
-							<!-- m. Prompt: invalid time on -->
-						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Invalid association time input]</font><br>
-							I'm sorry but <u>association time</u> input can only intake a number between 1 to 900. Please change it before you <u>START</u> the next experiment.<br>
-						</div>
-							<!-- n. Prompt: maximum number of curve on graph reached -->
-						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Maximum no. of plot on sensorgram reached]</font><br>
-							There are too many plots on <u>SENSORGRAM</u>. Please <u>CLEAR</u> your <u>SENSORGRAM</u> before you continue. Do not worry, the data on your results table will not be cleared.<br>
-						</div>
-							<!-- o. Prompt: Efficiency Points Lost -->
-						<div ng-show="view.output.fLC.length !== 0 && view.guideMode == false">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Trial {{view.experiment.steps}} Status]</font><br>
-							{{view.output.inefficiency_display}} <u>Effiency Point(s)</u> lost.
-						</div>
-							<!-- p. Prompt: Answer is correct -->
-						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true)">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Attempt {{view.checkCounter}} - Correct answers]</font><br>
+							<!-- q. Prompt: Answer is correct -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true) && !(view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#51A7F9">[Attempt {{view.checkCounter}} - correct answers]</font></b><br>
 								<p class="declare-result" ng-show="view.Kd_correct == true">Your Kd value is correct!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
 						</div>
-							<!-- q. Prompt: Answer is wrong -->
+							<!-- r. Prompt: Answer is wrong -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Attempt {{view.checkCounter}} - Wrong answers]</font><br>
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#d83535">[Attempt {{view.checkCounter}} - wrong answers]</font></b><br>
 								<p class="declare-result" ng-show="view.Kd_correct == false">Your Kd value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
 						</div>
-							<!-- r. Prompt: All answer is correct! -->
+							<!-- s. Prompt: All answer is correct! -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[All answer is correct!]</font><br>
-							Well done! You have achieved all correct answers and finish the simulation! :)<br>
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
+								<!-- Have not achieve all winning conditions -->
+							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23">steps</p>
+							<p class="declare-result" ng-show="view.output.efficiencyRating < 100">efficiency</p>
+								<!-- Achieve all winning conditions -->
+							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">done</p>
+
+
+
+							<!--Well done! You have achieved all correct answers and finish the simulation! :)<br>
 							Click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b> you want to replay again to try and achieve the <u>MASTERY SCORE</u>.<br><br>
 							OxSPR is still currently a prototype. If you like the software, please support the project by providing 
-							<b><a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="blue-link">feedback</a></b> and 
-							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
+							<b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> and 
+							
 							<b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> 
-							it to anyone you think might be helpful.<br><br>
-							<font color="#c33e3e">*Note: Please export your data before you exit. You can find the function to export at the red menu button in the results table.</font><br>
+							it to anyone you think might be helpful.<br><br-->
+
+							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
 						</div>
-							<!-- s. Prompt: session over -->
-						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay">
-							<font color="#70BF41">> Console:</font>&nbsp;
-							<font color="#ececec">[Experiment Ended]</font><br>
+							<!-- p. Prompt: Unknown System Information -->
+						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<font color="#ececec">[Identity of Ligand Receptor Pair]</font><br>
+								- Ligand-Receptor Pair Unique ID: <font color="#ececec">{{view.system.uniqueID}}</font><br>
+								- Ligand Molecular Weight / gmol<sup>-1</sup>: <font color="#ececec">{{view.system.mwL | mwFilter}}</font><br>
+								- Receptor Molecular Weight / gmol<sup>-1</sup>: <font color="#ececec">{{view.system.mwR | mwFilter}}</font><br>
+						</div>
+							<!-- b. Prompt: after having lunch -->
+						<div ng-show="view.experiment.timeOfDay == 13.5 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<font color="#ececec">[Lunch]</font><br>
+							12.00-13.00: Had lunch at Biochemistry Cafe with friends<br>
+							13.00-13.30: Began new experiment after lunch<br>
+						</div>
+							<!-- c. Prompt: before having dinner -->
+						<div ng-show="view.experiment.timeOfDay == 17.0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[End of official working hour]</font></b><br>
+							You are feeling tired. Output will now have an intermediate increase probability of getting higher standard deviation. You can continue your experiment now or resume tomorrow by clicking <font color="#ececec">HOME</font>. 
+						</div>
+							<!-- d. Prompt: after having dinner -->
+						<div ng-show="view.experiment.timeOfDay == 18.5 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<font color="#ececec">[Dinner]</font><br>
+							17.00-18.00: Had steak & ale pie at The Eagle & Child with friends<br>
+							18.00-18.30: Began new experiment after the dinner<br>
+						</div>
+							<!-- e. Prompt: before having supper -->
+						<div ng-show="view.experiment.timeOfDay == 21.0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#d83535">[Exhaustion warning]</font></b><br>
+							You are feeling exhausted. Output will now have a high increase probability of getting higher standard deviation. You can continue your experiment now or resume tomorrow by clicking <font color="#ececec">HOME</font>.
+						</div>
+							<!-- f. Prompt: after having supper -->
+						<div ng-show="view.experiment.timeOfDay == 22.5 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<font color="#ececec">[Supper]</font><br>
+							21.00-22.00: Had mars bars alone in the lab, poor you.<br>
+							22.00-22.30: Began new experiment after supper<br>
+						</div>
+							<!-- g. Prompt: end of day -->
+						<div ng-show="view.experiment.timeOfDay == 24.0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#d83535">[Security guard warning]</font></b><br>
+							The security guard is closing the Biochemistry building.<br>
+							Unfortunately, you will have to end the experiment now and go <u>HOME</u>.<br>
+						</div>
+							<!-- h. Prompt: return home -->
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<font color="#ececec">[End of a day @ {{view.experiment.endOfExperimentTime | timeFilter}}]</font><br>
+							Automatic lab clean-up by CleanBots. . . Clean-up completed. (wish this was real)<br>
+							See you tomorrow!<br>
+						</div>
+							<!-- i. Prompt: start of day auto-setup -->
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)) && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
+							Experiment automatically setup. . . Setup completed @ 9.30.<br>
+							Ready to begin. Please input values for <font color="#ececec">Free Ligand Concentration</font> and <font color="#ececec">Association Time</font> in <font color="#ececec">CONTROL PANEL</font> to begin. Click <font color="#ececec">START</font> and then <font color="#ececec">WASH</font> to begin the association and disassociation phase respectively.
+							<br>
+						</div>
+							<!-- i. Prompt: plan your experiment -->
+						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Plan first!]</font></b><br>
+							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise valuable time and resources will be wasted. If you are not sure where to start, click the <font color="#ececec">Walk-through</font> for help!
+							<br>
+						</div>
+							<!-- j. Prompt: remove background -->
+						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><b><font color="#F5D400">[Hint: Remove background]</font></b></b><br>
+							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you <font color="#ececec">START</font> and <font color="#ececec">WASH</font> an experiment with <font color="#ececec">free ligand concentration = 0 M</font> with any <font color="#ececec">Association Time</font> input.<br>
+						</div>
+							<!-- k. Prompt: remove background successs -->
+						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#51A7F9">[Success: remove background]</font></b><br>
+							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
+						</div>
+							<!-- l. Prompt: RU on result is invalid -->
+						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#d83535">[Hint: Invalid results]</font></b><br>
+							<font color="#ececec">SENSORGRAM</font> shows binding has not reach equilibrium. This means <font color="#ececec">max RU</font> value is invalid for Langmuir Isotherm plotting later. Retry with a higher <font color="#ececec">Association Time</font>.<br>
+						</div>
+							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
+						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000002 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Hint: Absolute error]</font></b><br>
+							Be careful of the output results in this <font color="#ececec">Free Ligand Concentration</font> range since the absolute error of SPR could take up a high proportion of it.<br>
+						</div>
+							<!-- l. Prompt: invalid free ligand conc. -->
+						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Invalid Free Ligand Concentration input]</font></b><br>
+							<font color="#ececec">free ligand concentration</font> can only intake a number equal or above {{view.output.minimum_fLC_input}}.<br>
+						</div>
+							<!-- m. Prompt: invalid time on -->
+						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Invalid Association Time input]</font></b><br>
+							<font color="#ececec">association time</font> input can only intake a number between 1 to 900.<br>
+						</div>
+							<!-- n. Prompt: maximum number of curve on graph reached -->
+						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Maximum no. of plot on sensorgram reached]</font></b><br>
+							<font color="#ececec">SENSORGRAM</font> can only display 10 curves at once. Please <font color="#ececec">CLEAR</font> your <font color="#ececec">SENSORGRAM</font> before you continue. The data in your <font color="#ececec">RESULTS TABLE</font> will not be cleared.<br>
+						</div>
+							<!-- o. Prompt: Too many steps -->
+						<div ng-show="view.experiment.steps > 25 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
+							Your steps count is above the optimum steps. Finish off your experiment, download your data from <font color="#ececec">RESULTS TABLE</font>, and using the framework in <font color="#ececec">Walk-through</font> as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
+						</div>
+							<!-- o. Prompt: Efficiency Points Lost -->
+						<div ng-show="view.output.fLC.length !== 0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#F5D400">[Trial {{view.experiment.steps}} - efficiency status]</font></b><br>
+							<p class="declare-result" ng-show="view.output.inefficiency_display !== 0"><font color="#ececec">{{view.output.inefficiency_display}} Effiency Points</font> lost!<br>
+							Change your <font color="#ececec">Association Time</font> to equal when it reaches equilibrium! (buffer of 5 extra seconds allow before deduction)</p>
+							<p class="declare-result" ng-show="view.output.inefficiency_display == 0"><font color="#ececec">0 Effiency Point</font> lost, keep it up!</p>
+						</div>
+							<!-- l. Prompt: RU on result is valid -->
+						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] > view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#51A7F9">[Hint: equilibrium reached]</font></b><br>
+							<font color="#ececec">SENSORGRAM</font> shows binding has reach equilibrium!<br>
+						</div>
+							<!-- t. Prompt: session over -->
+						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#d83535">[Experiment Ended]</font></b><br>
 							You ran out of time to finish the experiment. To try again without changing the system, click <u>RESTART</u>.<br>
 						</div>
 					</div><br>
@@ -906,12 +822,12 @@
 							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
 						</div>
 							<!-- c. Yout Efficiency Points -->
-						<div class="col-md-6 track-panel"  ng-show="view.guideMode == false">
+						<div class="col-md-6 track-panel">
 							<div>Efficiency Points</div>
 							<div class="tracked-value">{{view.output.efficiencyRating}}</div>
 						</div>
 							<!-- d. Your Steps Taken -->
-						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast" ng-show="view.guideMode == false">
+						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast">
 							<div>Steps</div>
 							<div class="tracked-value">{{view.experiment.steps}}</div>
 						</div>
@@ -921,28 +837,28 @@
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20 || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Require: initiated START">WASH</button>
+							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Require: initiated START">WASH</button>
 						</div>
 							<!-- c) "remove background value" button -->
 						<div class="box-left-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
+							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
 						</div>
 							<!-- e) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0 || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))">HOME</button>
 						</div>
-							<!-- f) "Restart" button -->
+							<!-- f) "Help" button -->
 						<div class="box-right-btn">
-							<button type="button" class="button clickable2 col-md-12" data-toggle="modal" data-target="#restart_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysLeft == view.experiment.daysAllowed" data-toggle="tooltip" title="All data will be erase. Ligand-Receptor will not change.">RESTART</button>
+							<button type="button" class="button clickable2 col-md-12" data-toggle="modal" data-target="#intro1_modal">HELP</button>
 						</div><br><br>
 							<!-- h. free ligand concentration Input -->
 						<div class="col-md-6 track-panel gloss-contrast">
@@ -981,24 +897,23 @@
 					<!-- b. credit & buttons -->
 				<div id="credit-box" class="col-md-10">
 					<div id="credit-buttons">
-							<!-- i. replay -->
-						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#replay_modal">PLAY AGAIN</button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- ii. email to others -->
+							<!-- i. restart -->
+						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#restart_modal" data-toggle="tooltip" title="All data will be erase. Ligand-Receptor will not change.">RESTART GAME</button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- ii. replay -->
+						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#replay_modal" data-toggle="tooltip" title="All data will be erase. Ligand-Receptor will change.">NEW GAME</button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- iii. email to others -->
 						<a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="action-link"><button id="bottom_button" class="button actions">CHALLENGE FRIENDS</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- iii. facebook share -->
+							<!-- iv. feedback by emailing developer -->
+						<!--a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="action-link"-->
+						<a href="mailto:c.srisakvarakul@gmail.com" class="action-link"><button id="survey_button" class="button actions">FEEDBACK</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- v. facebook share -->
 						<!--a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="action-link">
 						<button id="bottom_button" class="button actions" data-href="https://learntech.imsu.ox.ac.uk/SPR/" data-layout="link">SHARE</button></a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-							<!-- iv. feedback in survey monkey -->
-						<a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="action-link"><button id="survey_button" class="button actions">FEEDBACK</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- v. Open introduction modal -->
-						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#intro1_modal">INTRODUCTION</button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- vi. Open testing brief modal -->
-						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#testing_modal">TESTING BRIEF</button>
 					</div>
 					<div id="credit-text">
-						OxSPR is still currently a <font color="red">prototype</font>. If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
+						If you find it useful, please support the project development by providing feedback and share it to anyone you think might be helpful.
 						<br><br>
-						Developed for <a target="_blank" href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a target="_blank" href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by<a href="mailto:c.srisakvarakul@gmail.com" class="blue-link"> Chaiyakorn Srisakvarakul</a>, with supervision by <a target="_blank" href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
+						Developed for <a target="_blank" href="http://www.ox.ac.uk/admissions/undergraduate/courses-listing/biochemistry-molecular-and-cellular" class="blue-link">undergraduate students</a> at the <a target="_blank" href="http://www.bioch.ox.ac.uk/" class="blue-link">Department of Biochemistry</a>, University of Oxford by <a target="_blank" href="https://th.linkedin.com/in/chaiyakorn-srisakvarakul-30861b63" class="blue-link">Chaiyakorn Srisakvarakul</a>, with supervision by <a target="_blank" href="http://www.bioch.ox.ac.uk/aspsite/index.asp?pageid=580" class="blue-link">Dr. David Harris</a>, <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/damion-young" class="blue-link">Dr. Damion Young</a> and <a target="_blank" href="http://www.medsci.ox.ac.uk/support-services/jon-mason" class="blue-link">Jon Mason</a>.
 						<br>
 						<font color="#A6AAA9">The MIT License (MIT) Copyright &#xa9; 2016 Chaiyakorn Srisakvarakul</font>
 					</div>
