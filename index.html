@@ -332,6 +332,7 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
 								<h4 class="modal-title" id="modalLabel">Game Mechanics</h4>
 							</div>
 							<div class="modal-body">
@@ -360,7 +361,6 @@
 								<br><br>
 								<div id="center_buttons">
 									<!--button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button-->
-									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -643,13 +643,16 @@
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
-								<!-- Have not achieve all winning conditions -->
-							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23">steps</p>
-							<p class="declare-result" ng-show="view.output.efficiencyRating < 100">efficiency</p>
-								<!-- Achieve all winning conditions -->
-							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">Congratulations, your answer, <font color="#ececec">Steps Count</font> and <font color="#ececec">Efficiency Rating</font> are in the right range. Check with the demonstrator to confirm completion!<br><br>
+							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23 || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the <font color="#ececec">COMPLETION SCORES</font>. :(<br><br>
+
+							To help you complete, you can download your data from the <font color="#ececec">RESULTS TABLE</font> and reflect upon how to improve your <font color="#ececec">Efficiency</font> or <font color="#ececec">Steps Count</font> with the demonstrator. Afterwards, click <font color="#ececec">RESTART GAME</font> and switch to <font color="#ececec">TRAINING</font> mode to access the <font color="#ececec">Walk-through</font> and helpful <font color="#ececec">Console</font> tips to improve your method.<br><br>
+
+							Good luck! You are not far from completion!<br>
+							</p>
+
+							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">Congratulations, your answers, <font color="#ececec">Steps Count</font> and <font color="#ececec">Efficiency Rating</font> are all in the right range. Check with the demonstrator to confirm completion! :)<br><br>
 							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br><br>
-							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!
+							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!<br>
 							</p>
 							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
 						</div>
@@ -736,7 +739,7 @@
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- l. Prompt: RU on result is invalid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
+						<div ng-show="view.output.fLC.length !== 0 && view.output.timeOn[view.output.timeOn.length-1] < view.system.min_timeOn && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Hint: Invalid results]</font></b><br>
 							<font color="#ececec">SENSORGRAM</font> shows binding has not reach equilibrium. This means <font color="#ececec">max RU</font> value is invalid for Langmuir Isotherm plotting later. Retry with a higher <font color="#ececec">Association Time</font>.<br>
@@ -780,7 +783,7 @@
 							<p class="declare-result" ng-show="view.output.inefficiency_display == 0"><font color="#ececec">0 Effiency Point</font> lost, keep it up!</p>
 						</div>
 							<!-- l. Prompt: RU on result is valid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] > view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
+						<div ng-show="view.output.fLC.length !== 0 && view.system.min_timeOn <= view.output.timeOn[view.output.timeOn.length-1] && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Hint: equilibrium reached]</font></b><br>
 							<font color="#ececec">SENSORGRAM</font> shows binding has reach equilibrium!<br>
