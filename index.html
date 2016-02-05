@@ -108,97 +108,104 @@
 				</div>
 			</nav>
 				<!-- 2. Modals -->
-					<!-- a. 1st Help Text -->
-				<div id="firstObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+					<!-- a. Plan Modal -->
+				<div id="plan_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
+								<h4 class="modal-title" id="modalLabel">Experimental design tactics - PLAN</h4>
 							</div>
 							<div class="modal-body">
-								
+								When facing with an unknown technique or variables to measure, we often just dive in and hope to figure out along the way. However, shooting in the dark rarely works and wastes resources. The best process, follow a cycle of <b><font color="#51A7F9">Plan-Test-Reflect Loop</font></b>, by asking these questions systematically at different stages of experiment.<br><br>
+
+								<b><font color="#51A7F9">1. Plan Phase</font></b><br>
+								<u>a) Backward derivation analytical framework</u><br>
+								By thinking of the end point, this will help you derive what are the core important steps required and eliminate other unnecessary steps not align to final goal.<br><br>
+
+								- What is your <b><font color="#70BF41">hypothesis</font></b>?<br>
+								- What <b><font color="#70BF41">metrics</font></b> can we measure to provide evidence for that?<br>
+								- What <b><font color="#70BF41">technique(s)</font></b> can help you directly/indirectly measure the metrics?<br>
+								- Which one gives you the least chance of <b><font color="#70BF41">error, false positives and negatives</font></b>?<br>
+								- <b><font color="#70BF41">List out all steps</font></b> require to derive the metrics from raw data output by the technique (e.g. plotting, graph extrapolation, calculations).<br><br>
+
+								<u>b) General experimental design considerations</u><br>
+								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps<br><br>
+
+								- What <b><font color="#70BF41">statistical method</font></b> are you using to analyse results. This determines how many repeats you need to get the confidence limit of the technique<br>
+								- How many independent repeats at every data point to identify possible <b><font color="#70BF41">outliers</font></b><br>
+								- What is the <b><font color="#70BF41">absolute and relative error</font></b> of the technique? This affects the range of values you can sample your data from<br>
+								- What trend are you expecting, and what suitable quantity of <b><font color="#70BF41">dataset and spread</font></b> do you need to sufficiently describe the trend (e.g. shape of curve)?<br>
+								- What variables can influence the results that you need to <b><font color="#70BF41">control</font></b> for?<br>
+								- Have you remove the <b><font color="#70BF41">background</font></b>?
+								<br><br>
+
+								<u>c) SPR specific considerations</u><br>
+								- How do we know if <b><font color="#70BF41">equilibrium binding</font></b> is reached in SPR? What factors can you control to ensure equilibrium is reached? How can we design an experiment to ensure all experimental trials reaches equilibrium binding?<br>
+								- What <b><font color="#70BF41">range of answers is possible</font></b> in protein-protein interaction context?<br><br>
+								<!--div id="center_buttons">
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
+								</div-->
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- b. 2nd Help Text -->
-				<div id="secondObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+					<!-- b. Test Modal -->
+				<div id="test_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
+								<h4 class="modal-title" id="modalLabel">Experimental design tactics - TEST</h4>
 							</div>
 							<div class="modal-body">
-								
+								<b><font color="#51A7F9">2. Test Phase</font></b><br>
+								You can now <b><font color="#70BF41">translate all experimental design considerations</font></b> you just derived into specific experimental steps taken to find the results. After that, try following it out to see if you can get the right answer!<br><br>
+
+								Once you finish, <b><font color="#70BF41">note down</font></b> your <b>Efficiency Points</b> and <b>Steps</b> taken so we can analyse them later.<br><br>
+
+								<u>Helpful Tip!</u><br>
+								Since you could be sampling data in a very broad magnitude of <b>Free Ligand Concentration</b>, it is a standard practice in SPR to plot this variable on Langmuir Isotherm in <b><font color="#70BF41">log scale</font></b> ;)
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- c. 3rd Help Text -->
-				<div id="thirdObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+					<!-- c. Reflect modal -->
+				<div id="reflect_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
+								<h4 class="modal-title" id="modalLabel">Experimental design tactics - REFLECT</h4>
 							</div>
 							<div class="modal-body">
-								
+								<b><font color="#51A7F9">3. Reflect Phase</font></b><br>
+								Unless you are a <i>bona fide</i> genius, you can never achieve the best <b>Efficiency Points</b> and <b>Steps</b> in one go so don't be dishearten! Let's start <b><font color="#70BF41">systematically troubleshooting</font></b> how to improve your strategy through asking relevant questions, then <b><font color="#70BF41">iterate on the design</font></b>.<br><br>
+
+								Once you have correctly considered all these factors, you should be able to achieve the <b>VICTORY CONDITIONS</b>. Otherwise, ask the demonstrator for help!<br><br>
+
+								<u>Efficiency Points</u><br>
+								- Efficiency points deduction are calculated by how far off your <u>Association Time</u> input is from the time needed to exactly reach equilibrium (with 5 seconds buffer).<br>
+								- Start by <b><font color="#70BF41">downloading the Excel</font></b> file of your <b>RESULTS TABLE</b> by clicking the menu button at the right-hand corner of the table. This is a summary of your results.<br>
+								- Is the method you take to find equilibrium time efficient? What strategy of finding equilibrium time you can use to ensure you <b><font color="#70BF41">don't overshoot</font></b> and waste time knowing that the binding curve follow a <b><font color="#70BF41">hyperbolic model</font></b>?<br><br>
+
+								<u>Steps</u><br>
+								- If you have the problem of having to find a new equilibrium time for every <b>Free Ligand Concentration</b> input, go back to understanding the factors that ensure equilibrium is reached. Do you see any <b><font color="#70BF41">universal</font></b> <b>Association Time</b> that you could use that ensures equilibrium is reached in all cases?<br>
+								- Did you do <b><font color="#70BF41">sufficient repeats</font></b> to identify outlier and standard deviation of the technique?<br>
+								- Did you use a <b><font color="#70BF41">broad sampling strategy</font></b> to test out what the resonance value at equilibrium is for complete saturation of receptors? How do you <b><font color="#70BF41">confirm</font></b> you have reached saturation?<br>
+								- How did you determine your dynamic range once you found the saturation value? Since the first <b>Free Ligand Concentration</b> that give you saturation might be deep within saturation range, dividing that <b>Free Ligand Concentration</b> into fixed increment and try generating points might not be efficient since some points might lies in saturation range. Why not try a <b><font color="#70BF41">'test, benchmark & improvise' strategy</font></b>? Knowing that the dynamic range starts from lower end of Langmuir Isotherm upwards, it is more efficient to <b><font color="#70BF41">try a random low value</font></b> (e.g. a quarter of your saturation <b>Free Ligand Concentration</b>) and <b><font color="#70BF41">benchmark</font></b>  against the celing of saturation curve. Then <b><font color="#70BF41">iterate the strategy</font></b> for generating sufficiently spaced out data points based on the findings every round since <b><font color="#70BF41">Langmuir Isotherm follow a hyperbolic model</font></b>.<br>
+								- Think again about the <b><font color="#70BF41">final end point calculations</font></b> you took to derive the answer. From there, are there unnecessary steps you performed <b><font color="#70BF41">irrelevant</font></b> to finding the answer? Can you <b><font color="#70BF41">combine</font></b> some of the steps?<br><br>
 							</div>
 						</div>
 					</div>
 				</div>
-					<!-- d. 4th Help Text -->
-				<div id="forthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
+					<!-- d. Analysis modal -->
+				<div id="analyse_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
-							</div>
-							<div class="modal-body">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-					<!-- e. 5th Help Text -->
-				<div id="fifthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
-							</div>
-							<div class="modal-body">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-					<!-- f. 6th Help Text -->
-				<div id="sixthObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
-							</div>
-							<div class="modal-body">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-					<!-- g. 7th Help Text -->
-				<div id="seventhObjective_modal" class="modal fade" tabindex="-1" role="dialog">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-cross" aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="modalLabel"></h4>
+								<h4 class="modal-title" id="modalLabel">Experimental design tactics - ANALYSE</h4>
 							</div>
 							<div class="modal-body">
 								
@@ -305,14 +312,14 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">SPR Experimental Design Game</h4>
+								<h4 class="modal-title" id="modalLabel">SPR Experimental Design Challenge</h4>
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">Before you begin the game</font></b><br>
-								This game assume that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. 
+								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. 
 								<br><br>
 
-								<b><font color="#51A7F9">Criteria to completing the challenge</font></b><br>
+								<b><font color="#51A7F9">Victory conditions</font></b><br>
 								+ Achieve the correct Kd, k<sub>on</sub>, k<sub>off</sub> within the days allowed<br>
 								+ Using the <b>Optimum Steps</b>, excluding outliers<br>
 								+ Without losing any <b>Efficiency Points</b><br><br>
@@ -451,26 +458,20 @@
 							<!-- b. Buttons: select objectvies modal trigger -->
 						<div class="select-hints-box col-md-12">
 								<!-- 1. Heading -->
-							<div id="hints-heading" class="col-md-12">Walk-through</div>
+							<div id="hints-heading" class="col-md-12">Strategies & Tactics</div>
 								<!-- 2. Button: "1" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#firstObjective_modal" ng-disabled="view.guideMode == false">1</button>
+							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#plan_modal" ng-disabled="view.guideMode == false">PLAN</button>
 								<!-- 3. Button: "2" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#secondObjective_modal" ng-disabled="view.guideMode == false">2</button>
+							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#test_modal" ng-disabled="view.guideMode == false">TEST</button>
 								<!-- 4. Button: "3" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#thirdObjective_modal" ng-disabled="view.guideMode == false">3</button>
+							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#reflect_modal" ng-disabled="view.guideMode == false">REFLECT</button>
 								<!-- 5. Button: "4" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#forthObjective_modal" ng-disabled="view.guideMode == false">4</button>
-								<!-- 6. Button: "5" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#fifthObjective_modal" ng-disabled="view.guideMode == false">5</button>
-								<!-- 7. Button: "6" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#sixthObjective_modal" ng-disabled="view.guideMode == false">6</button>
-								<!-- 8. Button: "7" -->
-							<button type="button" class="button select-hints clickable1" data-toggle="modal" data-target="#seventhObjective_modal" ng-disabled="view.guideMode == false">7</button>
+							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#analyse_modal" ng-disabled="view.guideMode == false">ANALYSE</button>
 						</div>
 					</div><br>
 						<!-- ii. Panel: high score display (mastery mode only) -->
 					<div ng-show="view.guideMode == false">
-						<div class="panel-heading">COMPLETION SCORES</div>
+						<div class="panel-heading">VICTORY CONDITIONS</div>
 						<div id="dashboard" class="panel-body">
 								<!-- a. Lowest Number of Steps Taken -->
 							<div class="col-md-6 track-panel gloss-contrast">
@@ -643,16 +644,18 @@
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
-							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23 || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the <font color="#ececec">COMPLETION SCORES</font>. :(<br><br>
+							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23 || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the <font color="#ececec">VICTORY CONDITIONS</font>. :(<br><br>
 
-							To help you complete, you can download your data from the <font color="#ececec">RESULTS TABLE</font> and reflect upon how to improve your <font color="#ececec">Efficiency</font> or <font color="#ececec">Steps Count</font> with the demonstrator. Afterwards, click <font color="#ececec">RESTART GAME</font> and switch to <font color="#ececec">TRAINING</font> mode to access the <font color="#ececec">Walk-through</font> and helpful <font color="#ececec">Console</font> tips to improve your method.<br><br>
+							To help you achieve the <font color="#ececec">VICTORY CONDITIONS</font>, you can download your data from the <font color="#ececec">RESULTS TABLE</font> and reflect upon how to improve your <font color="#ececec">Efficiency</font> or <font color="#ececec">Steps Count</font> with the demonstrator. Afterwards, click <font color="#ececec">RESTART GAME</font> and switch to <font color="#ececec">TRAINING</font> mode to access the <font color="#51A7F9">Strategies & Tactics</font> and helpful <font color="#ececec">Console</font> tips to improve your method.<br><br>
 
-							Good luck! You are not far from completion!<br>
+							Good luck! You are not far from winning the game!<br><br>
 							</p>
 
-							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">Congratulations, your answers, <font color="#ececec">Steps Count</font> and <font color="#ececec">Efficiency Rating</font> are all in the right range. Check with the demonstrator to confirm completion! :)<br><br>
-							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br><br>
-							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!<br>
+							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">Congratulations, your answers, <font color="#ececec">Steps Count</font> and <font color="#ececec">Efficiency Rating</font> are all in the right range. Check with the demonstrator to confirm result is correct! :)<br><br>
+							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br>
+							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!<br><br>
+
+							<b><font color="#ececec">Most importantly, remember that the</font> <font color="#51A7F9">Strategies & Tactics</font> <font color="#ececec">you learn today can be apply universally to all techniques! Try applying them now to another Enzyme Kinetics simulator</font> <a href="https://learntech.imsu.ox.ac.uk/enzlab/" class="blue-link">here</a>. <font color="#ececec">Good luck!</font></b><br><br>
 							</p>
 							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
 						</div>
@@ -723,7 +726,7 @@
 						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Plan first!]</font></b><br>
-							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise <font color="#ececec">Steps</font> and <font color="#ececec">Efficiency Points</font> could be wasted. If you are not sure where to start, click the <font color="#ececec">Walk-through</font> for help!
+							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise <font color="#ececec">Steps</font> and <font color="#ececec">Efficiency Points</font> could be wasted. If you are not sure where to start, click the <font color="#51A7F9">Strategies & Tactics</font> for help!
 							<br>
 						</div>
 							<!-- j. Prompt: remove background -->
@@ -772,7 +775,7 @@
 						<div ng-show="view.experiment.steps > 25 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
-							Your steps count is above the optimum steps. Finish off your experiment, download your data from <font color="#ececec">RESULTS TABLE</font>, and using the framework in <font color="#ececec">Walk-through</font> as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
+							Your steps count is above the optimum steps. Finish off your experiment, download your data from <font color="#ececec">RESULTS TABLE</font>, and using the framework in <font color="#51A7F9">Strategies & Tactics</font> as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
 						</div>
 							<!-- o. Prompt: Efficiency Points Lost -->
 						<div ng-show="view.output.fLC.length !== 0 && view.isDisabled_check == true">
