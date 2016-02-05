@@ -647,22 +647,14 @@
 							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23">steps</p>
 							<p class="declare-result" ng-show="view.output.efficiencyRating < 100">efficiency</p>
 								<!-- Achieve all winning conditions -->
-							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">done</p>
-
-
-
-							<!--Well done! You have achieved all correct answers and finish the simulation! :)<br>
-							Click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b> you want to replay again to try and achieve the <u>MASTERY SCORE</u>.<br><br>
-							OxSPR is still currently a prototype. If you like the software, please support the project by providing 
-							<b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> and 
-							
-							<b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">email</a></b> 
-							it to anyone you think might be helpful.<br><br-->
-
+							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">Congratulations, your answer, <font color="#ececec">Steps Count</font> and <font color="#ececec">Efficiency Rating</font> are in the right range. Check with the demonstrator to confirm completion!<br><br>
+							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br><br>
+							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!
+							</p>
 							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
 						</div>
 							<!-- p. Prompt: Unknown System Information -->
-						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
+						<div ng-show="view.isDisabled_check == false">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Identity of Ligand Receptor Pair]</font><br>
 								- Ligand-Receptor Pair Unique ID: <font color="#ececec">{{view.system.uniqueID}}</font><br>
@@ -670,54 +662,54 @@
 								- Receptor Molecular Weight / gmol<sup>-1</sup>: <font color="#ececec">{{view.system.mwR | mwFilter}}</font><br>
 						</div>
 							<!-- b. Prompt: after having lunch -->
-						<div ng-show="view.experiment.timeOfDay == 13.5 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == 13.5 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Lunch]</font><br>
 							12.00-13.00: Had lunch at Biochemistry Cafe with friends<br>
 							13.00-13.30: Began new experiment after lunch<br>
 						</div>
 							<!-- c. Prompt: before having dinner -->
-						<div ng-show="view.experiment.timeOfDay == 17.0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == 17.0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[End of official working hour]</font></b><br>
 							You are feeling tired. Output will now have an intermediate increase probability of getting higher standard deviation. You can continue your experiment now or resume tomorrow by clicking <font color="#ececec">HOME</font>. 
 						</div>
 							<!-- d. Prompt: after having dinner -->
-						<div ng-show="view.experiment.timeOfDay == 18.5 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == 18.5 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Dinner]</font><br>
 							17.00-18.00: Had steak & ale pie at The Eagle & Child with friends<br>
 							18.00-18.30: Began new experiment after the dinner<br>
 						</div>
 							<!-- e. Prompt: before having supper -->
-						<div ng-show="view.experiment.timeOfDay == 21.0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == 21.0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Exhaustion warning]</font></b><br>
 							You are feeling exhausted. Output will now have a high increase probability of getting higher standard deviation. You can continue your experiment now or resume tomorrow by clicking <font color="#ececec">HOME</font>.
 						</div>
 							<!-- f. Prompt: after having supper -->
-						<div ng-show="view.experiment.timeOfDay == 22.5 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == 22.5 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Supper]</font><br>
 							21.00-22.00: Had mars bars alone in the lab, poor you.<br>
 							22.00-22.30: Began new experiment after supper<br>
 						</div>
 							<!-- g. Prompt: end of day -->
-						<div ng-show="view.experiment.timeOfDay == 24.0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == 24.0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Security guard warning]</font></b><br>
 							The security guard is closing the Biochemistry building.<br>
 							Unfortunately, you will have to end the experiment now and go <u>HOME</u>.<br>
 						</div>
 							<!-- h. Prompt: return home -->
-						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[End of a day @ {{view.experiment.endOfExperimentTime | timeFilter}}]</font><br>
 							Automatic lab clean-up by CleanBots. . . Clean-up completed. (wish this was real)<br>
 							See you tomorrow!<br>
 						</div>
 							<!-- i. Prompt: start of day auto-setup -->
-						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)) && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
+						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && view.isDisabled_check == true && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
 							Experiment automatically setup. . . Setup completed @ 9.30.<br>
@@ -725,62 +717,62 @@
 							<br>
 						</div>
 							<!-- i. Prompt: plan your experiment -->
-						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Plan first!]</font></b><br>
-							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise valuable time and resources will be wasted. If you are not sure where to start, click the <font color="#ececec">Walk-through</font> for help!
+							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise <font color="#ececec">Steps</font> and <font color="#ececec">Efficiency Points</font> could be wasted. If you are not sure where to start, click the <font color="#ececec">Walk-through</font> for help!
 							<br>
 						</div>
 							<!-- j. Prompt: remove background -->
-						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><b><font color="#F5D400">[Hint: Remove background]</font></b></b><br>
 							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you <font color="#ececec">START</font> and <font color="#ececec">WASH</font> an experiment with <font color="#ececec">free ligand concentration = 0 M</font> with any <font color="#ececec">Association Time</font> input.<br>
 						</div>
 							<!-- k. Prompt: remove background successs -->
-						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Success: remove background]</font></b><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
 							<!-- l. Prompt: RU on result is invalid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] < view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Hint: Invalid results]</font></b><br>
 							<font color="#ececec">SENSORGRAM</font> shows binding has not reach equilibrium. This means <font color="#ececec">max RU</font> value is invalid for Langmuir Isotherm plotting later. Retry with a higher <font color="#ececec">Association Time</font>.<br>
 						</div>
 							<!-- m. Prompt: Low concentration suffer from high absolute error % -->
-						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000002 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000002 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Hint: Absolute error]</font></b><br>
 							Be careful of the output results in this <font color="#ececec">Free Ligand Concentration</font> range since the absolute error of SPR could take up a high proportion of it.<br>
 						</div>
 							<!-- l. Prompt: invalid free ligand conc. -->
-						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="fLC_Form.fLC.$dirty && fLC_Form.fLC.$invalid && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Invalid Free Ligand Concentration input]</font></b><br>
 							<font color="#ececec">free ligand concentration</font> can only intake a number equal or above {{view.output.minimum_fLC_input}}.<br>
 						</div>
 							<!-- m. Prompt: invalid time on -->
-						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Invalid Association Time input]</font></b><br>
 							<font color="#ececec">association time</font> input can only intake a number between 1 to 900.<br>
 						</div>
 							<!-- n. Prompt: maximum number of curve on graph reached -->
-						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Maximum no. of plot on sensorgram reached]</font></b><br>
 							<font color="#ececec">SENSORGRAM</font> can only display 10 curves at once. Please <font color="#ececec">CLEAR</font> your <font color="#ececec">SENSORGRAM</font> before you continue. The data in your <font color="#ececec">RESULTS TABLE</font> will not be cleared.<br>
 						</div>
 							<!-- o. Prompt: Too many steps -->
-						<div ng-show="view.experiment.steps > 25 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.steps > 25 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
 							Your steps count is above the optimum steps. Finish off your experiment, download your data from <font color="#ececec">RESULTS TABLE</font>, and using the framework in <font color="#ececec">Walk-through</font> as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
 						</div>
 							<!-- o. Prompt: Efficiency Points Lost -->
-						<div ng-show="view.output.fLC.length !== 0 && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.output.fLC.length !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#F5D400">[Trial {{view.experiment.steps}} - efficiency status]</font></b><br>
 							<p class="declare-result" ng-show="view.output.inefficiency_display !== 0"><font color="#ececec">{{view.output.inefficiency_display}} Effiency Points</font> lost!<br>
@@ -788,13 +780,13 @@
 							<p class="declare-result" ng-show="view.output.inefficiency_display == 0"><font color="#ececec">0 Effiency Point</font> lost, keep it up!</p>
 						</div>
 							<!-- l. Prompt: RU on result is valid -->
-						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] > view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.output.fLC.length !== 0 && !(0.999*view.output.RU_On_Max[view.output.RU_On_Max.length-1] > view.output.RU_On_Output[view.output.RU_On_Output.length-1]) && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Hint: equilibrium reached]</font></b><br>
 							<font color="#ececec">SENSORGRAM</font> shows binding has reach equilibrium!<br>
 						</div>
 							<!-- t. Prompt: session over -->
-						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay && (view.isDisabled_check == true && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false))">
+						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Experiment Ended]</font></b><br>
 							You ran out of time to finish the experiment. To try again without changing the system, click <u>RESTART</u>.<br>
@@ -837,24 +829,24 @@
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20 || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Require: initiated START">WASH</button>
+							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Require: initiated START">WASH</button>
 						</div>
 							<!-- c) "remove background value" button -->
 						<div class="box-left-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
+							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
 						</div>
 							<!-- e) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0 || (view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true))">HOME</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
 						</div>
 							<!-- f) "Help" button -->
 						<div class="box-right-btn">
