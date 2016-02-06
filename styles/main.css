@@ -126,8 +126,13 @@ a.navbar-link:active {
 	background-color: #232836;	
 }
 
-.clickable {
+.clickable1 {
 	background-color: #47679b;
+	border: 1px solid #222530;
+}
+
+.clickable2 {
+	background-color: #4d71aa;
 	border: 1px solid #222530;
 }
 
@@ -260,6 +265,26 @@ a.blue-link:active {
 	text-decoration: none;
 }
 
+a.red-link:link {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
+a.red-link:visited {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
+a.red-link:hover {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
+a.red-link:active {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
 #center_buttons {
 	text-align: center;
 }
@@ -269,7 +294,7 @@ a.blue-link:active {
 	padding: 0px;
 	border: none;
     background: none;
-    color: #51A7F9;
+    color: #EC5D57;
 }
 
 /* panel: guide mode */

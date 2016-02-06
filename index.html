@@ -146,7 +146,7 @@
 								- How do we know if <b><font color="#c5b552">equilibrium binding</font></b> is reached in SPR? What factors can you control to ensure equilibrium is reached? How can we design an experiment to ensure all experimental trials reaches equilibrium binding?<br>
 								- What <b><font color="#c5b552">range of answers is possible</font></b> in protein-protein interaction context?<br><br>
 								<!--div id="center_buttons">
-									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
 								</div-->
 							</div>
 						</div>
@@ -249,7 +249,7 @@
 								Please confirm if you want to finish the experiment for the day. After you click, you will have {{view.experiment.daysLeft}} full day(s) left to perform your experiment.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" ng-click="view.goHome()"  data-dismiss="modal">Confirm</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.goHome()"  data-dismiss="modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -267,7 +267,7 @@
 								Please confirm that you want to clear the <b>SENSORGRAM</b>. The data in the <b>RESULTS TABLE</b> will not be clear. It is advised that you take a screenshot of the <b>SENSORGRAM</b> before clearing.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -287,7 +287,7 @@
 								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <b>RESULTS TABLE</b> header.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -307,7 +307,7 @@
 								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <b>RESULTS TABLE</b> header.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -324,8 +324,8 @@
 								We have detected an auto-saved incomplete experiment before you left the simulator. Do wish to continue with the auto-saved experiment or reload a new pair of ligand-receptor?
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
-									<button type="button" class="modal-button clickable" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">New Pair</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
+									<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">New Pair</button>
 								</div>
 							</div>
 						</div>
@@ -356,8 +356,8 @@
 								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#9e6de7">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try beating the Challenge straight away!
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
-									<button type="button" class="modal-button clickable" ng-click="view.mastery_user()"  data-dismiss="modal">Challenge</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
+									<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Challenge</button>
 								</div>
 							</div>
 						</div>
@@ -385,7 +385,8 @@
 								- A maximum of 10 curves can be display on <b>SENSORGRAM</b> before <b>CLEAR</b> is required.<br>
 								- You can drag an area on <b>SENSORGRAM</b> to zoom into it, double click to zoom out.<br>
 								- Every <b>RUN</b>-<b>WASH</b> cycle uses up 30 minutes per day regardless of <b>Association Time</b> input.<br>
-								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of <b>RESULTS TABLE</b>.
+								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of <b>RESULTS TABLE</b>.<br>
+								- You can let your the RESULTS TABLE show display data in order of latest trial by clicking on 'trial' column to sort it
 								<br><br>
 
 								<b><font color="#51A7F9">3. SPR assumptions</font></b><br>
@@ -396,7 +397,7 @@
 								- No non-specific binding
 								<br><br>
 								<div id="center_buttons">
-									<!--button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button-->
+									<!--button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button-->
 								</div>
 							</div>
 						</div>
@@ -413,9 +414,9 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Next</button>
-									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro1_modal">Back</button>
-									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Next</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro1_modal">Back</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -431,9 +432,9 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro4_modal">Next</button>
-									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Back</button>
-									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro4_modal">Next</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Back</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -449,8 +450,8 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Back</button>
-									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Back</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -467,7 +468,7 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -481,21 +482,21 @@
 					<div class="panel-body clickable-box">
 							<!-- a. Button: training vs mastery mode selector -->
 						<div class="mode-selection">
-							<button class="button clickable col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">TRAINING</button>
-							<button class="button clickable col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CHALLENGE</button><br><br>
+							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">TRAINING</button>
+							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CHALLENGE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
 						<div class="select-hints-box col-md-12">
 								<!-- 1. Heading -->
 							<div id="hints-heading" class="col-md-12"><b>Strategies & Tactics</b></div>
 								<!-- 2. Button: "1" -->
-							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#plan_modal" ng-disabled="view.guideMode == false">PLAN</button>
+							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#plan_modal" ng-disabled="view.guideMode == false">PLAN</button>
 								<!-- 3. Button: "2" -->
-							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#test_modal" ng-disabled="view.guideMode == false">TEST</button>
+							<button type="button" class="button clickable2 col-md-6" data-toggle="modal" data-target="#test_modal" ng-disabled="view.guideMode == false">TEST</button>
 								<!-- 4. Button: "3" -->
-							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#reflect_modal" ng-disabled="view.guideMode == false">REFLECT</button>
+							<button type="button" class="button clickable2 col-md-6" data-toggle="modal" data-target="#reflect_modal" ng-disabled="view.guideMode == false">REFLECT</button>
 								<!-- 5. Button: "4" -->
-							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#analyse_modal" ng-disabled="view.guideMode == false">ANALYSE</button>
+							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#analyse_modal" ng-disabled="view.guideMode == false">ANALYSE</button>
 						</div>
 					</div><br>
 						<!-- ii. Panel: high score display (mastery mode only) -->
@@ -510,7 +511,7 @@
 								<!-- b. Average Steps -->
 							<div class="col-md-6 track-panel" data-toggle="tooltip" title="exclude accounting outliers">
 								<div>Optimum Steps</div>
-								<div class="tracked-value">25</div>
+								<div class="tracked-value">{{view.output.optimum_steps}}</div>
 							</div>
 						</div><br>
 					</div>
@@ -560,7 +561,7 @@
 						</div>
 							<!-- g. Button: check -->
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
-							<button id="check_submit" class="button clickable" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">CHECK</button>
+							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">CHECK</button>
 						</div>
 					</div><br>
 										<!-- Start of debugging box -->
@@ -640,7 +641,7 @@
 							<div>s<sup>-1</sup></div>
 						</div>
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
-							<button id="check_submit" class="button clickable" ng-click="view.change(input_change_Kd, input_change_kOn, input_change_kOff, magnitudeSelected_change_Kd, magnitudeSelected_change_kOn)" ng-disabled="change_Kd.Kd_change_input.$invalid || change_kOn.kOn_change_input.$invalid || change_kOff.kOff_change_input.$invalid">CHANGE</button>
+							<button id="check_submit" class="button clickable1" ng-click="view.change(input_change_Kd, input_change_kOn, input_change_kOff, magnitudeSelected_change_Kd, magnitudeSelected_change_kOn)" ng-disabled="change_Kd.Kd_change_input.$invalid || change_kOn.kOn_change_input.$invalid || change_kOff.kOff_change_input.$invalid">CHANGE</button>
 						</div>
 					</div-->
 										<!-- End of debugging box -->
@@ -673,20 +674,22 @@
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
-							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23 || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the VICTORY CONDITIONS. :(<br><br>
+							<p class="declare-result" ng-show="view.experiment.steps > (view.output.optimum_steps+2) || view.experiment.steps < (view.output.optimum_steps-2) || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the VICTORY CONDITIONS. :(<br><br>
 
 							To help you achieve the VICTORY CONDITIONS, you can download your data from the RESULTS TABLE and reflect upon how to improve your Efficiency or Steps Count</font> with the demonstrator. Afterwards, click RESTART GAME and switch to TRAINING mode to access the <b><font color="#9e6de7">Strategies & Tactics</font></b> section and helpful Console tips to improve your method.<br><br>
 
 							Good luck! You are not far from winning the game!<br><br>
 							</p>
 
-							<p class="declare-result" ng-show="(view.experiment.steps <= 27 && view.experiment.steps >= 23) && view.output.efficiencyRating == 100">Congratulations, your answers, Steps Count and Efficiency Rating are all in the right range. Check with the demonstrator to confirm result is correct! :)<br><br>
+							<p class="declare-result" ng-show="(view.experiment.steps <= (view.output.optimum_steps+2) && view.experiment.steps >= (view.output.optimum_steps-2)) && view.output.efficiencyRating == 100">Congratulations, your answers, Steps Count and Efficiency Rating are all in the right range. Check with the demonstrator to confirm result is correct! :)<br><br>
 							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br>
-							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!<br><br>
+							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="red-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="red-link">challenge</a></b> your friends who might be interested!<br><br>
 
-							<b><font color="#ececec">Most importantly, remember that the</font> <b><font color="#9e6de7">Strategies & Tactics</font></b> <font color="#ececec">you learnt today can be apply universally to all techniques! Try applying them now to another Enzyme Kinetics simulator</font> <a href="https://learntech.imsu.ox.ac.uk/enzlab/" class="blue-link">here</a>. <font color="#ececec">Good luck!</font></b><br><br>
+							<b><font color="#ececec">Remember that the</font> <b><font color="#9e6de7">Strategies & Tactics</font></b> <font color="#ececec">you learnt today can be apply universally to all experimental techniques!</font></b><br><br>
+
+							Try applying them now to another Enzyme Kinetics simulator <b><a target="_blank" href="https://learntech.imsu.ox.ac.uk/enzlab/" class="red-link">here</a></b>. Good luck!<br><br>
 							</p>
-							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
+							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="red-link">share</a></b> or -->
 						</div>
 							<!-- d. Prompt: Unknown System Information -->
 						<div ng-show="view.isDisabled_check == false">
@@ -805,7 +808,7 @@
 							SENSORGRAM can only display 10 curves at once. Please CLEAR your SENSORGRAM before you continue. The data in your RESULTS TABLE will not be cleared.<br>
 						</div>
 							<!-- u. Prompt: Too many steps -->
-						<div ng-show="view.experiment.steps > 25 && view.guideMode == true && view.isDisabled_check == true">
+						<div ng-show="view.experiment.steps > view.output.optimum_steps && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
 							Your steps count is above the optimum steps. Finish off your experiment, download your data from RESULTS TABLE, and using the framework in <b><font color="#9e6de7">Strategies & Tactics</font></b> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
@@ -868,28 +871,28 @@
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button type="button" class="button clickable col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
+							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button clickable col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Require: initiated START">WASH</button>
+							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Require: initiated START">WASH</button>
 						</div>
 							<!-- c) "remove background value" button -->
 						<div class="box-left-btn">
-							<button class="button clickable col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
+							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button clickable col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
 						</div>
 							<!-- e) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button clickable col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
+							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
 						</div>
 							<!-- f) "Help" button -->
 						<div class="box-right-btn">
-							<button type="button" class="button clickable col-md-12" data-toggle="modal" data-target="#intro1_modal">HELP</button>
+							<button type="button" class="button clickable2 col-md-12" data-toggle="modal" data-target="#intro1_modal">HELP</button>
 						</div><br><br>
 							<!-- h. free ligand concentration Input -->
 						<div class="col-md-6 track-panel gloss-contrast">

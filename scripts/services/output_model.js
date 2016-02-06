@@ -39,8 +39,10 @@ function outputMethod(experimentStatus, systemModel) {
 		// values for efficiency calculator
 	output.inefficiency = 0;
 	output.efficiencyRating = 100;
+	output.optimum_steps = 26;
 	output.bufferTimeAllowed = 5; // seconds
-	output.min_inefficiency = 100/25; // 100 = total efficiency points, 25 = optimum steps
+	output.min_inefficiency = 100/output.optimum_steps; // 100 = total efficiency points, 26 = optimum steps
+
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
