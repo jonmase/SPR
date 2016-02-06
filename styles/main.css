@@ -126,13 +126,8 @@ a.navbar-link:active {
 	background-color: #232836;	
 }
 
-.clickable1 {
-	background-color: #4273b3;
-	border: 1px solid #222530;
-}
-
-.clickable2{
-	background-color: #5478b0;
+.clickable {
+	background-color: #47679b;
 	border: 1px solid #222530;
 }
 
@@ -292,6 +287,7 @@ a.blue-link:active {
 
 #hints-heading {
 	text-align: center;
+	color: #9e6de7;
 	margin-bottom: 3px
 }
 

@@ -9,10 +9,10 @@
     	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-	    <title>Oxford Biochemistry - SPR Experimental Design Challenge</title>
+	    <title>Experimental Design Strategy Puzzle (SPR) - Oxford Biochemistry</title>
 	    	<!--meta property="og:url"           content="https://learntech.imsu.ox.ac.uk/SPR/" />
 			<meta property="og:type"          content="website" />
-			<meta property="og:title"         content="Oxford Biochemistry Simulation Challenge (SPR)" />
+			<meta property="og:title"         content="Experimental Design Strategy Puzzle (SPR) - Oxford Biochemistry" />
 			<meta property="og:description"   content="Learn experimental design through playing with a simulation of surface plasmon resonance. Created by Oxford Biochemistry Department." />
 			<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" /-->
 
@@ -45,7 +45,7 @@
 
 			<!-- Google Fonts Web Font Embedding & Credits -->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:700'>
-		<link href='https://fonts.googleapis.com/css?family=Work+Sans:300,500' rel='stylesheet' type='text/css'>
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Work+Sans:300,500'>
 
 	    	<!-- Personal libraries, load last since these files will be referencing to those previous libraries too -->
 		<script type="text/javascript" src="scripts/index_modules.js"></script>
@@ -85,7 +85,7 @@
 			<!-- Distinguishing content for small device size media query -->
 		<div class="smallDevice">
 			<h1 class="smallDevice-heading">Oh Snap!</h1><br>
-			<h4 class="smallDevice-message">We know you are excited to play with the simulation</h4>
+			<h4 class="smallDevice-message">We know you are excited to solve the puzzle challenge</h4>
 			<h4 class="smallDevice-message">However, for the best playing experience</h4>
 			<h4 class="smallDevice-message">we would suggest switching to a device with larger screen size <br><font color="red">(at least an iPad viewing in landscape)</font></h4>
 			<h4 class="smallDevice-message">See you there! :)</h4>
@@ -104,7 +104,7 @@
 					<div class="navbar-text navbar-clicked">SIMULATION</div>
 					<a href="" class="navbar-text navbar-link">SUMMARY</a>
 					<a href="" class="navbar-text navbar-link">CONTACT</a-->
-					<div id="navbar-placeholder">Objective: Design a strategy to obtain Kd, k<sub>off</sub> and k<sub>on</sub> using the Optimum Steps and Efficiency Points</div>
+					<div id="navbar-placeholder">Goal: Figure out the best strategy to obtain Kd, k<sub>off</sub> and k<sub>on</sub> using the Optimum Steps and Efficiency Points</div>
 				</div>
 			</nav>
 				<!-- 2. Modals -->
@@ -117,7 +117,9 @@
 								<h4 class="modal-title" id="modalLabel">Experimental design tactics - PLAN</h4>
 							</div>
 							<div class="modal-body">
-								When facing with an unknown technique or variables to measure, we often just dive in and hope to figure out along the way. However, shooting in the dark rarely works and wastes resources. The best process, follow a cycle of <b><font color="#51A7F9">Plan-Test-Reflect Loop</font></b>, by asking these questions systematically at different stages of experiment.<br><br>
+								What's the difference between a novice and master biochemist? Novices never plan their experiment. They shoot randomly then pray that the answer will miraculously appear. Master biochemists, however, are expert strategists. They (conciously or subconciously) think in a <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> resulting in elegant experimental designs.<br><br>
+
+								To beat this game, you simply need to think like a master. These questions below will enlighten you what masters actually think and help you beat this puzzle.<br><br>
 
 								<b><font color="#51A7F9">1. Plan Phase</font></b><br>
 								<b><font color="#EC5D57">a) Backward derivation method</font></b><br>
@@ -144,7 +146,7 @@
 								- How do we know if <b><font color="#c5b552">equilibrium binding</font></b> is reached in SPR? What factors can you control to ensure equilibrium is reached? How can we design an experiment to ensure all experimental trials reaches equilibrium binding?<br>
 								- What <b><font color="#c5b552">range of answers is possible</font></b> in protein-protein interaction context?<br><br>
 								<!--div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
 								</div-->
 							</div>
 						</div>
@@ -160,12 +162,11 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">2. Test Phase</font></b><br>
-								You can now <b><font color="#c5b552">translate all experimental design considerations</font></b> you just derived into specific experimental steps taken to find the results. After that, try following it out to see if you can get the right answer!<br><br>
+								You can now <b><font color="#c5b552">translate all experimental design considerations</font></b> you just derived into specific experimental steps taken to find the results.<br><br>
 
-								Once you finish, <b><font color="#c5b552">note down</font></b> your <b>Efficiency Points</b> and <b>Steps</b> taken so we can analyse them later.<br><br>
+								At this point, you can <b><font color="#c5b552">stop worrying</font></b> if you might miss out on any other considerations! Remember this, you will NEVER get the design right all at once. So rather than getting analysis paralysis, you can learn much faster what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>. That is why masters think in a <b><font color="#51A7F9">Cycle</font></b> and aim at <b><font color="#c5b552">iterating</font></b> their strategy fast. Having the <b><font color="#c5b552">metacognition</font></b> to realising that the information you lack is unobtainable until you try out is also an important skill of a master.<br><br>
 
-								<b><font color="#EC5D57">Helpful Tip!</font></b><br>
-								Since you could be sampling data in a very broad magnitude of <b>Free Ligand Concentration</b>, it is a standard practice in SPR to plot this variable on Langmuir Isotherm in <b><font color="#c5b552">log scale</font></b> ;)
+								So start trying out your plan as fast as possible! When you finish, we can start to reflect on how to improve the design in the <b><font color="#51A7F9">Reflect</font></b> phase of the <b><font color="#51A7F9">Cycle</font></b>. Once you finish, do <b><font color="#c5b552">note down</font></b> your Efficiency Points and Steps taken so we can analyse them later.<br><br>
 							</div>
 						</div>
 					</div>
@@ -180,20 +181,18 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">3. Reflect Phase</font></b><br>
-								Unless you are a <i>bona fide</i> genius, you can never achieve the best <b>Efficiency Points</b> and <b>Steps</b> in one go so don't be dishearten! Let's start <b><font color="#c5b552">systematically troubleshooting</font></b> how to improve your strategy through asking relevant questions, then <b><font color="#c5b552">iterate on the design</font></b>.<br><br>
-
-								Once you have correctly considered all these factors, you should be able to achieve the <b>VICTORY CONDITIONS</b>. Otherwise, ask the demonstrator for help!<br><br>
+								If you have successfully obtained the correct answer but not with the right Efficiency Points and Steps, troubleshoot with the questions below then quickly start the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> again! If you have not obtain the right answer or still not able to achieve the VICTORY CONDITIONS, ask the demonstrator for help.<br><br>
 
 								<b><font color="#EC5D57">Efficiency Points</font></b><br>
-								- Efficiency points deduction are calculated by how far off your <b>Association Time</b> input is from the time needed to exactly reach equilibrium (with 5 seconds buffer).<br>
-								- Start by <b><font color="#c5b552">downloading the Excel</font></b> file of your <b>RESULTS TABLE</b> by clicking the menu button at the right-hand corner of the table. This is a summary of your results.<br>
+								- Efficiency points deduction are calculated by how far off your Association Time input is from the time needed to exactly reach equilibrium (with 5 seconds buffer).<br>
+								- Start by <b><font color="#c5b552">downloading the Excel</font></b> file of your RESULTS TABLE by clicking the menu button at the right-hand corner of the table. This is a summary of your results.<br>
 								- Is the method you take to find equilibrium time efficient? What strategy of finding equilibrium time you can use to ensure you <b><font color="#c5b552">don't overshoot</font></b> and waste time knowing that the binding curve follow a <b><font color="#c5b552">hyperbolic model</font></b>?<br><br>
 
 								<b><font color="#EC5D57">Steps</font></b><br>
-								- If you have the problem of having to find a new equilibrium time for every <b>Free Ligand Concentration</b> input, go back to understanding the factors that ensure equilibrium is reached. Do you see any <b><font color="#c5b552">universal</font></b> <b>Association Time</b> that you could use that ensures equilibrium is reached in all cases?<br>
+								- If you have the problem of having to find a new equilibrium time for every Free Ligand Concentration input, go back to understanding the factors that ensure equilibrium is reached. Do you see any <b><font color="#c5b552">universal</font></b> Association Time that you could use that ensures equilibrium is reached in all cases?<br>
 								- Did you do <b><font color="#c5b552">sufficient repeats</font></b> to identify outlier and standard deviation of the technique?<br>
 								- Did you use a <b><font color="#c5b552">broad sampling strategy</font></b> to test out what the resonance value at equilibrium is for complete saturation of receptors? How do you <b><font color="#c5b552">confirm</font></b> you have reached saturation?<br>
-								- How did you determine your dynamic range once you found the saturation value? Since the first <b>Free Ligand Concentration</b> that give you saturation might be deep within saturation range, dividing that <b>Free Ligand Concentration</b> into fixed increment and try generating points might not be efficient since some points might lies in saturation range. Why not try a <b><font color="#c5b552">'test, benchmark & improvise' strategy</font></b>? Knowing that the dynamic range starts from lower end of Langmuir Isotherm upwards, it is more efficient to <b><font color="#c5b552">try a random low value</font></b> (e.g. a quarter of your saturation <b>Free Ligand Concentration</b>) and <b><font color="#c5b552">benchmark</font></b>  against the celing of saturation curve. Then <b><font color="#c5b552">iterate the strategy</font></b> for generating sufficiently spaced out data points based on the findings every round since <b><font color="#c5b552">Langmuir Isotherm follow a hyperbolic model</font></b>.<br>
+								- How did you determine your dynamic range once you found the saturation value? Since the first Free Ligand Concentration that give you saturation might be deep within saturation range, dividing that Free Ligand Concentration into fixed increment and try generating points might not be efficient since some points might lies in saturation range. Why not try a <b><font color="#c5b552">'test, benchmark & improvise' strategy</font></b>? Knowing that the dynamic range starts from lower end of Langmuir Isotherm upwards, it is more efficient to <b><font color="#c5b552">try a random low value</font></b> (e.g. a quarter of your saturation Free Ligand Concentration) and <b><font color="#c5b552">benchmark</font></b>  against the celing of saturation curve. Then <b><font color="#c5b552">iterate the strategy</font></b> for generating sufficiently spaced out data points based on the findings every round since <b><font color="#c5b552">Langmuir Isotherm follow a hyperbolic model</font></b>.<br>
 								- Think again about the <b><font color="#c5b552">final end point calculations</font></b> you took to derive the answer. From there, are there unnecessary steps you performed <b><font color="#c5b552">irrelevant</font></b> to finding the answer? Can you <b><font color="#c5b552">combine</font></b> some of the steps?<br><br>
 							</div>
 						</div>
@@ -218,7 +217,8 @@
 								- Always perform statistical analysis<br>
 								- Significant figures up to the least sensitive technique use<br>
 								- Show n-value<br>
-								- Represent data in format with highest information density possible (e.g. table format, describe relationship using equation)
+								- Represent data in format with highest information density possible (e.g. table format, describe relationship using equation)<br>
+								- If a variable occupy a broad magnitude range, plot them in a log scale
 								<br><br>
 
 								<b><font color="#EC5D57">Data Analysis</font></b><br>
@@ -232,7 +232,7 @@
 								- Never over conclude data; There is a scientific difference between 'proves', 'suggests' and 'is consistent with'<br><br>
 
 								<b><font color="#51A7F9">5. Final Note</font></b><br>
-								Remember, the <b><font color="#51A7F9">Plan-Test-Reflect Loop</font></b> is universally applicable to all experiments, not just SPR. Try using it next time to plan your experiments!
+								Remember, the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> is universally applicable to all experiments, not just SPR. Try using it next time to plan your experiments!
 							</div>
 						</div>
 					</div>
@@ -249,7 +249,7 @@
 								Please confirm if you want to finish the experiment for the day. After you click, you will have {{view.experiment.daysLeft}} full day(s) left to perform your experiment.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.goHome()"  data-dismiss="modal">Confirm</button>
+									<button type="button" class="modal-button clickable" ng-click="view.goHome()"  data-dismiss="modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -267,7 +267,7 @@
 								Please confirm that you want to clear the <b>SENSORGRAM</b>. The data in the <b>RESULTS TABLE</b> will not be clear. It is advised that you take a screenshot of the <b>SENSORGRAM</b> before clearing.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
+									<button type="button" class="modal-button clickable" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -287,7 +287,7 @@
 								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <b>RESULTS TABLE</b> header.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
+									<button type="button" class="modal-button clickable" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -307,7 +307,7 @@
 								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <b>RESULTS TABLE</b> header.
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
+									<button type="button" class="modal-button clickable" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
 								</div>
 							</div>
 						</div>
@@ -324,8 +324,8 @@
 								We have detected an auto-saved incomplete experiment before you left the simulator. Do wish to continue with the auto-saved experiment or reload a new pair of ligand-receptor?
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
-									<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">New Pair</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal">Continue</button>&nbsp;&nbsp;&nbsp;
+									<button type="button" class="modal-button clickable" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">New Pair</button>
 								</div>
 							</div>
 						</div>
@@ -336,23 +336,28 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="modalLabel">SPR Experimental Design Challenge</h4>
+								<h4 class="modal-title" id="modalLabel">Experimental Design Strategy Puzzle (SPR)</h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#51A7F9">Before you begin the game</font></b><br>
-								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. 
-								<br><br>
+								<b><font color="#d83535">Challenge Statement</font></b><br>
+								So you think you can design an experiment as elegant as a master biochemist?<br> 
+								We dare you to crack this puzzle to see if you are really worthy of that title.<br><br>
 
 								<b><font color="#51A7F9">Victory conditions</font></b><br>
 								+ Achieve the correct Kd, k<sub>on</sub>, k<sub>off</sub> within the days allowed<br>
-								+ Using the <b>Optimum Steps</b>, excluding outliers<br>
-								+ Without losing any <b>Efficiency Points</b><br><br>
+								+ Using the Optimum Steps, excluding outliers<br>
+								+ Without losing any Efficiency Points<br><br>
 
-								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, <b>Training</b> mode will teach you how to beat the challenge methodically. Otherwise, you can be daring and try beating the <b>Challenge</b> straight away!
+								<b><font color="#c5b552">Before you begin the game</font></b><br>
+								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. 
+								<br><br>
+
+								Let's begin by selecting a suitable playing mode.
+								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#9e6de7">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try beating the Challenge straight away!
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
-									<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Challenge</button>
+									<button type="button" class="modal-button clickable" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
+									<button type="button" class="modal-button clickable" ng-click="view.mastery_user()"  data-dismiss="modal">Challenge</button>
 								</div>
 							</div>
 						</div>
@@ -391,7 +396,7 @@
 								- No non-specific binding
 								<br><br>
 								<div id="center_buttons">
-									<!--button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button-->
+									<!--button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Next</button-->
 								</div>
 							</div>
 						</div>
@@ -408,9 +413,9 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Next</button>
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro1_modal">Back</button>
-									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Next</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro1_modal">Back</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -426,9 +431,9 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro4_modal">Next</button>
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Back</button>
-									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro4_modal">Next</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro2_modal">Back</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -444,8 +449,8 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Back</button>
-									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal" data-toggle="modal" data-target="#intro3_modal">Back</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -462,7 +467,7 @@
 								
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" data-dismiss="modal">Close</button>
+									<button type="button" class="modal-button clickable" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -476,21 +481,21 @@
 					<div class="panel-body clickable-box">
 							<!-- a. Button: training vs mastery mode selector -->
 						<div class="mode-selection">
-							<button class="button clickable1 col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">TRAINING</button>
-							<button class="button clickable2 col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CHALLENGE</button><br><br>
+							<button class="button clickable col-md-6" ng-click="view.guideMode = true" ng-disabled="view.guideMode == true">TRAINING</button>
+							<button class="button clickable col-md-6" ng-click="view.guideMode = false" ng-disabled="view.guideMode == false">CHALLENGE</button><br><br>
 						</div>
 							<!-- b. Buttons: select objectvies modal trigger -->
 						<div class="select-hints-box col-md-12">
 								<!-- 1. Heading -->
-							<div id="hints-heading" class="col-md-12">Strategies & Tactics</div>
+							<div id="hints-heading" class="col-md-12"><b>Strategies & Tactics</b></div>
 								<!-- 2. Button: "1" -->
-							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#plan_modal" ng-disabled="view.guideMode == false">PLAN</button>
+							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#plan_modal" ng-disabled="view.guideMode == false">PLAN</button>
 								<!-- 3. Button: "2" -->
-							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#test_modal" ng-disabled="view.guideMode == false">TEST</button>
+							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#test_modal" ng-disabled="view.guideMode == false">TEST</button>
 								<!-- 4. Button: "3" -->
-							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#reflect_modal" ng-disabled="view.guideMode == false">REFLECT</button>
+							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#reflect_modal" ng-disabled="view.guideMode == false">REFLECT</button>
 								<!-- 5. Button: "4" -->
-							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#analyse_modal" ng-disabled="view.guideMode == false">ANALYSE</button>
+							<button type="button" class="button clickable col-md-6" data-toggle="modal" data-target="#analyse_modal" ng-disabled="view.guideMode == false">ANALYSE</button>
 						</div>
 					</div><br>
 						<!-- ii. Panel: high score display (mastery mode only) -->
@@ -555,7 +560,7 @@
 						</div>
 							<!-- g. Button: check -->
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
-							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">CHECK</button>
+							<button id="check_submit" class="button clickable" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">CHECK</button>
 						</div>
 					</div><br>
 										<!-- Start of debugging box -->
@@ -635,7 +640,7 @@
 							<div>s<sup>-1</sup></div>
 						</div>
 						<div id="check-btn-container" class="col-md-12 gloss-contrast2">
-							<button id="check_submit" class="button clickable1" ng-click="view.change(input_change_Kd, input_change_kOn, input_change_kOff, magnitudeSelected_change_Kd, magnitudeSelected_change_kOn)" ng-disabled="change_Kd.Kd_change_input.$invalid || change_kOn.kOn_change_input.$invalid || change_kOff.kOff_change_input.$invalid">CHANGE</button>
+							<button id="check_submit" class="button clickable" ng-click="view.change(input_change_Kd, input_change_kOn, input_change_kOff, magnitudeSelected_change_Kd, magnitudeSelected_change_kOn)" ng-disabled="change_Kd.Kd_change_input.$invalid || change_kOn.kOn_change_input.$invalid || change_kOff.kOff_change_input.$invalid">CHANGE</button>
 						</div>
 					</div-->
 										<!-- End of debugging box -->
@@ -670,7 +675,7 @@
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
 							<p class="declare-result" ng-show="view.experiment.steps > 27 || view.experiment.steps < 23 || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the VICTORY CONDITIONS. :(<br><br>
 
-							To help you achieve the VICTORY CONDITIONS, you can download your data from the RESULTS TABLE and reflect upon how to improve your Efficiency or Steps Count</font> with the demonstrator. Afterwards, click RESTART GAME and switch to TRAINING mode to access the <font color="#51A7F9">Strategies & Tactics</font> section and helpful Console tips to improve your method.<br><br>
+							To help you achieve the VICTORY CONDITIONS, you can download your data from the RESULTS TABLE and reflect upon how to improve your Efficiency or Steps Count</font> with the demonstrator. Afterwards, click RESTART GAME and switch to TRAINING mode to access the <b><font color="#9e6de7">Strategies & Tactics</font></b> section and helpful Console tips to improve your method.<br><br>
 
 							Good luck! You are not far from winning the game!<br><br>
 							</p>
@@ -679,7 +684,7 @@
 							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br>
 							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="blue-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="blue-link">challenge</a></b> your friends who might be interested!<br><br>
 
-							<b><font color="#ececec">Most importantly, remember that the</font> <font color="#51A7F9">Strategies & Tactics</font> <font color="#ececec">you learnt today can be apply universally to all techniques! Try applying them now to another Enzyme Kinetics simulator</font> <a href="https://learntech.imsu.ox.ac.uk/enzlab/" class="blue-link">here</a>. <font color="#ececec">Good luck!</font></b><br><br>
+							<b><font color="#ececec">Most importantly, remember that the</font> <b><font color="#9e6de7">Strategies & Tactics</font></b> <font color="#ececec">you learnt today can be apply universally to all techniques! Try applying them now to another Enzyme Kinetics simulator</font> <a href="https://learntech.imsu.ox.ac.uk/enzlab/" class="blue-link">here</a>. <font color="#ececec">Good luck!</font></b><br><br>
 							</p>
 							<!--b><a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="blue-link">share</a></b> or -->
 						</div>
@@ -695,7 +700,7 @@
 						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Plan first!]</font></b><br>
-							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <font color="#51A7F9">Strategies & Tactics</font> section for help!
+							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <b><font color="#9e6de7">Strategies & Tactics</font></b> section for help!
 							<br>
 						</div>
 							<!-- f. Prompt: after having lunch -->
@@ -803,7 +808,7 @@
 						<div ng-show="view.experiment.steps > 25 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
-							Your steps count is above the optimum steps. Finish off your experiment, download your data from RESULTS TABLE, and using the framework in <font color="#51A7F9">Strategies & Tactics</font> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
+							Your steps count is above the optimum steps. Finish off your experiment, download your data from RESULTS TABLE, and using the framework in <b><font color="#9e6de7">Strategies & Tactics</font></b> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
 						</div>
 							<!-- v. Prompt: RU on result is valid -->
 						<div ng-show="view.EqTimeReachedOnce == false && view.output.fLC.length !== 0 && view.system.min_timeOn <= view.output.timeOn[view.output.timeOn.length-1] && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
@@ -863,28 +868,28 @@
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
 						<div class="box-left-btn">
-							<button type="button" class="button clickable1 col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
+							<button type="button" class="button clickable col-md-12" ng-click="view.runExperiment(magnitudeSelected_input_Kd, input_fLC, input_timeOn)" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_run == true || view.experiment.timeOfDay == view.experiment.endOfDay || view.output.RU_CompiledLabelPlotAll.length == 20" data-toggle="tooltip" title="Require: free ligand concentration and association time input">START</button> 
 								<!-- note: set to 20 since on and off graph counted as a separate ones -->
 						</div>
 							<!-- b) "Washing up" button -->
 						<div class="box-right-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Require: initiated START">WASH</button>
+							<button class="button clickable col-md-12" ng-click="view.washUp(input_timeOn)" ng-disabled="view.isDisabled_wash == true" data-toggle="tooltip" title="Require: initiated START">WASH</button>
 						</div>
 							<!-- c) "remove background value" button -->
 						<div class="box-left-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
+							<button class="button clickable col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
-							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
+							<button class="button clickable col-md-12" data-toggle="modal" data-target="#clear_modal" ng-disabled="view.output.RU_CompiledLabelPlotAll.length == 0 || view.isDisabled_run == true" data-toggle="tooltip" title="Data in table will not be erase">CLEAR</button>
 						</div>
 							<!-- e) "Go home" button -->
 						<div class="box-right-btn">
-							<button class="button clickable1 col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
+							<button class="button clickable col-md-12" data-toggle="modal" data-target="#home_modal" ng-disabled="view.experiment.timeOfDay == view.experiment.startOfDay || view.experiment.daysLeft == 0">HOME</button>
 						</div>
 							<!-- f) "Help" button -->
 						<div class="box-right-btn">
-							<button type="button" class="button clickable2 col-md-12" data-toggle="modal" data-target="#intro1_modal">HELP</button>
+							<button type="button" class="button clickable col-md-12" data-toggle="modal" data-target="#intro1_modal">HELP</button>
 						</div><br><br>
 							<!-- h. free ligand concentration Input -->
 						<div class="col-md-6 track-panel gloss-contrast">
