@@ -123,13 +123,13 @@
 
 								<b><font color="#51A7F9">1. Plan Phase</font></b><br>
 								<b><font color="#EC5D57">a) Backward derivation method</font></b><br>
-								By thinking of the end point, this will help you derive what are the core important steps required and eliminate other unnecessary steps not align to final goal.<br><br>
+								Start thinking from the end point will help you derive what you experimental steps are important or unnecessary to prove your hypothesis by your metrics.<br><br>
 
 								- What is your <b><font color="#c5b552">hypothesis</font></b>?<br>
 								- What <b><font color="#c5b552">metrics</font></b> can we measure to provide evidence for that?<br>
 								- What <b><font color="#c5b552">technique(s)</font></b> can help you directly/indirectly measure the metrics?<br>
-								- Which one gives you the least chance of <b><font color="#c5b552">error, false positives and negatives</font></b>?<br>
-								- <b><font color="#c5b552">List out all steps</font></b> require to derive the metrics from raw data output by the technique (e.g. plotting, graph extrapolation, calculations).<br><br>
+								- Which one gives you the best <b><font color="#c5b552">precision</font></b> and least <b><font color="#c5b552">false positives and negatives</font></b>?<br>
+								- <b><font color="#c5b552">List out all steps</font></b> require to derive the metrics from raw data output by the technique (e.g. graph plotting, trend extrapolation, calculations).<br><br>
 
 								<b><font color="#EC5D57">b) General experimental design considerations</font></b><br>
 								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps<br><br>
@@ -264,7 +264,7 @@
 								<h4 class="modal-title" id="modalLabel">Confirm Clear</h4>
 							</div>
 							<div class="modal-body">
-								Please confirm that you want to clear the <b>SENSORGRAM</b>. The data in the <b>RESULTS TABLE</b> will not be clear. It is advised that you take a screenshot of the <b>SENSORGRAM</b> before clearing.
+								Please confirm that you want to clear the SENSORGRAM. The data in the RESULTS TABLE will not be clear. It is advised that you take a screenshot of the SENSORGRAM before clearing.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.clearChart()"  data-dismiss="modal">Confirm</button>
@@ -284,7 +284,7 @@
 							<div class="modal-body">
 								Are you sure you wish to restart your experiment? The same pair of ligand-receptor will be retain but all data in the table previously generated will be clear.
 								<br><br>
-								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <b>RESULTS TABLE</b> header.
+								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of RESULTS TABLE header.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.restart()"  data-dismiss="modal">Confirm</button>
@@ -304,7 +304,7 @@
 							<div class="modal-body">
 								Are you sure you wish to replay? A new pair of ligand-receptor will be generated and all data in the table previously generated will be clear.
 								<br><br>
-								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of <b>RESULTS TABLE</b> header.
+								If you wish to keep the data before restart, export it as excel by clicking on the menu button at the top-right corner of RESULTS TABLE header.
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.replay()" data-dismiss="modal" data-toggle="modal" data-target="#initialising_modal">Confirm</button>
@@ -349,11 +349,11 @@
 								+ Without losing any Efficiency Points<br><br>
 
 								<b><font color="#c5b552">Before you begin the game</font></b><br>
-								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. 
+								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. If you need a refresher, quickly review in HELP at CONTROL PANEL.
 								<br><br>
 
 								Let's begin by selecting a suitable playing mode.
-								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#9e6de7">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try beating the Challenge straight away!
+								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try beating the Challenge straight away!
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
@@ -372,20 +372,22 @@
 								<h4 class="modal-title" id="modalLabel">Game Mechanics</h4>
 							</div>
 							<div class="modal-body">
+								If you need to quickly recall basic SPR Theory, click <b><a target="_blank" href="https://www.dropbox.com/s/7zilnub9csw6aq1/SPR%20notes%20-%20download.pdf?dl=0" class="red-link">here</a></b>.<br><br>
+
 								<b><font color="#51A7F9">1. Basics</font></b><br>
-								- Input desired <b>Free Ligand Concentration</b> and <b>Association Time</b><br>
-								- Click <b>START</b> to begin ligand-receptor association phase<br>
-								- Click <b>WASH</b> to begin ligand-receptor disassociation phase<br>
-								- Click <b>BACKGROUND</b> to remove it from future readings
+								- Input desired Free Ligand Concentration and Association Time<br>
+								- Click START to begin ligand-receptor association phase<br>
+								- Click WASH to begin ligand-receptor disassociation phase<br>
+								- Click BACKGROUND to remove it from future readings
 								<br><br>
 
 								<b><font color="#51A7F9">2. Essential tips to completing the game</font></b><br>
 								- Absolute and relative errors are built into the game.<br>
 								- The probability of outputting results with high standard deviation increases after 17.00, and even further at 21.00.<br>
-								- A maximum of 10 curves can be display on <b>SENSORGRAM</b> before <b>CLEAR</b> is required.<br>
-								- You can drag an area on <b>SENSORGRAM</b> to zoom into it, double click to zoom out.<br>
-								- Every <b>RUN</b>-<b>WASH</b> cycle uses up 30 minutes per day regardless of <b>Association Time</b> input.<br>
-								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of <b>RESULTS TABLE</b>.<br>
+								- A maximum of 10 curves can be display on SENSORGRAM before CLEAR is required.<br>
+								- You can drag an area on SENSORGRAM to zoom into it, double click to zoom out.<br>
+								- Every RUN-WASH cycle uses up 30 minutes per day regardless of Association Time input.<br>
+								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of RESULTS TABLE.<br>
 								- You can let your the RESULTS TABLE show display data in order of latest trial by clicking on 'trial' column to sort it
 								<br><br>
 
@@ -676,7 +678,7 @@
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
 							<p class="declare-result" ng-show="view.experiment.steps > (view.output.optimum_steps+2) || view.experiment.steps < (view.output.optimum_steps-2) || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the VICTORY CONDITIONS. :(<br><br>
 
-							To help you achieve the VICTORY CONDITIONS, you can download your data from the RESULTS TABLE and reflect upon how to improve your Efficiency or Steps Count</font> with the demonstrator. Afterwards, click RESTART GAME and switch to TRAINING mode to access the <b><font color="#9e6de7">Strategies & Tactics</font></b> section and helpful Console tips to improve your method.<br><br>
+							To help you achieve the VICTORY CONDITIONS, you can download your data from the RESULTS TABLE and reflect upon how to improve your Efficiency or Steps Count</font> with the demonstrator. Afterwards, click RESTART GAME and switch to TRAINING mode to access the <b><font color="#ececec">Strategies & Tactics</font></b> section and helpful Console tips to improve your method.<br><br>
 
 							Good luck! You are not far from winning the game!<br><br>
 							</p>
@@ -685,7 +687,9 @@
 							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br>
 							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="red-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="red-link">challenge</a></b> your friends who might be interested!<br><br>
 
-							<b><font color="#ececec">Remember that the</font> <b><font color="#9e6de7">Strategies & Tactics</font></b> <font color="#ececec">you learnt today can be apply universally to all experimental techniques!</font></b><br><br>
+							<b><font color="#ececec">Remember that these Strategies & Tactics you learnt today are generally adaptable to all experimental techniques!</font></b><br><br>
+
+							You can download a PDF summary of the <b><font color="#ececec">Strategies & Tactics</font></b> with additional notes on identifying flaws in a technique <b><a target="_blank" href="https://www.dropbox.com/s/g28k6oay0p1p8na/Experimental%20design%20notes%20-%20download.pdf?dl=0" class="red-link">here</a></b>.<br><br>
 
 							Try applying them now to another Enzyme Kinetics simulator <b><a target="_blank" href="https://learntech.imsu.ox.ac.uk/enzlab/" class="red-link">here</a></b>. Good luck!<br><br>
 							</p>
@@ -703,7 +707,7 @@
 						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Plan first!]</font></b><br>
-							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <b><font color="#9e6de7">Strategies & Tactics</font></b> section for help!
+							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <b><font color="#ececec">Strategies & Tactics</font></b> section for help!
 							<br>
 						</div>
 							<!-- f. Prompt: after having lunch -->
@@ -758,14 +762,14 @@
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
 							Experiment automatically setup. . . Setup completed @ 9.30.<br>
-							Ready to begin. Please input values for Free Ligand Concentration and Free Ligand Concentration in CONTROL PANEL to begin. Click START and then WASH to begin the association and disassociation phase respectively.
+							Ready to begin. Please input values for Free Ligand Concentration and Association Time in CONTROL PANEL to begin. Click START and then WASH to begin the association and disassociation phase respectively.
 							<br>
 						</div>
 							<!-- n. Prompt: remove background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><b><font color="#c5b552">[Hint: Remove background]</font></b></b><br>
-							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you START and WASH an experiment with free ligand concentration = 0 M with any Free Ligand Concentration input.<br>
+							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you START and WASH an experiment with free ligand concentration = 0 M with any Association Time input.<br>
 						</div>
 							<!-- o. Prompt: remove background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && view.isDisabled_check == true">
@@ -778,10 +782,8 @@
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Hint: Find the right association time to use first]</font></b><br>
 							Two possible scenarios:<br>
-							i. This Free Ligand Concentration used might be insufficiently long to reach equilibrium binding<br>
-							ii. Although equilibrium binding is reached in this Free Ligand Concentration, this Free Ligand Concentration will not universally give equilibrium binding when applied on lower Free Ligand Concentration which you might need to sample later
-
-							SENSORGRAM shows binding has not reach equilibrium. This means max RU value is invalid for Langmuir Isotherm plotting later. Retry with a higher Free Ligand Concentration.<br>
+							i. This Association Time used might be insufficiently long to reach equilibrium binding<br>
+							ii. Although equilibrium binding is reached in this Association Time, this Association Time will not universally give equilibrium binding when applied on lower Association Time which you might need to sample later.<br>
 						</div>
 							<!-- q. Prompt: Low concentration suffer from high absolute error % -->
 						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000002 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true && view.isDisabled_check == true">
@@ -799,7 +801,7 @@
 						<div ng-show="timeOn_Form.timeOn.$dirty && timeOn_Form.timeOn.$invalid && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Invalid Association Time input]</font></b><br>
-							Free Ligand Concentration input can only intake a number between 1 to 900.<br>
+							Association Time input can only intake a number between 1 to 900.<br>
 						</div>
 							<!-- t. Prompt: maximum number of curve on graph reached -->
 						<div ng-show="view.output.RU_CompiledLabelPlotAll.length == 20 && view.isDisabled_check == true">
@@ -811,7 +813,7 @@
 						<div ng-show="view.experiment.steps > view.output.optimum_steps && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
-							Your steps count is above the optimum steps. Finish off your experiment, download your data from RESULTS TABLE, and using the framework in <b><font color="#9e6de7">Strategies & Tactics</font></b> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
+							Your steps count is above the optimum steps. Finish off your experiment, download your data from RESULTS TABLE, and using the framework in <b><font color="#ececec">Strategies & Tactics</font></b> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
 						</div>
 							<!-- v. Prompt: RU on result is valid -->
 						<div ng-show="view.EqTimeReachedOnce == false && view.output.fLC.length !== 0 && view.system.min_timeOn <= view.output.timeOn[view.output.timeOn.length-1] && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
@@ -824,7 +826,7 @@
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Trial {{view.experiment.steps}} - efficiency status]</font><br>
 							<p class="declare-result" ng-show="view.output.inefficiency_display !== 0">{{view.output.inefficiency_display}} Effiency Points lost!<br>
-							Change your Free Ligand Concentration to equal when it reaches equilibrium! (buffer of 5 extra seconds allow before deduction)</p>
+							Increase the Association Time to make sure equilibrium is reached! (buffer of 5 extra seconds after equilibrium binding allowed before points deduction)</p>
 							<p class="declare-result" ng-show="view.output.inefficiency_display == 0">0 Effiency Point lost, keep it up!</p>
 						</div>
 							<!-- x. Prompt: session over -->
