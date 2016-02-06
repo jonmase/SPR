@@ -33,6 +33,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.guideMode = false;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
+	view.EqTimeReachedOnce = false;
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
@@ -91,6 +92,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_check = true;
 		view.compileCookiesData();
 		view.cookies.putObject("storedData", view.cookiesData);
+			// check if equilibrium time is reached once
+		if (view.system.min_timeOn < view.output.timeOn[view.output.timeOn.length-1]) {
+			view.EqTimeReachedOnce = true;
+		}
 	}; 
 
 /* e) creating function for "home" button */
@@ -134,6 +139,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
+		view.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
@@ -243,6 +249,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
+		view.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
