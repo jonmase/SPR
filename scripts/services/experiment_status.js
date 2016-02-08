@@ -30,7 +30,7 @@ function experimentTrack() {
 	experiment.stdDev_Absolute = experiment.stdDev_Default; // starting with default level and increase as it passes different time point
 	experiment.stdDev_Gaussian_absolute = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
 		// for relative error
-	experiment.CV_Default = 0.05; // CV means the size of stdDev relative to the mean (thus stdDev error generated from CV is dependent on size of mean, not absolute)
+	experiment.CV_Default = 0.12; // CV means the size of stdDev relative to the mean (thus stdDev error generated from CV is dependent on size of mean, not absolute)
 	experiment.CV_Now = experiment.CV_Default;
 	experiment.stdDev_relative = 0;
 	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
@@ -101,7 +101,7 @@ function experimentTrack() {
 		if (out_fLC === 0) {
 			return out_fLC; // if user is creating output for background, no relative error is suffered
 		} else {
-			return out_fLC+experiment.plusOrMinus*experiment.stdDev_Gaussian_relative;
+			return Math.abs(out_fLC+experiment.plusOrMinus*experiment.stdDev_Gaussian_relative);
 		}
 	};
 }

@@ -46,7 +46,14 @@ function tableCreate(outputModel, experimentStatus) {
 					},
 					{
 						field: "fLC_standard",
-						displayName: "free ligand conc. standard display",
+						displayName: "free ligand conc./M",
+						width: "120",
+						enableSorting: false
+						// visible: false
+					},
+					{
+						field: "inefficiency_display",
+						displayName: "efficiency lost",
 						width: "120",
 						enableSorting: false
 						// visible: false
@@ -63,14 +70,15 @@ function tableCreate(outputModel, experimentStatus) {
     		exporterCsvFilename: 'SPR_Data.csv'
 		};
 
-	table.compileData = function(experiment_steps, out_fLC, out_timeOn, out_RU_On_Output, out_fLC_standard) {
+	table.compileData = function(experiment_steps, out_fLC, out_timeOn, out_RU_On_Output, out_fLC_standard, out_inefficiency_display) {
 		table.compiledSet = {
 			"trial": experiment_steps,
 			"fLC": out_fLC,
 			"units": output.unitAdjust,
 			"timeOn": out_timeOn,
 			"maxRU_value": out_RU_On_Output,
-			"fLC_standard": out_fLC_standard
+			"fLC_standard": out_fLC_standard,
+			"inefficiency_display": out_inefficiency_display
 		};
 		table.data.push(angular.copy(table.compiledSet));
 	};

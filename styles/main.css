@@ -77,6 +77,14 @@ body {
 	text-decoration: none;
 }
 
+#navbar-placeholder {
+	color: #ffffff;
+	margin-top: 1%;
+	margin-bottom: 0px;
+	text-align: center;
+	text-decoration: none;
+}
+
 a.navbar-link:link {
 	color: #ffffff;
 	text-decoration: none;
@@ -119,12 +127,12 @@ a.navbar-link:active {
 }
 
 .clickable1 {
-	background-color: #4273b3;
+	background-color: #47679b;
 	border: 1px solid #222530;
 }
 
-.clickable2{
-	background-color: #5478b0;
+.clickable2 {
+	background-color: #4d71aa;
 	border: 1px solid #222530;
 }
 
@@ -257,6 +265,26 @@ a.blue-link:active {
 	text-decoration: none;
 }
 
+a.red-link:link {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
+a.red-link:visited {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
+a.red-link:hover {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
+a.red-link:active {
+	color: #EC5D57;
+	text-decoration: none;
+}
+
 #center_buttons {
 	text-align: center;
 }
@@ -266,7 +294,7 @@ a.blue-link:active {
 	padding: 0px;
 	border: none;
     background: none;
-    color: #51A7F9;
+    color: #EC5D57;
 }
 
 /* panel: guide mode */
@@ -280,11 +308,6 @@ a.blue-link:active {
 	margin-top: 10px;
 	text-align: center;
 	background-color: #222530;
-}
-
-.select-hints {
-	width: 24.5px;
-	height: 24.5px;
 }
 
 #hints-heading {

@@ -36,9 +36,13 @@ function outputMethod(experimentStatus, systemModel) {
 	output.unitPool = ["mM", "uM", "nM"];
 	output.magnitudeAdjust = null; // default input unit of magnitude and unit adjust can be altered at the radio button ng-init
 	output.unitAdjust = null;
-		// tracked value for efficiency calculator
+		// values for efficiency calculator
 	output.inefficiency = 0;
 	output.efficiencyRating = 100;
+	output.optimum_steps = 26;
+	output.bufferTimeAllowed = 5; // seconds
+	output.min_inefficiency = 100/output.optimum_steps; // 100 = total efficiency points, 26 = optimum steps
+
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
@@ -132,17 +136,17 @@ function outputMethod(experimentStatus, systemModel) {
 
 /* l) efficiency calculator */
 	output.efficiencyCalculator = function(new_fLC, new_timeOn) {
-		if (new_fLC === 0) {
-			output.inefficiency = 100/46;
+		if (new_fLC === 0) { // user are not penalise for running to obtain background
+			output.inefficiency = 0; 
 		} else {
-			output.checkTimeInefficiency = (new_timeOn-5)/system.min_timeOn; // scaling all time input to its minimum time on to reach plateau at 1 nM (minimum time on); -5 is to allow extra 5 seconds buffer after plateau to be include and not deduct extra efficiency points
-			if (output.checkTimeInefficiency > 1) {
-					// 10 = maximum efficiency rating, 46 = total possible steps; thus, at step = 46, the inefficiency should reach 10, and thus efficiency = 0
-				output.inefficiency = (100/46)*output.checkTimeInefficiency; // minimum inefficiency per step (10/46) is scaled by how much over time user over input above minimum time on
+			output.checkTimeInefficiency = (new_timeOn-output.bufferTimeAllowed)/system.min_timeOn; // check proportion of how much time on input (with 5 seconds buffer allowed) is over minimum time on necessary for 1 nM to reach equilibrium
+			if (output.checkTimeInefficiency > 1) { // if user time input is above limit allowed, then efficiency points starts deducting
+				output.inefficiency = (output.min_inefficiency)*output.checkTimeInefficiency; // minimum inefficiency per step is scaled by how much over time user input above minimum time on;
 			} else {
-				output.inefficiency = 100/46; // this means that the lower ceiling of ineffiency is the minimum time on. any time on below that suffers from inefficiency by using additional steps only, which is 10/46
+				output.inefficiency = 0;
 			}
 		}
 		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
+		output.inefficiency_display = (Math.round(output.inefficiency*100))/100;
 	};
 }

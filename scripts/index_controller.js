@@ -33,6 +33,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.guideMode = false;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
+	view.EqTimeReachedOnce = false;
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
@@ -41,7 +42,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.isDisabled_check = true;
 	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
 	view.magnitudeCheck_kOn = [1000000, 1000, 1];
-	view.allowedAnswerDeviation = 0.10; // answer input must be within this confidence limit range of the true answer
+	view.allowedAnswerDeviation = 0.20; // answer input must be within this confidence limit range of the true answer
 	view.Kd_correct = false;
 	view.kOn_correct = false;
 	view.kOff_correct = false;
@@ -84,13 +85,17 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.timeOffDefault = view.system.min_timeOff;
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
-		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]);
+		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1], view.output.inefficiency_display);
 		view.chart.replot();
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
 		view.compileCookiesData();
 		view.cookies.putObject("storedData", view.cookiesData);
+			// check if equilibrium time is reached once
+		if (view.system.min_timeOn < view.output.timeOn[view.output.timeOn.length-1]) {
+			view.EqTimeReachedOnce = true;
+		}
 	}; 
 
 /* e) creating function for "home" button */
@@ -134,6 +139,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
+		view.EqTimeReachedOnce = false;
+		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -154,20 +161,23 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.check = function(check_Kd, check_kOn, check_kOff, magnitudeCheck_Kd, magnitudeCheck_kOn) {
 		view.isDisabled_check = false;
 		view.checkCounter++;
+		view.check_Kd_Deviation = (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd])/view.system.Kd;
+		view.check_kOn_Deviation = (check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn])/view.system.kOn;
+		view.check_kOff_Deviation = check_kOff/view.system.kOff;
 			// check if Kd answer is within acceptable range
-		if (check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] > (1-view.allowedAnswerDeviation)*view.system.Kd && check_Kd/view.magnitudeCheck_Kd[magnitudeCheck_Kd] < (1+view.allowedAnswerDeviation)*view.system.Kd) {
+		if (1+view.allowedAnswerDeviation > view.check_Kd_Deviation && view.check_Kd_Deviation > 1-view.allowedAnswerDeviation) {
 			view.Kd_correct = true;
 		} else {
 			view.Kd_correct = false;
 		}
 			// check if kOn answer is within acceptable range
-		if (check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] > (1-view.allowedAnswerDeviation)*view.system.kOn && check_kOn*view.magnitudeCheck_kOn[magnitudeCheck_kOn] < (1+view.allowedAnswerDeviation)*view.system.kOn) {
+		if (1+view.allowedAnswerDeviation > view.check_kOn_Deviation && view.check_kOn_Deviation > 1-view.allowedAnswerDeviation) {
 			view.kOn_correct = true;
 		} else {
 			view.kOn_correct = false;
 		}
 			// check if kOff answer is within acceptable range
-		if (check_kOff > (1-view.allowedAnswerDeviation)*view.system.kOff && check_kOff < (1+view.allowedAnswerDeviation)*view.system.kOff) {
+		if (1+view.allowedAnswerDeviation > view.check_kOff_Deviation && view.check_kOff_Deviation > 1-view.allowedAnswerDeviation) {
 			view.kOff_correct = true;
 		} else {
 			view.kOff_correct = false;
@@ -200,6 +210,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.Kd = change_Kd/view.magnitudeCheck_Kd[magnitudeChange_Kd];
 		view.system.kOn = change_kOn*view.magnitudeCheck_kOn[magnitudeChange_kOn];
 		view.system.kOff = change_kOff;
+		view.system.find_min_timeOnOff();
 		view.system.uniqueID = "custom";
 	};
 
@@ -238,6 +249,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
+		view.EqTimeReachedOnce = false;
+		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
