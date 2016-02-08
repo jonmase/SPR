@@ -83,6 +83,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.check_statistics_Replicates(view.output.fLC_tableDisplay);
 		view.experiment.check_six_unique_fLC(view.output.fLC_tableDisplay);
 		view.experiment.check_univEqFound(view.system.min_timeOn, view.output.timeOn[view.output.timeOn.length-1]);
+		view.experiment.check_confirmSaturation(view.output.RU_On_Output_table, view.output.RU_saturation);
 	};
 
 /* d) creating function for "wash-up" button */
@@ -246,6 +247,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		}
 			// reset experiment status
 		view.system.loadNewPair(view.vol, view.RPUM);
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		view.experiment.efficiencyRating = 100;
@@ -343,6 +345,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		$('#cookies_modal').modal({backdrop: 'static',keyboard: false});
 	} else {
 		view.system.loadNewPair(view.vol, view.RPUM);
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		$(window).load(function(){$('#initialising_modal').modal('show');});

@@ -182,11 +182,16 @@ function experimentTrack(systemModel) {
 	};
 
 /* k) game combo: check confirm saturation reached */
-	experiment.check_confirmSaturation = function() {
-		if (experiment.isDisabled_comboFive === false) {
-			experiment.comboStreak++;
-			experiment.isDisabled_comboFive = true;
+	experiment.check_confirmSaturation = function(out_RU_On_Output_table, out_RU_saturation) {
+		experiment.RU_saturation_round = (Math.round(out_RU_saturation*1000))/1000;
+		experiment.fLC_sorted = out_RU_On_Output_table.sort();
+		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
+			if ((Math.round(experiment.fLC_sorted[i]*1000))/1000 == experiment.RU_saturation_round && experiment.fLC_sorted[i] == experiment.fLC_sorted[i+1] && experiment.isDisabled_comboFive === false) {
+				experiment.comboStreak++;
+				experiment.isDisabled_comboFive = true;
+			}
 		}
+		// - test saturation code
 	};
 
 /* l) game combo: check broad sampling strategy used */
