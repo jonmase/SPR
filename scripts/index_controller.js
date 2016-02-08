@@ -76,6 +76,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
 		view.experiment.efficiencyCalculator(new_fLC, new_timeOn);
+		view.experiment.check_outlier_Replicates(view.output.fLC_tableDisplay);
+		view.experiment.check_statistics_Replicates(view.output.fLC_tableDisplay);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;

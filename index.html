@@ -350,7 +350,7 @@
 
 								<b><font color="#51A7F9">Challenge mode</font></b><br>
 								+ Finish within 5 minutes<br>
-								+ Achieve 7 Combo Streak without breaking<br><br>
+								+ Achieve {{view.experiment.comboStreakMax}} Combo Streak without breaking<br><br>
 
 								<b><font color="#c5b552">Before you begin the game</font></b><br>
 								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. If you need a refresher, quickly review in HELP at CONTROL PANEL.
@@ -527,7 +527,7 @@
 								<!-- d. Your combo streak -->
 							<div ng-show="view.guideMode == false" id="track-panel-bottom" class="col-md-6 track-panel gloss-contrast">
 								<div>Combo Streak</div>
-								<div class="tracked-value">7</div>
+								<div class="tracked-value">{{view.experiment.comboStreakMax}}</div>
 							</div>
 						</div><br>
 					</div>
@@ -839,15 +839,17 @@
 							<b><font color="#51A7F9">[Hint: Equilibrium reached]</font></b><br>
 							Well done! You've found the universal Association Time that is of sufficient length to ensure equilibrium is reached in any Free Ligand Concentration input!<br>
 						</div>
-							<!-- w. Prompt: Efficiency Points Lost -->
+							<!-- w. Prompt: Achievement Status -->
 						<div ng-show="view.output.fLC.length !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<font color="#ececec">[Trial {{view.experiment.steps}} - efficiency status]</font><br>
-								<!-- Negative Reinforcement -->
+							<font color="#ececec">[Trial {{view.experiment.steps}} - Achievement Status]</font><br>
+								<!-- Negative Reinforcement: Efficiency Points -->
 							<p class="declare-result" ng-show="view.experiment.inefficiency_display !== 0">{{view.experiment.inefficiency_display}} Effiency Points lost!<br>
 							Increase the Association Time to make sure equilibrium is reached! (buffer of 5 extra seconds after equilibrium binding allowed before points deduction)</p>
-								<!-- Positive Reinforcement -->
+								<!-- Positive Reinforcement Efficiency Points -->
 							<p class="declare-result" ng-show="view.experiment.inefficiency_display == 0">0 Effiency Point lost, keep it up!</p>
+								<!-- Combo Streak -->
+							<p class="declare-result">Your current Combo Streak is {{view.experiment.comboStreak}}. {{view.experiment.debugcheck}}</p>
 						</div>
 							<!-- x. Negative Reinforcement: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay && view.isDisabled_check == true">

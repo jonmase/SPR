@@ -32,6 +32,14 @@ function experimentTrack(systemModel) {
 	experiment.CV_Now = experiment.CV_Default;
 	experiment.stdDev_relative = 0;
 	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
+		// gameification combo tracked variables
+	experiment.comboStreak = 0;
+	experiment.comboStreakMax = 5;
+	experiment.isDisabled_comboOne = false;
+	experiment.isDisabled_comboTwo = false;
+	experiment.isDisabled_comboThree = false;
+	experiment.isDisabled_comboFour = false;
+	experiment.isDisabled_comboFive = false;
 		// values for efficiency calculator
 	experiment.inefficiency = 0;
 	experiment.efficiencyRating = 100;
@@ -127,30 +135,63 @@ function experimentTrack(systemModel) {
 	};
 
 /* g) game combo: check 3 replicates for outlier */
-
+	experiment.check_outlier_Replicates = function(out_fLC_input) {
+		experiment.fLC_sorted = out_fLC_input.sort();
+		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
+			if ((experiment.fLC_sorted[i] == experiment.fLC_sorted[i+2]) && (experiment.isDisabled_comboOne === false)) {
+				experiment.comboStreak++;
+				experiment.isDisabled_comboOne = true;
+			}
+		}
+	};
 
 /* h) game combo: check 6 replicates for statistics */
-
+	experiment.check_statistics_Replicates = function(out_fLC_input) {
+		experiment.fLC_sorted = out_fLC_input.sort();
+		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
+			if ((experiment.fLC_sorted[i] == experiment.fLC_sorted[i+5]) && (experiment.isDisabled_comboTwo === false)) {
+				experiment.comboStreak++;
+				experiment.isDisabled_comboTwo = true;
+			}
+		}
+	};
 
 /* i) game combo: check 6 different fLC input made */
+	experiment.check_six_fLC_pointSpread = function() {
+		experiment.comboStreak++;
+		experiment.isDisabled_comboThree = false;
+	};
 
-
-/* j) game combo: check saturation reached */
-
+/* j) game combo: check confirm saturation reached */
+	experiment.check_confirmSaturation = function() {
+		experiment.comboStreak++;
+		experiment.isDisabled_comboFour = false;
+	};
 
 /* k) game combo: check broad sampling strategy used */
-
+	experiment.check_broadSampling = function() {
+		experiment.comboStreak++;
+		experiment.isDisabled_comboFive = false;
+	};
 
 /* l) streak breaker: background not remove */
+	experiment.check_backgroundNotClear = function() {
+		experiment.comboStreak = 0;
+	};
 
-
-/* m) streak breaker: equilibrium not reached after 2 trials */
-
+/* m) streak breaker: equilibrium not reached after 3 trials (background, test eq at nM & predict, confirm eq prediction) */
+	experiment.check_universalEqTimeUsed = function() {
+		experiment.comboStreak = 0;
+	};
 
 /* n) streak breaker: efficiency points lost */
-
+	experiment.check_efficiencyLost = function() {
+		experiment.comboStreak = 0;
+	};
 
 /* o) streak breaker: steps count over limit */
-
+	experiment.check_outlierReplicates = function() {
+		experiment.comboStreak = 0;
+	};
 
 }
