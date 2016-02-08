@@ -33,7 +33,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.guideMode = true;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
-	view.EqTimeReachedOnce = false;
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
@@ -47,6 +46,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.kOn_correct = false;
 	view.kOff_correct = false;
 	view.all_Correct = false;
+		// gamification reinforcement values
+	view.EqTimeReachedOnce = false;
 		// stored cookies data
 	view.cookiesData = {};
 
@@ -74,7 +75,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.chart.replot();
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
-		view.output.efficiencyCalculator(new_fLC, new_timeOn);
+		view.experiment.efficiencyCalculator(new_fLC, new_timeOn);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
 		view.isDisabled_check = true;
@@ -85,7 +86,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.timeOffDefault = view.system.min_timeOff;
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
-		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1], view.output.inefficiency_display);
+		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1], view.experiment.inefficiency_display);
 		view.chart.replot();
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
@@ -118,7 +119,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// for backend
 		if (view.all_Correct === false) {
 			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
-			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionEfficiencyCount.push(angular.copy(view.experiment.efficiencyRating));
 			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 			view.endTime.push(angular.copy(Date.now()));
@@ -132,7 +133,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// reset experiment status
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
-		view.output.efficiencyRating = 100;
+		view.experiment.efficiencyRating = 100;
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
@@ -186,7 +187,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
 			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
-			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionEfficiencyCount.push(angular.copy(view.experiment.efficiencyRating));
 			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.endTime.push(angular.copy(Date.now()));
 			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
@@ -232,7 +233,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// for backend
 		if (view.all_Correct === false) {
 			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
-			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionEfficiencyCount.push(angular.copy(view.experiment.efficiencyRating));
 			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 			view.endTime.push(angular.copy(Date.now()));
@@ -242,7 +243,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.loadNewPair(view.vol, view.RPUM);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
-		view.output.efficiencyRating = 100;
+		view.experiment.efficiencyRating = 100;
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
@@ -279,7 +280,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 				// stored experiment status
 			storedDaysLeft: view.experiment.daysLeft,
 			storedTimeOfDay: view.experiment.timeOfDay,
-			store_effRating: view.output.efficiencyRating,
+			store_effRating: view.experiment.efficiencyRating,
 			storedSteps: view.experiment.steps,
 			stored_backgroundSet: view.backgroundSet,
 			stored_backgroundUnitsSet: view.backgroundUnitsSet,
@@ -314,7 +315,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// set experiment status to as stored
 		view.experiment.daysLeft = view.cookiesData.storedDaysLeft;
 		view.experiment.timeOfDay = view.cookiesData.storedTimeOfDay;
-		view.output.efficiencyRating = view.cookiesData.store_effRating;
+		view.experiment.efficiencyRating = view.cookiesData.store_effRating;
 		view.experiment.steps = view.cookiesData.storedSteps;
 		view.backgroundSet = view.cookiesData.stored_backgroundSet;
 		view.backgroundUnitsSet = view.cookiesData.stored_backgroundUnitsSet;

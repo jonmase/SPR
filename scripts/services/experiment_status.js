@@ -1,39 +1,43 @@
-	/* Experimental Status: contain functions to ouput values for state of experiment */
+	/* Experimental Status: contain functions to ouput values for state of experiment and gamification elements */
 
 /* 1. registering modules, services and constants */
-angular.module('experiment_status', [])
-	.service('experimentStatus', [experimentTrack]);
+angular.module('experiment_status', ['system_model'])
+	.service('experimentStatus', ['systemModel', experimentTrack]);
 
-function experimentTrack() { 
+function experimentTrack(systemModel) { 
 	var experiment = this;
-/* creating concept for time of day to alter output standard deviation */
+	var system = systemModel;
+
+		// creating concept for time of day to alter output standard deviation
 	experiment.timePerRun = 0.5;
 	experiment.timePerBreak = 1.5;
 	experiment.startOfDay = 9.5;
-	experiment.startOfLunch = 12.0;
-		// total runs with good SD per day = 13
+	experiment.startOfLunch = 12.0; // total runs with good SD per day = 13
 	experiment.startOfDinner = 17.0;
 	experiment.startOfSupper = 21.0;
-	experiment.endOfDay = 24.0;
-		// total runs per day = 23
-/* creating tracked variables */
+	experiment.endOfDay = 24.0; // total runs per day = 23
+		// creating tracked variables
 	experiment.steps = 0;
 	experiment.timeOfDay = 9.5;
 	experiment.daysAllowed = 2; 
 	experiment.daysLeft = 2;
-	experiment.endOfExperimentTime = 0;
-		// total runs with good SD per simulation = 26
-		// total runs per simulation = 46
-/* creating variables for error generation module */
-		// for absolute error
+	experiment.endOfExperimentTime = 0; // total runs with good SD per simulation = 26; total runs per simulation = 46
+		// creating variables for error generation module
+			// for absolute error
 	experiment.stdDev_Default = 0.000000004; // Need to figure out the right level of variation for concentration; currently default variation is at nM level
 	experiment.stdDev_Absolute = experiment.stdDev_Default; // starting with default level and increase as it passes different time point
 	experiment.stdDev_Gaussian_absolute = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
-		// for relative error
+			// for relative error
 	experiment.CV_Default = 0.12; // CV means the size of stdDev relative to the mean (thus stdDev error generated from CV is dependent on size of mean, not absolute)
 	experiment.CV_Now = experiment.CV_Default;
 	experiment.stdDev_relative = 0;
 	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
+		// values for efficiency calculator
+	experiment.inefficiency = 0;
+	experiment.efficiencyRating = 100;
+	experiment.bufferTimeAllowed = 5; // seconds
+	experiment.optimum_steps = 26;
+	experiment.min_inefficiency = 100/experiment.optimum_steps; // 100 = total efficiency points, 26 = optimum steps
 
 /* 2. creating sub-methods as part of the function object that can be called */
 
@@ -83,7 +87,7 @@ function experimentTrack() {
 		}
 	};
 
-/* e) generating relative error at random by sampling from a normal distribution */
+/* f) generating relative error at random by sampling from a normal distribution */
 		// credit: http://www.protonfish.com/random.shtml
 	experiment.relativeError = function(out_fLC) {
 			// calculating standard deviation of relative error from coefficient of variance
@@ -104,4 +108,49 @@ function experimentTrack() {
 			return Math.abs(out_fLC+experiment.plusOrMinus*experiment.stdDev_Gaussian_relative);
 		}
 	};
+
+
+/* l) efficiency calculator */
+	experiment.efficiencyCalculator = function(new_fLC, new_timeOn) {
+		if (new_fLC === 0) { // user are not penalise for running to obtain background
+			experiment.inefficiency = 0; 
+		} else {
+			experiment.checkTimeInefficiency = (new_timeOn-experiment.bufferTimeAllowed)/system.min_timeOn; // check proportion of how much time on input (with 5 seconds buffer allowed) is over minimum time on necessary for 1 nM to reach equilibrium
+			if (experiment.checkTimeInefficiency > 1) { // if user time input is above limit allowed, then efficiency points starts deducting
+				experiment.inefficiency = (experiment.min_inefficiency)*experiment.checkTimeInefficiency; // minimum inefficiency per step is scaled by how much over time user input above minimum time on;
+			} else {
+				experiment.inefficiency = 0;
+			}
+		}
+		experiment.efficiencyRating = Math.max(((Math.round(100*(experiment.efficiencyRating-experiment.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
+		experiment.inefficiency_display = (Math.round(experiment.inefficiency*100))/100;
+	};
+
+/* g) game combo: check 3 replicates for outlier */
+
+
+/* h) game combo: check 6 replicates for statistics */
+
+
+/* i) game combo: check 6 different fLC input made */
+
+
+/* j) game combo: check saturation reached */
+
+
+/* k) game combo: check broad sampling strategy used */
+
+
+/* l) streak breaker: background not remove */
+
+
+/* m) streak breaker: equilibrium not reached after 2 trials */
+
+
+/* n) streak breaker: efficiency points lost */
+
+
+/* o) streak breaker: steps count over limit */
+
+
 }

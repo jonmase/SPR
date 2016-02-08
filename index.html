@@ -255,7 +255,7 @@
 						</div>
 					</div>
 				</div>
-					<!-- i. Modal: Prompt confirm clear -->
+					<!-- i. Modal: Confirm clear -->
 				<div id="clear_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -273,7 +273,7 @@
 						</div>
 					</div>
 				</div>
-					<!-- j. Modal: Prompt confirm restart -->
+					<!-- j. Modal: Confirm restart -->
 				<div id="restart_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -293,7 +293,7 @@
 						</div>
 					</div>
 				</div>
-					<!-- k. Modal: Prompt confirm play again -->
+					<!-- k. Modal: Confirm play again -->
 				<div id="replay_modal" class="modal fade" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -517,7 +517,7 @@
 								<!-- b. Average Steps -->
 							<div class="col-md-6 track-panel" data-toggle="tooltip" title="exclude accounting outliers">
 								<div>Optimum Steps</div>
-								<div class="tracked-value">{{view.output.optimum_steps}}</div>
+								<div class="tracked-value">{{view.experiment.optimum_steps}}</div>
 							</div>
 								<!-- c. Time Limit -->
 							<div ng-show="view.guideMode == false" class="col-md-6 track-panel">
@@ -670,7 +670,7 @@
 					</div><br>
 						<!-- vii. Console -->
 					<div id="console" class="panel-body">
-							<!-- a. Prompt: Answer is correct -->
+							<!-- a. Postive Reinforcement: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true) && !(view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Attempt {{view.checkCounter}} - correct answers]</font></b><br>
@@ -678,7 +678,7 @@
 								<p class="declare-result" ng-show="view.kOn_correct == true">Your k<sub>on</sub> value is correct!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == true">Your k<sub>off</sub> value is correct!</p>
 						</div>
-							<!-- b. Prompt: Answer is wrong -->
+							<!-- b. Negative Reinforcement: Answer is wrong -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == false || view.kOn_correct == false || view.kOff_correct == false)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Attempt {{view.checkCounter}} - wrong answers]</font></b><br>
@@ -686,18 +686,18 @@
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
 						</div>
-							<!-- c. Prompt: All answer is correct! -->
+							<!-- c. Postive Reinforcement: All answer is correct! -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
-							<p class="declare-result" ng-show="view.experiment.steps > (view.output.optimum_steps+2) || view.experiment.steps < (view.output.optimum_steps-2) || view.output.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the VICTORY CONDITIONS. :(<br><br>
+							<p class="declare-result" ng-show="view.experiment.steps > (view.experiment.optimum_steps+2) || view.experiment.steps < (view.experiment.optimum_steps-2) || view.experiment.efficiencyRating < 100">Your answers are all in the right range! However, it appears that you have not achieve them within the VICTORY CONDITIONS. :(<br><br>
 
 							To help you achieve the VICTORY CONDITIONS, you can download your data from the RESULTS TABLE and reflect upon how to improve your Efficiency or Steps Count</font> with the demonstrator. Afterwards, click RESTART GAME and switch to TRAINING mode to access the <b><font color="#ececec">Strategies & Tactics</font></b> section and helpful Console tips to improve your method.<br><br>
 
 							Good luck! You are not far from winning the game!<br><br>
 							</p>
 
-							<p class="declare-result" ng-show="(view.experiment.steps <= (view.output.optimum_steps+2) && view.experiment.steps >= (view.output.optimum_steps-2)) && view.output.efficiencyRating == 100">Congratulations, your answers, Steps Count and Efficiency Rating are all in the right range. Check with the demonstrator to confirm result is correct! :)<br><br>
+							<p class="declare-result" ng-show="(view.experiment.steps <= (view.experiment.optimum_steps+2) && view.experiment.steps >= (view.experiment.optimum_steps-2)) && view.experiment.efficiencyRating == 100">Congratulations, your answers, Steps Count and Efficiency Rating are all in the right range. Check with the demonstrator to confirm result is correct! :)<br><br>
 							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br>
 							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="red-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="red-link">challenge</a></b> your friends who might be interested!<br><br>
 
@@ -776,26 +776,26 @@
 								Please input values for Free Ligand Concentration and Association Time in CONTROL PANEL to begin. Click START and then WASH to begin the association and disassociation phase respectively.
 							</p>
 						</div>
-							<!-- e. Prompt: plan your experiment -->
+							<!-- e. Negative Reinforcement: plan your experiment -->
 						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Plan first!]</font></b><br>
 							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <b><font color="#ececec">Strategies & Tactics</font></b> section for help!
 							<br>
 						</div>
-							<!-- n. Prompt: remove background -->
+							<!-- n. Negative Reinforcement: remove background -->
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><b><font color="#c5b552">[Hint: Remove background]</font></b></b><br>
 							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you START and WASH an experiment with free ligand concentration = 0 M with any Association Time input.<br>
 						</div>
-							<!-- o. Prompt: remove background successs -->
+							<!-- o. Postive Reinforcement: remove background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Success: remove background]</font></b><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 						</div>
-							<!-- p. Prompt: RU on result is invalid -->
+							<!-- p. Negative Reinforcement: RU on result is invalid -->
 						<div ng-show="view.output.fLC.length !== 0 && view.output.timeOn[view.output.timeOn.length-1] < view.system.min_timeOn && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Hint: Find the right association time to use first]</font></b><br>
@@ -803,7 +803,7 @@
 							i. This Association Time used might be insufficiently long to reach equilibrium binding<br>
 							ii. Although equilibrium binding is reached in this Association Time, this Association Time will not universally give equilibrium binding when applied on lower Association Time which you might need to sample later.<br>
 						</div>
-							<!-- q. Prompt: Low concentration suffer from high absolute error % -->
+							<!-- q. Negative Reinforcement: Low concentration suffer from high absolute error % -->
 						<div ng-show="view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] < 0.00000002 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.output.fLC_tableDisplay.length > 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Hint: Absolute error]</font></b><br>
@@ -827,13 +827,13 @@
 							<b><font color="#c5b552">[Maximum no. of plot on sensorgram reached]</font></b><br>
 							SENSORGRAM can only display 10 curves at once. Please CLEAR your SENSORGRAM before you continue. The data in your RESULTS TABLE will not be cleared.<br>
 						</div>
-							<!-- u. Prompt: Too many steps -->
-						<div ng-show="view.experiment.steps > view.output.optimum_steps && view.guideMode == true && view.isDisabled_check == true">
+							<!-- u. Negative Reinforcement: Too many steps -->
+						<div ng-show="view.experiment.steps > view.experiment.optimum_steps && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#c5b552">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
 							Your steps count is above the optimum steps. Finish off your experiment, download your data from RESULTS TABLE, and using the framework in <b><font color="#ececec">Strategies & Tactics</font></b> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
 						</div>
-							<!-- v. Prompt: RU on result is valid -->
+							<!-- v. Postive Reinforcement: Found universal equilibrium time -->
 						<div ng-show="view.EqTimeReachedOnce == false && view.output.fLC.length !== 0 && view.system.min_timeOn <= view.output.timeOn[view.output.timeOn.length-1] && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Hint: Equilibrium reached]</font></b><br>
@@ -843,15 +843,17 @@
 						<div ng-show="view.output.fLC.length !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Trial {{view.experiment.steps}} - efficiency status]</font><br>
-							<p class="declare-result" ng-show="view.output.inefficiency_display !== 0">{{view.output.inefficiency_display}} Effiency Points lost!<br>
+								<!-- Negative Reinforcement -->
+							<p class="declare-result" ng-show="view.experiment.inefficiency_display !== 0">{{view.experiment.inefficiency_display}} Effiency Points lost!<br>
 							Increase the Association Time to make sure equilibrium is reached! (buffer of 5 extra seconds after equilibrium binding allowed before points deduction)</p>
-							<p class="declare-result" ng-show="view.output.inefficiency_display == 0">0 Effiency Point lost, keep it up!</p>
+								<!-- Positive Reinforcement -->
+							<p class="declare-result" ng-show="view.experiment.inefficiency_display == 0">0 Effiency Point lost, keep it up!</p>
 						</div>
-							<!-- x. Prompt: session over -->
+							<!-- x. Negative Reinforcement: session over -->
 						<div ng-show="view.experiment.daysLeft == 0 && view.experiment.timeOfDay == view.experiment.endOfDay && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#d83535">[Experiment Ended]</font></b><br>
-							You ran out of time to finish the experiment. To try again without changing the system, click <u>RESTART</u>.<br>
+							You ran out of time to finish the experiment. To try again without changing the system, click <u>RESTART GAME</u>.<br>
 						</div>
 					</div><br>
 						<!-- viii. Panel: results table (ui-grid) -->
@@ -878,7 +880,7 @@
 							<!-- c. Your Efficiency Points -->
 						<div class="col-md-6 track-panel">
 							<div>Efficiency Points</div>
-							<div class="tracked-value">{{view.output.efficiencyRating}}</div>
+							<div class="tracked-value">{{view.experiment.efficiencyRating}}</div>
 						</div>
 							<!-- d. Your Steps Taken -->
 						<div id="track-panel-bottom" class="col-md-6 track-panel gloss-contrast">

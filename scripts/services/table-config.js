@@ -71,7 +71,7 @@ function tableCreate(outputModel, experimentStatus) {
     		exporterCsvFilename: 'SPR_Data.csv'
 		};
 
-	table.compileData = function(experiment_steps, out_fLC, out_timeOn, out_RU_On_Output, out_fLC_standard, out_inefficiency_display) {
+	table.compileData = function(experiment_steps, out_fLC, out_timeOn, out_RU_On_Output, out_fLC_standard, exp_inefficiency_display) {
 		table.compiledSet = {
 			"trial": experiment_steps,
 			"fLC": out_fLC,
@@ -79,7 +79,7 @@ function tableCreate(outputModel, experimentStatus) {
 			"timeOn": out_timeOn,
 			"maxRU_value": out_RU_On_Output,
 			"fLC_standard": out_fLC_standard,
-			"inefficiency_display": out_inefficiency_display
+			"inefficiency_display": exp_inefficiency_display
 		};
 		table.data.push(angular.copy(table.compiledSet));
 	};

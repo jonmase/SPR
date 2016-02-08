@@ -1,17 +1,16 @@
-	/* Output Mathematical Model: contain functions to input user-generated parameters and ouput values for graphical display */
+	/* Output Mathematical Model: contain functions to input user-generated parameters and ouput values for graphical/table display */
 
 /* 1. registering modules, services and constants */
-angular.module('output_model', ['experiment_status', 'system_model'])
-	.service('outputModel', ['experimentStatus', 'systemModel', outputMethod]);
+angular.module('output_model', ['experiment_status'])
+	.service('outputModel', ['experimentStatus', outputMethod]);
 
-function outputMethod(experimentStatus, systemModel) { 
+function outputMethod(experimentStatus) { 
 
 /* 2. creating sub-methods as part of the function object that can be outputed */
 
 /* a) all the data to be stored */
 	var output = this; // create a specific selector for outputMethod specific module required in plotCoordinates but used with 'all or nothing' principle
 	var experiment = experimentStatus;
-	var system = systemModel;
 		// data input value
 	output.fLC_tableDisplay = []; // units = M but no error adjusted; input fLC value specify by the user, display on table and charts so user can track progress
 	output.fLC = []; // units = M but error adjusted; actual fLC value use in plotting as adjusted by standard error
@@ -36,13 +35,6 @@ function outputMethod(experimentStatus, systemModel) {
 	output.unitPool = ["mM", "uM", "nM"];
 	output.magnitudeAdjust = null; // default input unit of magnitude and unit adjust can be altered at the radio button ng-init
 	output.unitAdjust = null;
-		// values for efficiency calculator
-	output.inefficiency = 0;
-	output.efficiencyRating = 100;
-	output.optimum_steps = 26;
-	output.bufferTimeAllowed = 5; // seconds
-	output.min_inefficiency = 100/output.optimum_steps; // 100 = total efficiency points, 26 = optimum steps
-
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
@@ -132,21 +124,5 @@ function outputMethod(experimentStatus, systemModel) {
 			currentStep++;
 			output.plotCoordinatesOff(currentStep, totalSteps, out_timeOn, sys_kOff, out_RU0, backgroundSet);
 		}
-	};
-
-/* l) efficiency calculator */
-	output.efficiencyCalculator = function(new_fLC, new_timeOn) {
-		if (new_fLC === 0) { // user are not penalise for running to obtain background
-			output.inefficiency = 0; 
-		} else {
-			output.checkTimeInefficiency = (new_timeOn-output.bufferTimeAllowed)/system.min_timeOn; // check proportion of how much time on input (with 5 seconds buffer allowed) is over minimum time on necessary for 1 nM to reach equilibrium
-			if (output.checkTimeInefficiency > 1) { // if user time input is above limit allowed, then efficiency points starts deducting
-				output.inefficiency = (output.min_inefficiency)*output.checkTimeInefficiency; // minimum inefficiency per step is scaled by how much over time user input above minimum time on;
-			} else {
-				output.inefficiency = 0;
-			}
-		}
-		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
-		output.inefficiency_display = (Math.round(output.inefficiency*100))/100;
 	};
 }
