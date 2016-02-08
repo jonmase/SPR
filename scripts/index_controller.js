@@ -39,6 +39,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.isDisabled_run = false;
 	view.isDisabled_wash = true;
 	view.isDisabled_check = true;
+	view.EqTimeReachedOnce = false;
 	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
 	view.magnitudeCheck_kOn = [1000000, 1000, 1];
 	view.allowedAnswerDeviation = 0.20; // answer input must be within this confidence limit range of the true answer
@@ -46,8 +47,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.kOn_correct = false;
 	view.kOff_correct = false;
 	view.all_Correct = false;
-		// gamification reinforcement values
-	view.EqTimeReachedOnce = false;
 		// stored cookies data
 	view.cookiesData = {};
 
@@ -76,11 +75,14 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
 		view.experiment.efficiencyCalculator(new_fLC, new_timeOn);
-		view.experiment.check_outlier_Replicates(view.output.fLC_tableDisplay);
-		view.experiment.check_statistics_Replicates(view.output.fLC_tableDisplay);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
-		view.isDisabled_check = true;
+		view.isDisabled_check = true;			
+			// gamification elements
+		view.experiment.check_outlier_Replicates(view.output.fLC_tableDisplay);
+		view.experiment.check_statistics_Replicates(view.output.fLC_tableDisplay);
+		view.experiment.check_six_unique_fLC(view.output.fLC_tableDisplay);
+		view.experiment.check_univEqFound(view.system.min_timeOn, view.output.timeOn[view.output.timeOn.length-1]);
 	};
 
 /* d) creating function for "wash-up" button */
@@ -93,12 +95,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
+			// cookies
 		view.compileCookiesData();
 		view.cookies.putObject("storedData", view.cookiesData);
-			// check if equilibrium time is reached once
+			// check if equilibrium reached once
 		if (view.system.min_timeOn < view.output.timeOn[view.output.timeOn.length-1]) {
 			view.EqTimeReachedOnce = true;
-		}
+		}		
 	}; 
 
 /* e) creating function for "home" button */
@@ -142,7 +145,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
-		view.EqTimeReachedOnce = false;
+		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
@@ -252,7 +255,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
-		view.EqTimeReachedOnce = false;
+		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;

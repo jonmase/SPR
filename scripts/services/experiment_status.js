@@ -34,12 +34,13 @@ function experimentTrack(systemModel) {
 	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
 		// gameification combo tracked variables
 	experiment.comboStreak = 0;
-	experiment.comboStreakMax = 5;
+	experiment.comboStreakMax = 6;
 	experiment.isDisabled_comboOne = false;
 	experiment.isDisabled_comboTwo = false;
 	experiment.isDisabled_comboThree = false;
 	experiment.isDisabled_comboFour = false;
 	experiment.isDisabled_comboFive = false;
+	experiment.isDisabled_comboSix = false;
 		// values for efficiency calculator
 	experiment.inefficiency = 0;
 	experiment.efficiencyRating = 100;
@@ -157,39 +158,61 @@ function experimentTrack(systemModel) {
 	};
 
 /* i) game combo: check 6 different fLC input made */
-	experiment.check_six_fLC_pointSpread = function() {
-		experiment.comboStreak++;
-		experiment.isDisabled_comboThree = false;
+	experiment.check_six_unique_fLC = function(out_fLC_input) {
+		experiment.fLC_sorted = out_fLC_input.sort();
+		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
+			if (experiment.fLC_sorted[i] !== experiment.fLC_sorted[i+1]) {
+				experiment.unique_fLC++;
+			}
+		}
+		if (experiment.unique_fLC == 6 && experiment.isDisabled_comboThree === false) {
+			experiment.comboStreak++;
+			experiment.isDisabled_comboThree = true;
+		} else {
+			experiment.unique_fLC = 0;
+		}
 	};
 
-/* j) game combo: check confirm saturation reached */
+/* j) game combo: check universal equilibrium time found */
+	experiment.check_univEqFound = function(sys_min_timeOn, out_timeOn) {
+		if (sys_min_timeOn < out_timeOn && experiment.isDisabled_comboFour === false) {
+			experiment.comboStreak++;
+			experiment.isDisabled_comboFour = true;
+		}
+	};
+
+/* k) game combo: check confirm saturation reached */
 	experiment.check_confirmSaturation = function() {
-		experiment.comboStreak++;
-		experiment.isDisabled_comboFour = false;
+		if (experiment.isDisabled_comboFive === false) {
+			experiment.comboStreak++;
+			experiment.isDisabled_comboFive = true;
+		}
 	};
 
-/* k) game combo: check broad sampling strategy used */
+/* l) game combo: check broad sampling strategy used */
 	experiment.check_broadSampling = function() {
-		experiment.comboStreak++;
-		experiment.isDisabled_comboFive = false;
+		if (experiment.isDisabled_comboSix === false) {
+			experiment.comboStreak++;
+			experiment.isDisabled_comboSix = true;
+		}
 	};
 
-/* l) streak breaker: background not remove */
+/* m) streak breaker: background not remove */
 	experiment.check_backgroundNotClear = function() {
 		experiment.comboStreak = 0;
 	};
 
-/* m) streak breaker: equilibrium not reached after 3 trials (background, test eq at nM & predict, confirm eq prediction) */
+/* n) streak breaker: equilibrium not reached after 3 trials (background, test eq at nM & predict, confirm eq prediction) */
 	experiment.check_universalEqTimeUsed = function() {
 		experiment.comboStreak = 0;
 	};
 
-/* n) streak breaker: efficiency points lost */
+/* o) streak breaker: efficiency points lost */
 	experiment.check_efficiencyLost = function() {
 		experiment.comboStreak = 0;
 	};
 
-/* o) streak breaker: steps count over limit */
+/* p) streak breaker: steps count over limit */
 	experiment.check_outlierReplicates = function() {
 		experiment.comboStreak = 0;
 	};
