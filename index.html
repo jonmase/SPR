@@ -348,16 +348,20 @@
 								+ Using the Optimum Steps, excluding outliers<br>
 								+ Without losing any Efficiency Points<br><br>
 
+								<b><font color="#51A7F9">Challenge mode</font></b><br>
+								+ Finish within 5 minutes<br>
+								+ Achieve 7 Combo Streak without breaking<br><br>
+
 								<b><font color="#c5b552">Before you begin the game</font></b><br>
 								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. If you need a refresher, quickly review in HELP at CONTROL PANEL.
 								<br><br>
 
 								Let's begin by selecting a suitable playing mode.
-								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try beating the Challenge straight away!
+								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try to beat the Challenge straight away!
 								<br><br>
 								<div id="center_buttons">
-									<button type="button" class="modal-button clickable1" ng-click="view.learn_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
-									<button type="button" class="modal-button clickable1" ng-click="view.mastery_user()"  data-dismiss="modal">Challenge</button>
+									<button type="button" class="modal-button clickable1" ng-click="view.train_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
+									<button type="button" class="modal-button clickable1" ng-click="view.challenge_user()"  data-dismiss="modal">Challenge</button>
 								</div>
 							</div>
 						</div>
@@ -501,8 +505,8 @@
 							<button type="button" class="button clickable1 col-md-6" data-toggle="modal" data-target="#analyse_modal" ng-disabled="view.guideMode == false">ANALYSE</button>
 						</div>
 					</div><br>
-						<!-- ii. Panel: high score display (mastery mode only) -->
-					<div ng-show="view.guideMode == false">
+						<!-- ii. Panel: victory conditions (mastery mode only) -->
+					<div>
 						<div class="panel-heading">VICTORY CONDITIONS</div>
 						<div id="dashboard" class="panel-body">
 								<!-- a. Lowest Number of Steps Taken -->
@@ -515,9 +519,19 @@
 								<div>Optimum Steps</div>
 								<div class="tracked-value">{{view.output.optimum_steps}}</div>
 							</div>
+								<!-- c. Time Limit -->
+							<div ng-show="view.guideMode == false" class="col-md-6 track-panel">
+								<div>Time Limit</div>
+								<div class="tracked-value">03:00</div>
+							</div>
+								<!-- d. Your combo streak -->
+							<div ng-show="view.guideMode == false" id="track-panel-bottom" class="col-md-6 track-panel gloss-contrast">
+								<div>Combo Streak</div>
+								<div class="tracked-value">7</div>
+							</div>
 						</div><br>
 					</div>
-						<!-- iii. Panel: check answer -->
+						<!-- iv. Panel: check answer -->
 					<div class="panel-heading">CHECK ANSWER</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Form: check Kd -->
@@ -566,7 +580,7 @@
 							<button id="check_submit" class="button clickable1" ng-click="view.check(input_check_Kd, input_check_kOn, input_check_kOff, magnitudeSelected_check_Kd, magnitudeSelected_check_kOn)" ng-disabled="check_Kd.Kd_input.$invalid || check_kOn.kOn_input.$invalid || check_kOff.kOff_input.$invalid">CHECK</button>
 						</div>
 					</div><br>
-										<!-- Start of debugging box -->
+										<!-- v. Start of debugging box -->
 					<!--div class="panel-heading">DEBUG: SYSTEM INFO</div>
 					<div id="sys_info" class="panel-body">
 						<br><br><div class="debug">Answers values</div><br>
@@ -649,12 +663,12 @@
 										<!-- End of debugging box -->
 				</div>
 				<div id="output-box" class="container-fluid col-md-6">
-						<!-- v. Panel: sensorgram output graph (angular flot chart) -->
+						<!-- vi. Panel: sensorgram output graph (angular flot chart) -->
 					<div class="panel-heading">SENSORGRAM</div>
 					<div id="sensorgram">
 						<flot id="flot" dataset="view.chart.dataset" options="view.chart.options"></flot>
 					</div><br>
-						<!-- vi. Console -->
+						<!-- vii. Console -->
 					<div id="console" class="panel-body">
 							<!-- a. Prompt: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true) && !(view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
@@ -702,13 +716,6 @@
 								- Ligand-Receptor Pair Unique ID: {{view.system.uniqueID}}<br>
 								- Ligand Molecular Weight / gmol<sup>-1</sup>: {{view.system.mwL | mwFilter}}<br>
 								- Receptor Molecular Weight / gmol<sup>-1</sup>: {{view.system.mwR | mwFilter}}<br>
-						</div>
-							<!-- e. Prompt: plan your experiment -->
-						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
-							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#c5b552">[Plan first!]</font></b><br>
-							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <b><font color="#ececec">Strategies & Tactics</font></b> section for help!
-							<br>
 						</div>
 							<!-- f. Prompt: after having lunch -->
 						<div ng-show="view.experiment.timeOfDay == 13.5 && view.isDisabled_check == true">
@@ -761,8 +768,19 @@
 						<div ng-show="view.experiment.timeOfDay == view.experiment.startOfDay && fLC_Form.fLC.$pristine && view.isDisabled_check == true && timeOn_Form.timeOn.$pristine || view.experiment.timeOfDay == view.experiment.startOfDay && view.experiment.daysAllowed !== view.experiment.daysLeft">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<font color="#ececec">[Start of a new day @ 9.00]</font><br>
-							Experiment automatically setup. . . Setup completed @ 9.30.<br>
-							Ready to begin. Please input values for Free Ligand Concentration and Association Time in CONTROL PANEL to begin. Click START and then WASH to begin the association and disassociation phase respectively.
+							Experiment automatically setup. . . Setup completed @ 9.30. Ready to begin.<br>
+
+							<p ng-show="view.guideMode == true">
+								<b><font color="#70BF41">> Console:</font></b>&nbsp;
+								<font color="#ececec">[Hint: How to begin]</font><br>
+								Please input values for Free Ligand Concentration and Association Time in CONTROL PANEL to begin. Click START and then WASH to begin the association and disassociation phase respectively.
+							</p>
+						</div>
+							<!-- e. Prompt: plan your experiment -->
+						<div ng-show="view.output.fLC.length == 0 && view.guideMode == true && view.isDisabled_check == true">
+							<b><font color="#70BF41">> Console:</font></b>&nbsp;
+							<b><font color="#c5b552">[Plan first!]</font></b><br>
+							Wait! Before you start, have you plan your experimental strategy? Never start an experiment without a plan, otherwise Steps and Efficiency Points could be wasted. If you are not sure where to start, click the <b><font color="#ececec">Strategies & Tactics</font></b> section for help!
 							<br>
 						</div>
 							<!-- n. Prompt: remove background -->
@@ -836,7 +854,7 @@
 							You ran out of time to finish the experiment. To try again without changing the system, click <u>RESTART</u>.<br>
 						</div>
 					</div><br>
-						<!-- vii. Panel: results table (ui-grid) -->
+						<!-- viii. Panel: results table (ui-grid) -->
 					<div class="panel-heading">RESULTS TABLE</div>
 					<div id="result-table">
 						<div class="grid" ui-grid="view.table.options" ui-grid-selection ui-grid-exporter></div>
@@ -844,7 +862,7 @@
 				</div>
 				
 				<div id="status-system-box" class="container-fluid col-md-3">
-						<!-- viii. Panel: experiment status-->
+						<!-- ix. Panel: experiment status-->
 					<div class="panel-heading">YOUR EXPERIMENT STATUS</div>
 					<div id="dashboard" class="panel-body">
 							<!-- a. Your Days Left -->
@@ -854,21 +872,21 @@
 						</div>
 							<!-- b. Your Time -->
 						<div class="col-md-6 track-panel">
-							<div>Time</div>
+							<div>Time of Day</div>
 							<div class="tracked-value">{{view.experiment.timeOfDay | timeFilter}}</div>
 						</div>
-							<!-- c. Yout Efficiency Points -->
+							<!-- c. Your Efficiency Points -->
 						<div class="col-md-6 track-panel">
 							<div>Efficiency Points</div>
 							<div class="tracked-value">{{view.output.efficiencyRating}}</div>
 						</div>
 							<!-- d. Your Steps Taken -->
-						<div id="track-panel-steps" class="col-md-6 track-panel gloss-contrast">
-							<div>Steps</div>
+						<div id="track-panel-bottom" class="col-md-6 track-panel gloss-contrast">
+							<div>Steps Taken</div>
 							<div class="tracked-value">{{view.experiment.steps}}</div>
 						</div>
 					</div><br>
-						<!-- ix. Panel: controls -->
+						<!-- x. Panel: controls -->
 					<div class="panel-heading">CONTROL PANEL</div>
 					<div class="panel-body clickable-box">
 							<!-- a) "Start" button -->
@@ -926,23 +944,23 @@
 			
 			<!-- 4. Credit Box -->
 			<div id="oxonHeaderFooter" class="row credit-box" style="position: absolute; width: 100%; bottom: 0;">
-					<!-- a. Logo -->
+					<!-- i. Logo -->
 				<div id="credit-left" class="col-md-2">
 					<a target="_blank" href="http://www.ox.ac.uk/"><img src="images/ox-uni-logo.png" id="ox-logo"></a>
 				</div>
-					<!-- b. credit & buttons -->
+					<!-- ii. credit & buttons -->
 				<div id="credit-box" class="col-md-10">
 					<div id="credit-buttons">
-							<!-- i. restart -->
+							<!-- a. restart -->
 						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#restart_modal" data-toggle="tooltip" title="All data will be erase. Ligand-Receptor will not change.">RESTART GAME</button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- ii. replay -->
+							<!-- b. replay -->
 						<button id="bottom_button" class="button actions" data-toggle="modal" data-target="#replay_modal" data-toggle="tooltip" title="All data will be erase. Ligand-Receptor will change.">NEW GAME</button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- iii. email to others -->
-						<a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="action-link"><button id="bottom_button" class="button actions">CHALLENGE FRIENDS</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- iv. feedback by emailing developer -->
+							<!-- c. email to others -->
+						<a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="action-link"><button id="CTA_button" class="button actions">CHALLENGE FRIENDS</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- d. feedback by emailing developer -->
 						<!--a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="action-link"-->
-						<a href="mailto:c.srisakvarakul@gmail.com" class="action-link"><button id="survey_button" class="button actions">FEEDBACK</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- v. facebook share -->
+						<a href="mailto:c.srisakvarakul@gmail.com" class="action-link"><button id="bottom_button" class="button actions">FEEDBACK</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- e. facebook share -->
 						<!--a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="action-link">
 						<button id="bottom_button" class="button actions" data-href="https://learntech.imsu.ox.ac.uk/SPR/" data-layout="link">SHARE</button></a>&nbsp;&nbsp;&nbsp;&nbsp;-->
 					</div>

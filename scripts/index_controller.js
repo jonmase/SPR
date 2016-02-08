@@ -30,7 +30,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.sessionCheckCount = [];
 	view.checkResults = [];
 		// default function of various buttons
-	view.guideMode = false;
+	view.guideMode = true;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
 	view.EqTimeReachedOnce = false;
@@ -214,15 +214,15 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.uniqueID = "custom";
 	};
 
-/* i) creating functions to track if learn or mastery user */
-	view.learn_user = function() {
-		view.user_type.push(angular.copy("learn"));
+/* i) creating functions to track if user is training or challenging */
+	view.train_user = function() {
+		view.user_type.push(angular.copy("train"));
 		view.guideMode = true;
 		view.startTime.push(angular.copy(Date.now()));
 	};
 
-	view.mastery_user = function() {
-		view.user_type.push(angular.copy("mastery"));
+	view.challenge_user = function() {
+		view.user_type.push(angular.copy("challenge"));
 		view.guideMode = false;
 		view.startTime.push(angular.copy(Date.now()));
 	};

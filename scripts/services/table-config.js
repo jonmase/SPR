@@ -18,7 +18,8 @@ function tableCreate(outputModel, experimentStatus) {
 					{
 						field: "trial",
 						displayName: "trial",
-						width: "51"
+						width: "51",
+						enableSorting: false
 					},
 					{
 						field: "fLC",
