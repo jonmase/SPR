@@ -175,7 +175,7 @@ function experimentTrack(systemModel) {
 
 /* j) game combo 4: check universal equilibrium time found */
 	experiment.check_univEqFound = function(out_timeOn) {
-		if (system.min_timeOn <= out_timeOn && experiment.isDisabled_comboSeven === false) {
+		if (system.min_timeOn <= out_timeOn && experiment.isDisabled_comboFour === false) {
 			experiment.comboStreak++;
 			experiment.isDisabled_comboFour = true;
 		}

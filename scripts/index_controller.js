@@ -149,6 +149,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_background = false;
 		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
+		view.experiment.comboStreak = 0;
+		view.experiment.isDisabled_comboOne = false;
+		view.experiment.isDisabled_comboTwo = false;
+		view.experiment.isDisabled_comboThree = false;
+		view.experiment.isDisabled_comboFour = false;
+		view.experiment.isDisabled_comboFive = false;
+		view.experiment.isDisabled_comboSix = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -260,6 +267,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_background = false;
 		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
+		view.experiment.comboStreak = 0;
+		view.experiment.isDisabled_comboOne = false;
+		view.experiment.isDisabled_comboTwo = false;
+		view.experiment.isDisabled_comboThree = false;
+		view.experiment.isDisabled_comboFour = false;
+		view.experiment.isDisabled_comboFive = false;
+		view.experiment.isDisabled_comboSix = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
