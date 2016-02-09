@@ -58,6 +58,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.output.minimum_fLC_input = 1;
 		view.chart.replot();
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
+		view.experiment.check_backgroundSet(view.backgroundSet);
 	};
 
 /* c) creating function for "run experiment" button  */
@@ -97,6 +99,11 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
+		view.experiment.isDisabled_comboOne_msg = true;
+		view.experiment.isDisabled_comboTwo_msg = true;
+		view.experiment.isDisabled_comboThree_msg = true;
+		view.experiment.isDisabled_comboFive_msg = true;
+		view.experiment.isDisabled_comboSix_msg = true;
 			// cookies
 		view.compileCookiesData();
 		view.cookies.putObject("storedData", view.cookiesData);

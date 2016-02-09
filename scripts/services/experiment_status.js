@@ -34,13 +34,21 @@ function experimentTrack(systemModel) {
 	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
 		// gamification combo tracked variables
 	experiment.comboStreak = 0;
-	experiment.comboStreakMax = 6;
+	experiment.comboStreakMax = 7;
 	experiment.isDisabled_comboOne = false;
 	experiment.isDisabled_comboTwo = false;
 	experiment.isDisabled_comboThree = false;
 	experiment.isDisabled_comboFour = false;
 	experiment.isDisabled_comboFive = false;
 	experiment.isDisabled_comboSix = false;
+	experiment.isDisabled_comboSeven = false;
+	experiment.isDisabled_comboOne_msg = true;
+	experiment.isDisabled_comboTwo_msg = true;
+	experiment.isDisabled_comboThree_msg = true;
+	// combo four uses view.EqTimeReachedOnce
+	experiment.isDisabled_comboFive_msg = true;
+	experiment.isDisabled_comboSix_msg = true;
+	// combo seven uses view.isDisabled_background
 		// values for efficiency calculator
 	experiment.inefficiency = 0;
 	experiment.efficiencyRating = 100;
@@ -142,6 +150,7 @@ function experimentTrack(systemModel) {
 			if ((experiment.fLC_sorted[i] == experiment.fLC_sorted[i+2]) && (experiment.isDisabled_comboOne === false)) {
 				experiment.comboStreak++;
 				experiment.isDisabled_comboOne = true;
+				experiment.isDisabled_comboOne_msg = false;
 			}
 		}
 	};
@@ -153,6 +162,7 @@ function experimentTrack(systemModel) {
 			if ((experiment.fLC_sorted[i] == experiment.fLC_sorted[i+5]) && (experiment.isDisabled_comboTwo === false)) {
 				experiment.comboStreak++;
 				experiment.isDisabled_comboTwo = true;
+				experiment.isDisabled_comboTwo_msg = false;
 			}
 		}
 	};
@@ -168,6 +178,7 @@ function experimentTrack(systemModel) {
 		if (experiment.unique_fLC == 6 && experiment.isDisabled_comboThree === false) {
 			experiment.comboStreak++;
 			experiment.isDisabled_comboThree = true;
+			experiment.isDisabled_comboThree_msg = false;
 		} else {
 			experiment.unique_fLC = 0;
 		}
@@ -191,6 +202,7 @@ function experimentTrack(systemModel) {
 			if ((experiment.out_sorted_round[i] >= experiment.saturation_round) && (experiment.out_sorted_round[i] == experiment.out_sorted_round[i-1]) && experiment.isDisabled_comboFive === false) { // -1 = similar to the one behind, since there is no number in front yet
 				experiment.comboStreak++;
 				experiment.isDisabled_comboFive = true;
+				experiment.isDisabled_comboFive_msg = false;
 			}
 		}
 	};
@@ -210,8 +222,17 @@ function experimentTrack(systemModel) {
 				if (experiment.check_nM_sampling === true && experiment.check_mM_sampling === true){
 					experiment.comboStreak++;
 					experiment.isDisabled_comboSix = true;
+					experiment.isDisabled_comboSix_msg = false;
 				}
 			}
+		}
+	};
+
+/* m) game combo 7: check if background is set */
+	experiment.check_backgroundSet = function(view_background) {
+		if (view_background !== 0 && experiment.isDisabled_comboSeven === false) {
+			experiment.comboStreak++;
+			experiment.isDisabled_comboSeven = true;
 		}
 	};
 }
