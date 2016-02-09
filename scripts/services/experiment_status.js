@@ -135,9 +135,9 @@ function experimentTrack(systemModel) {
 		experiment.inefficiency_display = (Math.round(experiment.inefficiency*100))/100;
 	};
 
-/* g) game combo: check 3 replicates for outlier */
+/* g) game combo 1: check 3 replicates for outlier */
 	experiment.check_outlier_Replicates = function(out_fLC_input) {
-		experiment.fLC_sorted = out_fLC_input.sort();
+		experiment.fLC_sorted = (angular.copy(out_fLC_input)).sort();
 		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
 			if ((experiment.fLC_sorted[i] == experiment.fLC_sorted[i+2]) && (experiment.isDisabled_comboOne === false)) {
 				experiment.comboStreak++;
@@ -146,9 +146,9 @@ function experimentTrack(systemModel) {
 		}
 	};
 
-/* h) game combo: check 6 replicates for statistics */
+/* h) game combo 2: check 6 replicates for statistics */
 	experiment.check_statistics_Replicates = function(out_fLC_input) {
-		experiment.fLC_sorted = out_fLC_input.sort();
+		experiment.fLC_sorted = (angular.copy(out_fLC_input)).sort();
 		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
 			if ((experiment.fLC_sorted[i] == experiment.fLC_sorted[i+5]) && (experiment.isDisabled_comboTwo === false)) {
 				experiment.comboStreak++;
@@ -157,9 +157,9 @@ function experimentTrack(systemModel) {
 		}
 	};
 
-/* i) game combo: check 6 different fLC input made */
+/* i) game combo 3: check 6 different fLC input made */
 	experiment.check_six_unique_fLC = function(out_fLC_input) {
-		experiment.fLC_sorted = out_fLC_input.sort();
+		experiment.fLC_sorted = (angular.copy(out_fLC_input)).sort();
 		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
 			if (experiment.fLC_sorted[i] !== experiment.fLC_sorted[i+1]) {
 				experiment.unique_fLC++;
@@ -173,7 +173,7 @@ function experimentTrack(systemModel) {
 		}
 	};
 
-/* j) game combo: check universal equilibrium time found */
+/* j) game combo 4: check universal equilibrium time found */
 	experiment.check_univEqFound = function(sys_min_timeOn, out_timeOn) {
 		if (sys_min_timeOn < out_timeOn && experiment.isDisabled_comboFour === false) {
 			experiment.comboStreak++;
@@ -181,10 +181,10 @@ function experimentTrack(systemModel) {
 		}
 	};
 
-/* k) game combo: check confirm saturation reached */
+/* k) game combo 5: check confirm saturation reached */
 	experiment.check_confirmSaturation = function(out_RU_On_Output_table, out_RU_saturation) {
 		experiment.saturation_round = (Math.round(out_RU_saturation/10)*10);
-		experiment.out_sorted = out_RU_On_Output_table.sort();
+		experiment.out_sorted = (angular.copy(out_RU_On_Output_table)).sort();
 		experiment.out_sorted_round = [];
 		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
 			experiment.out_sorted_round.push((Math.round((experiment.out_sorted[i]+10)/10))*10); // buffer of 10 RU allowed
@@ -195,11 +195,23 @@ function experimentTrack(systemModel) {
 		}
 	};
 
-/* l) game combo: check broad sampling strategy used */
-	experiment.check_broadSampling = function() {
+/* l) game combo 6: check broad sampling strategy used */
+	experiment.check_broadSampling = function(out_fLC_input) {
 		if (experiment.isDisabled_comboSix === false) {
-			experiment.comboStreak++;
-			experiment.isDisabled_comboSix = true;
+			experiment.check_nM_sampling = false;
+			experiment.check_mM_sampling = false;
+			for (var i = 0; i < out_fLC_input.length; i++) {
+				if (out_fLC_input[i] < 0.000001) {
+					experiment.check_nM_sampling = true;
+				}
+				if (out_fLC_input[i] >= 0.001) {
+					experiment.check_mM_sampling = true;
+				}
+				if (experiment.check_nM_sampling === true && experiment.check_mM_sampling === true){
+					experiment.comboStreak++;
+					experiment.isDisabled_comboSix = true;
+				}
+			}
 		}
 	};
 

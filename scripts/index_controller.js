@@ -84,6 +84,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.check_six_unique_fLC(view.output.fLC_tableDisplay);
 		view.experiment.check_univEqFound(view.system.min_timeOn, view.output.timeOn[view.output.timeOn.length-1]);
 		view.experiment.check_confirmSaturation(view.output.RU_On_Output_table, view.output.RU_saturation);
+		view.experiment.check_broadSampling(view.output.fLC_tableDisplay);
 	};
 
 /* d) creating function for "wash-up" button */
