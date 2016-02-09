@@ -174,8 +174,8 @@ function experimentTrack(systemModel) {
 	};
 
 /* j) game combo 4: check universal equilibrium time found */
-	experiment.check_univEqFound = function(sys_min_timeOn, out_timeOn) {
-		if (sys_min_timeOn < out_timeOn && experiment.isDisabled_comboFour === false) {
+	experiment.check_univEqFound = function(out_timeOn) {
+		if (system.min_timeOn <= out_timeOn && experiment.isDisabled_comboSeven === false) {
 			experiment.comboStreak++;
 			experiment.isDisabled_comboFour = true;
 		}
@@ -214,25 +214,4 @@ function experimentTrack(systemModel) {
 			}
 		}
 	};
-
-/* m) streak breaker: background not remove */
-	experiment.check_backgroundNotClear = function() {
-		experiment.comboStreak = 0;
-	};
-
-/* n) streak breaker: equilibrium not reached after 3 trials (background, test eq at nM & predict, confirm eq prediction) */
-	experiment.check_universalEqTimeUsed = function() {
-		experiment.comboStreak = 0;
-	};
-
-/* o) streak breaker: efficiency points lost */
-	experiment.check_efficiencyLost = function() {
-		experiment.comboStreak = 0;
-	};
-
-/* p) streak breaker: steps count over limit */
-	experiment.check_outlierReplicates = function() {
-		experiment.comboStreak = 0;
-	};
-
 }
