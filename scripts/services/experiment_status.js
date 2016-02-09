@@ -171,7 +171,7 @@ function experimentTrack(systemModel) {
 	experiment.check_six_unique_fLC = function(out_fLC_input) {
 		experiment.fLC_sorted = (angular.copy(out_fLC_input)).sort();
 		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
-			if (experiment.fLC_sorted[i] !== experiment.fLC_sorted[i+1]) {
+			if (experiment.fLC_sorted[i] !== experiment.fLC_sorted[i+1] && experiment.fLC_sorted[i] !== 0) {
 				experiment.unique_fLC++;
 			}
 		}

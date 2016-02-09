@@ -779,7 +779,7 @@
 						<div ng-show="view.isDisabled_background == false && fLC_Form.fLC.$dirty && view.guideMode == true && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><b><font color="#c5b552">[Hint: Remove background]</font></b></b><br>
-							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you START and WASH an experiment with free ligand concentration = 0 M with any Association Time input.<br>
+							Before trying any other combinations, you should set the background value to remove it from subsequent experiment. The option to set will appear after you START and WASH the first trial with free ligand concentration = 0 M with any Association Time input. If you haven't set background after the first round, scroll down and click RESTART GAME.<br>
 						</div>
 							<!-- p. Negative Reinforcement: RU on result is invalid -->
 						<div ng-show="view.output.fLC.length !== 0 && view.output.timeOn[view.output.timeOn.length-1] < view.system.min_timeOn && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.guideMode == true && view.isDisabled_check == true">
@@ -837,7 +837,7 @@
 						<div ng-show="view.experiment.isDisabled_comboThree_msg == false && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Hint: Different input sampled]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">You have sampled at least six different Free Ligand Concentration input. This is a suitable number for SPR experiment to help you observe the general trendline of Langmuir Isotherm.</p>
+							<p class="declare-result" ng-show="view.guideMode == true">You have sampled at least six different Free Ligand Concentration input (excluding background setting). This is a suitable number for SPR experiment to help you observe the general trendline of Langmuir Isotherm.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- y. Postive Reinforcement - Combo Four: Found universal equilibrium time -->
@@ -931,7 +931,7 @@
 						</div>
 							<!-- c) "remove background value" button -->
 						<div class="box-left-btn">
-							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M">BACKGROUND</button>
+							<button class="button clickable2 col-md-12" ng-click="view.set_background()" ng-disabled="fLC_Form.fLC.$invalid || timeOn_Form.timeOn.$invalid || view.isDisabled_background == true || view.isDisabled_run == true || view.output.RU_On_Output.length == 0 || view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 || view.output.fLC_tableDisplay.length > 1" data-toggle="tooltip" title="Require: START free ligand concentration = 0 M for your first trial experiment">BACKGROUND</button>
 						</div>
 							<!-- d) "Clear chart" button -->
 						<div class="box-left-btn">
