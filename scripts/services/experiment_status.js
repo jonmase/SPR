@@ -32,7 +32,7 @@ function experimentTrack(systemModel) {
 	experiment.CV_Now = experiment.CV_Default;
 	experiment.stdDev_relative = 0;
 	experiment.stdDev_Gaussian_relative = 0; // Normal distribution is generated around input standard error and randomly picked as the final standard deviation to use
-		// gameification combo tracked variables
+		// gamification combo tracked variables
 	experiment.comboStreak = 0;
 	experiment.comboStreakMax = 6;
 	experiment.isDisabled_comboOne = false;
@@ -183,15 +183,16 @@ function experimentTrack(systemModel) {
 
 /* k) game combo: check confirm saturation reached */
 	experiment.check_confirmSaturation = function(out_RU_On_Output_table, out_RU_saturation) {
-		experiment.RU_saturation_round = (Math.round(out_RU_saturation*1000))/1000;
-		experiment.fLC_sorted = out_RU_On_Output_table.sort();
+		experiment.saturation_round = (Math.round(out_RU_saturation/10)*10);
+		experiment.out_sorted = out_RU_On_Output_table.sort();
+		experiment.out_sorted_round = [];
 		for (var i = 0; i < experiment.fLC_sorted.length; i++) {
-			if ((Math.round(experiment.fLC_sorted[i]*1000))/1000 == experiment.RU_saturation_round && experiment.fLC_sorted[i] == experiment.fLC_sorted[i+1] && experiment.isDisabled_comboFive === false) {
+			experiment.out_sorted_round.push((Math.round((experiment.out_sorted[i]+10)/10))*10); // buffer of 10 RU allowed
+			if ((experiment.out_sorted_round[i] >= experiment.saturation_round) && (experiment.out_sorted_round[i] == experiment.out_sorted_round[i-1]) && experiment.isDisabled_comboFive === false) { // -1 = similar to the one behind, since there is no number in front yet
 				experiment.comboStreak++;
 				experiment.isDisabled_comboFive = true;
 			}
 		}
-		// - test saturation code
 	};
 
 /* l) game combo: check broad sampling strategy used */

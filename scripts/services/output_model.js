@@ -128,8 +128,8 @@ function outputMethod(experimentStatus) {
 	};
 
 /* l) calculate saturation value of RU on */
-	output.calc_RU_saturation = function(sys_RU_MaxL, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet) {
-		output.RU_On = ((sys_RU_MaxL*Infinity)/(sys_Kd+Infinity))*(1-Math.pow(Math.E,-(sys_kOn*Infinity+sys_kOff)*Infinity));
-		output.RU_saturation = output.RU_On+sys_RU0-backgroundSet;
+		output.calc_RU_saturation = function(sys_RU_MaxL, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet) {
+		output.calc_RU_On(sys_RU_MaxL, 1000, sys_Kd, sys_kOn, sys_kOff, Infinity, sys_RU0, backgroundSet); // used a 1000 M to ensure saturation reached
+		output.RU_saturation = output.RU_OnAdjusted;
 	};
 }

@@ -219,7 +219,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.kOff = change_kOff;
 		view.system.find_min_timeOnOff();
 		view.system.uniqueID = "custom";
-	};
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);	};
 
 /* i) creating functions to track if user is training or challenging */
 	view.train_user = function() {
@@ -319,6 +319,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.mwL = view.cookiesData.stored_mwL;
 		view.system.mwR = view.cookiesData.stored_mwR;
 		view.system.calculateSystem(view.vol, view.RPUM);
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 			// set experiment status to as stored
 		view.experiment.daysLeft = view.cookiesData.storedDaysLeft;
 		view.experiment.timeOfDay = view.cookiesData.storedTimeOfDay;
