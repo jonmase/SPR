@@ -1,17 +1,16 @@
-	/* Output Mathematical Model: contain functions to input user-generated parameters and ouput values for graphical display */
+	/* Output Mathematical Model: contain functions to input user-generated parameters and ouput values for graphical/table display */
 
 /* 1. registering modules, services and constants */
-angular.module('output_model', ['experiment_status', 'system_model'])
-	.service('outputModel', ['experimentStatus', 'systemModel', outputMethod]);
+angular.module('output_model', ['experiment_status'])
+	.service('outputModel', ['experimentStatus', outputMethod]);
 
-function outputMethod(experimentStatus, systemModel) { 
+function outputMethod(experimentStatus) { 
 
 /* 2. creating sub-methods as part of the function object that can be outputed */
 
 /* a) all the data to be stored */
 	var output = this; // create a specific selector for outputMethod specific module required in plotCoordinates but used with 'all or nothing' principle
 	var experiment = experimentStatus;
-	var system = systemModel;
 		// data input value
 	output.fLC_tableDisplay = []; // units = M but no error adjusted; input fLC value specify by the user, display on table and charts so user can track progress
 	output.fLC = []; // units = M but error adjusted; actual fLC value use in plotting as adjusted by standard error
@@ -19,6 +18,7 @@ function outputMethod(experimentStatus, systemModel) {
 	output.timeOffDefault = 30; // set timeOff to 30 seconds for default, but will be override by min time off set in controller at starting
 	output.minimum_fLC_input = 0;
 		// chart coordinates calculation
+	output.RU_saturation = 0;
 	output.RU_On_Output = []; // store current peak value of RU On for this fLC and input time on
 	output.RU_On_Output_table = [];
 	output.RU_On_Max = []; // store theoretical max value of RU On for this fLC
@@ -36,13 +36,6 @@ function outputMethod(experimentStatus, systemModel) {
 	output.unitPool = ["mM", "uM", "nM"];
 	output.magnitudeAdjust = null; // default input unit of magnitude and unit adjust can be altered at the radio button ng-init
 	output.unitAdjust = null;
-		// values for efficiency calculator
-	output.inefficiency = 0;
-	output.efficiencyRating = 100;
-	output.optimum_steps = 26;
-	output.bufferTimeAllowed = 5; // seconds
-	output.min_inefficiency = 100/output.optimum_steps; // 100 = total efficiency points, 26 = optimum steps
-
 
 /* b) set fLC: user input via form; variable */
 	output.add_fLC = function(new_fLC) {
@@ -56,27 +49,27 @@ function outputMethod(experimentStatus, systemModel) {
 	};
 
 /* d) find RU_On: derived from 2nd order association formula; variable */
-	output.calc_RU_On = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_timeOn, out_RU0, backgroundSet) {
-		output.RU_On = ((out_RU_MaxL*out_fLC)/(sys_Kd+out_fLC))*(1-Math.pow(Math.E,-(sys_kOn*out_fLC+sys_kOff)*out_timeOn));
-		output.RU_OnAdjusted = output.RU_On+out_RU0-backgroundSet;
+	output.calc_RU_On = function(sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_timeOn, sys_RU0, backgroundSet) {
+		output.RU_On = ((sys_RU_MaxL*out_fLC)/(sys_Kd+out_fLC))*(1-Math.pow(Math.E,-(sys_kOn*out_fLC+sys_kOff)*out_timeOn));
+		output.RU_OnAdjusted = output.RU_On+sys_RU0-backgroundSet;
 	};
 
 /* e) find and store the current RU peak for a given input fLC and time on */
-	output.calc_RU_OnPeak = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
-		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.timeOn[output.timeOn.length-1], out_RU0, backgroundSet);
+	output.calc_RU_OnPeak = function(sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet) {
+		output.calc_RU_On(sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.timeOn[output.timeOn.length-1], sys_RU0, backgroundSet);
 		output.RU_On_Output_table.push(angular.copy(((Math.round(1000*output.RU_OnAdjusted))/1000))); // x1000 to round off value to 2 decimal place
 		output.RU_On_Output.push(angular.copy(output.RU_OnAdjusted));
 	};
 /* f) find and store the theoretical max RU peak for a given input fLC */
-	output.calc_RU_OnMax = function(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
-		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, Infinity, out_RU0, backgroundSet);
+	output.calc_RU_OnMax = function(sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet) {
+		output.calc_RU_On(sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, Infinity, sys_RU0, backgroundSet);
 		output.RU_On_Max.push(angular.copy(output.RU_OnAdjusted));
 	};
 
 /* g) find RU_Off: derived from 1st order disassociation formula; variable */
-	output.calc_RU_Off = function(out_RU_On, sys_kOff, out_timeOff, out_RU0, backgroundSet) {
+	output.calc_RU_Off = function(out_RU_On, sys_kOff, out_timeOff, sys_RU0, backgroundSet) {
 		output.RU_Off = out_RU_On*(Math.pow(Math.E, -sys_kOff*out_timeOff));
-		output.RU_OffAdjusted = output.RU_Off+out_RU0-backgroundSet;
+		output.RU_OffAdjusted = output.RU_Off+sys_RU0-backgroundSet;
 	};
 
 /* h) compiling the plot together as a single line and add label */
@@ -106,47 +99,37 @@ function outputMethod(experimentStatus, systemModel) {
 	};
 
 /* j) generating coordinates for RU on line and plot */
-	output.plotCoordinatesOn = function(out_timeOn, currentStep, totalSteps, out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet) {
+	output.plotCoordinatesOn = function(out_timeOn, currentStep, totalSteps, sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet) {
 			// generate RU On part of curve
 		output.RU_On_Coordinate.push(currentStep*(out_timeOn/totalSteps)); // upload x coordinate
-		output.calc_RU_On(out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.RU_On_Coordinate[0], out_RU0, backgroundSet);
+		output.calc_RU_On(sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, output.RU_On_Coordinate[0], sys_RU0, backgroundSet);
 		output.RU_On_Coordinate.push(output.RU_OnAdjusted); // upload y coordinate
 		output.RU_Line.push(angular.copy(output.RU_On_Coordinate)); // upload [x,y] coordinate in this form
 		output.RU_On_Coordinate.length = 0; // clear temporary coordinate generator for new sets of coordinates in [x,y] format		
 		if(currentStep < totalSteps) { // increment step
 			currentStep++;
-			output.plotCoordinatesOn(out_timeOn, currentStep, totalSteps, out_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, out_RU0, backgroundSet);
+			output.plotCoordinatesOn(out_timeOn, currentStep, totalSteps, sys_RU_MaxL, out_fLC, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet);
 		} // now we have a line with data in format of [[x1,y1],[x2,y2]...]
 	};
 
 /* k) generating coordinates for RU off line and plot */
-	output.plotCoordinatesOff = function(currentStep, totalSteps, out_timeOn, sys_kOff, out_RU0, backgroundSet) {
+	output.plotCoordinatesOff = function(currentStep, totalSteps, out_timeOn, sys_kOff, sys_RU0, backgroundSet) {
 			// generate RU Off part of curve
 		output.RU_Off_Coordinate.push(currentStep*(output.timeOffDefault/totalSteps)+out_timeOn); // shift time by out_timeOn to start after RU On curve finish
 		output.intermediateTimeOff = currentStep*(output.timeOffDefault/totalSteps);		
-		output.calc_RU_Off(output.RU_On_Output[output.RU_On_Output.length-1]-out_RU0+backgroundSet, sys_kOff, output.intermediateTimeOff, out_RU0, backgroundSet); // output.RU_On_Output[output.RU_On_Output.length-1] is subjected to intrinsic +out_RU0-backgroundSet, so need to remove it
+		output.calc_RU_Off(output.RU_On_Output[output.RU_On_Output.length-1]-sys_RU0+backgroundSet, sys_kOff, output.intermediateTimeOff, sys_RU0, backgroundSet); // output.RU_On_Output[output.RU_On_Output.length-1] is subjected to intrinsic +sys_RU0-backgroundSet, so need to remove it
 		output.RU_Off_Coordinate.push(output.RU_OffAdjusted);
 		output.RU_Line.push(angular.copy(output.RU_Off_Coordinate));
 		output.RU_Off_Coordinate.length = 0;
 		if(currentStep < totalSteps) { // increment step
 			currentStep++;
-			output.plotCoordinatesOff(currentStep, totalSteps, out_timeOn, sys_kOff, out_RU0, backgroundSet);
+			output.plotCoordinatesOff(currentStep, totalSteps, out_timeOn, sys_kOff, sys_RU0, backgroundSet);
 		}
 	};
 
-/* l) efficiency calculator */
-	output.efficiencyCalculator = function(new_fLC, new_timeOn) {
-		if (new_fLC === 0) { // user are not penalise for running to obtain background
-			output.inefficiency = 0; 
-		} else {
-			output.checkTimeInefficiency = (new_timeOn-output.bufferTimeAllowed)/system.min_timeOn; // check proportion of how much time on input (with 5 seconds buffer allowed) is over minimum time on necessary for 1 nM to reach equilibrium
-			if (output.checkTimeInefficiency > 1) { // if user time input is above limit allowed, then efficiency points starts deducting
-				output.inefficiency = (output.min_inefficiency)*output.checkTimeInefficiency; // minimum inefficiency per step is scaled by how much over time user input above minimum time on;
-			} else {
-				output.inefficiency = 0;
-			}
-		}
-		output.efficiencyRating = Math.max(((Math.round(100*(output.efficiencyRating-output.inefficiency)))/100), 0); // Math.max is set such that efficiencyRating cannot get below 0
-		output.inefficiency_display = (Math.round(output.inefficiency*100))/100;
+/* l) calculate saturation value of RU on */
+		output.calc_RU_saturation = function(sys_RU_MaxL, sys_Kd, sys_kOn, sys_kOff, sys_RU0, backgroundSet) {
+		output.calc_RU_On(sys_RU_MaxL, 1000, sys_Kd, sys_kOn, sys_kOff, Infinity, sys_RU0, backgroundSet); // used a 1000 M to ensure saturation reached
+		output.RU_saturation = output.RU_OnAdjusted;
 	};
 }

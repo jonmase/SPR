@@ -486,7 +486,7 @@ a.finish-btn:active {
 	text-align: center;
 }
 
-#track-panel-steps {
+#track-panel-bottom {
 	border-radius: 0px 0px 3px 0px;
 }
 
@@ -561,7 +561,7 @@ a.finish-btn:active {
 	border: 1px solid #222530;
 }
 
-#survey_button {
+#CTA_button {
 	background-color: #EC5D57;
 	border: 1px solid #222530;
 }

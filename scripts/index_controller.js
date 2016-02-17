@@ -20,7 +20,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.cookies = $cookies;
 	view.vol = vol;
 	view.RPUM = RPUM;
-		// metrics tracked in database
+		// metrics tracked for backend database storage
+	/*
 	view.user_type = [];
 	view.startTime = [];
 	view.endTime = [];
@@ -29,17 +30,18 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 	view.sessionEfficiencyCount = [];
 	view.sessionCheckCount = [];
 	view.checkResults = [];
+	*/
 		// default function of various buttons
-	view.guideMode = false;
+	view.guideMode = true;
 	view.checkCounter = 0;
 	view.checkResults_bySession = [];
-	view.EqTimeReachedOnce = false;
 	view.backgroundSet = 0;
 	view.backgroundUnitsSet = null;
 	view.isDisabled_background = false;
 	view.isDisabled_run = false;
 	view.isDisabled_wash = true;
 	view.isDisabled_check = true;
+	view.EqTimeReachedOnce = false;
 	view.magnitudeCheck_Kd = [1000, 1000000, 1000000000];
 	view.magnitudeCheck_kOn = [1000000, 1000, 1];
 	view.allowedAnswerDeviation = 0.20; // answer input must be within this confidence limit range of the true answer
@@ -58,6 +60,8 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_CompiledLabelPlotAll.length = 0;
 		view.output.minimum_fLC_input = 1;
 		view.chart.replot();
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
+		view.experiment.check_backgroundSet(view.backgroundSet);
 	};
 
 /* c) creating function for "run experiment" button  */
@@ -74,10 +78,17 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.chart.replot();
 		view.experiment.stepsCounter();
 		view.experiment.timeOfDayCounter();
-		view.output.efficiencyCalculator(new_fLC, new_timeOn);
+		view.experiment.efficiencyCalculator(new_fLC, new_timeOn);
 		view.isDisabled_run = true;
 		view.isDisabled_wash = false;
-		view.isDisabled_check = true;
+		view.isDisabled_check = true;			
+			// gamification elements
+		view.experiment.check_outlier_Replicates(view.output.fLC_tableDisplay);
+		view.experiment.check_statistics_Replicates(view.output.fLC_tableDisplay);
+		view.experiment.check_six_unique_fLC(view.output.fLC_tableDisplay);
+		view.experiment.check_univEqFound(view.output.timeOn[view.output.timeOn.length-1]);
+		view.experiment.check_confirmSaturation(view.output.RU_On_Output_table, view.output.RU_saturation);
+		view.experiment.check_broadSampling(view.output.fLC_tableDisplay);
 	};
 
 /* d) creating function for "wash-up" button */
@@ -85,17 +96,23 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.timeOffDefault = view.system.min_timeOff;
 		view.output.plotCoordinatesOff(view.output.currentStep, view.output.totalSteps, view.output.timeOn[view.output.timeOn.length-1], view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.output.plotCompileLabelOff();
-		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1], view.output.inefficiency_display);
+		view.table.compileData(angular.copy(view.experiment.steps), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1]*view.output.magnitudeAdjust, view.output.timeOn[view.output.timeOn.length-1], (view.output.RU_On_Output_table[view.output.RU_On_Output_table.length-1]).toFixed(4), view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1], view.experiment.inefficiency_display);
 		view.chart.replot();
 		view.isDisabled_run = false;
 		view.isDisabled_wash = true;
 		view.isDisabled_check = true;
+		view.experiment.isDisabled_comboOne_msg = true;
+		view.experiment.isDisabled_comboTwo_msg = true;
+		view.experiment.isDisabled_comboThree_msg = true;
+		view.experiment.isDisabled_comboFive_msg = true;
+		view.experiment.isDisabled_comboSix_msg = true;
+			// cookies
 		view.compileCookiesData();
 		view.cookies.putObject("storedData", view.cookiesData);
-			// check if equilibrium time is reached once
+			// check if equilibrium reached once
 		if (view.system.min_timeOn < view.output.timeOn[view.output.timeOn.length-1]) {
 			view.EqTimeReachedOnce = true;
-		}
+		}		
 	}; 
 
 /* e) creating function for "home" button */
@@ -116,9 +133,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 /* g) creating a function for "restart" button */
 	view.restart = function() {
 			// for backend
+		/*
 		if (view.all_Correct === false) {
 			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
-			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionEfficiencyCount.push(angular.copy(view.experiment.efficiencyRating));
 			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 			view.endTime.push(angular.copy(Date.now()));
@@ -129,18 +147,27 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			view.user_type.push(angular.copy("restart"));
 			view.startTime.push(angular.copy(Date.now())); // create a new session
 		}
+		*/
 			// reset experiment status
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
-		view.output.efficiencyRating = 100;
+		view.experiment.efficiencyRating = 100;
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
-		view.EqTimeReachedOnce = false;
+		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
+		view.experiment.comboStreak = 0;
+		view.experiment.isDisabled_comboOne = false;
+		view.experiment.isDisabled_comboTwo = false;
+		view.experiment.isDisabled_comboThree = false;
+		view.experiment.isDisabled_comboFour = false;
+		view.experiment.isDisabled_comboFive = false;
+		view.experiment.isDisabled_comboSix = false;
+		view.experiment.isDisabled_comboSeven = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -185,13 +212,16 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			// if all answer correct, trigger action
 		if (view.Kd_correct === true && view.kOn_correct === true && view.kOff_correct === true) {
 			view.all_Correct = true;
+				// for backend
+			/*
 			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
-			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionEfficiencyCount.push(angular.copy(view.experiment.efficiencyRating));
 			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.endTime.push(angular.copy(Date.now()));
 			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
 			view.checkResults_bySession.push("correct");
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
+			*/
 			view.cookies.remove("storedData");
 			view.cookiesData = {};
 				// jQuery to change the color of hamburger menu icon on results table so users will notice
@@ -201,7 +231,10 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			*/
 		} else {
 			view.all_Correct = false;
+				// for backend
+			/*
 			view.checkResults_bySession.push("wrong");
+			*/
 		}
 	};
 
@@ -212,45 +245,62 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.kOff = change_kOff;
 		view.system.find_min_timeOnOff();
 		view.system.uniqueID = "custom";
-	};
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);	};
 
-/* i) creating functions to track if learn or mastery user */
-	view.learn_user = function() {
-		view.user_type.push(angular.copy("learn"));
+/* i) creating functions to track if user is training or challenging */
+	view.train_user = function() {
+			// for backend
+		/*
+		view.user_type.push(angular.copy("train"));
+		view.startTime.push(angular.copy(Date.now()));
+		*/
 		view.guideMode = true;
-		view.startTime.push(angular.copy(Date.now()));
 	};
 
-	view.mastery_user = function() {
-		view.user_type.push(angular.copy("mastery"));
-		view.guideMode = false;
+	view.challenge_user = function() {
+			// for backend
+		/*
+		view.user_type.push(angular.copy("challenge"));
 		view.startTime.push(angular.copy(Date.now()));
+		*/
+		view.guideMode = false;
 	};
 
 /* j) creating functions for play again button */
 	view.replay = function(){
 			// for backend
+		/*
 		if (view.all_Correct === false) {
 			view.sessionStepsCount.push(angular.copy(view.experiment.steps));
-			view.sessionEfficiencyCount.push(angular.copy(view.output.efficiencyRating));
+			view.sessionEfficiencyCount.push(angular.copy(view.experiment.efficiencyRating));
 			view.sessionCheckCount.push(angular.copy(view.checkCounter));
 			view.checkResults.push(angular.copy(view.checkResults_bySession.toString()));
 			view.endTime.push(angular.copy(Date.now()));
 			view.elapsed.push(angular.copy(Math.round((view.endTime[view.endTime.length-1]-view.startTime[view.startTime.length-1])/1000)));
 		}
+		*/
 			// reset experiment status
 		view.system.loadNewPair(view.vol, view.RPUM);
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
-		view.output.efficiencyRating = 100;
+		view.experiment.efficiencyRating = 100;
 		view.experiment.steps = 0;
 		view.checkCounter = 0;
 		view.checkResults_bySession.length = 0;
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
-		view.EqTimeReachedOnce = false;
+		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
+		view.experiment.comboStreak = 0;
+		view.experiment.isDisabled_comboOne = false;
+		view.experiment.isDisabled_comboTwo = false;
+		view.experiment.isDisabled_comboThree = false;
+		view.experiment.isDisabled_comboFour = false;
+		view.experiment.isDisabled_comboFive = false;
+		view.experiment.isDisabled_comboSix = false;
+		view.experiment.isDisabled_comboSeven = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -279,15 +329,24 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 				// stored experiment status
 			storedDaysLeft: view.experiment.daysLeft,
 			storedTimeOfDay: view.experiment.timeOfDay,
-			store_effRating: view.output.efficiencyRating,
+			store_effRating: view.experiment.efficiencyRating,
 			storedSteps: view.experiment.steps,
 			stored_backgroundSet: view.backgroundSet,
 			stored_backgroundUnitsSet: view.backgroundUnitsSet,
+			stored_comboStreak: view.experiment.comboStreak,
+			stored_comboOneDisabled: view.experiment.isDisabled_comboOne,
+			stored_comboTwoDisabled: view.experiment.isDisabled_comboTwo,
+			stored_comboThreeDisabled: view.experiment.isDisabled_comboThree,
+			stored_comboFourDisabled: view.experiment.isDisabled_comboFour,
+			stored_comboFiveDisabled: view.experiment.isDisabled_comboFive,
+			stored_comboSixDisabled: view.experiment.isDisabled_comboSix,
+			stored_comboSevenDisabled: view.experiment.isDisabled_comboSeven,
 				// stored output
 			store_tableData: view.table.data,
 			store_fLC: view.output.fLC,
 			store_timeOn: view.output.timeOn,
 				// stored backend values
+			/*
 			store_userType: view.user_type,
 			store_startTime: view.startTime,
 			store_endTime: view.endTime,
@@ -296,6 +355,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			store_sessionEfficiencyCount: view.sessionEfficiencyCount,
 			store_sessionCheckCount: view.sessionCheckCount,
 			store_checkResults: view.checkResults
+			*/
 		};
 	};
 
@@ -311,13 +371,23 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.system.mwL = view.cookiesData.stored_mwL;
 		view.system.mwR = view.cookiesData.stored_mwR;
 		view.system.calculateSystem(view.vol, view.RPUM);
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 			// set experiment status to as stored
 		view.experiment.daysLeft = view.cookiesData.storedDaysLeft;
 		view.experiment.timeOfDay = view.cookiesData.storedTimeOfDay;
-		view.output.efficiencyRating = view.cookiesData.store_effRating;
+		view.experiment.efficiencyRating = view.cookiesData.store_effRating;
 		view.experiment.steps = view.cookiesData.storedSteps;
+		view.experiment.comboStreak = view.cookiesData.stored_comboStreak;
 		view.backgroundSet = view.cookiesData.stored_backgroundSet;
 		view.backgroundUnitsSet = view.cookiesData.stored_backgroundUnitsSet;
+		view.experiment.comboStreak = view.cookiesData.stored_comboStreak;
+		view.experiment.isDisabled_comboOne = view.cookiesData.stored_comboOneDisabled;
+		view.experiment.isDisabled_comboTwo = view.cookiesData.stored_comboTwoDisabled;
+		view.experiment.isDisabled_comboThree = view.cookiesData.stored_comboThreeDisabled;
+		view.experiment.isDisabled_comboFour = view.cookiesData.stored_comboFourDisabled;
+		view.experiment.isDisabled_comboFive = view.cookiesData.stored_comboFiveDisabled;
+		view.experiment.isDisabled_comboSix = view.cookiesData.stored_comboSixDisabled;
+		view.experiment.isDisabled_comboSeven = view.cookiesData.stored_comboSevenDisabled;
 			// set output to as stored
 		for (var i = 0; i < view.cookiesData.store_tableData.length; i++) {
 			view.table.data.push(view.cookiesData.store_tableData[i]);
@@ -325,6 +395,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.fLC = view.cookiesData.store_fLC;
 		view.output.timeOn = view.cookiesData.store_timeOn;
 			// set backend values as stored
+		/*
 		view.user_type = view.cookiesData.store_userType;
 		view.startTime = view.cookiesData.store_startTime;
 		view.endTime = view.cookiesData.store_endTime;
@@ -333,10 +404,13 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.sessionEfficiencyCount = view.cookiesData.store_sessionEfficiencyCount;
 		view.sessionCheckCount = view.cookiesData.store_sessionCheckCount;
 		view.checkResults = view.cookiesData.store_checkResults;
+		*/
+			// prompt if user want to continue with stored experiment
 		$(window).load(function(){$('#cookies_modal').modal('show');});
 		$('#cookies_modal').modal({backdrop: 'static',keyboard: false});
 	} else {
 		view.system.loadNewPair(view.vol, view.RPUM);
+		view.output.calc_RU_saturation(view.system.RU_MaxL, view.system.Kd, view.system.kOn, view.system.kOff, view.system.RU0, view.backgroundSet);
 		view.experiment.daysLeft = view.experiment.daysAllowed;
 		view.experiment.timeOfDay = view.experiment.startOfDay;
 		$(window).load(function(){$('#initialising_modal').modal('show');});
