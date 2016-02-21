@@ -164,7 +164,7 @@
 								<b><font color="#51A7F9">2. Test Phase</font></b><br>
 								You can now <b><font color="#c5b552">translate all experimental design considerations</font></b> you just derived into specific experimental steps taken to find the results.<br><br>
 
-								At this point, you can <b><font color="#c5b552">stop worrying</font></b> if you might miss out on any other considerations! Remember this, you will NEVER get the design right all at once. So rather than getting analysis paralysis, you can learn much faster what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>. That is why masters think in a <b><font color="#51A7F9">Cycle</font></b> and aim at <b><font color="#c5b552">iterating</font></b> their strategy fast. Having the <b><font color="#c5b552">metacognition</font></b> to realising that the information you lack is unobtainable until you try out is also an important skill of a master.<br><br>
+								At this point, you can <b><font color="#c5b552">stop worrying</font></b> if you might miss out on any other considerations! Remember this, you will NEVER get the design right all at once. So rather than getting analysis paralysis, you can learn much faster about what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>. That is why masters think in a <b><font color="#51A7F9">Cycle</font></b> and aim at <b><font color="#c5b552">iterating</font></b> their strategy fast. Having the <b><font color="#c5b552">metacognition</font></b> to realising that the information you lack is unobtainable until you try out is also an important skill of a master.<br><br>
 
 								So start trying out your plan as fast as possible! When you finish, we can start to reflect on how to improve the design in the <b><font color="#51A7F9">Reflect</font></b> phase of the <b><font color="#51A7F9">Cycle</font></b>. Once you finish, do <b><font color="#c5b552">note down</font></b> your Efficiency Points and Steps taken so we can analyse them later.<br><br>
 							</div>
@@ -350,11 +350,9 @@
 								+ Making at least {{view.experiment.comboStreakMax}} experimental design considerations<br><br>
 
 								<b><font color="#c5b552">Before you begin the game</font></b><br>
-								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. If you need a refresher, quickly review in HELP at CONTROL PANEL.
-								<br><br>
+								Please read the HELP section in CONTROL PANEL to understand game mechanics. This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique.<br><br>
 
-								Let's begin by selecting a suitable playing mode.
-								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try to beat the Challenge straight away!
+								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try to beat the Challenge straight away!
 								<br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.train_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
@@ -529,29 +527,29 @@
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>Kd</div>
 							<form novalidate name="check_Kd">
-								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="number" required>
+								<input class="form" name="Kd_input" type="number" min="1" ng-model="input_check_Kd" placeholder="number" required>
 							</form>
 						</div>
 							<!-- b. Form: check kOn -->
 						<div class="col-md-4 track-panel">
 							<div>k<sub>on</sub></div>
 							<form novalidate name="check_kOn">
-								<input class="form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="number" required>
+								<input class="form" name="kOn_input" type="number" min="1" ng-model="input_check_kOn" placeholder="number" required>
 							</form>
 						</div>
 							<!-- c. Form: check kOff -->
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>k<sub>off</sub></div>
 							<form novalidate name="check_kOff" >
-								<input class="form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="number" required>
+								<input class="form" name="kOff_input" type="number" min="1" ng-model="input_check_kOff" placeholder="number" required>
 							</form>
 						</div>
 							<!-- d. Dropdown Menu: units for check Kd -->
 						<div class="col-md-4 unit-panel gloss-contrast">
-							<select class="units_dropdown" ng-model="magnitudeSelected_check_Kd" ng-init="magnitudeSelected_check_Kd = 2">
+							<select class="units_dropdown" ng-model="magnitudeSelected_check_Kd" ng-init="magnitudeSelected_check_Kd = 1">
 								<option ng-value="0">mM</option>
-								<option ng-value="1">uM</option>
-								<option ng-value="2" ng-selected="true">nM</option>
+								<option ng-value="1" ng-selected="true">uM</option>
+								<option ng-value="2">nM</option>
 							</select>						
 						</div>
 							<!-- e. Dropdown Menu: units for check kOn -->
@@ -961,10 +959,10 @@
 						</div>
 							<!-- j. Drop-down Menu: Selecting units for free ligand concentration units -->
 						<div class="col-md-6 unit-panel gloss-contrast">
-							<select class="units_dropdown" ng-model="magnitudeSelected_input_Kd" ng-init="magnitudeSelected_input_Kd = 2">
+							<select class="units_dropdown" ng-model="magnitudeSelected_input_Kd" ng-init="magnitudeSelected_input_Kd = 1">
 								<option ng-value="0">mM</option>
-								<option ng-value="1">uM</option>
-								<option ng-value="2" ng-selected="true">nM</option>
+								<option ng-value="1" ng-selected="true">uM</option>
+								<option ng-value="2">nM</option>
 							</select>
 						</div>
 							<!-- k. association time Units -->

@@ -75,7 +75,7 @@ function outputMethod(experimentStatus) {
 /* h) compiling the plot together as a single line and add label */
 	output.plotCompileLabelOn = function() {
 		output.compileLabel = {
-			label: angular.copy((Math.round((output.fLC_tableDisplay[output.fLC_tableDisplay.length-1]*output.magnitudeAdjust)*100))/100)+" "+output.unitAdjust,
+			label: angular.copy((Math.round((output.fLC_tableDisplay[output.fLC_tableDisplay.length-1]*output.magnitudeAdjust)*1000))/1000)+" "+output.unitAdjust,
 			data: angular.copy(output.RU_Line),
 			color: output.colorPool[output.colorCounter]
 		};

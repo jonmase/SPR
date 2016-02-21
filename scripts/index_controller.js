@@ -176,6 +176,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Off_Coordinate.length = 0;
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.output.fLC_tableDisplay.length = 0;
 		view.chart.replot();
 		view.table.data.length = 0;
 		view.isDisabled_run = false;
@@ -309,6 +310,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Off_Coordinate.length = 0;
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.output.fLC_tableDisplay.length = 0;
 		view.chart.replot();
 		view.table.data.length = 0;
 		view.isDisabled_run = false;
