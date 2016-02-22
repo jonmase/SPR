@@ -68,6 +68,7 @@
 			ga('create', 'UA-73037710-1', 'auto');
 			ga('send', 'pageview');
 		</script>
+		<meta name="google-site-verification" content="ZmBqRIFTcxWNNMBtUJHuYtgnZPb1EkqfiQl2iyb85W0" />
 	</head>
 
 	<body ng-controller="viewCtrl as view" style="height: 100%">
@@ -527,21 +528,21 @@
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>Kd</div>
 							<form novalidate name="check_Kd">
-								<input class="form" name="Kd_input" type="number" min="1" ng-model="input_check_Kd" placeholder="number" required>
+								<input class="form" name="Kd_input" type="number" min="0" ng-model="input_check_Kd" placeholder="number" required>
 							</form>
 						</div>
 							<!-- b. Form: check kOn -->
 						<div class="col-md-4 track-panel">
 							<div>k<sub>on</sub></div>
 							<form novalidate name="check_kOn">
-								<input class="form" name="kOn_input" type="number" min="1" ng-model="input_check_kOn" placeholder="number" required>
+								<input class="form" name="kOn_input" type="number" min="0" ng-model="input_check_kOn" placeholder="number" required>
 							</form>
 						</div>
 							<!-- c. Form: check kOff -->
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>k<sub>off</sub></div>
 							<form novalidate name="check_kOff" >
-								<input class="form" name="kOff_input" type="number" min="1" ng-model="input_check_kOff" placeholder="number" required>
+								<input class="form" name="kOff_input" type="number" min="0" ng-model="input_check_kOff" placeholder="number" required>
 							</form>
 						</div>
 							<!-- d. Dropdown Menu: units for check Kd -->
