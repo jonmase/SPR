@@ -117,9 +117,9 @@
 								<h4 class="modal-title" id="modalLabel">Experimental design tactics - PLAN</h4>
 							</div>
 							<div class="modal-body">
-								What's the difference between a novice and master biochemist? Novices never plan their experiment. They shoot randomly then pray that the answer will miraculously appear. Master biochemists, however, are expert strategists. They (conciously or subconciously) think in a <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> resulting in elegant experimental designs.<br><br>
+								Before you try to design a good experiment, you need to first understand the technique you are using and what you are expecting. Click <b><a target="_blank" href="https://www.dropbox.com/s/7zilnub9csw6aq1/SPR%20notes%20-%20download.pdf?dl=0" class="red-link">here</a></b> to review your understanding of SPR or ask the demonstrator.<br><br>
 
-								To beat this game, you simply need to think like a master. These questions below will enlighten you what masters actually think and help you beat this puzzle.<br><br>
+								The best approach against an unknown system is to "try and adapt", rather than sticking to a particular method. This guide will help you utilise your understanding of SPR to systematically design an efficient experiment via the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> framework.<br><br>
 
 								<b><font color="#51A7F9">1. Plan Phase</font></b><br>
 								<b><font color="#EC5D57">a) Backward derivation method</font></b><br>
@@ -128,23 +128,22 @@
 								- What is your <b><font color="#c5b552">hypothesis</font></b>?<br>
 								- What <b><font color="#c5b552">metrics</font></b> can we measure to provide evidence for that?<br>
 								- What <b><font color="#c5b552">technique(s)</font></b> can help you directly/indirectly measure the metrics?<br>
-								- Which one gives you the best <b><font color="#c5b552">precision</font></b> and least <b><font color="#c5b552">false positives and negatives</font></b>?<br>
+								- Which technique gives you the best <b><font color="#c5b552">precision</font></b> and least <b><font color="#c5b552">false positives and negatives</font></b>?<br>
 								- <b><font color="#c5b552">List out all steps</font></b> require to derive the metrics from raw data output by the technique (e.g. graph plotting, trend extrapolation, calculations).<br><br>
 
 								<b><font color="#EC5D57">b) General experimental design considerations</font></b><br>
-								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps<br><br>
+								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps.<br><br>
 
-								- What <b><font color="#c5b552">statistical method</font></b> are you using to analyse results. This determines how many repeats you need to get the confidence limit of the technique<br>
-								- How many independent repeats at every data point to identify possible <b><font color="#c5b552">outliers</font></b><br>
-								- What is the <b><font color="#c5b552">absolute and relative error</font></b> of the technique? This affects the range of values you can sample your data from<br>
-								- What trend are you expecting, and what suitable quantity of <b><font color="#c5b552">dataset and spread</font></b> do you need to sufficiently describe the trend (e.g. shape of curve)?<br>
-								- What variables can influence the results that you need to <b><font color="#c5b552">control</font></b> for?<br>
-								- Have you remove the <b><font color="#c5b552">background</font></b>?
-								<br><br>
+								- 6 repeats are required for results to be <b><font color="#c5b552">95% confidence</font></b>, in addition to calculating the standard deviaiton of the technique.<br>
+								- 3 independent repeats are required per data point to identify possible <b><font color="#c5b552">outliers</font></b>. You will not know which point is the outlier if you only have 2 points.<br>
+								- The absolute and relative error affects the range of values you can sample your data from. In particular, absolute error gives you the <b><font color="#c5b552">lower sampling limit</font></b>.<br>
+								- Have you remove the <b><font color="#c5b552">background</font></b>? This is particularly important if background is not a constant.
+								- What variables could alter the results such that you need to <b><font color="#c5b552">control</font></b> for?<br><br>
 
 								<b><font color="#EC5D57">c) SPR specific considerations</font></b><br>
-								- How do we know if <b><font color="#c5b552">equilibrium binding</font></b> is reached in SPR? What factors can you control to ensure equilibrium is reached? How can we design an experiment to ensure all experimental trials reaches equilibrium binding?<br>
-								- What <b><font color="#c5b552">range of answers is possible</font></b> in protein-protein interaction context?<br><br>
+								- What range of Kd can you expect in strong and weak binding? Have your experiment accounted for the <b><font color="#c5b552">broad range of possible answers</font></b>?<br>
+								- Have you use an Association Time of sufficient length for the system to reach equilibrium binding? How do we know if <b><font color="#c5b552">equilibrium binding</font></b> is reached in SPR?<br>
+								- What trend are you expecting for Langmuir Isotherm? Thus how many <b><font color="#c5b552">data point</font></b> do you need to sufficiently describe the trend (e.g. shape of curve)?<br><br>
 								<!--div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
 								</div-->
@@ -164,9 +163,9 @@
 								<b><font color="#51A7F9">2. Test Phase</font></b><br>
 								You can now <b><font color="#c5b552">translate all experimental design considerations</font></b> you just derived into specific experimental steps taken to find the results.<br><br>
 
-								At this point, you can <b><font color="#c5b552">stop worrying</font></b> if you might miss out on any other considerations! Remember this, you will NEVER get the design right all at once. So rather than getting analysis paralysis, you can learn much faster about what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>. That is why masters think in a <b><font color="#51A7F9">Cycle</font></b> and aim at <b><font color="#c5b552">iterating</font></b> their strategy fast. Having the <b><font color="#c5b552">metacognition</font></b> to realising that the information you lack is unobtainable until you try out is also an important skill of a master.<br><br>
+								What is most important when tackling an unknown system is to have the <b><font color="#c5b552">metacognition</font></b> to accept that you will NEVER get the design right all at once. The most important point, again, is to iterate your <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> as quick as possible rather than worrying that you might miss out on any other considerations! This is because you can learn much faster about what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>.<br><br>
 
-								So start trying out your plan as fast as possible! When you finish, we can start to reflect on how to improve the design in the <b><font color="#51A7F9">Reflect</font></b> phase of the <b><font color="#51A7F9">Cycle</font></b>. Once you finish, do <b><font color="#c5b552">note down</font></b> your Efficiency Points and Steps taken so we can analyse them later.<br><br>
+								So quickly try out your plan! When you finish, we can start to reflect on how to improve the design in the <b><font color="#70BF41">Reflect</font></b> phase. Do <b><font color="#c5b552">note down</font></b> your Efficiency Points and Steps taken so we can analyse them later.<br><br>
 							</div>
 						</div>
 					</div>
@@ -181,18 +180,17 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">3. Reflect Phase</font></b><br>
-								If you have successfully obtained the correct answer but not with the right Efficiency Points and Steps, troubleshoot with the questions below then quickly start the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> again! If you have not obtain the right answer or still not able to achieve the VICTORY CONDITIONS, ask the demonstrator for help.<br><br>
+								If you have successfully obtained the correct answer but not with the right Efficiency Points and Steps, troubleshoot with the hints below then quickly start the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> again! If you have not obtain the right answer or still not able to achieve the VICTORY CONDITIONS, ask the demonstrator for help.<br><br>
 
 								<b><font color="#EC5D57">Efficiency Points</font></b><br>
-								- Efficiency points deduction are calculated by how far off your Association Time input is from the time needed to exactly reach equilibrium (with 5 seconds buffer).<br>
-								- Start by <b><font color="#c5b552">downloading the Excel</font></b> file of your RESULTS TABLE by clicking the menu button at the right-hand corner of the table. This is a summary of your results.<br>
-								- Is the method you take to find equilibrium time efficient? What strategy of finding equilibrium time you can use to ensure you <b><font color="#c5b552">don't overshoot</font></b> and waste time knowing that the binding curve follow a <b><font color="#c5b552">hyperbolic model</font></b>?<br><br>
+								- Using your knowledge that the SENSORGRAM binding curve follow a <b><font color="#c5b552">hyperbolic model</font></b>, try <b><font color="#c5b552">seeding</font></b> a small value and <b><font color="#c5b552">predict the resulting trajectory</font></b> where equilibrium binding would be reached, rather than randomly input a large value. In a real experiment, you would not have the time or resource to waste using the latter strategy.<br><br>
 
 								<b><font color="#EC5D57">Steps</font></b><br>
-								- If you have the problem of having to find a new equilibrium time for every Free Ligand Concentration input, go back to understanding the factors that ensure equilibrium is reached. Do you see any <b><font color="#c5b552">universal</font></b> Association Time that you could use that ensures equilibrium is reached in all cases?<br>
+								- If you have the problem of needing to find a new equilibrium time for every new Concentration input, try finding a <b><font color="#c5b552">universal association time to use</font></b>. What Concentration requires the longest time to reach equilibrium? Using this time length would cover for all cases.<br>
 								- Did you do <b><font color="#c5b552">sufficient repeats</font></b> to identify outlier and standard deviation of the technique?<br>
-								- Did you use a <b><font color="#c5b552">broad sampling strategy</font></b> to test out what the resonance value at equilibrium is for complete saturation of receptors? How do you <b><font color="#c5b552">confirm</font></b> you have reached saturation?<br>
-								- How did you determine your dynamic range once you found the saturation value? Since the first Free Ligand Concentration that give you saturation might be deep within saturation range, dividing that Free Ligand Concentration into fixed increment and try generating points might not be efficient since some points might lies in saturation range. Why not try a <b><font color="#c5b552">'test, benchmark & improvise' strategy</font></b>? Knowing that the dynamic range starts from lower end of Langmuir Isotherm upwards, it is more efficient to <b><font color="#c5b552">try a random low value</font></b> (e.g. a quarter of your saturation Free Ligand Concentration) and <b><font color="#c5b552">benchmark</font></b>  against the celing of saturation curve. Then <b><font color="#c5b552">iterate the strategy</font></b> for generating sufficiently spaced out data points based on the findings every round since <b><font color="#c5b552">Langmuir Isotherm follow a hyperbolic model</font></b>.<br>
+								- Did you use a <b><font color="#c5b552">broad sampling strategy</font></b> to account for all possible range of value Kd could take?<br>
+								- How do you <b><font color="#c5b552">confirm saturation</font></b> has been reached?<br>
+								- How did you find where the <b><font color="#c5b552">dynamic range</font></b> of Langmuir Isotherm lies? Knowing that Langmuir Isotherm follow a <b><font color="#c5b552">hyperbolic model</font></b>, it would be wise to start gathering points from <b><font color="#c5b552">lower concentration upwards</font></b>, you might still be sampling points in the saturation range if you do the reverse.<br>
 								- Think again about the <b><font color="#c5b552">final end point calculations</font></b> you took to derive the answer. From there, are there unnecessary steps you performed <b><font color="#c5b552">irrelevant</font></b> to finding the answer? Can you <b><font color="#c5b552">combine</font></b> some of the steps?<br><br>
 							</div>
 						</div>
@@ -340,8 +338,7 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#d83535">Challenge Statement</font></b><br>
-								So you think you can design an experiment as elegant as a master biochemist?<br> 
-								We dare you to crack this puzzle to see if you are really worthy of that title.<br><br>
+								So you think you have mastered experimental design strategy? We challenge you to crack this puzzle to see how good you are.<br><br>
 
 								<b><font color="#51A7F9">Victory conditions</font></b><br>
 								+ Achieve the correct Kd, k<sub>on</sub>, k<sub>off</sub> within the days allowed<br>
@@ -350,10 +347,12 @@
 								+ Making at least {{view.experiment.comboStreakMax}} experimental design considerations<br><br>
 
 								<b><font color="#c5b552">Before you begin the game</font></b><br>
-								Please read the HELP section in CONTROL PANEL to understand game mechanics. This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique.<br><br>
+								Please read the HELP section in CONTROL PANEL to understand game mechanics. This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) technique.<br><br>
 
-								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try to beat the Challenge straight away!
+								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can try to beat the Challenge straight away!
 								<br><br>
+
+								<font color="red">Note: Please use Google Chrome browser to ensure full functionality of software.</font><br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.train_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
 									<button type="button" class="modal-button clickable1" ng-click="view.challenge_user()"  data-dismiss="modal">Challenge</button>
@@ -387,7 +386,8 @@
 								- You can drag an area on SENSORGRAM to zoom into it, double click to zoom out.<br>
 								- Every RUN-WASH cycle uses up 30 minutes per day regardless of Association Time input.<br>
 								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of RESULTS TABLE.<br>
-								- You can let your the RESULTS TABLE show display data in order of latest trial by clicking on 'trial' column to sort it
+								- You can let your the RESULTS TABLE show display data in order of latest trial by clicking on 'trial' column to sort it<br>
+								- Efficiency points deduction are calculated by how far off your Association Time input is from the time needed to exactly reach equilibrium (with 5 seconds buffer)
 								<br><br>
 
 								<b><font color="#51A7F9">3. SPR assumptions</font></b><br>
