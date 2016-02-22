@@ -821,49 +821,49 @@
 							<!-- v. Positive Reinforcement - Combo One: Three replicates made to check outlier -->
 						<div ng-show="view.experiment.isDisabled_comboOne_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Outlier identification]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Three replicates made per point will allow you to identify outliers. Two is insufficient to distinguish which one is the outlier.</p>
+							<b><font color="#51A7F9">[Consideration made: outlier]</font></b><br>
+							<p class="declare-result">Three replicates made per point will allow you to identify outliers. Having two is insufficient to distinguish which one is the outlier.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- w. Positive Reinforcement - Combo Two: Six replicates made for statistics -->
 						<div ng-show="view.experiment.isDisabled_comboTwo_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Standard deviation calculation]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Six replicates made per point will allow you to calculate the standard deviation of the technique for both the association and disassociation phase. The answer of this trial will also be 95% confidence.</p>
+							<b><font color="#51A7F9">[Consideration made: statistical calculation]</font></b><br>
+							<p class="declare-result">Six replicates made per point will allow you to calculate the standard deviation of the technique for both the association and disassociation phase. The answer of this trial will also be 95% confidence.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- x. Positive Reinforcement - Combo Three: 6 different fLC sampled -->
 						<div ng-show="view.experiment.isDisabled_comboThree_msg == false && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Different input sampled]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">You have sampled at least six different Free Ligand Concentration input (excluding background setting). Number of different points to sample is determined by the expected shape of line since there must be sufficient points to describe the trend (e.g. Hyperbolic model in SPR)</p>
+							<b><font color="#51A7F9">[Consideration made: sufficient points to describe trend]</font></b><br>
+							<p class="declare-result">You have sampled at least six different Free Ligand Concentration input (excluding background setting). Number of different points to sample is determined by the expected shape of line since there must be sufficient points to describe the trend (e.g. Hyperbolic model in Langmuir Isotherm)</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- y. Positive Reinforcement - Combo Four: Found universal equilibrium time -->
 						<div ng-show="view.EqTimeReachedOnce == false && view.output.fLC.length !== 0 && view.system.min_timeOn <= view.output.timeOn[view.output.timeOn.length-1] && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Equilibrium reached]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">You've found the universal Association Time that is of sufficient length to ensure equilibrium is reached in any Free Ligand Concentration input. The lower the free ligand concentration, the longer time it takes to reach equilibrium. So finding association time for your lowest magnitude you would sample gives an Association Time you can use universally at all higher concentration.</p>
+							<b><font color="#51A7F9">[Consideration made: universal equilibrium time]</font></b><br>
+							<p class="declare-result">You've found the universal Association Time that is of sufficient length to ensure equilibrium is reached in any Free Ligand Concentration input. The lower the free ligand concentration, the longer time it takes to reach equilibrium. So finding association time for your lowest magnitude you would sample gives an Association Time you can use universally at all higher concentration.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- z. Positive Reinforcement - Combo Five: Confirmed saturation reached -->
 						<div ng-show="view.experiment.isDisabled_comboFive_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Saturation confirmation]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Saturation is confirmed when a second higher Free Ligand Concentration input is used and the resulting SENSORGRAM output shows an overlap of the curve.</p>
+							<b><font color="#51A7F9">[Consideration made: saturation confirmation]</font></b><br>
+							<p class="declare-result">Saturation is confirmed when a second higher Free Ligand Concentration input is used and the resulting SENSORGRAM output shows an overlap of the curve.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- aa. Positive Reinforcement - Combo Six: Broad sampling strategies used -->
 						<div ng-show="view.experiment.isDisabled_comboSix_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Broad sampling strategy]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Although the binding constant of the ligand-receptor pair is unknown, we know that in Biochemistry, the Kd usually lies betwen mM (weak binding) to nM (strong binding) range. Therefore, only by using a broad sampling strategy, rather than incrementing at a particular magnitude can you efficiently find the saturation point and dynamic range of Langmuir Isotherm. (In this case, sample at mM and nM level)</p>
+							<b><font color="#51A7F9">[Consideration made: broad sampling strategy]</font></b><br>
+							<p class="declare-result">Although the binding constant of the ligand-receptor pair is unknown, we know that in Biochemistry, the Kd usually lies betwen mM (weak binding) to nM (strong binding) range. Therefore, only by using a broad sampling strategy, rather than incrementing at a particular magnitude can you efficiently find the saturation point and dynamic range of Langmuir Isotherm. (In this case, sample at mM and nM level)</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- ab. Positive Reinforcement - Combo Seven: remove background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Success: remove background]</font></b><br>
+							<b><font color="#51A7F9">[Consideration made: remove background]</font></b><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
 							Removal of background is important to ensure any change is the result of ligand binding, not receptor change, especially since background is not always constant in SPR.<br>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
