@@ -232,13 +232,13 @@ a.navbar-link:active {
 }
 
 .modal-header {
-	border-color: #222530;
-	background-color: #344458;
+	border-color: #303c65;
+	background-color: #263349;
 	padding: 10px;
 }
 
 .modal-body {
-	background-color: #263349;
+	background-color: #2e405c;
 }
 
 .modal-cross {

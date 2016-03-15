@@ -124,21 +124,21 @@
 
 								<b><font color="#51A7F9">1. Plan Phase</font></b><br>
 								<b><font color="#EC5D57">a) Backward derivation method</font></b><br>
-								Start thinking from the end point will help you derive what you experimental steps are important or unnecessary to prove your hypothesis by your metrics.<br><br>
+								Start thinking from the end point will help you derive what you experimental steps are important or unnecessary to prove your hypothesis by your variable.<br><br>
 
 								- What is your <b><font color="#c5b552">hypothesis</font></b>?<br>
-								- What <b><font color="#c5b552">metrics</font></b> can we measure to provide evidence for that?<br>
-								- What <b><font color="#c5b552">technique(s)</font></b> can help you directly/indirectly measure the metrics?<br>
+								- What <b><font color="#c5b552">independent and dependent variables</font></b> can we measure to provide evidence for that?<br>
+								- What <b><font color="#c5b552">technique(s)</font></b> can help you directly/indirectly measure the variable?<br>
 								- Which technique gives you the best <b><font color="#c5b552">precision</font></b> and least <b><font color="#c5b552">false positives and negatives</font></b>?<br>
-								- <b><font color="#c5b552">List out all steps</font></b> require to derive the metrics from raw data output by the technique (e.g. graph plotting, trend extrapolation, calculations).<br><br>
+								- <b><font color="#c5b552">List out all steps</font></b> require to derive the variable from raw data output by the technique (e.g. graph plotting, trend extrapolation, calculations).<br><br>
 
 								<b><font color="#EC5D57">b) General experimental design considerations</font></b><br>
 								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps.<br><br>
 
 								- 6 repeats are required for results to be <b><font color="#c5b552">95% confidence</font></b>, in addition to calculating the standard deviaiton of the technique.<br>
 								- 3 independent repeats are required per data point to identify possible <b><font color="#c5b552">outliers</font></b>. You will not know which point is the outlier if you only have 2 points.<br>
-								- The absolute and relative error affects the range of values you can sample your data from. In particular, absolute error gives you the <b><font color="#c5b552">lower sampling limit</font></b>.<br>
-								- Have you remove the <b><font color="#c5b552">background</font></b>? This is particularly important if background is not a constant.
+								- The absolute and relative error affects the range of values you can sample your data from. In particular, absolute error gives you the <b><font color="#c5b552">lowest sampling limit</font></b>.<br>
+								- Have you remove the <b><font color="#c5b552">background</font></b>? This is particularly important if background is not a constant.<br>
 								- What variables could alter the results such that you need to <b><font color="#c5b552">control</font></b> for?<br><br>
 
 								<b><font color="#EC5D57">c) SPR specific considerations</font></b><br>
@@ -338,7 +338,7 @@
 								<h4 class="modal-title" id="modalLabel">Experimental Design Strategy Puzzle (SPR)</h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#d83535">Challenge Statement</font></b><br>
+								<b><font color="#51A7F9">Challenge Statement</font></b><br>
 								So you think you have mastered experimental design strategy? We challenge you to crack this puzzle to see how good you are.<br><br>
 
 								<b><font color="#51A7F9">Victory conditions</font></b><br>
@@ -347,13 +347,13 @@
 								+ Without losing any Efficiency Points<br>
 								+ Making at least {{view.experiment.comboStreakMax}} experimental design considerations<br><br>
 
-								<b><font color="#c5b552">Before you begin the game</font></b><br>
-								Please read the HELP section in CONTROL PANEL to understand game mechanics. This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) technique.<br><br>
+								<b><font color="#51A7F9">Before you begin the game</font></b><br>
+								You should be comfortable with how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> using Surface Plasmon Resonance (SPR) technique before attempting to design a good experiment to complete the challenge. Please also read the HELP section in CONTROL PANEL to understand game mechanics.<br><br>
 
 								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can try to beat the Challenge straight away!
 								<br><br>
 
-								<font color="red">Note: Please use Google Chrome browser to ensure full functionality of software.</font><br><br>
+								<font color="d83535"><b>Note: Please use Google Chrome browser to ensure full functionality of software.</b></font><br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.train_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
 									<button type="button" class="modal-button clickable1" ng-click="view.challenge_user()"  data-dismiss="modal">Challenge</button>
@@ -377,7 +377,8 @@
 								- Input desired Free Ligand Concentration and Association Time<br>
 								- Click START to begin ligand-receptor association phase<br>
 								- Click WASH to begin ligand-receptor disassociation phase<br>
-								- Click BACKGROUND to remove it from future readings
+								- Click BACKGROUND to remove it from future readings<br>
+								- Check your answer in the CHECK ANSWER panel to complete the game
 								<br><br>
 
 								<b><font color="#51A7F9">2. Essential tips to completing the game</font></b><br>
@@ -874,7 +875,7 @@
 							<font color="#ececec">[Trial {{view.experiment.steps}} - Efficiency Status]</font><br>
 								<!-- Negative Reinforcement: Efficiency Points -->
 							<p class="declare-result" ng-show="view.experiment.inefficiency_display !== 0">{{view.experiment.inefficiency_display}} Effiency Points lost!<br>
-							Increase the Association Time to make sure equilibrium is reached! (buffer of 5 extra seconds after equilibrium binding allowed before points deduction)</p>
+							You are allowed a buffer of 5 extra seconds after equilibrium binding is reached before efficiency points get deducted</p>
 								<!-- Positive Reinforcement Efficiency Points -->
 							<p class="declare-result" ng-show="view.experiment.inefficiency_display == 0">0 Effiency Point lost, keep it up!</p>
 						</div>
