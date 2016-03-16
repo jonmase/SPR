@@ -158,7 +158,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
-		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
 		view.experiment.comboStreak = 0;
 		view.experiment.isDisabled_comboOne = false;
@@ -168,6 +167,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.isDisabled_comboFive = false;
 		view.experiment.isDisabled_comboSix = false;
 		view.experiment.isDisabled_comboSeven = false;
+		view.EqTimeReachedOnce = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -176,6 +176,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Off_Coordinate.length = 0;
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.output.fLC_tableDisplay.length = 0;
 		view.chart.replot();
 		view.table.data.length = 0;
 		view.isDisabled_run = false;
@@ -291,7 +292,6 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.backgroundSet = 0;
 		view.backgroundUnitsSet = null;
 		view.isDisabled_background = false;
-		view.experiment.EqTimeReachedOnce = false;
 		view.output.minimum_fLC_input = 0;
 		view.experiment.comboStreak = 0;
 		view.experiment.isDisabled_comboOne = false;
@@ -301,6 +301,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.isDisabled_comboFive = false;
 		view.experiment.isDisabled_comboSix = false;
 		view.experiment.isDisabled_comboSeven = false;
+		view.EqTimeReachedOnce = false;
 			// remove all data in existing arrays
 		view.output.fLC.length = 0;
 		view.output.timeOn.length = 0;
@@ -309,6 +310,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.output.RU_Off_Coordinate.length = 0;
 		view.output.RU_Line.length = 0;
 		view.output.RU_CompiledLabelPlotAll.length = 0;
+		view.output.fLC_tableDisplay.length = 0;
 		view.chart.replot();
 		view.table.data.length = 0;
 		view.isDisabled_run = false;
@@ -341,6 +343,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 			stored_comboFiveDisabled: view.experiment.isDisabled_comboFive,
 			stored_comboSixDisabled: view.experiment.isDisabled_comboSix,
 			stored_comboSevenDisabled: view.experiment.isDisabled_comboSeven,
+			stored_eqTimeReachedOnce: view.EqTimeReachedOnce,
 				// stored output
 			store_tableData: view.table.data,
 			store_fLC: view.output.fLC,
@@ -388,6 +391,7 @@ function viewMethod(systemModel, outputModel, experimentStatus, chartConfig, tab
 		view.experiment.isDisabled_comboFive = view.cookiesData.stored_comboFiveDisabled;
 		view.experiment.isDisabled_comboSix = view.cookiesData.stored_comboSixDisabled;
 		view.experiment.isDisabled_comboSeven = view.cookiesData.stored_comboSevenDisabled;
+		view.EqTimeReachedOnce = view.cookiesData.stored_eqTimeReachedOnce;
 			// set output to as stored
 		for (var i = 0; i < view.cookiesData.store_tableData.length; i++) {
 			view.table.data.push(view.cookiesData.store_tableData[i]);

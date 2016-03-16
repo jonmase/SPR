@@ -7,7 +7,7 @@ angular.module('system_model', [])
 function systemMethod() { // creating master function object that encapsulate all methods to inject into service
 	var system = this;
 	system.Kd_possible = [0.00000005, 0.00000009, 0.0000003, 0.0000008, 0.0000004, 0.000007, 0.000002, 0.00001, 0.0006, 0.002];
-	system.kOff_possible = [0.05, 0.2, 0.8, 1.5, 2.2, 2.9, 3.4, 4.0, 4.4, 5.0];
+	system.kOff_possible = [0.05, 0.2, 0.8, 1.5, 2.2, 2.9, 3.4, 4.0, 4.4, 5.0]; // note that this is an absolute value of kOff, real value must be negative
 	system.mwL_possible = [30000, 40000, 45000, 50000, 60000];
 	system.mwR_possible = [60000, 80000, 100000, 120000, 140000];
 

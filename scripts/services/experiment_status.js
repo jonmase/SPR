@@ -53,8 +53,8 @@ function experimentTrack(systemModel) {
 	experiment.inefficiency = 0;
 	experiment.efficiencyRating = 100;
 	experiment.bufferTimeAllowed = 5; // seconds
-	experiment.optimum_steps = 26;
-	experiment.min_inefficiency = 100/experiment.optimum_steps; // 100 = total efficiency points, 26 = optimum steps
+	experiment.optimum_steps = 24;
+	experiment.min_inefficiency = 100/experiment.optimum_steps; // 100 = total efficiency points, 24 = optimum steps
 
 /* 2. creating sub-methods as part of the function object that can be called */
 

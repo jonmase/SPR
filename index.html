@@ -68,6 +68,7 @@
 			ga('create', 'UA-73037710-1', 'auto');
 			ga('send', 'pageview');
 		</script>
+		<meta name="google-site-verification" content="ZmBqRIFTcxWNNMBtUJHuYtgnZPb1EkqfiQl2iyb85W0" />
 	</head>
 
 	<body ng-controller="viewCtrl as view" style="height: 100%">
@@ -117,34 +118,33 @@
 								<h4 class="modal-title" id="modalLabel">Experimental design tactics - PLAN</h4>
 							</div>
 							<div class="modal-body">
-								What's the difference between a novice and master biochemist? Novices never plan their experiment. They shoot randomly then pray that the answer will miraculously appear. Master biochemists, however, are expert strategists. They (conciously or subconciously) think in a <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> resulting in elegant experimental designs.<br><br>
+								Before you try to design a good experiment, you need to first understand the technique you are using and what you are expecting. Click <b><a target="_blank" href="https://www.dropbox.com/s/7zilnub9csw6aq1/SPR%20notes%20-%20download.pdf?dl=0" class="red-link">here</a></b> to review your understanding of SPR or ask the demonstrator.<br><br>
 
-								To beat this game, you simply need to think like a master. These questions below will enlighten you what masters actually think and help you beat this puzzle.<br><br>
+								The best approach against an unknown system is to "try and adapt", rather than sticking to a particular method. This guide will help you utilise your understanding of SPR to systematically design an efficient experiment via the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> framework.<br><br>
 
 								<b><font color="#51A7F9">1. Plan Phase</font></b><br>
 								<b><font color="#EC5D57">a) Backward derivation method</font></b><br>
-								Start thinking from the end point will help you derive what you experimental steps are important or unnecessary to prove your hypothesis by your metrics.<br><br>
+								Start thinking from the end point will help you derive what you experimental steps are important or unnecessary to prove your hypothesis by your variable.<br><br>
 
 								- What is your <b><font color="#c5b552">hypothesis</font></b>?<br>
-								- What <b><font color="#c5b552">metrics</font></b> can we measure to provide evidence for that?<br>
-								- What <b><font color="#c5b552">technique(s)</font></b> can help you directly/indirectly measure the metrics?<br>
-								- Which one gives you the best <b><font color="#c5b552">precision</font></b> and least <b><font color="#c5b552">false positives and negatives</font></b>?<br>
-								- <b><font color="#c5b552">List out all steps</font></b> require to derive the metrics from raw data output by the technique (e.g. graph plotting, trend extrapolation, calculations).<br><br>
+								- What <b><font color="#c5b552">independent and dependent variables</font></b> can we measure to provide evidence for that?<br>
+								- What <b><font color="#c5b552">technique(s)</font></b> can help you directly/indirectly measure the variable?<br>
+								- Which technique gives you the best <b><font color="#c5b552">precision</font></b> and least <b><font color="#c5b552">false positives and negatives</font></b>?<br>
+								- <b><font color="#c5b552">List out all steps</font></b> require to derive the variable from raw data output by the technique (e.g. graph plotting, trend extrapolation, calculations).<br><br>
 
 								<b><font color="#EC5D57">b) General experimental design considerations</font></b><br>
-								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps<br><br>
+								Every experimental dataset accepted as scientifically sound by the scientific community share a common sets of characteristics. Integrate them into your experimental steps.<br><br>
 
-								- What <b><font color="#c5b552">statistical method</font></b> are you using to analyse results. This determines how many repeats you need to get the confidence limit of the technique<br>
-								- How many independent repeats at every data point to identify possible <b><font color="#c5b552">outliers</font></b><br>
-								- What is the <b><font color="#c5b552">absolute and relative error</font></b> of the technique? This affects the range of values you can sample your data from<br>
-								- What trend are you expecting, and what suitable quantity of <b><font color="#c5b552">dataset and spread</font></b> do you need to sufficiently describe the trend (e.g. shape of curve)?<br>
-								- What variables can influence the results that you need to <b><font color="#c5b552">control</font></b> for?<br>
-								- Have you remove the <b><font color="#c5b552">background</font></b>?
-								<br><br>
+								- 6 repeats are required for results to be <b><font color="#c5b552">95% confidence</font></b>, in addition to calculating the standard deviaiton of the technique.<br>
+								- 3 independent repeats are required per data point to identify possible <b><font color="#c5b552">outliers</font></b>. You will not know which point is the outlier if you only have 2 points.<br>
+								- The absolute and relative error affects the range of values you can sample your data from. In particular, absolute error gives you the <b><font color="#c5b552">lowest sampling limit</font></b>.<br>
+								- Have you remove the <b><font color="#c5b552">background</font></b>? This is particularly important if background is not a constant.<br>
+								- What variables could alter the results such that you need to <b><font color="#c5b552">control</font></b> for?<br><br>
 
 								<b><font color="#EC5D57">c) SPR specific considerations</font></b><br>
-								- How do we know if <b><font color="#c5b552">equilibrium binding</font></b> is reached in SPR? What factors can you control to ensure equilibrium is reached? How can we design an experiment to ensure all experimental trials reaches equilibrium binding?<br>
-								- What <b><font color="#c5b552">range of answers is possible</font></b> in protein-protein interaction context?<br><br>
+								- What range of Kd can you expect in strong and weak binding? Have your experiment accounted for the <b><font color="#c5b552">broad range of possible answers</font></b>?<br>
+								- Have you use an Association Time of sufficient length for the system to reach equilibrium binding? How do we know if <b><font color="#c5b552">equilibrium binding</font></b> is reached in SPR?<br>
+								- What trend are you expecting for Langmuir Isotherm? Thus how many <b><font color="#c5b552">data point</font></b> do you need to sufficiently describe the trend (e.g. shape of curve)?<br><br>
 								<!--div id="center_buttons">
 									<button type="button" class="modal-button clickable1" data-dismiss="modal" data-toggle="modal" data-target="#test_modal">Continue</button>
 								</div-->
@@ -164,9 +164,9 @@
 								<b><font color="#51A7F9">2. Test Phase</font></b><br>
 								You can now <b><font color="#c5b552">translate all experimental design considerations</font></b> you just derived into specific experimental steps taken to find the results.<br><br>
 
-								At this point, you can <b><font color="#c5b552">stop worrying</font></b> if you might miss out on any other considerations! Remember this, you will NEVER get the design right all at once. So rather than getting analysis paralysis, you can learn much faster what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>. That is why masters think in a <b><font color="#51A7F9">Cycle</font></b> and aim at <b><font color="#c5b552">iterating</font></b> their strategy fast. Having the <b><font color="#c5b552">metacognition</font></b> to realising that the information you lack is unobtainable until you try out is also an important skill of a master.<br><br>
+								What is most important when tackling an unknown system is to have the <b><font color="#c5b552">metacognition</font></b> to accept that you will NEVER get the design right all at once. The most important point, again, is to iterate your <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> as quick as possible rather than worrying that you might miss out on any other considerations! This is because you can learn much faster about what is missing through <b><font color="#c5b552">testing out your plans right away</font></b>.<br><br>
 
-								So start trying out your plan as fast as possible! When you finish, we can start to reflect on how to improve the design in the <b><font color="#51A7F9">Reflect</font></b> phase of the <b><font color="#51A7F9">Cycle</font></b>. Once you finish, do <b><font color="#c5b552">note down</font></b> your Efficiency Points and Steps taken so we can analyse them later.<br><br>
+								So quickly try out your plan! When you finish, we can start to reflect on how to improve the design in the <b><font color="#70BF41">Reflect</font></b> phase. Do <b><font color="#c5b552">note down</font></b> your Efficiency Points and Steps taken so we can analyse them later.<br><br>
 							</div>
 						</div>
 					</div>
@@ -181,18 +181,17 @@
 							</div>
 							<div class="modal-body">
 								<b><font color="#51A7F9">3. Reflect Phase</font></b><br>
-								If you have successfully obtained the correct answer but not with the right Efficiency Points and Steps, troubleshoot with the questions below then quickly start the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> again! If you have not obtain the right answer or still not able to achieve the VICTORY CONDITIONS, ask the demonstrator for help.<br><br>
+								If you have successfully obtained the correct answer but not with the right Efficiency Points and Steps, troubleshoot with the hints below then quickly start the <b><font color="#70BF41">Plan-Test-Reflect Cycle</font></b> again! If you have not obtain the right answer or still not able to achieve the VICTORY CONDITIONS, ask the demonstrator for help.<br><br>
 
 								<b><font color="#EC5D57">Efficiency Points</font></b><br>
-								- Efficiency points deduction are calculated by how far off your Association Time input is from the time needed to exactly reach equilibrium (with 5 seconds buffer).<br>
-								- Start by <b><font color="#c5b552">downloading the Excel</font></b> file of your RESULTS TABLE by clicking the menu button at the right-hand corner of the table. This is a summary of your results.<br>
-								- Is the method you take to find equilibrium time efficient? What strategy of finding equilibrium time you can use to ensure you <b><font color="#c5b552">don't overshoot</font></b> and waste time knowing that the binding curve follow a <b><font color="#c5b552">hyperbolic model</font></b>?<br><br>
+								- Using your knowledge that the SENSORGRAM binding curve follow a <b><font color="#c5b552">hyperbolic model</font></b>, try <b><font color="#c5b552">seeding</font></b> a small value and <b><font color="#c5b552">predict the resulting trajectory</font></b> where equilibrium binding would be reached, rather than randomly input a large value. In a real experiment, you would not have the time or resource to waste using the latter strategy.<br><br>
 
 								<b><font color="#EC5D57">Steps</font></b><br>
-								- If you have the problem of having to find a new equilibrium time for every Free Ligand Concentration input, go back to understanding the factors that ensure equilibrium is reached. Do you see any <b><font color="#c5b552">universal</font></b> Association Time that you could use that ensures equilibrium is reached in all cases?<br>
+								- If you have the problem of needing to find a new equilibrium time for every new Concentration input, try finding a <b><font color="#c5b552">universal association time to use</font></b>. What Concentration requires the longest time to reach equilibrium? Using this time length would cover for all cases.<br>
 								- Did you do <b><font color="#c5b552">sufficient repeats</font></b> to identify outlier and standard deviation of the technique?<br>
-								- Did you use a <b><font color="#c5b552">broad sampling strategy</font></b> to test out what the resonance value at equilibrium is for complete saturation of receptors? How do you <b><font color="#c5b552">confirm</font></b> you have reached saturation?<br>
-								- How did you determine your dynamic range once you found the saturation value? Since the first Free Ligand Concentration that give you saturation might be deep within saturation range, dividing that Free Ligand Concentration into fixed increment and try generating points might not be efficient since some points might lies in saturation range. Why not try a <b><font color="#c5b552">'test, benchmark & improvise' strategy</font></b>? Knowing that the dynamic range starts from lower end of Langmuir Isotherm upwards, it is more efficient to <b><font color="#c5b552">try a random low value</font></b> (e.g. a quarter of your saturation Free Ligand Concentration) and <b><font color="#c5b552">benchmark</font></b>  against the celing of saturation curve. Then <b><font color="#c5b552">iterate the strategy</font></b> for generating sufficiently spaced out data points based on the findings every round since <b><font color="#c5b552">Langmuir Isotherm follow a hyperbolic model</font></b>.<br>
+								- Did you use a <b><font color="#c5b552">broad sampling strategy</font></b> to account for all possible range of value Kd could take?<br>
+								- How do you <b><font color="#c5b552">confirm saturation</font></b> has been reached?<br>
+								- How did you find where the <b><font color="#c5b552">dynamic range</font></b> of Langmuir Isotherm lies? Knowing that Langmuir Isotherm follow a <b><font color="#c5b552">hyperbolic model</font></b>, it would be wise to start gathering points from <b><font color="#c5b552">lower concentration upwards</font></b>, you might still be sampling points in the saturation range if you do the reverse.<br>
 								- Think again about the <b><font color="#c5b552">final end point calculations</font></b> you took to derive the answer. From there, are there unnecessary steps you performed <b><font color="#c5b552">irrelevant</font></b> to finding the answer? Can you <b><font color="#c5b552">combine</font></b> some of the steps?<br><br>
 							</div>
 						</div>
@@ -339,9 +338,8 @@
 								<h4 class="modal-title" id="modalLabel">Experimental Design Strategy Puzzle (SPR)</h4>
 							</div>
 							<div class="modal-body">
-								<b><font color="#d83535">Challenge Statement</font></b><br>
-								So you think you can design an experiment as elegant as a master biochemist?<br> 
-								We dare you to crack this puzzle to see if you are really worthy of that title.<br><br>
+								<b><font color="#51A7F9">Challenge Statement</font></b><br>
+								So you think you have mastered experimental design strategy? We challenge you to crack this puzzle to see how good you are.<br><br>
 
 								<b><font color="#51A7F9">Victory conditions</font></b><br>
 								+ Achieve the correct Kd, k<sub>on</sub>, k<sub>off</sub> within the days allowed<br>
@@ -349,13 +347,13 @@
 								+ Without losing any Efficiency Points<br>
 								+ Making at least {{view.experiment.comboStreakMax}} experimental design considerations<br><br>
 
-								<b><font color="#c5b552">Before you begin the game</font></b><br>
-								This game assumes that you know how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> given an unknown ligand and receptor pair using the Surface Plasmon Resonance (SPR) techique. If you need a refresher, quickly review in HELP at CONTROL PANEL.
+								<b><font color="#51A7F9">Before you begin the game</font></b><br>
+								You should be comfortable with how to obtain Kd, k<sub>off</sub> and k<sub>on</sub> using Surface Plasmon Resonance (SPR) technique before attempting to design a good experiment to complete the challenge. Please also read the HELP section in CONTROL PANEL to understand game mechanics.<br><br>
+
+								Let's begin by selecting a suitable playing mode. If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can try to beat the Challenge straight away!
 								<br><br>
 
-								Let's begin by selecting a suitable playing mode.
-								If you are new to experimental design strategy, Training mode will teach you how to beat the challenge with the <b><font color="#ececec">Strategies & Tactics</font></b> and <b><font color="#70BF41">Console</font></b>. Otherwise, you can be daring and try to beat the Challenge straight away!
-								<br><br>
+								<font color="d83535"><b>Note: Please use Google Chrome browser to ensure full functionality of software.</b></font><br><br>
 								<div id="center_buttons">
 									<button type="button" class="modal-button clickable1" ng-click="view.train_user()"  data-dismiss="modal">Training</button>&nbsp;&nbsp;&nbsp;
 									<button type="button" class="modal-button clickable1" ng-click="view.challenge_user()"  data-dismiss="modal">Challenge</button>
@@ -379,7 +377,8 @@
 								- Input desired Free Ligand Concentration and Association Time<br>
 								- Click START to begin ligand-receptor association phase<br>
 								- Click WASH to begin ligand-receptor disassociation phase<br>
-								- Click BACKGROUND to remove it from future readings
+								- Click BACKGROUND to remove it from future readings<br>
+								- Check your answer in the CHECK ANSWER panel to complete the game
 								<br><br>
 
 								<b><font color="#51A7F9">2. Essential tips to completing the game</font></b><br>
@@ -389,7 +388,8 @@
 								- You can drag an area on SENSORGRAM to zoom into it, double click to zoom out.<br>
 								- Every RUN-WASH cycle uses up 30 minutes per day regardless of Association Time input.<br>
 								- You can download your data into an Excel file by clicking the menu-button in the top-right corner of RESULTS TABLE.<br>
-								- You can let your the RESULTS TABLE show display data in order of latest trial by clicking on 'trial' column to sort it
+								- You can let your the RESULTS TABLE show display data in order of latest trial by clicking on 'trial' column to sort it<br>
+								- Efficiency points deduction are calculated by how far off your Association Time input is from the time needed to exactly reach equilibrium (with 5 seconds buffer)
 								<br><br>
 
 								<b><font color="#51A7F9">3. SPR assumptions</font></b><br>
@@ -529,37 +529,37 @@
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>Kd</div>
 							<form novalidate name="check_Kd">
-								<input class="form" name="Kd_input" type="number" ng-model="input_check_Kd" placeholder="number" required>
+								<input class="form" name="Kd_input" type="number" min="0" ng-model="input_check_Kd" placeholder="number" required>
 							</form>
 						</div>
 							<!-- b. Form: check kOn -->
 						<div class="col-md-4 track-panel">
 							<div>k<sub>on</sub></div>
 							<form novalidate name="check_kOn">
-								<input class="form" name="kOn_input" type="number" ng-model="input_check_kOn" placeholder="number" required>
+								<input class="form" name="kOn_input" type="number" min="0" ng-model="input_check_kOn" placeholder="number" required>
 							</form>
 						</div>
 							<!-- c. Form: check kOff -->
 						<div class="col-md-4 track-panel gloss-contrast">
 							<div>k<sub>off</sub></div>
 							<form novalidate name="check_kOff" >
-								<input class="form" name="kOff_input" type="number" ng-model="input_check_kOff" placeholder="number" required>
+								<input class="form" name="kOff_input" type="number" min="0" ng-model="input_check_kOff" placeholder="number" required>
 							</form>
 						</div>
 							<!-- d. Dropdown Menu: units for check Kd -->
 						<div class="col-md-4 unit-panel gloss-contrast">
-							<select class="units_dropdown" ng-model="magnitudeSelected_check_Kd" ng-init="magnitudeSelected_check_Kd = 2">
+							<select class="units_dropdown" ng-model="magnitudeSelected_check_Kd" ng-init="magnitudeSelected_check_Kd = 1">
 								<option ng-value="0">mM</option>
-								<option ng-value="1">uM</option>
-								<option ng-value="2" ng-selected="true">nM</option>
+								<option ng-value="1" ng-selected="true">uM</option>
+								<option ng-value="2">nM</option>
 							</select>						
 						</div>
 							<!-- e. Dropdown Menu: units for check kOn -->
 						<div class="col-md-4 unit-panel">
 							<select class="units_dropdown" ng-model="magnitudeSelected_check_kOn" ng-init="magnitudeSelected_check_kOn = 2">
-								<option value="0">MMs&#x207b;&#xb9;</option>
-								<option value="1">kMs&#x207b;&#xb9;</option>
-								<option value="2" ng-selected="true">Ms&#x207b;&#xb9;</option>
+								<option value="0">MM&#x207b;&#xb9;s&#x207b;&#xb9;</option>
+								<option value="1">kM&#x207b;&#xb9;s&#x207b;&#xb9;</option>
+								<option value="2" ng-selected="true">M&#x207b;&#xb9;s&#x207b;&#xb9;</option>
 							</select>						
 						</div>
 							<!-- f. Dropdown Menu: units for check Kd -->
@@ -663,7 +663,7 @@
 					</div><br>
 						<!-- vii. Console -->
 					<div id="console" class="panel-body">
-							<!-- a. Postive Reinforcement: Answer is correct -->
+							<!-- a. Positive Reinforcement: Answer is correct -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true || view.kOn_correct == true || view.kOff_correct == true) && !(view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[Attempt {{view.checkCounter}} - correct answers]</font></b><br>
@@ -679,7 +679,7 @@
 								<p class="declare-result" ng-show="view.kOn_correct == false">Your k<sub>on</sub> value is wrong!</p>
 								<p class="declare-result" ng-show="view.kOff_correct == false">Your k<sub>off</sub> value is wrong!</p>
 						</div>
-							<!-- c. Postive Reinforcement: All answer is correct! -->
+							<!-- c. Positive Reinforcement: All answer is correct! -->
 						<div ng-show="view.isDisabled_check == false && (view.Kd_correct == true && view.kOn_correct == true && view.kOff_correct == true)">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
 							<b><font color="#51A7F9">[All answers are correct!]</font></b><br>
@@ -691,7 +691,7 @@
 
 							<p class="declare-result" ng-show="(view.experiment.steps <= (view.experiment.optimum_steps+2) && view.experiment.steps >= (view.experiment.optimum_steps-2)) && view.experiment.efficiencyRating == 100 && view.experiment.comboStreak == view.experiment.comboStreakMax">Congratulations, your answers, Steps Count and Efficiency Rating are all in the right range. Check with the demonstrator to confirm result is correct! :)<br><br>
 							If you want to replay again with a new pair of ligand-receptor, click <b><button id="here_button" data-toggle="modal" data-target="#replay_modal">here</button></b>.<br>
-							If you like this game, please provide <b><a href="mailto:c.srisakvarakul@gmail.com" class="red-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="red-link">challenge</a></b> your friends who might be interested!<br><br>
+							If you like this game, please provide <b><a href="mailto:david.harris@bioch.ox.ac.uk" class="red-link">feedback</a></b> or <b><a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="red-link">challenge</a></b> your friends who might be interested!<br><br>
 
 							<b><font color="#ececec">Remember that these Strategies & Tactics you learnt today are generally adaptable to all experimental techniques!</font></b><br><br>
 
@@ -819,53 +819,54 @@
 							<b><font color="#c5b552">[Trial {{view.experiment.steps}} - steps status]</font></b><br>
 							Your steps count is above the optimum steps. In the lab, this will waste precious time and resources. So finish off your experiment, download your data from RESULTS TABLE, and using the framework in <b><font color="#ececec">Strategies & Tactics</font></b> section as a guide, reflect on the steps you took and think of how to reduce your steps count.<br>
 						</div>
-							<!-- v. Postive Reinforcement - Combo One: Three replicates made to check outlier -->
+							<!-- v. Positive Reinforcement - Combo One: Three replicates made to check outlier -->
 						<div ng-show="view.experiment.isDisabled_comboOne_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Outlier identification]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Three replicates made per point will allow you to identify outliers.</p>
+							<b><font color="#51A7F9">[Consideration made: outlier]</font></b><br>
+							<p class="declare-result">Three replicates made per point will allow you to identify outliers. Having two is insufficient to distinguish which one is the outlier.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
-							<!-- w. Postive Reinforcement - Combo Two: Six replicates made for statistics -->
+							<!-- w. Positive Reinforcement - Combo Two: Six replicates made for statistics -->
 						<div ng-show="view.experiment.isDisabled_comboTwo_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Standard deviation calculation]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Six replicates made per point will allow you to calculate the standard deviation of the technique for both the association and disassociation phase.</p>
+							<b><font color="#51A7F9">[Consideration made: statistical calculation]</font></b><br>
+							<p class="declare-result">Six replicates made per point will allow you to calculate the standard deviation of the technique for both the association and disassociation phase. The answer of this trial will also be 95% confidence.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
-							<!-- x. Postive Reinforcement - Combo Three: 6 different fLC sampled -->
+							<!-- x. Positive Reinforcement - Combo Three: 6 different fLC sampled -->
 						<div ng-show="view.experiment.isDisabled_comboThree_msg == false && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Different input sampled]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">You have sampled at least six different Free Ligand Concentration input (excluding background setting). This is a suitable number for SPR experiment to help you observe the general trendline of Langmuir Isotherm.</p>
+							<b><font color="#51A7F9">[Consideration made: sufficient points to describe trend]</font></b><br>
+							<p class="declare-result">You have sampled at least six different Free Ligand Concentration input (excluding background setting). Number of different points to sample is determined by the expected shape of line since there must be sufficient points to describe the trend (e.g. Hyperbolic model in Langmuir Isotherm)</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
-							<!-- y. Postive Reinforcement - Combo Four: Found universal equilibrium time -->
+							<!-- y. Positive Reinforcement - Combo Four: Found universal equilibrium time -->
 						<div ng-show="view.EqTimeReachedOnce == false && view.output.fLC.length !== 0 && view.system.min_timeOn <= view.output.timeOn[view.output.timeOn.length-1] && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] !== 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Equilibrium reached]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Well done! You've found the universal Association Time that is of sufficient length to ensure equilibrium is reached in any Free Ligand Concentration input. This means you won't need to re-search for a new Association Time to reach equilibrium for every new input, wasting Steps.</p>
+							<b><font color="#51A7F9">[Consideration made: universal equilibrium time]</font></b><br>
+							<p class="declare-result">You've found the universal Association Time that is of sufficient length to ensure equilibrium is reached in any Free Ligand Concentration input. The lower the free ligand concentration, the longer time it takes to reach equilibrium. So finding association time for your lowest magnitude you would sample gives an Association Time you can use universally at all higher concentration.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
-							<!-- z. Postive Reinforcement - Combo Five: Confirmed saturation reached -->
+							<!-- z. Positive Reinforcement - Combo Five: Confirmed saturation reached -->
 						<div ng-show="view.experiment.isDisabled_comboFive_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Saturation confirmation]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Saturation is confirmed when a second higher Free Ligand Concentration input is used and the resulting SENSORGRAM output shows an overlap of the curve.</p>
+							<b><font color="#51A7F9">[Consideration made: saturation confirmation]</font></b><br>
+							<p class="declare-result">Saturation is confirmed when a second higher Free Ligand Concentration input is used and the resulting SENSORGRAM output shows an overlap of the curve.</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
-							<!-- aa. Postive Reinforcement - Combo Six: Broad sampling strategies used -->
+							<!-- aa. Positive Reinforcement - Combo Six: Broad sampling strategies used -->
 						<div ng-show="view.experiment.isDisabled_comboSix_msg == false && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Hint: Broad sampling strategy]</font></b><br>
-							<p class="declare-result" ng-show="view.guideMode == true">Although the binding constant of the ligand-receptor pair is unknown, we know that in Biochemistry, the Kd usually lies betwen mM (weak binding) to nM (strong binding) range. Therefore, only by using a broad sampling strategy, rather than incrementing at a particular magnitude can you efficiently find the saturation point and dynamic range of Langmuir Isotherm.</p>
+							<b><font color="#51A7F9">[Consideration made: broad sampling strategy]</font></b><br>
+							<p class="declare-result">Although the binding constant of the ligand-receptor pair is unknown, we know that in Biochemistry, the Kd usually lies betwen mM (weak binding) to nM (strong binding) range. Therefore, only by using a broad sampling strategy, rather than incrementing at a particular magnitude can you efficiently find the saturation point and dynamic range of Langmuir Isotherm. (In this case, sample at mM and nM level)</p>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
-							<!-- ab. Postive Reinforcement - Combo Seven: remove background successs -->
+							<!-- ab. Positive Reinforcement - Combo Seven: remove background successs -->
 						<div ng-show="view.backgroundSet !== 0 && view.output.fLC_tableDisplay[view.output.fLC_tableDisplay.length-1] == 0 && view.isDisabled_check == true">
 							<b><font color="#70BF41">> Console:</font></b>&nbsp;
-							<b><font color="#51A7F9">[Success: remove background]</font></b><br>
+							<b><font color="#51A7F9">[Consideration made: remove background]</font></b><br>
 							Background had been set at {{view.backgroundSet}} {{view.backgroundUnitsSet}}.<br>
+							Removal of background is important to ensure any change is the result of ligand binding, not receptor change, especially since background is not always constant in SPR.<br>
 							<font color="#51A7F9">Considerations Made +1!</font><br>
 						</div>
 							<!-- ac. Prompt: Achievement Status -->
@@ -874,7 +875,7 @@
 							<font color="#ececec">[Trial {{view.experiment.steps}} - Efficiency Status]</font><br>
 								<!-- Negative Reinforcement: Efficiency Points -->
 							<p class="declare-result" ng-show="view.experiment.inefficiency_display !== 0">{{view.experiment.inefficiency_display}} Effiency Points lost!<br>
-							Increase the Association Time to make sure equilibrium is reached! (buffer of 5 extra seconds after equilibrium binding allowed before points deduction)</p>
+							You are allowed a buffer of 5 extra seconds after equilibrium binding is reached before efficiency points get deducted</p>
 								<!-- Positive Reinforcement Efficiency Points -->
 							<p class="declare-result" ng-show="view.experiment.inefficiency_display == 0">0 Effiency Point lost, keep it up!</p>
 						</div>
@@ -961,10 +962,10 @@
 						</div>
 							<!-- j. Drop-down Menu: Selecting units for free ligand concentration units -->
 						<div class="col-md-6 unit-panel gloss-contrast">
-							<select class="units_dropdown" ng-model="magnitudeSelected_input_Kd" ng-init="magnitudeSelected_input_Kd = 2">
+							<select class="units_dropdown" ng-model="magnitudeSelected_input_Kd" ng-init="magnitudeSelected_input_Kd = 1">
 								<option ng-value="0">mM</option>
-								<option ng-value="1">uM</option>
-								<option ng-value="2" ng-selected="true">nM</option>
+								<option ng-value="1" ng-selected="true">uM</option>
+								<option ng-value="2">nM</option>
 							</select>
 						</div>
 							<!-- k. association time Units -->
@@ -990,7 +991,7 @@
 						<a href="mailto:?subject=Oxford Biochemistry: SPR Simulation Challenge&body=https://learntech.imsu.ox.ac.uk/SPR/" class="action-link"><button id="CTA_button" class="button actions">CHALLENGE FRIENDS</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<!-- d. feedback by emailing developer -->
 						<!--a target="_blank" href="http://goo.gl/forms/L2ixc0XLtU" class="action-link"-->
-						<a href="mailto:c.srisakvarakul@gmail.com" class="action-link"><button id="bottom_button" class="button actions">FEEDBACK</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="mailto:david.harris@bioch.ox.ac.uk" class="action-link"><button id="bottom_button" class="button actions">FEEDBACK</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<!-- e. facebook share -->
 						<!--a target="_blank" href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Flearntech.imsu.ox.ac.uk%2FSPR%2F&display=popup&ref=plugin&src=share_button','title','width=500,height=300')" class="action-link">
 						<button id="bottom_button" class="button actions" data-href="https://learntech.imsu.ox.ac.uk/SPR/" data-layout="link">SHARE</button></a>&nbsp;&nbsp;&nbsp;&nbsp;-->
